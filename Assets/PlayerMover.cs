@@ -30,12 +30,29 @@ namespace KIMJAEWON
             Vector3 moveVelocity = moveDirection * moveSpeed;
             rb.velocity = moveVelocity;
 
+            //Rotate();
+      
+
         }
 
         public void OnMove(InputValue value)
         {
             moveInput = value.Get<Vector2>();
         }
+
+        //public void Rotate()
+        //{
+        //    float Horizontal = Input.GetAxis("Horizontal");
+        //    float Vertical = Input.GetAxis("Vertical");
+
+        //    // Calculate rotation based on input
+        //    Vector3 rotation = new Vector3(Vertical, 0f, -Horizontal) * Time.deltaTime * moveSpeed;
+
+        //    // Apply rotation to the object
+        //    transform.RotateAround(transform.position, Vector3.up, rotation.y);
+        //    transform.RotateAround(transform.position, transform.right, rotation.x);
+        //}
+
 
 
 
