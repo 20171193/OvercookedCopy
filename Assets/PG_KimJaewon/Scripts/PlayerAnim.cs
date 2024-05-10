@@ -14,7 +14,6 @@ namespace KIMJAEWON
         [SerializeField] int hp = 3;
         Animator anim;
         [SerializeField] State state;
-
         bool isMoving = false;
 
         void Start()
