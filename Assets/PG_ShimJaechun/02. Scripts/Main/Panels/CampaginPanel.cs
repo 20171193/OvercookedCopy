@@ -10,13 +10,10 @@ namespace Jc
     public class CampaginPanel : MonoBehaviour
     {
         [SerializeField]
-        private GameObject menuPanel;           // 캠페인 메뉴 패널
-
-        [SerializeField]
         private GameObject createRoomPanel;     // 룸 생성 패널
 
         [SerializeField]
-        private TextMeshProUGUI roomNameInput;  // 룸 이름 입력패널
+        private TMP_InputField roomNameInput;  // 룸 이름 입력패널
 
         [SerializeField]
         private List<string> defaultRoomNames;  // 기본 룸 이름
