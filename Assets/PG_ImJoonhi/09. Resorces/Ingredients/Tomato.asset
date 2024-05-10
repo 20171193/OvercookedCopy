@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b83738344b8cc6d4c95d5e448e6b36a6, type: 3}
   m_Name: Tomato
   m_EditorClassIdentifier: 
-  id: 0
-  Name: 
+  id: 23
+  Name: Tomato
   Original: {fileID: 4868047748583912653, guid: 8839ada564b5e3641a8729050bbe0326,
     type: 3}
   Sliced: {fileID: 3777602569316888291, guid: 7ffe10f2c4cd74b40bc5e59f4dc04dee, type: 3}

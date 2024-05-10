@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff938e0a6165a4f4f945b3ba423244f3, type: 3}
-  m_Name: Lettuce and tomato salad
+  m_Name: Cucumber Slice
   m_EditorClassIdentifier: 
-  Name: Lettuce salad
+  Name: Cucumber Slice
+  Wrong: 0
   ingredients:
-  - {fileID: 11400000, guid: 447de78bc0100eb4bba3e5f8d816f4fd, type: 2}
+  - {fileID: 11400000, guid: 836b0553e24f94e4b9e4c6cb6b19a059, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

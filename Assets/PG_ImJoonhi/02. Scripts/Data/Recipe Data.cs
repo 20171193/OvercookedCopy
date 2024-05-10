@@ -13,5 +13,7 @@ namespace JH
 
         public List<IngredientsData> ingredients;
         public List<IngredientState> ingredientsState;
+
+        public Object Model;
     }
 }
