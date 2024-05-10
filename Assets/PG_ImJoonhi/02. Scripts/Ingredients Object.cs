@@ -1,28 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class IngredientsObject : MonoBehaviour
+namespace JH
 {
-    [SerializeField] Ingredients ingredientsData;
-
-    private Object CurrentObject;
-
-
-    void Start()
+    public class IngredientsObject : MonoBehaviour
     {
-        CurrentObject = Instantiate(ingredientsData.Original, gameObject.transform);
-    }
+        [SerializeField] Ingredients ingredientsData;
+        public bool sliced { get; private set; }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+        private GameObject CurrentObject;
 
-    private void Slice()
-    {
-        Destroy(CurrentObject);
-        Instantiate(ingredientsData.Sliced, gameObject.transform);
+        void Start()
+        {
+            sliced = false;
+            CurrentObject = (GameObject) Instantiate(ingredientsData.Original, gameObject.transform.position, Quaternion.identity);
+        }
+
+        void Update()
+        {
+
+        }
+
+        /// <summary>재료를 자르거나 다질 수 있는지 확인하는 함수.</summary>
+        public bool CanSlice()
+        {
+            return ingredientsData.Sliced != null;
+        }
+
+        /// <summary>재료를 다지는 함수.</summary>
+        [ContextMenu("Slice")]
+        public void Slice()
+        {
+            this.sliced = true;
+            CurrentObject.SetActive(false);
+            Destroy(CurrentObject);
+            Instantiate(ingredientsData.Sliced, gameObject.transform);
+        }
     }
 }
