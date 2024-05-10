@@ -16,10 +16,4 @@ public class GridManager : MonoBehaviour
         tileGrid = new GameObject[gridDimension, gridDimension];  // (그리드의 크기 X 그리드의 크기)인 타일 그리드 생성
     }
 
-    /* 그리드 초기화 */
-
-    private void InitGrid()
-    {
-
-    }
 }
