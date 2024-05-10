@@ -14,5 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 15
   Name: Lettuce
-  Original: {fileID: 0}
-  Sliced: {fileID: 0}
+  Original: {fileID: 1128879176224879776, guid: 8748da0475bcc76488147593425c10f1,
+    type: 3}
+  Sliced: {fileID: 4418737508471142039, guid: 511c7e219cf59544c9dcee115b5e5f62, type: 3}
+  Potted: {fileID: 0}
+  Paned: {fileID: 0}

@@ -7,15 +7,16 @@ namespace JH
 {
     public class IngredientsObject : MonoBehaviour
     {
-        [SerializeField] Ingredients ingredientsData;
-        public bool sliced { get; private set; }
+        [SerializeField] IngredientsData ingredientsData;
+        public IngredientState IngState { get; private set; }
 
         private GameObject CurrentObject;
 
         void Start()
         {
-            sliced = false;
-            CurrentObject = (GameObject) Instantiate(ingredientsData.Original, gameObject.transform.position, Quaternion.identity);
+            IngState = IngredientState.Original;
+            CurrentObject = (GameObject)Instantiate(ingredientsData.Original, gameObject.transform.position, Quaternion.identity);
+            CurrentObject.transform.SetParent(gameObject.transform, true);
         }
 
         void Update()
@@ -33,10 +34,11 @@ namespace JH
         [ContextMenu("Slice")]
         public void Slice()
         {
-            this.sliced = true;
+            IngState = IngredientState.Sliced;
             CurrentObject.SetActive(false);
             Destroy(CurrentObject);
-            Instantiate(ingredientsData.Sliced, gameObject.transform);
+            CurrentObject = (GameObject)Instantiate(ingredientsData.Sliced, gameObject.transform);
+            CurrentObject.transform.SetParent(gameObject.transform, true);
         }
     }
 }
