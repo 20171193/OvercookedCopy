@@ -11,7 +11,7 @@ namespace Jc
         // 캠페인 버튼 클릭
         public void OnClickCampaignButton()
         {
-            LobbyManager.Inst.SetActivePanel(LobbyManager.Panel.Campagin);
+            PhotonNetwork.JoinLobby();
         }
         
         // 옵션 버튼 클릭

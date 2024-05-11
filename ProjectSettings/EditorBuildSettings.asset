@@ -6,6 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  m_configObjects: {}
+    path: Assets/PG_ShimJaechun/01. Scenes/SJC_Main.unity
+    guid: 5c7879ff36ed34a47a2a1f4afa48cebf
+  m_configObjects:
+    com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
+      guid: bb2bc8bf6a9b6f540ae343ad4625f30d, type: 2}

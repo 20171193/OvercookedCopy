@@ -11,7 +11,7 @@ namespace Jc
         private static LobbyManager inst;
         public static LobbyManager Inst { get { return inst; } }    
 
-        public enum Panel { Login, Main, Campagin, Lobby, Room }
+        public enum Panel { Login, Main, Campagin, Room }
 
         [SerializeField]
         private LoginPanel loginPanel;
@@ -112,14 +112,15 @@ namespace Jc
         // 방 나가기
         public override void OnLeftRoom()
         {
-            // 로비로 이동
-            SetActivePanel(Panel.Lobby);
+            OnJoinedLobby();
+            // 캠페인 패널로 이동
+            //SetActivePanel(Panel.Campagin);
         }
 
         // 로비로 이동
         public override void OnJoinedLobby()
         {
-            SetActivePanel(Panel.Lobby);
+            SetActivePanel(Panel.Campagin);
         }
 
         // 로비에서 나가기 
@@ -164,7 +165,6 @@ namespace Jc
             mainPanel.gameObject.SetActive(panel == Panel.Main);
             campaignPanel.gameObject.SetActive(panel == Panel.Campagin);
             roomPanel.gameObject.SetActive(panel == Panel.Room);
-            lobbyPanel.gameObject.SetActive(panel == Panel.Lobby);
         }
 
         private void CheckCurrentState()

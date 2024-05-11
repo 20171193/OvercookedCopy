@@ -23,22 +23,11 @@ namespace Jc
 
         private Player player;
 
-        // 활성화된 엔트리의 소유자가 방장일 경우 Ready
-        private void OnEnable()
-        {
-            if (PhotonNetwork.IsMasterClient)
-                Ready();
-            else
-                roomPanel.ReadyButton.onClick.AddListener(Ready);
-        }
-
         private void OnDisable()
         {
             if (!PhotonNetwork.IsMasterClient)
-                roomPanel.ReadyButton.onClick.RemoveListener(Ready);
-
+                roomPanel?.ReadyButton.onClick.AddListener(Ready);
         }
-
 
         // 플레이어(유저) 세팅
         public void SetPlayer(Player player)
@@ -46,6 +35,14 @@ namespace Jc
             this.player = player;
             // 이름 할당
             playerName.text = player.NickName;
+
+            // 플레이어가 방장일 경우 Ready
+            if (PhotonNetwork.IsMasterClient)
+                Ready();
+            // 아닐경우 버튼 상호작용 등록
+            else
+                roomPanel.ReadyButton.onClick.AddListener(Ready);
+
             // 레디 체크
             playerReady.text = player.GetReady() ? "Ready" : "";   
         }
@@ -65,6 +62,7 @@ namespace Jc
             }
         }
 
+        // 준비버튼 함수
         public void Ready()
         {
             player.SetReady(!player.GetReady());

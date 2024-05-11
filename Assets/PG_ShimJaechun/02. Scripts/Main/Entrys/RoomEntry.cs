@@ -30,8 +30,15 @@ namespace Jc
             roomName.text = roomInfo.Name;
             // 방에 참여한 플레이어 수
             currentPlayer.text = $"{roomInfo.PlayerCount} / {roomInfo.MaxPlayers}";
-            // Join 버튼 활성화 여부
-            joinRoomButton.interactable = roomInfo.PlayerCount < roomInfo.MaxPlayers;
+
+            SetRoomEnterable(roomInfo.PlayerCount < roomInfo.MaxPlayers);
+        }
+
+        // 방 입장세팅
+        private void SetRoomEnterable(bool isOpen)
+        {
+            joinRoomButton.interactable = isOpen;
+            currentPlayer.color = isOpen ? Color.white : Color.red;
         }
 
         public void JoinRoom()

@@ -16,6 +16,7 @@ namespace Jc
         private PlayerEntry playerEntryPrefab;  // 플레이어 엔트리 프리팹
         [SerializeField] 
         private Button startButton;             // 게임시작 버튼 
+
         [SerializeField]
         private Button readyButton;             // 게임레디 버튼
         public Button ReadyButton {get { return readyButton; }}
