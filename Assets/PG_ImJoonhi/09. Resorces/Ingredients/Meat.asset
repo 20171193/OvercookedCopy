@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83738344b8cc6d4c95d5e448e6b36a6, type: 3}
+  m_Name: Meat
+  m_EditorClassIdentifier: 
+  id: 4
+  Name: Meat
+  Original: {fileID: 919132149155446097, guid: 1bdab330cedd2b846bb8549f9ee19416, type: 3}
+  Sliced: {fileID: 919132149155446097, guid: 0c8be08762fe6474ba6ec79c6392a9fe, type: 3}
+  Potted: {fileID: 0}
+  Paned: {fileID: 0}
