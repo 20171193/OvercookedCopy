@@ -7,6 +7,7 @@ using UnityEngine;
 
 namespace Jc
 {
+    // 캠페인 패널 : 로비 + 방 생성
     public class CampaginPanel : MonoBehaviour
     {
         [SerializeField]
@@ -62,10 +63,9 @@ namespace Jc
             PhotonNetwork.JoinRandomOrCreateRoom(roomName: _roomName, roomOptions: options);
         }
 
-        // 로비로 이동
-        public void JoinLobby()
+        public void LeaveCampagin()
         {
-            PhotonNetwork.JoinLobby();
+            PhotonNetwork.LeaveLobby();
         }
     }
 }

@@ -10,8 +10,7 @@ namespace Jc
 {
     public static class CustomProperty
     {
-
-        // Player ÇÁ·ÎÆÛÆ¼ ¼¼ÆÃ
+        // 플레이어 관련 프로퍼티
         #region Player
         public const string READY = "Ready";
         public const string LOAD = "Load";
@@ -42,6 +41,8 @@ namespace Jc
         }
         #endregion
         #endregion
+
+        // 방 관련 프로퍼티
         #region Room
         public const string GAMESTART = "GameStart";
 

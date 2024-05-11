@@ -7,7 +7,6 @@ namespace Jc
 {
     public class LobbyPanel : MonoBehaviour
     {
-        
         [SerializeField]
         private RectTransform roomContent;      // 방 엔트리 부모 트랜스폼
         [SerializeField] 
@@ -62,12 +61,6 @@ namespace Jc
                     roomDictionary.Add(info.Name, entry);
                 }
             }
-        }
-
-        // 로비 퇴장
-        public void LeaveLobby()
-        {
-            PhotonNetwork.LeaveLobby();
         }
     }
 }
