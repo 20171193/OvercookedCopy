@@ -143,10 +143,11 @@ namespace Jc
                     readyCount++;
             }
 
-            if (readyCount == PhotonNetwork.PlayerList.Length)
-                startButton.gameObject.SetActive(true);
-            else
-                startButton.gameObject.SetActive(false);
+            // 준비한 플레이어 수
+            // 게임시작 버튼 활성화/비활성화
+            startButton.interactable = readyCount == PhotonNetwork.PlayerList.Length;
+            startButton.GetComponent<Image>().color =
+                readyCount == PhotonNetwork.PlayerList.Length ? startButton.colors.normalColor : startButton.colors.disabledColor;
         }
     }
 }

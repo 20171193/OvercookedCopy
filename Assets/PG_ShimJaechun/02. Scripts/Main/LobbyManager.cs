@@ -9,7 +9,7 @@ namespace Jc
     public class LobbyManager : MonoBehaviourPunCallbacks
     {
         private static LobbyManager inst;
-        public static LobbyManager Inst { get { return inst; } }    
+        public static LobbyManager Inst { get { return inst; } }
 
         public enum Panel { Login, Main, Campagin, Room }
 
@@ -30,6 +30,8 @@ namespace Jc
 
         [SerializeField]
         private ClientState curState = ClientState.JoiningLobby;
+
+        private bool isUserLogin = false;
 
         private void Awake()
         {
@@ -58,7 +60,12 @@ namespace Jc
         // 로그인 성공
         public override void OnConnectedToMaster()
         {
+            // 최초 한번만 실행
+            if (isUserLogin) return;
+
+            Debug.Log("마스터서버 연결 성공");
             SetActivePanel(Panel.Main);
+            isUserLogin = true;
         }
 
         // 
@@ -109,15 +116,12 @@ namespace Jc
             Debug.Log($"Join random room failed with error : {message}({returnCode})");
         }
 
-        // 방 나가기
         public override void OnLeftRoom()
         {
-            OnJoinedLobby();
-            // 캠페인 패널로 이동
-            //SetActivePanel(Panel.Campagin);
+            SetActivePanel(Panel.Campagin);
         }
 
-        // 로비로 이동
+        // 로비로 이동 == OnLeftRoom()
         public override void OnJoinedLobby()
         {
             SetActivePanel(Panel.Campagin);
