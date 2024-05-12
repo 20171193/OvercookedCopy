@@ -25,7 +25,7 @@ namespace Jc
 
         private void OnDisable()
         {
-            if (!PhotonNetwork.IsMasterClient)
+            if (player.IsLocal && !PhotonNetwork.IsMasterClient)
                 roomPanel?.ReadyButton.onClick.AddListener(Ready);
         }
 
@@ -36,15 +36,17 @@ namespace Jc
             // 이름 할당
             playerName.text = player.NickName;
 
-            // 플레이어가 방장일 경우 Ready
-            if (PhotonNetwork.IsMasterClient)
-                Ready();
-            // 아닐경우 버튼 상호작용 등록
-            else
-                roomPanel.ReadyButton.onClick.AddListener(Ready);
-
+            if (player.IsLocal)
+            {
+                // 플레이어가 방장일 경우 Ready
+                if (PhotonNetwork.IsMasterClient)
+                    Ready();
+                // 아닐경우 버튼 상호작용 등록
+                else
+                    roomPanel.ReadyButton.onClick.AddListener(Ready);
+            }
             // 레디 체크
-            playerReady.text = player.GetReady() ? "Ready" : "";   
+            playerReady.text = player.GetReady() ? "Ready" : "";
         }
 
         // 플레이어 커스텀 프로퍼티 갱신

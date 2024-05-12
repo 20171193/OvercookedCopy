@@ -17,11 +17,6 @@ namespace Jc
 
         private RoomInfo roomInfo;
 
-        private void OnEnable()
-        {
-
-        }
-
         public void SetRoomInfo(RoomInfo roomInfo)
         {
             // RoomEntry의 RoomInfo를 할당
