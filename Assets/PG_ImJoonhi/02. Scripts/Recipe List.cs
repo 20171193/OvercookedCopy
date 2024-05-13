@@ -9,7 +9,7 @@ namespace JH
         public List<RecipeData> Recipe;
         public List<RecipeData> finishedRecipe;
 
-        public GameObject DishPrefab;
+        public GameObject PlatePrefab;
     }
 
 }

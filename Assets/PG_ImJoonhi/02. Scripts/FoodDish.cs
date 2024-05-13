@@ -11,12 +11,12 @@ namespace JH
         public IngredientsObject init;
         public RecipeData curRecipe;
 
-        public bool Dish;
+        public bool Plate;
         private List<IngredientsObject> ingredientList = new List<IngredientsObject>(4);
         private List<IngredientsObject> ingredientListDebug;
         private int included;
 
-        private GameObject curDish;
+        private GameObject curPlate;
         private GameObject CurrentObject;
 
         [Header("Debug")]
@@ -27,12 +27,12 @@ namespace JH
             for (int i = 0; i < 4; i++) ingredientList.Add(null);
             ingredientList[0] = init;
             included = 1;
-            if (Dish)
+            if (Plate)
             {
-                curDish = Instantiate(recipeList.DishPrefab, gameObject.transform.position, Quaternion.identity);
-                curDish.transform.SetParent(gameObject.transform, true);
+                curPlate = Instantiate(recipeList.PlatePrefab, gameObject.transform.position, Quaternion.identity);
+                curPlate.transform.SetParent(gameObject.transform, true);
                 CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position, Quaternion.identity);
-                CurrentObject.transform.SetParent(curDish.transform, true);
+                CurrentObject.transform.SetParent(curPlate.transform, true);
             }
             else
             {
@@ -41,19 +41,14 @@ namespace JH
             }
         }
 
-        public void OnDish()
+        public bool AddPlate()
         {
-            CurrentObject.transform.SetParent(curDish.transform, true);
-        }
-
-        public bool AddDish()
-        {
-            if (Dish)
+            if (Plate)
                 return false;
-            Dish = true;
-            curDish = Instantiate(recipeList.DishPrefab, gameObject.transform.position, Quaternion.identity);
-            curDish.transform.SetParent(gameObject.transform, true);
-            CurrentObject.transform.SetParent(curDish.transform, true);
+            Plate = true;
+            curPlate = Instantiate(recipeList.PlatePrefab, gameObject.transform.position, Quaternion.identity);
+            curPlate.transform.SetParent(gameObject.transform, true);
+            CurrentObject.transform.SetParent(curPlate.transform, true);
             return true;
         }
 
@@ -80,10 +75,11 @@ namespace JH
                     ingredientList = buf.ToList();
                     CurrentObject.SetActive(false);
                     Destroy(CurrentObject);
-                    if (Dish)
+                    curRecipe = recipeList.Recipe[i];
+                    if (Plate)
                     {
                         CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position, Quaternion.identity);
-                        CurrentObject.transform.SetParent(curDish.transform, true);
+                        CurrentObject.transform.SetParent(curPlate.transform, true);
                     }
                     else
                     {
@@ -129,9 +125,10 @@ namespace JH
                 AddIngredient(DebugIngredient);
         }
 
-        public void DebugOnDish()
+        [ContextMenu("Add Plate")]
+        public void DebugOnPlate()
         {
-            OnDish();
+            AddPlate();
         }
 #endif
         #endregion
