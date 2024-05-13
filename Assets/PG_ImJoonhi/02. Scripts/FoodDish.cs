@@ -8,11 +8,15 @@ namespace JH
     {
         [Header("Map Recipes")]
         [SerializeField] RecipeList recipeList;
-        public RecipeData init;
+        public IngredientsObject init;
+        public RecipeData curRecipe;
 
-        private bool Dish;
+        public bool Dish;
         private List<IngredientsObject> ingredientList = new List<IngredientsObject>(4);
+        private List<IngredientsObject> ingredientListDebug;
         private int included;
+
+        private GameObject curDish;
         private GameObject CurrentObject;
 
         [Header("Debug")]
@@ -20,10 +24,38 @@ namespace JH
 
         private void Start()
         {
-            CurrentObject = (GameObject)Instantiate(init.Model, gameObject.transform.position, Quaternion.identity);
-            CurrentObject.transform.SetParent(gameObject.transform, true);
+            for (int i = 0; i < 4; i++) ingredientList.Add(null);
+            ingredientList[0] = init;
+            included = 1;
+            if (Dish)
+            {
+                curDish = Instantiate(recipeList.DishPrefab, gameObject.transform.position, Quaternion.identity);
+                curDish.transform.SetParent(gameObject.transform, true);
+                CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position, Quaternion.identity);
+                CurrentObject.transform.SetParent(curDish.transform, true);
+            }
+            else
+            {
+                CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position, Quaternion.identity);
+                CurrentObject.transform.SetParent(gameObject.transform, true);
+            }
         }
 
+        public void OnDish()
+        {
+            CurrentObject.transform.SetParent(curDish.transform, true);
+        }
+
+        public bool AddDish()
+        {
+            if (Dish)
+                return false;
+            Dish = true;
+            curDish = Instantiate(recipeList.DishPrefab, gameObject.transform.position, Quaternion.identity);
+            curDish.transform.SetParent(gameObject.transform, true);
+            CurrentObject.transform.SetParent(curDish.transform, true);
+            return true;
+        }
 
         public bool IsAcceptable(int num)
         {
@@ -35,17 +67,31 @@ namespace JH
         public void AddIngredient(IngredientsObject ingredient)
         {
             List<IngredientsObject> buf = ingredientList.ToList();
-            buf[included + 1] = ingredient;
-            buf.Sort(0, included, null);
+            buf[included] = ingredient;
+            ingredientListDebug = buf.ToList();
+            buf.Sort(0, included + 1, null);
+            ingredientListDebug.Sort(0, included + 1, null);
             for (int i = 0; i < recipeList.Recipe.Count; i++)
             {
+                Debug.Log(recipeList.Recipe[i].name);
                 if (IsRecipe(buf, i))
                 {
+                    Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
                     ingredientList = buf.ToList();
                     CurrentObject.SetActive(false);
                     Destroy(CurrentObject);
-                    CurrentObject = (GameObject)Instantiate(recipeList.Recipe[i].Model, gameObject.transform);
-                    CurrentObject.transform.SetParent(gameObject.transform, true);
+                    if (Dish)
+                    {
+                        CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position, Quaternion.identity);
+                        CurrentObject.transform.SetParent(curDish.transform, true);
+                    }
+                    else
+                    {
+                        CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position, Quaternion.identity);
+                        CurrentObject.transform.SetParent(gameObject.transform, true);
+                    }
+                    curRecipe = recipeList.Recipe[i];
+                    included++;
                 }
             }
         }
@@ -54,10 +100,22 @@ namespace JH
         {
             for (int i = 0; i < 4; i++)
             {
-                if (ingredient[i].ingredientsData.id != recipeList.Recipe[index].ingredients[i].id)
-                    return false;
-                if (ingredient[i].IngState != recipeList.Recipe[index].ingredientsState[i])
-                    return false;
+                Debug.Log(i);
+                if (ingredient[i] == null)
+                    if (recipeList.Recipe[index].ingredients[i] != null)
+                        return false;
+                if (ingredient[i] != null)
+                    if (recipeList.Recipe[index].ingredients[i] == null)
+                        return false;
+                if (ingredient[i] == null && recipeList.Recipe[index].ingredients[i] == null)
+                    continue;
+                if (recipeList.Recipe[index].ingredients[i] != null)
+                {
+                    if (ingredient[i].ingredientsData.id != recipeList.Recipe[index].ingredients[i].id)
+                        return false;
+                    if (ingredient[i].IngState != recipeList.Recipe[index].ingredientsState[i])
+                        return false;
+                }
             }
             return true;
         }
@@ -67,7 +125,13 @@ namespace JH
         [ContextMenu("Add Ingredients")]
         public void DebugAdd()
         {
-            AddIngredient(DebugIngredient);
+            if (IsAcceptable(1) && DebugIngredient != null)
+                AddIngredient(DebugIngredient);
+        }
+
+        public void DebugOnDish()
+        {
+            OnDish();
         }
 #endif
         #endregion

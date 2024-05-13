@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff938e0a6165a4f4f945b3ba423244f3, type: 3}
-  m_Name: Tomato Slice
+  m_Name: Lettuce_salad
   m_EditorClassIdentifier: 
-  Name: Tomato Slice
+  Name: Lettuce_salad
   Wrong: 0
   needDish: 1
   ingredients:
-  - {fileID: 11400000, guid: a258d750254743247a6163fd02f5f706, type: 2}
+  - {fileID: 11400000, guid: 447de78bc0100eb4bba3e5f8d816f4fd, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   ingredientsState: 01000000000000000000000000000000
-  Model: {fileID: 0}
+  Model: {fileID: 6933833505757859569, guid: 5ff505a49a40e3e41800ed679357a3b6, type: 3}

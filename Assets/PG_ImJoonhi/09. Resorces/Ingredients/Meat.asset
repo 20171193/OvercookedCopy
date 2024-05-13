@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   Name: Meat
-  Original: {fileID: 919132149155446097, guid: 1bdab330cedd2b846bb8549f9ee19416, type: 3}
-  Sliced: {fileID: 919132149155446097, guid: 0c8be08762fe6474ba6ec79c6392a9fe, type: 3}
+  Original: {fileID: 4479257793529832380, guid: 3e627a5b9683b2a4a82c2bfdb1b2bd48,
+    type: 3}
+  Sliced: {fileID: 0}
   Potted: {fileID: 0}
-  Paned: {fileID: 0}
+  Paned: {fileID: 919132149155446097, guid: 0c8be08762fe6474ba6ec79c6392a9fe, type: 3}

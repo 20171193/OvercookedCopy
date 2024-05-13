@@ -20,5 +20,5 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8087e0d1de9bf754a86fff473ef22cd0, type: 2}
   - {fileID: 0}
   - {fileID: 0}
-  ingredientsState: 02000000000000000000000000000000
+  ingredientsState: 03000000000000000000000000000000
   Model: {fileID: 6852844828027831875, guid: 50f2965d58d83dd46945b2cf88f40693, type: 3}
