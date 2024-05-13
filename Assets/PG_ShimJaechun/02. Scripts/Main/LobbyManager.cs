@@ -31,7 +31,8 @@ namespace Jc
         [SerializeField]
         private ClientState curState = ClientState.JoiningLobby;
 
-        private bool isUserLogin = false;
+        // 방을 나갔을 경우 바로 로비로 이동하기위해 사용
+        bool isExitRoom = false;    
 
         private void Awake()
         {
@@ -60,12 +61,15 @@ namespace Jc
         // 로그인 성공
         public override void OnConnectedToMaster()
         {
-            // 최초 한번만 실행
-            if (isUserLogin) return;
-
             Debug.Log("마스터서버 연결 성공");
-            SetActivePanel(Panel.Main);
-            isUserLogin = true;
+
+            if (!isExitRoom)
+                SetActivePanel(Panel.Main);
+            else
+            {
+                isExitRoom = false;
+                PhotonNetwork.JoinLobby();
+            }
         }
 
         // 
@@ -118,18 +122,22 @@ namespace Jc
 
         public override void OnLeftRoom()
         {
+            isExitRoom = true;
+            Debug.Log("Left Room");
             SetActivePanel(Panel.Campagin);
         }
 
         // 로비로 이동 == OnLeftRoom()
         public override void OnJoinedLobby()
         {
+            Debug.Log("Join Lobby");
             SetActivePanel(Panel.Campagin);
         }
 
         // 로비에서 나가기 
         public override void OnLeftLobby()
         {
+            Debug.Log("Left Lobby");
             SetActivePanel(Panel.Main);
         }
 
