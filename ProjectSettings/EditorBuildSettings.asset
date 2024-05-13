@@ -9,5 +9,7 @@ EditorBuildSettings:
     path: Assets/PG_ShimJaechun/01. Scenes/SJC_Main.unity
     guid: 5c7879ff36ed34a47a2a1f4afa48cebf
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 45dc2ed2594b76d4d931d48e2c0f92f1,
+      type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000,
       guid: bb2bc8bf6a9b6f540ae343ad4625f30d, type: 2}
