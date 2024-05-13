@@ -41,14 +41,20 @@ namespace Jc
 
             if (player.IsMasterClient)
             {
-                playerReady.text = "Master";
-                playerReady.color = Color.red;
+                OnMasterSetting();
             }
             else
             {
                 // 레디 체크
                 playerReady.text = player.GetReady() ? "Ready" : "";
             }
+        }
+
+        public void OnMasterSetting()
+        {
+            player.SetReady(true);
+            playerReady.text = "Master";
+            playerReady.color = Color.red;
         }
 
         // 플레이어 커스텀 프로퍼티 갱신

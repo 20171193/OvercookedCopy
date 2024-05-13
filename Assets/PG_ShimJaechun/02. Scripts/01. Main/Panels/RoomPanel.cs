@@ -108,6 +108,9 @@ namespace Jc
         // 방장이 변경된 경우 호출
         public void MasterClientSwitched(Player newMasterClient)
         {
+            ButtonSetting();
+            playerDictionary[newMasterClient.ActorNumber].OnMasterSetting();
+
             AllPlayerReadyCheck();
         }
 
@@ -119,7 +122,7 @@ namespace Jc
             PhotonNetwork.CurrentRoom.IsVisible = false;
 
             // 게임씬 로드
-            // PhotonNetwork.LoadLevel("GameScene");
+            PhotonNetwork.LoadLevel("GameScene");
         }
 
         // 방 나가기 
