@@ -122,7 +122,7 @@ namespace Jc
             PhotonNetwork.CurrentRoom.IsVisible = false;
 
             // 게임씬 로드
-            PhotonNetwork.LoadLevel("GameScene");
+            Manager.Scene.LoadLevel(SceneManager.SceneType.Campagin);
         }
 
         // 방 나가기 

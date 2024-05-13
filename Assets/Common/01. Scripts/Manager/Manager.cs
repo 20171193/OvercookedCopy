@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.EditorTools;
 using UnityEngine;
 
 public static class Manager
 {
-    private static SceneManager sceneManager;
-    public static SceneManager Scene { get {return sceneManager; } }
+    public static SceneManager Scene { get {return SceneManager.Instance; } }
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
     private static void Initialize()

@@ -23,6 +23,10 @@ namespace Jc
 
         private Player player;
 
+        [Header("요리사 인덱스")]
+        [SerializeField]
+        private int chefIndex = 0;
+
         private void OnDisable()
         {
             if (player.IsLocal)
