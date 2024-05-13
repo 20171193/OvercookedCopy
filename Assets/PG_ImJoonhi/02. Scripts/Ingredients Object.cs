@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -5,9 +6,9 @@ using UnityEngine;
 
 namespace JH
 {
-    public class IngredientsObject : MonoBehaviour
+    public class IngredientsObject : MonoBehaviour, IComparable<IngredientsObject>
     {
-        [SerializeField] IngredientsData ingredientsData;
+        public IngredientsData ingredientsData { get; private set; }
         public IngredientState IngState { get; private set; }
 
         private GameObject CurrentObject;
@@ -22,6 +23,11 @@ namespace JH
         void Update()
         {
 
+        }
+
+        public void SetIngredient(IngredientsData ingredient)
+        {
+            this.ingredientsData = ingredient;
         }
 
         /// <summary>재료를 자르거나 다질 수 있는지 확인하는 함수.</summary>
@@ -39,6 +45,13 @@ namespace JH
             Destroy(CurrentObject);
             CurrentObject = (GameObject)Instantiate(ingredientsData.Sliced, gameObject.transform);
             CurrentObject.transform.SetParent(gameObject.transform, true);
+        }
+
+        public int CompareTo(IngredientsObject other)
+        {
+            if (ingredientsData.id == other.ingredientsData.id)
+                return IngState - other.IngState;
+            return ingredientsData.id - other.ingredientsData.id;
         }
     }
 }
