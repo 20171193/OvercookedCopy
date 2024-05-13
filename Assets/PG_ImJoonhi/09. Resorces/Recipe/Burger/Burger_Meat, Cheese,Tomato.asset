@@ -16,9 +16,9 @@ MonoBehaviour:
   Wrong: 1
   needDish: 0
   ingredients:
-  - {fileID: 11400000, guid: 8087e0d1de9bf754a86fff473ef22cd0, type: 2}
-  - {fileID: 11400000, guid: ed658f6da2d27cd409e888d1b62e2ab5, type: 2}
   - {fileID: 11400000, guid: 07eeae503408d9143a40bc0e514e0947, type: 2}
+  - {fileID: 11400000, guid: ed658f6da2d27cd409e888d1b62e2ab5, type: 2}
   - {fileID: 11400000, guid: a258d750254743247a6163fd02f5f706, type: 2}
-  ingredientsState: 00000000030000000100000001000000
+  - {fileID: 11400000, guid: 8087e0d1de9bf754a86fff473ef22cd0, type: 2}
+  ingredientsState: 00000000030000000100000000000000
   Model: {fileID: 5314582329774939224, guid: a55eb2bba60afdf4dbb39e4229e5a063, type: 3}

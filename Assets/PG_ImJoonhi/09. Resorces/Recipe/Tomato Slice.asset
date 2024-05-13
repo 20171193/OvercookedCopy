@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Tomato Slice
   Wrong: 0
+  needDish: 1
   ingredients:
   - {fileID: 11400000, guid: a258d750254743247a6163fd02f5f706, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   ingredientsState: 01000000000000000000000000000000
+  Model: {fileID: 0}
