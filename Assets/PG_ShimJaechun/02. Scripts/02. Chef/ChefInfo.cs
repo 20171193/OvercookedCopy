@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Jc
 {
-    public class TitleManager : MonoBehaviour
+    public class ChefInfo : MonoBehaviour
     {
         // Start is called before the first frame update
         void Start()

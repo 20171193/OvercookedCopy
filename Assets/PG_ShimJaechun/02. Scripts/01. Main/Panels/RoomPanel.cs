@@ -31,22 +31,23 @@ namespace Jc
 
         private void OnEnable()
         {
+            PhotonNetwork.LocalPlayer.SetReady(false);
+            PhotonNetwork.LocalPlayer.SetLoad(false);
+
             // 플레이어 리스트 갱신
             foreach (Player player in PhotonNetwork.PlayerList)
             {
                 PlayerEntry entry = Instantiate(playerEntryPrefab, playerContent);
-                entry.SetPlayer(player);
+                entry.roomPanel = this;
                 playerDictionary.Add(player.ActorNumber, entry);
+                if (player.IsMasterClient)
+                    player.SetReady(true);
+                entry.SetPlayer(player);
             }
 
-            PhotonNetwork.LocalPlayer.SetReady(false);
-            PhotonNetwork.LocalPlayer.SetLoad(false);
-
             ButtonSetting();
-            AllPlayerReadyCheck();
             PhotonNetwork.AutomaticallySyncScene = true;
         }
-
         private void OnDisable()
         {
             // 딕셔너리에 할당된 엔트리 제거
@@ -60,7 +61,6 @@ namespace Jc
             // 씬 자동 변경해제 (마스터 팔로잉 해제)
             PhotonNetwork.AutomaticallySyncScene = false;
         }
-
         private void ButtonSetting()
         {
             // 버튼 세팅
@@ -78,10 +78,11 @@ namespace Jc
         // 플레이어 방 입장
         public void PlayerEnterRoom(Player newPlayer)
         {
+            Debug.Log($"Enter Player : {newPlayer.ActorNumber}");
             PlayerEntry entry = Instantiate(playerEntryPrefab, playerContent);
+            entry.roomPanel = this;
             entry.SetPlayer(newPlayer);
             // 룸 패널 할당
-            entry.roomPanel = this;
             // 액터넘버로 딕셔너리 키 할당
             playerDictionary.Add(newPlayer.ActorNumber, entry);
             AllPlayerReadyCheck();
@@ -100,12 +101,16 @@ namespace Jc
         public void PlayerPropertiesUpdate(Player targetPlayer, PhotonHashtable changedProps)
         {
             playerDictionary[targetPlayer.ActorNumber].ChangeCustomProperty(changedProps);
+
             AllPlayerReadyCheck();
         }
 
         // 방장이 변경된 경우 호출
         public void MasterClientSwitched(Player newMasterClient)
         {
+            ButtonSetting();
+            playerDictionary[newMasterClient.ActorNumber].OnMasterSetting();
+
             AllPlayerReadyCheck();
         }
 
@@ -117,7 +122,7 @@ namespace Jc
             PhotonNetwork.CurrentRoom.IsVisible = false;
 
             // 게임씬 로드
-            // PhotonNetwork.LoadLevel("GameScene");
+            Manager.Scene.LoadLevel(SceneManager.SceneType.Campagin);
         }
 
         // 방 나가기 

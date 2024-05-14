@@ -23,9 +23,13 @@ namespace Jc
 
         private Player player;
 
+        [Header("요리사 인덱스")]
+        [SerializeField]
+        private int chefIndex = 0;
+
         private void OnDisable()
         {
-            if (player.IsLocal && !PhotonNetwork.IsMasterClient)
+            if (player.IsLocal)
                 roomPanel?.ReadyButton.onClick.AddListener(Ready);
         }
 
@@ -37,21 +41,33 @@ namespace Jc
             playerName.text = player.NickName;
 
             if (player.IsLocal)
+                roomPanel.ReadyButton.onClick.AddListener(Ready);
+
+            if (player.IsMasterClient)
             {
-                // 플레이어가 방장일 경우 Ready
-                if (PhotonNetwork.IsMasterClient)
-                    Ready();
-                // 아닐경우 버튼 상호작용 등록
-                else
-                    roomPanel.ReadyButton.onClick.AddListener(Ready);
+                OnMasterSetting();
             }
-            // 레디 체크
-            playerReady.text = player.GetReady() ? "Ready" : "";
+            else
+            {
+                // 레디 체크
+                playerReady.text = player.GetReady() ? "Ready" : "";
+            }
+        }
+
+        public void OnMasterSetting()
+        {
+            player.SetReady(true);
+            playerReady.text = "Master";
+            playerReady.color = Color.red;
         }
 
         // 플레이어 커스텀 프로퍼티 갱신
         public void ChangeCustomProperty(PhotonHashtable property)
         {
+            if(player.IsMasterClient)
+                return;
+            
+
             if (property.TryGetValue(CustomProperty.READY, out object value))
             {
                 // 레디 갱신
