@@ -19,3 +19,4 @@ MonoBehaviour:
   Sliced: {fileID: 3777602569316888291, guid: 7ffe10f2c4cd74b40bc5e59f4dc04dee, type: 3}
   Potted: {fileID: 0}
   Paned: {fileID: 0}
+  ingSprite: {fileID: 21300000, guid: a1552b6ecb9c1db4cb4f294258f6b650, type: 3}
