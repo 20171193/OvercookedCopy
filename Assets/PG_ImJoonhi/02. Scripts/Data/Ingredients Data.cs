@@ -19,6 +19,9 @@ namespace JH
         public UnityEngine.Object Potted;
         public UnityEngine.Object Paned;
 
+        [Header("Ingredients Sprite")]
+        public Sprite ingSprite;
+
         public int CompareTo(IngredientsData other)
         {
             return id - other.id;
