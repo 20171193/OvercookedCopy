@@ -6,6 +6,6 @@ namespace JH
 {
     public class Plate : MonoBehaviour
     {
-
+        [SerializeField] RecipeList recipeList;
     }
 }
