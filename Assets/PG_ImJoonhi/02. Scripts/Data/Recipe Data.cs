@@ -10,7 +10,8 @@ namespace JH
         [Header("Status")]
         public string Name;
         public bool Wrong;
-        public bool needDish;
+        public bool needPlate;
+        public float platingInterval;
 
         public List<IngredientsData> ingredients;
         public List<IngredientState> ingredientsState;

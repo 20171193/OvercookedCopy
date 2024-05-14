@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Lettuce_salad
   Wrong: 0
-  needDish: 1
+  needPlate: 1
   ingredients:
   - {fileID: 11400000, guid: 447de78bc0100eb4bba3e5f8d816f4fd, type: 2}
   - {fileID: 0}

@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Burger_Lettuce
   Wrong: 0
-  needDish: 0
+  needPlate: 0
+  platingInterval: 0.09
   ingredients:
   - {fileID: 11400000, guid: 447de78bc0100eb4bba3e5f8d816f4fd, type: 2}
   - {fileID: 11400000, guid: 8087e0d1de9bf754a86fff473ef22cd0, type: 2}
