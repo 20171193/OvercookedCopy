@@ -18,7 +18,7 @@ namespace JH
 
         private void GenerateFoodDish(GameObject GeneratePoint, IngredientsObject ingredientObject, RecipeData recipe)
         {
-            FoodDish foodDish = Instantiate(foodDishPrefab, gameObject.transform.position, Quaternion.identity);
+            FoodDish foodDish = Instantiate(foodDishPrefab, GeneratePoint.transform.position, Quaternion.identity);
             foodDish.recipeList = Manager_TEMP.recipemanager.recipeList;
             foodDish.init = ingredientObject;
             foodDish.curRecipe = recipe;
