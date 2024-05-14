@@ -30,10 +30,6 @@ namespace Jc
 
         private Player player;
 
-        [Header("요리사 인덱스")]
-        [SerializeField]
-        private int chefIndex = 0;
-
         private void OnDisable()
         {
             if (player.IsLocal)
@@ -85,6 +81,15 @@ namespace Jc
             {
                 playerReady.text = "";
             }
+
+            if(property.TryGetValue(CustomProperty.CHEF, out object index))
+            {
+                // 요리사 인덱스 갱신
+            }
+            else
+            {
+
+            }
         }
 
         // 준비버튼 함수
@@ -98,11 +103,10 @@ namespace Jc
             selectChefGroup.SetActive(true);
         }
 
-        public void ChangeChef(ChefInfo info)
+        public void ChangeChef(int index)
         {
-            this.chefIndex = info.index;
-            this.chefImage.sprite = info.sprite;
-
+            this.chefImage.sprite = Manager.PlableData.chefInfos[index].sprite;
+            player.SetChef(index);
             selectChefGroup.SetActive(false);
         }
     }
