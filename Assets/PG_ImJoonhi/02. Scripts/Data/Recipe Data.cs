@@ -17,6 +17,5 @@ namespace JH
         public List<IngredientState> ingredientsState;
 
         public Object Model;
-        public Sprite ingSprite;
     }
 }
