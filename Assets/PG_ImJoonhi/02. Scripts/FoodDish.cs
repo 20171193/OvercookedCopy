@@ -4,12 +4,13 @@ using UnityEngine;
 
 namespace JH
 {
-    public class Food : MonoBehaviour
+    public class FoodDish : MonoBehaviour, IPickable
     {
         [Header("Map Recipes")]
         [SerializeField] RecipeList recipeList;
         public IngredientsObject init;
         public RecipeData curRecipe;
+        public bool initPlate;
 
         public bool Plate { get; private set; }
         private List<IngredientsObject> ingredientList = new List<IngredientsObject>(4);
@@ -24,6 +25,8 @@ namespace JH
 
         private void Start()
         {
+            if (initPlate)
+                Plate = true;
             for (int i = 0; i < 4; i++) ingredientList.Add(null);
             ingredientList[0] = init;
             included = 1;

@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace JH
 {
-    public class IngredientsObject : MonoBehaviour, IComparable<IngredientsObject>
+    public class IngredientsObject : MonoBehaviour, IComparable<IngredientsObject>, IPickable
     {
         public IngredientsData ingredientsData;
         public IngredientState IngState;
@@ -35,11 +35,6 @@ namespace JH
                     break;
             }
             CurrentObject.transform.SetParent(gameObject.transform, true);
-        }
-
-        void Update()
-        {
-
         }
 
         public void SetIngredient(IngredientsData ingredient)
