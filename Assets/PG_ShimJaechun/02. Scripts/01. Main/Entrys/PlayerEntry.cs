@@ -4,9 +4,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
-using JH;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
 
 namespace Jc
 {
@@ -21,6 +19,9 @@ namespace Jc
         [SerializeField]
         private Image chefImage;
         public Image ChefImage { get { return chefImage; } }
+        
+        [SerializeField]
+        private HoverBox hoverBox;
         
         [SerializeField]
         private TMP_Text playerName;
@@ -44,7 +45,10 @@ namespace Jc
             playerName.text = player.NickName;
 
             if (player.IsLocal)
+            {
+                hoverBox.gameObject.SetActive(true);
                 roomPanel.ReadyButton.onClick.AddListener(Ready);
+            }
 
             if (player.IsMasterClient)
             {
@@ -55,6 +59,8 @@ namespace Jc
                 // 레디 체크
                 playerReady.text = player.GetReady() ? "Ready" : "";
             }
+
+            chefImage.sprite = Manager.PlableData.chefInfos[player.GetChef()].sprite;
         }
 
         public void OnMasterSetting()
@@ -67,28 +73,17 @@ namespace Jc
         // 플레이어 커스텀 프로퍼티 갱신
         public void ChangeCustomProperty(PhotonHashtable property)
         {
-            if(player.IsMasterClient)
-                return;
-            
-
-            if (property.TryGetValue(CustomProperty.READY, out object value))
+            if (!player.IsMasterClient && property.TryGetValue(CustomProperty.READY, out object value))
             {
                 // 레디 갱신
                 bool ready = (bool)value;
                 playerReady.text = ready ? "Ready" : "";
             }
-            else
-            {
-                playerReady.text = "";
-            }
 
             if(property.TryGetValue(CustomProperty.CHEF, out object index))
             {
                 // 요리사 인덱스 갱신
-            }
-            else
-            {
-
+                this.chefImage.sprite = Manager.PlableData.chefInfos[(int)index].sprite;
             }
         }
 

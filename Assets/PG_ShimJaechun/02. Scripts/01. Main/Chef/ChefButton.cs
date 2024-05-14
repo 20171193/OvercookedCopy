@@ -44,7 +44,6 @@ namespace Jc
         public void OnPointerEnter(PointerEventData eventData)
         {
             entry.ChefImage.sprite = info.sprite;
-
             hltObject.SetActive(true);
         }
 
