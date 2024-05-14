@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6765834349494844269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7240230983607952971}
+  - component: {fileID: 7546116939826066121}
+  m_Layer: 0
+  m_Name: Recipe List (Burger)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7240230983607952971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765834349494844269}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.24202627, y: 4.1527653, z: -3.5848863}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7546116939826066121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765834349494844269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05eadd8b18c56274da6b81301ebf0510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Recipe:
+  - {fileID: 11400000, guid: 10584475ce4e87c40ab12d559d566f46, type: 2}
+  - {fileID: 11400000, guid: e291b1467f5160c4e806756fe6c60931, type: 2}
+  - {fileID: 11400000, guid: e4c446848fc278343a18ceea49f98d0f, type: 2}
+  - {fileID: 11400000, guid: ecd0aef1531fae34ab815c13b3dd8bc7, type: 2}
+  - {fileID: 11400000, guid: 700ee3e1f18e0c540914cc58c12829a5, type: 2}
+  - {fileID: 11400000, guid: cc8df23a87fd34b418bb773e618f3d0d, type: 2}
+  - {fileID: 11400000, guid: dc2127209db9a3d4aa3dbb3e362f9f62, type: 2}
+  - {fileID: 11400000, guid: 30033605ef550a944a3d025aca6457c9, type: 2}
+  - {fileID: 11400000, guid: 2c2fbc4efc77be145aac2f815883407a, type: 2}
+  - {fileID: 11400000, guid: da5bda0c3102ef345bfacc68ffb19c7a, type: 2}
+  - {fileID: 11400000, guid: 385deac6a8000134a8f9df5d1ddbefd4, type: 2}
+  - {fileID: 11400000, guid: ed6b547bc33353e46b4b93983c6905a5, type: 2}
+  - {fileID: 11400000, guid: f206173d641787d4e80af1a1f4152dd8, type: 2}
+  - {fileID: 11400000, guid: 93663bd31faa9e44bb059e653ec83498, type: 2}
+  - {fileID: 11400000, guid: 309cd40d552f9b1448854e67831a3114, type: 2}
+  - {fileID: 11400000, guid: f220ad964a1420f4da80f7622e46f704, type: 2}
+  - {fileID: 11400000, guid: 10f1b7c604e7885408a28594809dc669, type: 2}
+  finishedRecipe:
+  - {fileID: 11400000, guid: dc2127209db9a3d4aa3dbb3e362f9f62, type: 2}
+  - {fileID: 11400000, guid: ed6b547bc33353e46b4b93983c6905a5, type: 2}
+  - {fileID: 11400000, guid: f220ad964a1420f4da80f7622e46f704, type: 2}
+  - {fileID: 11400000, guid: 10f1b7c604e7885408a28594809dc669, type: 2}
+  PlatePrefab: {fileID: 6706406165941835227, guid: 9b2e8f7830969434ea13d01df7e52c24,
+    type: 3}

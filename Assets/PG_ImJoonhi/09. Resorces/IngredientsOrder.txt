@@ -1,0 +1,7 @@
+Cheese		2
+Meat		4
+Fish		11
+Lettuce		15
+Cucumber	16
+Tomato		23
+Burger_Bun 	41
