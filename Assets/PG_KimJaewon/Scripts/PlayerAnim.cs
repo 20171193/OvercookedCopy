@@ -1,4 +1,5 @@
 using System.Xml.Serialization;
+using UnityEditor.EditorTools;
 using UnityEngine;
 
 namespace KIMJAEWON
@@ -6,6 +7,8 @@ namespace KIMJAEWON
     public class PlayerController : MonoBehaviour
     {
         Animator anim;
+        [SerializeField] GameObject Item1;
+        [SerializeField] GameObject Item2;
 
         void Start()
         {
@@ -14,7 +17,7 @@ namespace KIMJAEWON
 
         void Update()
         {
-            // 예시: 플레이어가 수평 및 수직 입력을 받으면 Move 애니메이션을 트리거
+            // 플레이어가 수평 및 수직 입력을 받으면 Move 애니메이션을 트리거
             float horizontalInput = Input.GetAxisRaw("Horizontal");
             float verticalInput = Input.GetAxisRaw("Vertical");
 
@@ -31,11 +34,36 @@ namespace KIMJAEWON
             {
                 ItemPickUp();
             }
+
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                ItemWashing();
+                
+              
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightControl))
+            {
+                ItemCutting();
+            }
         }
         
         void ItemPickUp()
         {
-            anim.SetTrigger("PickUP");
+            anim.SetTrigger("Pickup");
         }
+
+        void ItemWashing()
+        {
+            anim.SetTrigger("Washing");
+            Item1.SetActive(true);
+        }
+
+        void ItemCutting()
+        {
+            anim.SetTrigger("Cutting");
+            Item2.SetActive(true);
+        }
+
     }
 }
