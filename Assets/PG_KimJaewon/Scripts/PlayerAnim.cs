@@ -38,8 +38,6 @@ namespace KIMJAEWON
             if (Input.GetKeyDown(KeyCode.LeftControl))
             {
                 ItemWashing();
-                
-              
             }
 
             if (Input.GetKeyDown(KeyCode.RightControl))
@@ -56,14 +54,13 @@ namespace KIMJAEWON
         void ItemWashing()
         {
             anim.SetTrigger("Washing");
-            Item1.SetActive(true);
         }
 
         void ItemCutting()
         {
             anim.SetTrigger("Cutting");
-            Item2.SetActive(true);
         }
+
 
     }
 }
