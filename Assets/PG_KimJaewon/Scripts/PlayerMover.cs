@@ -44,6 +44,10 @@ namespace KIMJAEWON
         public void OnMove(InputValue value)
         {
             moveInput = value.Get<Vector2>();
+            if(moveInput.x != 0 && moveInput.y != 0)
+            {
+
+            }
         }
 
         public void OnDash()
