@@ -4,6 +4,9 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
+using JH;
+using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 
 namespace Jc
 {
@@ -13,8 +16,12 @@ namespace Jc
         public RoomPanel roomPanel;
 
         [SerializeField]
-        private Image chefImage;
+        private GameObject selectChefGroup;
 
+        [SerializeField]
+        private Image chefImage;
+        public Image ChefImage { get { return chefImage; } }
+        
         [SerializeField]
         private TMP_Text playerName;
 
@@ -84,6 +91,19 @@ namespace Jc
         public void Ready()
         {
             player.SetReady(!player.GetReady());
+        }
+
+        public void OnClickChangeButton()
+        {
+            selectChefGroup.SetActive(true);
+        }
+
+        public void ChangeChef(ChefInfo info)
+        {
+            this.chefIndex = info.index;
+            this.chefImage.sprite = info.sprite;
+
+            selectChefGroup.SetActive(false);
         }
     }
 }
