@@ -7,7 +7,7 @@ namespace JH
     public class FoodDish : MonoBehaviour, IPickable
     {
         [Header("Map Recipes")]
-        [SerializeField] RecipeList recipeList;
+        [SerializeField] public RecipeList recipeList;
         public IngredientsObject init;
         public RecipeData curRecipe;
         public bool initPlate;
