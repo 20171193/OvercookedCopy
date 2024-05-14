@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Burger_Cheese, Lettuce
   Wrong: 0
-  needDish: 0
+  needPlate: 0
+  platingInterval: 0.09
   ingredients:
   - {fileID: 11400000, guid: 07eeae503408d9143a40bc0e514e0947, type: 2}
   - {fileID: 11400000, guid: 447de78bc0100eb4bba3e5f8d816f4fd, type: 2}

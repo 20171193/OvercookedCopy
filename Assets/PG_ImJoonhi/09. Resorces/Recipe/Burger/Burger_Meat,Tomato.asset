@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Burger_Meat,Tomato
   Wrong: 0
-  needDish: 0
+  needPlate: 0
+  platingInterval: 0.09
   ingredients:
   - {fileID: 11400000, guid: ed658f6da2d27cd409e888d1b62e2ab5, type: 2}
   - {fileID: 11400000, guid: a258d750254743247a6163fd02f5f706, type: 2}
