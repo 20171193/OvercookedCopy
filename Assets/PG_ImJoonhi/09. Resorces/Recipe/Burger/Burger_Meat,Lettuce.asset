@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff938e0a6165a4f4f945b3ba423244f3, type: 3}
-  m_Name: Lettuce salad
+  m_Name: Burger_Meat,Lettuce
   m_EditorClassIdentifier: 
-  Name: Lettuce salad
+  Name: Burger_Meat,Lettuce
   Wrong: 0
-  needDish: 1
+  needDish: 0
   ingredients:
+  - {fileID: 11400000, guid: ed658f6da2d27cd409e888d1b62e2ab5, type: 2}
   - {fileID: 11400000, guid: 447de78bc0100eb4bba3e5f8d816f4fd, type: 2}
+  - {fileID: 11400000, guid: 8087e0d1de9bf754a86fff473ef22cd0, type: 2}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  ingredientsState: 01000000000000000000000000000000
-  Model: {fileID: 0}
+  ingredientsState: 03000000010000000000000000000000
+  Model: {fileID: 7611001265863179225, guid: 90ece599bb44f924faf82bc523e8f26e, type: 3}

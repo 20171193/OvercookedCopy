@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff938e0a6165a4f4f945b3ba423244f3, type: 3}
-  m_Name: Recipe Data
+  m_Name: Meat Paned
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Meat Paned
   Wrong: 0
-  ingredients: []
-  ingredientsState: 
-  Model: {fileID: 0}
+  needDish: 1
+  ingredients:
+  - {fileID: 11400000, guid: ed658f6da2d27cd409e888d1b62e2ab5, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  ingredientsState: 03000000000000000000000000000000
+  Model: {fileID: 8071692834009845215, guid: 24686c715c75e784193af990d3db479f, type: 3}

@@ -6,8 +6,10 @@ namespace JH
 {
     public class RecipeList : MonoBehaviour
     {
-        [SerializeField] List<RecipeData> Recipe;
-        [SerializeField] List<RecipeData> finishedRecipe;
+        public List<RecipeData> Recipe;
+        public List<RecipeData> finishedRecipe;
+
+        public GameObject PlatePrefab;
     }
 
 }
