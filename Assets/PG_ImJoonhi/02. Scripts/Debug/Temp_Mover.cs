@@ -5,39 +5,45 @@ namespace JH
 {
     public class Temp_Mover : MonoBehaviour
     {
-        private Vector3 moveDir;
-        private Vector3 rotation;
-        public Rigidbody rigidbody_Temp;
+        public float moveSpeed = 5f;
+        public float rotationSpeed = 10f;
+        private Rigidbody rb;
+        private Vector2 moveInput;
 
-        public int movePower;
-        public int maxSpeed;
+        private Vector3Int playerPosition;
 
-        void Update()
+        void Start()
+        {
+            rb = GetComponent<Rigidbody>();
+        }
+
+        private void FixedUpdate()
         {
             Move();
             Rotate();
+            playerPosition = new Vector3Int((int)gameObject.transform.position.x, (int)gameObject.transform.position.y, (int)gameObject.transform.position.z);
         }
 
-        private void Move()
+        void Move()
         {
-            Vector3 forceDir = transform.forward * moveDir.z;
-            rigidbody_Temp.AddForce(forceDir * movePower, ForceMode.Force);
-            if (rigidbody_Temp.velocity.magnitude > maxSpeed)
-            {
-                rigidbody_Temp.velocity = rigidbody_Temp.velocity.normalized * maxSpeed;  // 최대속도에서 속도제한
-            }
+            Vector3 moveDirection = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+            Vector3 moveVelocity = moveDirection * moveSpeed;
+            rb.velocity = new Vector3(moveVelocity.x, rb.velocity.y, moveVelocity.z);
         }
 
         private void Rotate()
         {
-            transform.Rotate(0, rotation.y * 90f * Time.deltaTime, 0, Space.Self);
+            if (moveInput != Vector2.zero)
+            {
+                float targetAngle = Mathf.Atan2(moveInput.x, moveInput.y) * Mathf.Rad2Deg;
+                Quaternion targetRotation = Quaternion.Euler(0f, targetAngle, 0f);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            }
         }
 
-        private void OnMove(InputValue value)
+        public void OnMove(InputValue value)
         {
-            Vector2 inputDir = value.Get<Vector2>();
-            moveDir.z = inputDir.y;
-            rotation.y = inputDir.x;
+            moveInput = value.Get<Vector2>();
         }
     }
 }
