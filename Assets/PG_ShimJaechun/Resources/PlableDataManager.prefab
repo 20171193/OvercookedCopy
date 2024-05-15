@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2619882687890939807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7475426164577362227}
+  - component: {fileID: 424023394993822595}
+  m_Layer: 0
+  m_Name: PlableDataManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7475426164577362227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2619882687890939807}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 879.17676, y: 507.0531, z: -6.9798455}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &424023394993822595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2619882687890939807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a9831ae007286429d554821d172ad4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chefInfos:
+  - chefName: Alien
+    sprite: {fileID: 21300000, guid: c15ce1d5d518f5c4ab0435e1e86b4d36, type: 3}
+    prefab: {fileID: 0}
+  - chefName: Asianmale
+    sprite: {fileID: 21300000, guid: 7c15b42d5aa3dfc498e8559be1699a9f, type: 3}
+    prefab: {fileID: 0}
+  - chefName: Polarbear
+    sprite: {fileID: 21300000, guid: 2f8a9ceaa1dd2264291413164bc33f13, type: 3}
+    prefab: {fileID: 0}
+  - chefName: Robot
+    sprite: {fileID: 21300000, guid: 688df4d2d9719114f8f82c4c13c6b2fd, type: 3}
+    prefab: {fileID: 0}
