@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace JH
 {
-    public class Plate : MonoBehaviour
+    public class RecipeManager : MonoBehaviour
     {
-        [SerializeField] RecipeList recipeList;
+        public RecipeList recipeList;
     }
 }
