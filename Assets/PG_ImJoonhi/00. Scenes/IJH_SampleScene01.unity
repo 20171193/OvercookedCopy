@@ -1578,6 +1578,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 326095350}
     m_Modifications:
+    - target: {fileID: 5234352405360157276, guid: f7d80d716f655f544aa85e3e64c3b147,
+        type: 3}
+      propertyPath: DebugCookingObject
+      value: 
+      objectReference: {fileID: 1703298481}
     - target: {fileID: 7043080828965228582, guid: f7d80d716f655f544aa85e3e64c3b147,
         type: 3}
       propertyPath: m_Name
@@ -2447,6 +2452,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1003387013}
+  - {fileID: 1703298480}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1215503731
@@ -2494,6 +2500,74 @@ Transform:
   - {fileID: 1508615625}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1240506810
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1069477007}
+    m_Modifications:
+    - target: {fileID: 780041462281389894, guid: 199288fecc7911845ba6fdde3f3dc77d,
+        type: 3}
+      propertyPath: m_Name
+      value: Main Ingredient Prefab Raw Meat
+      objectReference: {fileID: 0}
+    - target: {fileID: 988916103661778774, guid: 199288fecc7911845ba6fdde3f3dc77d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988916103661778774, guid: 199288fecc7911845ba6fdde3f3dc77d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988916103661778774, guid: 199288fecc7911845ba6fdde3f3dc77d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988916103661778774, guid: 199288fecc7911845ba6fdde3f3dc77d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 988916103661778774, guid: 199288fecc7911845ba6fdde3f3dc77d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988916103661778774, guid: 199288fecc7911845ba6fdde3f3dc77d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988916103661778774, guid: 199288fecc7911845ba6fdde3f3dc77d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988916103661778774, guid: 199288fecc7911845ba6fdde3f3dc77d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988916103661778774, guid: 199288fecc7911845ba6fdde3f3dc77d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 988916103661778774, guid: 199288fecc7911845ba6fdde3f3dc77d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 199288fecc7911845ba6fdde3f3dc77d, type: 3}
 --- !u!1 &1355666979
 GameObject:
   m_ObjectHideFlags: 0
@@ -3077,6 +3151,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c51aa4ab167ca74595d686f65347f99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1703298480 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 988916103661778774, guid: 199288fecc7911845ba6fdde3f3dc77d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1240506810}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1703298481 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9201838048419116980, guid: 199288fecc7911845ba6fdde3f3dc77d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1240506810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1df228129d8a6a04aab03d18463482d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1749260655
