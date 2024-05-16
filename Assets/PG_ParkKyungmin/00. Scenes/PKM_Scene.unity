@@ -18980,8 +18980,8 @@ MonoBehaviour:
   recipeList: {fileID: 7546116939481003602}
   orderUI:
   - {fileID: 6820163584908410815, guid: 2d0cdb40b5fbf354c9e6e45d5b59b485, type: 3}
-  - {fileID: 2128901860538711902, guid: c854d4a26fba9e6478246a803ed58772, type: 3}
   - {fileID: 4708545127480346679, guid: aecbc97f4d85c2c4ca325e837b962679, type: 3}
+  - {fileID: 2128901860538711902, guid: c854d4a26fba9e6478246a803ed58772, type: 3}
   - {fileID: 6820163584908410815, guid: 2d0cdb40b5fbf354c9e6e45d5b59b485, type: 3}
   IngredientUI:
   - {fileID: 1420994490637974631, guid: 6dd9de77bd6f48c4c88414e73b0f34a2, type: 3}

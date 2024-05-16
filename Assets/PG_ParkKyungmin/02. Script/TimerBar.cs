@@ -49,8 +49,9 @@ namespace Kyungmin
 
                 if (curTime <= 0)     // 현재 시간이 0이거나 0보다 작을 경우 종료
                 {
-                    Debug.Log("시간 종료");
                     curTime = 0;
+                    Time.timeScale = 0;
+                    Debug.Log("시간 종료");
                     yield break;
                 }
             }
