@@ -12,6 +12,7 @@ namespace KIMJAEWON
         private Rigidbody rb;
         private Vector2 moveInput;
         [SerializeField] float dashPower;
+        [SerializeField] AnimationCurve curve;
 
         void Start()
         {
