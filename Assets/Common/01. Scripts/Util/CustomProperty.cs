@@ -10,7 +10,7 @@ namespace Jc
     public static class CustomProperty
     {
         // 플레이어 관련 프로퍼티
-        #region Player
+       #region Player
         #region Player Ready
         public const string READY = "Ready";
         public static void SetReady(this Player player, bool value)
