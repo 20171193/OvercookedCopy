@@ -25,6 +25,7 @@ namespace JH
 
         private void Start()
         {
+            recipeList = Manager_TEMP.recipemanager.recipeList;
             if (initPlate)
                 Plate = true;
             for (int i = 0; i < 4; i++) ingredientList.Add(null);
