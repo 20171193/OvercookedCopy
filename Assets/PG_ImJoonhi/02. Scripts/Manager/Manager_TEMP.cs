@@ -7,6 +7,12 @@ namespace JH
         private static Manager_TEMP instance;
         public static Manager_TEMP Inst { get { return instance; } }
 
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+        public static void Function()
+        {
+
+        }
+
         [Header("Managers")]
         [SerializeField] RecipeManager recipeManager;
 

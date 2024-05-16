@@ -1,7 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
 using UnityEngine;
 
 namespace JH
@@ -17,6 +14,7 @@ namespace JH
         [SerializeField] GameObject DebugGenPoint;
         [SerializeField] IngredientsObject DebugIngredientObject;
         [SerializeField] RecipeData DebugRecipe;
+        [SerializeField] FoodDish DebugFoodDish;
 
         private void Start()
         {
@@ -32,12 +30,21 @@ namespace JH
             for (int i = 0; i < recipeList.Recipe.Count; i++)
             {
                 // Debug.Log(recipeList.Recipe[i].name);
-                Debug.Log("!");
                 if (recipeList.IsRecipe(buf, i))
                 {
                     Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
                     GenerateFoodDish(GeneratePoint, ingredientObject, recipeList.Recipe[i]);
                 }
+            }
+        }
+
+        public void IngredientIN(GameObject GeneratePoint, FoodDish foodDish)
+        {
+            // Debug.Log(recipeList.Recipe[i].name);
+            if (!foodDish.Plate)
+            {
+                Debug.Log("Put Food on Plate");
+                SwapFoodDish(gameObject, foodDish);
             }
         }
 
@@ -48,6 +55,15 @@ namespace JH
             foodDish.init = ingredientObject;
             foodDish.curRecipe = recipe;
             foodDish.initPlate = true;
+            foodDish.transform.SetParent(GeneratePoint.transform, true);
+            Destroy(gameObject);
+        }
+
+        private void SwapFoodDish(GameObject GeneratePoint, FoodDish foodDish)
+        {
+            foodDish.AddPlate();
+            foodDish.transform.position = GeneratePoint.transform.position;
+            foodDish.transform.rotation = GeneratePoint.transform.rotation;
             Destroy(gameObject);
         }
 
@@ -59,6 +75,12 @@ namespace JH
         {
             IngredientIN(DebugGenPoint, DebugIngredientObject);
             //GenerateFoodDish(DebugGenPoint, DebugIngredientObject, DebugRecipe);
+        }
+
+        [ContextMenu("[Debug]ADD FoodDish Plate")]
+        public void DebugAddPlate()
+        {
+            IngredientIN(DebugGenPoint, DebugFoodDish);
         }
 #endif
         #endregion
