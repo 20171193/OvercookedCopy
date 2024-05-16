@@ -15,6 +15,10 @@ public class BusController : MonoBehaviour
     private float maxMoveSpeed;
     [SerializeField]
     private float moveSpeed;
+    [SerializeField]
+    private float dashPower;
+    [SerializeField]
+    private float dashDelay;
 
     [Header("Ballancing")]
     [SerializeField]
@@ -22,7 +26,7 @@ public class BusController : MonoBehaviour
     [SerializeField]
     private bool enableDash = true;
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
     }
@@ -35,27 +39,28 @@ public class BusController : MonoBehaviour
     }
     private void Move()
     {
-        if (moveDir == Vector3.zero) 
+        if (moveDir == Vector3.zero)
             return;
 
         transform.forward = moveDir;
 
-        rigid.AddForce(transform.forward * moveSpeed * Time.deltaTime);
+        rigid.velocity = transform.forward * moveSpeed;
     }
 
     private void OnDash(InputValue value)
     {
         if (enableDash)
         {
-            rigid.AddForce(transform.forward * 30f, ForceMode.Impulse);
+            rigid.AddForce(transform.forward * dashPower, ForceMode.Impulse);
             StartCoroutine(DashDelayRoutine());
         }
     }
 
-    {
+
     IEnumerator DashDelayRoutine()
+    {
         enableDash = false;
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(dashDelay);
         enableDash = true;
     }
 }

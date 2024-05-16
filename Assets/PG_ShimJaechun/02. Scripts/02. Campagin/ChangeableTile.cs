@@ -94,13 +94,7 @@ public class ChangeableTile : MonoBehaviour
             transform.position = Vector3.Lerp(targetPos, originPos, rate);
             yield return null;
         }
-        SetChangedSetting();
-        yield return null;
-    }
-
-    private void SetChangedSetting()
-    {
-        GetComponent<Rigidbody>().isKinematic = true;
         transform.position = originPos;
+        yield return null;
     }
 }
