@@ -1,4 +1,5 @@
 using JH;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class Pan : MonoBehaviour
     [SerializeField]
     [Range(0.0f, 10.0f)]
     private float progress;
+    private double startTime;
 
     [Header("Potints")]
     [SerializeField] GameObject PanPoint;
@@ -53,6 +55,13 @@ public class Pan : MonoBehaviour
     public void DebugDone()
     {
         CookingObject.PanHeated();
+    }
+
+    [ContextMenu("[Debug]TIme")]
+    public void DebugTime()
+    {
+        startTime = PhotonNetwork.Time;
+        Debug.Log(startTime);
     }
 #endif
     #endregion
