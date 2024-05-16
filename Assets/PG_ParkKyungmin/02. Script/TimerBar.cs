@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 using static System.Net.Mime.MediaTypeNames;
 using static UnityEngine.InputSystem.LowLevel.InputStateHistory;
@@ -15,6 +16,7 @@ namespace Kyungmin
 
         [SerializeField] float gameTime;      // 게임진행시간
 
+        public UnityAction OnTimeOut;         
 
         private void Awake()
         {
@@ -28,13 +30,13 @@ namespace Kyungmin
 
         IEnumerator OrderTimer()
         {
-            // 
             float curTime = gameTime;
             yield return null;
 
             while (curTime > 0)
             {
                 curTime -= Time.deltaTime;
+
 
                 // 분, 초 계산
                 int minute = (int)curTime / 60;
@@ -53,6 +55,8 @@ namespace Kyungmin
                     Debug.Log("시간 종료");
                     Time.timeScale = 0;     // 일시 정지
 
+                    // OnTimeOut 액션 발생
+                    OnTimeOut?.Invoke();
                     yield break;
                 }
             }
