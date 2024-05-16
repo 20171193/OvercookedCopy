@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Photon.Realtime;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
+using System.Collections.Generic;
 
 namespace Jc
 {
@@ -13,8 +14,15 @@ namespace Jc
         public RoomPanel roomPanel;
 
         [SerializeField]
-        private Image chefImage;
+        private GameObject selectChefGroup;
 
+        [SerializeField]
+        private Image chefImage;
+        public Image ChefImage { get { return chefImage; } }
+        
+        [SerializeField]
+        private HoverBox hoverBox;
+        
         [SerializeField]
         private TMP_Text playerName;
 
@@ -22,10 +30,6 @@ namespace Jc
         private TMP_Text playerReady;
 
         private Player player;
-
-        [Header("요리사 인덱스")]
-        [SerializeField]
-        private int chefIndex = 0;
 
         private void OnDisable()
         {
@@ -41,7 +45,10 @@ namespace Jc
             playerName.text = player.NickName;
 
             if (player.IsLocal)
+            {
+                hoverBox.gameObject.SetActive(true);
                 roomPanel.ReadyButton.onClick.AddListener(Ready);
+            }
 
             if (player.IsMasterClient)
             {
@@ -52,6 +59,8 @@ namespace Jc
                 // 레디 체크
                 playerReady.text = player.GetReady() ? "Ready" : "";
             }
+
+            chefImage.sprite = Manager.PlableData.chefInfos[player.GetChef()].sprite;
         }
 
         public void OnMasterSetting()
@@ -64,19 +73,17 @@ namespace Jc
         // 플레이어 커스텀 프로퍼티 갱신
         public void ChangeCustomProperty(PhotonHashtable property)
         {
-            if(player.IsMasterClient)
-                return;
-            
-
-            if (property.TryGetValue(CustomProperty.READY, out object value))
+            if (!player.IsMasterClient && property.TryGetValue(CustomProperty.READY, out object value))
             {
                 // 레디 갱신
                 bool ready = (bool)value;
                 playerReady.text = ready ? "Ready" : "";
             }
-            else
+
+            if(property.TryGetValue(CustomProperty.CHEF, out object index))
             {
-                playerReady.text = "";
+                // 요리사 인덱스 갱신
+                this.chefImage.sprite = Manager.PlableData.chefInfos[(int)index].sprite;
             }
         }
 
@@ -84,6 +91,18 @@ namespace Jc
         public void Ready()
         {
             player.SetReady(!player.GetReady());
+        }
+
+        public void OnClickChangeButton()
+        {
+            selectChefGroup.SetActive(true);
+        }
+
+        public void ChangeChef(int index)
+        {
+            this.chefImage.sprite = Manager.PlableData.chefInfos[index].sprite;
+            player.SetChef(index);
+            selectChefGroup.SetActive(false);
         }
     }
 }

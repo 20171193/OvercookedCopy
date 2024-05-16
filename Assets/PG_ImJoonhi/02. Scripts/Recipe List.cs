@@ -10,6 +10,12 @@ namespace JH
         public List<RecipeData> finishedRecipe;
 
         public GameObject PlatePrefab;
+
+        private void Start()
+        {
+            Manager_TEMP.recipemanager.recipeList = this;
+            // Manager.recipemanager.recipeList = this;
+        }
     }
 
 }
