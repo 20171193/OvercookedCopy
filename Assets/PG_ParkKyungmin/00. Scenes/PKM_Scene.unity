@@ -1928,7 +1928,7 @@ GameObject:
   - component: {fileID: 259879124}
   m_Layer: 5
   m_Name: ------ResultPopUp-------
-  m_TagString: ResultPopUp
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6219,7 +6219,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: GetScore
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!1001 &799165915
@@ -19920,7 +19920,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gauge: {fileID: 2346215661963085745}
   text: {fileID: 5547489034296918557}
-  gameTime: 3
+  gameTime: 10
 --- !u!1 &7820779345786417680
 GameObject:
   m_ObjectHideFlags: 0
@@ -20192,7 +20192,7 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: GetScore
+  m_DefaultActionMap: UI
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
 --- !u!114 &8325409833396830775
@@ -20210,7 +20210,6 @@ MonoBehaviour:
   gauge: {fileID: 4681132366217827671}
   scoreText: {fileID: 840511247724774558}
   tipText: {fileID: 1572655405}
-  input: {fileID: 8325409833396830774}
   tip: 0
   maxTip: 4
   tipScore: 0
