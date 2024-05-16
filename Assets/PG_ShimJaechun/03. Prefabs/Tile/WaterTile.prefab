@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7242669814589443856}
   - component: {fileID: -2964893812191390802}
   - component: {fileID: -3119993916946584096}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: WaterTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1073741824
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -149,6 +149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tile_Regular
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794588604180413489, guid: 92b5efb6e18da4a44bfea60c3fbcd325,
+        type: 3}
+      propertyPath: m_Layer
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

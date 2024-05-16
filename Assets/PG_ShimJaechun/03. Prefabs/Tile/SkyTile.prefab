@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6365174373268231445}
   - component: {fileID: 5036305716276184802}
   - component: {fileID: 8944541370823677745}
-  m_Layer: 0
+  m_Layer: 30
   m_Name: SkyTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ BoxCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1073741824
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -155,6 +155,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Tile_Regular
+      objectReference: {fileID: 0}
+    - target: {fileID: 8794588604180413489, guid: 92b5efb6e18da4a44bfea60c3fbcd325,
+        type: 3}
+      propertyPath: m_Layer
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

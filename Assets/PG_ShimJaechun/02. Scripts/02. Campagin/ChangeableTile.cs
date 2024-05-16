@@ -6,15 +6,25 @@ using static UnityEngine.RuleTile.TilingRuleOutput;
 
 public class ChangeableTile : MonoBehaviour
 {
+    // 초기 머터리얼
     private Material originMT;
     [SerializeField]
     private MeshRenderer meshRenderer;
 
+    // 변경될 머터리얼 
     [SerializeField]
     private Material changeMT;
 
+    // 타일  회전속도
     [SerializeField]
     private float rotSpeed;
+
+    // 초기 위치
+    private Vector3 originPos;
+
+    // 변경될 위치
+    private Vector3 targetPos;
+
 
     private Coroutine tileChangeRoutine;
     private Coroutine tileFloatRoutine;
@@ -24,12 +34,12 @@ public class ChangeableTile : MonoBehaviour
     private void Awake()
     {
         originMT = meshRenderer.sharedMaterial;
+        originPos = transform.position;
+        targetPos = transform.position + Vector3.up;
     }
 
     public void OnChangeTile()
     {
-
-
         tileChangeRoutine = StartCoroutine(TileChangeRoutine());
     }
 
@@ -45,8 +55,6 @@ public class ChangeableTile : MonoBehaviour
         float rate = 0;
 
         bool tileChange = false;
-        Vector3 originPos = transform.position;
-        Vector3 targetPos = transform.position + Vector3.up;
 
         Quaternion target = Quaternion.Euler(new Vector3(0, 0, 180));
 
@@ -57,23 +65,42 @@ public class ChangeableTile : MonoBehaviour
             transform.rotation = Quaternion.Lerp(Quaternion.identity, target, rate);
             
             // 타일 이동
-            if(!tileChange)
+            if(rate < 0.5f)
                 transform.position = Vector3.Lerp(originPos, targetPos, rate * 2f);
-            else
-                transform.position = Vector3.Lerp(targetPos, originPos, (rate - 0.5f)*2f);
 
             if (!tileChange && rate >= 0.5)
             {
                 tileChange = true;
                 meshRenderer.sharedMaterial = changeMT;
                 transform.position = targetPos;
+                tileFloatRoutine = StartCoroutine(TileFloatingRoutine());
             }
+
             yield return null;
         }
 
         transform.rotation = target;
-        transform.position = originPos;
         OnChangedTile?.Invoke();
         yield return null;
+    }
+
+    IEnumerator TileFloatingRoutine()
+    {
+        float rate = 0f;
+        while(rate < 1)
+        {
+            rate += Time.deltaTime / 2f;
+
+            transform.position = Vector3.Lerp(targetPos, originPos, rate);
+            yield return null;
+        }
+        SetChangedSetting();
+        yield return null;
+    }
+
+    private void SetChangedSetting()
+    {
+        GetComponent<Rigidbody>().isKinematic = true;
+        transform.position = originPos;
     }
 }

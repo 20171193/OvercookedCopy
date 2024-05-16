@@ -35,7 +35,7 @@ TagManager:
   - 
   - 
   - 
-  - 
+  - Tile
   - 
   m_SortingLayers:
   - name: Player
