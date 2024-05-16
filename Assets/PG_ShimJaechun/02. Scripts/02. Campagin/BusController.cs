@@ -36,8 +36,8 @@ public class BusController : MonoBehaviour
         if (moveDir == Vector3.zero) 
             return;
 
-        transform.right = moveDir;
+        transform.forward = moveDir;
 
-        controller.Move(moveDir * moveSpeed*Time.deltaTime);
+        controller.Move(moveDir * moveSpeed * Time.deltaTime);
     }
 }
