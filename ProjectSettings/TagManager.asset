@@ -4,7 +4,7 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - ResultPopUp
+  - Table
   layers:
   - Default
   - TransparentFX
@@ -12,7 +12,7 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
+  - Table
   - 
   - 
   - 
