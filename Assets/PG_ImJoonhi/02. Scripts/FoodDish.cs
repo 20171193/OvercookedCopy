@@ -25,6 +25,7 @@ namespace JH
 
         private void Start()
         {
+            recipeList = Manager_TEMP.recipemanager.recipeList;
             if (initPlate)
                 Plate = true;
             for (int i = 0; i < 4; i++) ingredientList.Add(null);
@@ -76,7 +77,7 @@ namespace JH
             for (int i = 0; i < recipeList.Recipe.Count; i++)
             {
                 Debug.Log(recipeList.Recipe[i].name);
-                if (IsRecipe(buf, i))
+                if (recipeList.IsRecipe(buf, i) && recipeList.PlateState(Plate,i))
                 {
                     Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
                     ingredientList = buf.ToList();
@@ -99,37 +100,13 @@ namespace JH
             }
         }
 
-        // 레시피 리스트 내에 있는 레시피인지 확인
-        private bool IsRecipe(List<IngredientsObject> ingredient, int index)
+        public void GoTo(GameObject GoPotint)
         {
-            for (int i = 0; i < 4; i++)
-            {
-                Debug.Log(i);
-                // 그릇이 필수인 레시피
-                if (recipeList.Recipe[index].needPlate)
-                    if (!Plate)
-                        return false;
-                // 들고있는 재료갯수가 적을때
-                if (ingredient[i] == null)
-                    if (recipeList.Recipe[index].ingredients[i] != null)
-                        return false;
-                //들고있는 재료갯수가 많을때
-                if (ingredient[i] != null)
-                    if (recipeList.Recipe[index].ingredients[i] == null)
-                        return false;
-                // 들고있는 재료갯수가 같을때 서로 null값일경우 스킵
-                if (ingredient[i] == null && recipeList.Recipe[index].ingredients[i] == null)
-                    continue;
-                // 들고있는 재료와 상태가 같은지 확인
-                if (recipeList.Recipe[index].ingredients[i] != null)
-                {
-                    if (ingredient[i].ingredientsData.id != recipeList.Recipe[index].ingredients[i].id)
-                        return false;
-                    if (ingredient[i].IngState != recipeList.Recipe[index].ingredientsState[i])
-                        return false;
-                }
-            }
-            return true;
+            gameObject.transform.SetParent(GoPotint.transform, true);
+        }
+        public void Drop()
+        {
+            gameObject.transform.SetParent(null);
         }
 
         #region Debug

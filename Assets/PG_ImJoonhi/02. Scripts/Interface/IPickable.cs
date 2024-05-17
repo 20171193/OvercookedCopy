@@ -4,4 +4,6 @@ using UnityEngine;
 
 interface IPickable
 {
+    public void GoTo(GameObject GoPotint);
+    public void Drop();
 }

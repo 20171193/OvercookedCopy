@@ -2,24 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.UI;
 
 public class BusController : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField]
-    private CharacterController controller;
+    private Rigidbody rigid;
 
     [Header("Specs")]
     [SerializeField]
     private float maxMoveSpeed;
     [SerializeField]
     private float moveSpeed;
+    [SerializeField]
+    private float dashPower;
+    [SerializeField]
+    private float dashDelay;
 
     [Header("Ballancing")]
     [SerializeField]
     private Vector3 moveDir;
+    [SerializeField]
+    private bool enableDash = true;
 
-    private void Update()
+    private void FixedUpdate()
     {
         Move();
     }
@@ -30,14 +37,30 @@ public class BusController : MonoBehaviour
         moveDir.x = inputDir.x;
         moveDir.z = inputDir.y;
     }
-
     private void Move()
     {
-        if (moveDir == Vector3.zero) 
+        if (moveDir == Vector3.zero)
             return;
 
-        transform.right = moveDir;
+        transform.forward = moveDir;
 
-        controller.Move(moveDir * moveSpeed*Time.deltaTime);
+        rigid.velocity = transform.forward * moveSpeed;
+    }
+
+    private void OnDash(InputValue value)
+    {
+        if (enableDash)
+        {
+            rigid.AddForce(transform.forward * dashPower, ForceMode.Impulse);
+            StartCoroutine(DashDelayRoutine());
+        }
+    }
+
+
+    IEnumerator DashDelayRoutine()
+    {
+        enableDash = false;
+        yield return new WaitForSeconds(dashDelay);
+        enableDash = true;
     }
 }
