@@ -10,12 +10,6 @@ namespace JH
         [Header("Prefabs")]
         [SerializeField] FoodDish foodDishPrefab;
 
-        [Header("Debug")]
-        [SerializeField] GameObject DebugGenPoint;
-        [SerializeField] IngredientsObject DebugIngredientObject;
-        [SerializeField] RecipeData DebugRecipe;
-        [SerializeField] FoodDish DebugFoodDish;
-
         private void Start()
         {
             recipeList = Manager_TEMP.recipemanager.recipeList;
@@ -59,7 +53,6 @@ namespace JH
             foodDish.init = ingredientObject;
             foodDish.curRecipe = recipe;
             foodDish.initPlate = true;
-            foodDish.transform.SetParent(GeneratePoint.transform, true);
             Destroy(gameObject);
         }
 
@@ -82,6 +75,12 @@ namespace JH
 
         #region Debug
 #if UNITY_EDITOR
+        [Header("Debug")]
+        [SerializeField] GameObject DebugGenPoint;
+        [SerializeField] IngredientsObject DebugIngredientObject;
+        // [SerializeField] RecipeData DebugRecipe;
+        [SerializeField] FoodDish DebugFoodDish;
+
         [ContextMenu("[Debug]Generate FoodDish")]
         public void DebugGenerate()
         {

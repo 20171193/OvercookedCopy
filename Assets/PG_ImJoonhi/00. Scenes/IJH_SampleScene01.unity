@@ -193,6 +193,12 @@ PrefabInstance:
       propertyPath: DebugGenPoint
       value: 
       objectReference: {fileID: 437852406}
+    - target: {fileID: 1555955840576211449, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
+        type: 3}
+      propertyPath: DebugIngredientObject
+      value: 
+      objectReference: {fileID: 1321729756631453915, guid: 1766e655cc9bfd145a06942827e1d40a,
+        type: 3}
     - target: {fileID: 8099483502110383182, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
         type: 3}
       propertyPath: m_Name
@@ -2045,7 +2051,7 @@ PrefabInstance:
     - target: {fileID: 3349767649448547467, guid: 367a67047821644408aaa43883e85027,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3349767649448547467, guid: 367a67047821644408aaa43883e85027,
         type: 3}
@@ -4272,7 +4278,7 @@ PrefabInstance:
     - target: {fileID: 3335173256371732125, guid: 7db692e2aa5f2c84ca8a79942ad63983,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 3335173256371732125, guid: 7db692e2aa5f2c84ca8a79942ad63983,
         type: 3}
