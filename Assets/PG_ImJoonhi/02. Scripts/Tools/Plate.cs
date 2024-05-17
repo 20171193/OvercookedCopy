@@ -21,6 +21,7 @@ namespace JH
             recipeList = Manager_TEMP.recipemanager.recipeList;
         }
 
+        /// <summary>그릇에 놓을 재료가 1가지인 ingredientObject 프리팹의 경우 사용하는 함수.</summary>
         public void IngredientIN(GameObject GeneratePoint, IngredientsObject ingredientObject)
         {
             if (ingredientObject.IngState != IngredientState.Sliced)
@@ -35,11 +36,12 @@ namespace JH
                 if (recipeList.IsRecipe(buf, i))
                 {
                     Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
-                    GenerateFoodDish(GeneratePoint, ingredientObject, recipeList.Recipe[i]);
+                    GenerateFoodDish(GeneratePoint, buf, recipeList.Recipe[i]);
                 }
             }
         }
 
+        /// <summary>그릇에 놓을 재료가 2개 이상인 foodDish 프리팹인 경우 사용하는 함수.</summary>
         public void IngredientIN(GameObject GeneratePoint, FoodDish foodDish)
         {
             // Debug.Log(recipeList.Recipe[i].name);
@@ -50,7 +52,7 @@ namespace JH
             }
         }
 
-        private void GenerateFoodDish(GameObject GeneratePoint, IngredientsObject ingredientObject, RecipeData recipe)
+        private void GenerateFoodDish(GameObject GeneratePoint, List<IngredientsObject> ingredientObject, RecipeData recipe)
         {
             FoodDish foodDish = Instantiate(foodDishPrefab, GeneratePoint.transform.position, Quaternion.identity);
             foodDish.recipeList = Manager_TEMP.recipemanager.recipeList;

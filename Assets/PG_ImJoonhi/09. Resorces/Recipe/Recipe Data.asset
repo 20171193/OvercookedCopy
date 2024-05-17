@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: 
   Wrong: 0
-  needDish: 0
+  needPlate: 0
+  platingInterval: 0
   ingredients:
   - {fileID: 0}
   - {fileID: 0}
@@ -22,3 +23,4 @@ MonoBehaviour:
   - {fileID: 0}
   ingredientsState: 00000000000000000000000000000000
   Model: {fileID: 0}
+  FoodSprite: {fileID: 0}
