@@ -1,6 +1,3 @@
-using JH;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace JH
@@ -15,7 +12,7 @@ namespace JH
         void TakeIngredient(GameObject GeneratePoint)
         {
             IngredientsObject ingObj = Instantiate(ingredientObject, GeneratePoint.transform.position, GeneratePoint.transform.rotation);
-            ingObj.transform.SetParent(DebugGenpoint.transform);
+            ingObj.transform.SetParent(GeneratePoint.transform);
         }
 
         #region Debug

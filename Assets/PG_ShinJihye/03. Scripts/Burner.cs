@@ -40,7 +40,7 @@ public class Burner : MonoBehaviour
     {
             fireball = Instantiate(fireballPrefab, startPoint);
     }
-        fireball.ThrowFireball();
+        // fireball.ThrowFireball();
     }
 }
 
