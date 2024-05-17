@@ -42,6 +42,15 @@ public class Pan : MonoBehaviour
         CookingObject.transform.SetParent(PanPoint.transform, true);
     }
 
+    public void GoTo(GameObject GoPotint)
+    {
+        gameObject.transform.SetParent(GoPotint.transform, true);
+    }
+    public void Drop()
+    {
+        gameObject.transform.SetParent(null);
+    }
+
 
     #region Debug
 #if UNITY_EDITOR

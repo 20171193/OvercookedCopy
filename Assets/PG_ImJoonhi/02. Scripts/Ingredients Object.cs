@@ -15,6 +15,9 @@ namespace JH
 
         private GameObject CurrentObject;
 
+        [Header("Debug")]
+        [SerializeField] GameObject DebugGameObject;
+
         void Start()
         {
             switch (IngState)
@@ -81,5 +84,24 @@ namespace JH
                 return IngState - other.IngState;
             return ingredientsData.id - other.ingredientsData.id;
         }
+
+        public void GoTo(GameObject GoPotint)
+        {
+            gameObject.transform.SetParent(GoPotint.transform, true);
+        }
+        public void Drop()
+        {
+            gameObject.transform.SetParent(null);
+        }
+
+        #region Debug
+#if UNITY_EDITOR
+        [ContextMenu("[Debug]Add Ingredients")]
+        public void DebugGoTo()
+        {
+            GoTo(DebugGameObject);
+        }
+#endif
+        #endregion
     }
 }

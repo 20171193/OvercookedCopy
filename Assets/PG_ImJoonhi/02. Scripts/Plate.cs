@@ -23,6 +23,8 @@ namespace JH
 
         public void IngredientIN(GameObject GeneratePoint, IngredientsObject ingredientObject)
         {
+            if (ingredientObject.IngState != IngredientState.Sliced)
+                return;
             List<IngredientsObject> buf = new List<IngredientsObject>();
             for (int i = 0; i < 4; i++) buf.Add(null);
             buf[0] = ingredientObject;
@@ -67,6 +69,14 @@ namespace JH
             Destroy(gameObject);
         }
 
+        public void GoTo(GameObject GoPotint)
+        {
+            gameObject.transform.SetParent(GoPotint.transform, true);
+        }
+        public void Drop()
+        {
+            gameObject.transform.SetParent(null);
+        }
 
         #region Debug
 #if UNITY_EDITOR
@@ -82,6 +92,7 @@ namespace JH
         {
             IngredientIN(DebugGenPoint, DebugFoodDish);
         }
+
 #endif
         #endregion
 

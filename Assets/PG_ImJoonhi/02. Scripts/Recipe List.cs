@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -44,6 +45,14 @@ namespace JH
                         return false;
                 }
             }
+            return true;
+        }
+
+        public bool PlateState(bool Plate, int index)
+        {
+            if (Recipe[index].needPlate)
+                if (!Plate)
+                    return false;
             return true;
         }
     }
