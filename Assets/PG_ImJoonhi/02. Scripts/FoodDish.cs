@@ -13,7 +13,7 @@ namespace JH
         public bool initPlate;                  // 생성시 Plate 보유여부
 
         [Header("Components")]
-        [SerializeField] Rigidbody rigid;
+        public Rigidbody rigid;
 
         public bool Plate { get; private set; }                                             // 그릇 여부
         private List<IngredientsObject> ingredientList = new List<IngredientsObject>(4);    // 현제 포함된 재료 리스트

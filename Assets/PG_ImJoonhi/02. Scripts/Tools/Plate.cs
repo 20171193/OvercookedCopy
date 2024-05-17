@@ -6,6 +6,7 @@ namespace JH
     public class Plate : MonoBehaviour, IPickable
     {
         [SerializeField] RecipeList recipeList;
+        public Rigidbody rigid;
 
         [Header("Prefabs")]
         [SerializeField] FoodDish foodDishPrefab;
@@ -53,6 +54,8 @@ namespace JH
             foodDish.init = ingredientObject;
             foodDish.curRecipe = recipe;
             foodDish.initPlate = true;
+            foodDish.rigid.isKinematic = rigid.isKinematic;
+            foodDish.transform.SetParent(GeneratePoint.transform, true);
             Destroy(gameObject);
         }
 

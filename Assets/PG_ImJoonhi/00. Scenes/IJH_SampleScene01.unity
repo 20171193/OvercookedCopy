@@ -1292,7 +1292,7 @@ Transform:
   m_GameObject: {fileID: 522752265}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.2, z: 0}
+  m_LocalPosition: {x: 0, y: 0.43, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2123,6 +2123,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1555955840576211449, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
         type: 3}
+      propertyPath: rigid
+      value: 
+      objectReference: {fileID: 1462388712}
+    - target: {fileID: 1555955840576211449, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
+        type: 3}
       propertyPath: recipeList
       value: 
       objectReference: {fileID: 0}
@@ -2134,9 +2139,25 @@ PrefabInstance:
         type: 2}
     - target: {fileID: 1555955840576211449, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
         type: 3}
+      propertyPath: DebugFoodDish
+      value: 
+      objectReference: {fileID: 329220873}
+    - target: {fileID: 1555955840576211449, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
+        type: 3}
       propertyPath: DebugGenPoint
       value: 
       objectReference: {fileID: 522752265}
+    - target: {fileID: 1555955840576211449, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
+        type: 3}
+      propertyPath: DebugIngredientObject
+      value: 
+      objectReference: {fileID: 1321729756631453915, guid: 1766e655cc9bfd145a06942827e1d40a,
+        type: 3}
+    - target: {fileID: 3884313084065791983, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8099483502110383182, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
         type: 3}
       propertyPath: m_Name
@@ -2155,7 +2176,7 @@ PrefabInstance:
     - target: {fileID: 8875739417950373620, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8875739417950373620, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
         type: 3}
@@ -2575,6 +2596,12 @@ Transform:
 --- !u!4 &1462388711 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8875739417950373620, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
+    type: 3}
+  m_PrefabInstance: {fileID: 900511435}
+  m_PrefabAsset: {fileID: 0}
+--- !u!54 &1462388712 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 3884313084065791983, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
     type: 3}
   m_PrefabInstance: {fileID: 900511435}
   m_PrefabAsset: {fileID: 0}

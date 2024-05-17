@@ -16,7 +16,7 @@ namespace JH
         [SerializeField] bool initialize;   // 플레이 했을때 IngState를 Original로 자동으로 초기화 할지 여부
 
         [Header("Misc")]
-        [SerializeField] Rigidbody rigid;
+        public Rigidbody rigid;
 
         private GameObject CurrentObject;
 
