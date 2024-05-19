@@ -111,6 +111,7 @@ namespace Jc
         private void OnStageEntrance()
         {
             stageEntrances[curStage].gameObject.SetActive(true);
+            stageEntrances[curStage].ActiveEntrance();
         }
 
         [ContextMenu("ResetTile")]
