@@ -50,3 +50,6 @@ MonoBehaviour:
   tableLM:
     serializedVersion: 2
     m_Bits: 0
+  waterTileLM:
+    serializedVersion: 2
+    m_Bits: 536870912

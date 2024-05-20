@@ -10,6 +10,13 @@ public class BusController : MonoBehaviour
     [SerializeField]
     private Rigidbody rigid;
 
+    [SerializeField]
+    private Animator anim;
+
+    [SerializeField]
+    private GameObject boatObject;
+
+
     [Header("Specs")]
     [SerializeField]
     private float maxMoveSpeed;
@@ -28,7 +35,6 @@ public class BusController : MonoBehaviour
 
     [SerializeField]
     private bool isGround = false;
-
 
     private void FixedUpdate()
     {
@@ -51,7 +57,12 @@ public class BusController : MonoBehaviour
         if (moveDir == Vector3.zero)
         {
             rigid.useGravity = true;
+            anim.SetBool("IsMoving", false);
             return;
+        }
+        else
+        {
+            anim.SetBool("IsMoving", true);
         }
 
         // 경사면에 따른 방향 도출
@@ -63,11 +74,11 @@ public class BusController : MonoBehaviour
     // 경사면 방향 추출
     private void SlopeMovement()
     {
-        Vector3 frontPos = transform.position + transform.forward * 0.3f + Vector3.up * 0.5f;
-        Vector3 backPos = transform.position + -transform.forward * 0.3f;
-
         // 초기 방향 세팅
         transform.forward = moveDir;
+
+        Vector3 frontPos = transform.position + transform.forward * 0.5f + Vector3.up * 0.5f;
+        Vector3 backPos = transform.position + -transform.forward * 0.3f;
 
         Ray ray = new Ray(frontPos, Vector3.down);
 
@@ -84,19 +95,23 @@ public class BusController : MonoBehaviour
         }
     }
 
-
-    private void OnDash(InputValue value)
+    private void OnTriggerEnter(Collider other)
     {
-        if (enableDash)
+        if (Manager.Layer.waterTileLM.Contain(other.gameObject.layer))
         {
-            rigid.AddForce(transform.forward * dashPower, ForceMode.Impulse);
-            StartCoroutine(DashDelayRoutine());
+            Debug.Log("Enter Water");
+            anim.SetBool("IsInWater", true);
+            boatObject.SetActive(true);
         }
     }
-    IEnumerator DashDelayRoutine()
+    private void OnTriggerExit(Collider other)
     {
-        enableDash = false;
-        yield return new WaitForSeconds(dashDelay);
-        enableDash = true;
+       if(Manager.Layer.waterTileLM.Contain(other.gameObject.layer))
+        {
+            Debug.Log("Exit Water");
+            anim.SetBool("IsInWater", false);
+            boatObject.SetActive(false);
+        }
     }
+
 }
