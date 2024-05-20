@@ -6,31 +6,13 @@
             "id": "546004d1-d4c6-4c54-b301-521b827e1585",
             "actions": [
                 {
-                    "name": "GetScore",
-                    "type": "Value",
-                    "id": "071d6f9a-6105-4136-baf1-b2f73ed80860",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "GetTip",
-                    "type": "Value",
-                    "id": "e1c8a885-2d2c-4544-885b-570dabc3b489",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "ResultExit",
                     "type": "Button",
                     "id": "103faf63-5f46-4448-b545-550082d2cce0",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": true
+                    "initialStateCheck": false
                 },
                 {
                     "name": "OrderOut",
@@ -43,28 +25,6 @@
                 }
             ],
             "bindings": [
-                {
-                    "name": "",
-                    "id": "e5a5cd9e-57a1-4432-b9a6-c3254394236d",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GetScore",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "983523dd-da1c-40d7-ac28-3e1362aa3cbb",
-                    "path": "<Keyboard>/tab",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "GetTip",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
                 {
                     "name": "",
                     "id": "7b544551-0b95-4dd0-96d0-52e2350912c9",

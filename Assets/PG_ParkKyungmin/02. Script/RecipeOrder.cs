@@ -1,13 +1,16 @@
 using JH;
+using Kyungmin;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class RecipeOrder : MonoBehaviour
 {
     [Header("Init")]
     public RecipeList recipeList;
+    public InGameFlow inGameFlow;
 
     [Header("Prefabs")]
     [SerializeField] List<GameObject> orderUI;
@@ -113,6 +116,9 @@ public class RecipeOrder : MonoBehaviour
             // 0번 부터 삭제되게
             Destroy(OrderList[0]);
             OrderList.RemoveAt(0);
+
+            // 레시피에 따른 스코어로 수정해야함
+            inGameFlow.RecipeResult(10);
         }
     }
 
