@@ -1,8 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 
-public class StageEntrance : MonoBehaviour
+namespace Jc
 {
-   
+    public class StageEntrance : MonoBehaviour
+    {
+        [SerializeField]
+        private Animator anim;
+
+        [Header("스테이지 넘버 (0~)")]
+        [SerializeField]
+        private int stageNumber;
+
+        [SerializeField]
+        private Transform stageInfo;   // 스테이지 정보
+
+        private Transform mainCamera;
+        
+        private void Awake()
+        {
+            mainCamera = Camera.main.transform;    
+        }
+
+        public void ActiveEntrance()
+        {
+            anim.SetTrigger("OnActive");
+        }
+
+        public void EnterStage()
+        {
+            Manager.Scene.LoadLevel(SceneManager.SceneType.InGame + stageNumber);
+        }
+
+        private void Update()
+        {
+            // 빌보드 UI
+            if (stageInfo.gameObject.activeSelf)
+                stageInfo.LookAt(stageInfo.position + mainCamera.rotation * Vector3.forward,
+                    mainCamera.rotation * Vector3.up);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            stageInfo.gameObject.SetActive(true);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            stageInfo.gameObject.SetActive(false);
+        }
+    }
 }

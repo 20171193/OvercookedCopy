@@ -26,6 +26,9 @@ public class BusController : MonoBehaviour
     [SerializeField]
     private bool enableDash = true;
 
+    [SerializeField]
+    private bool isGround = false;
+
     private void FixedUpdate()
     {
         Move();
@@ -40,12 +43,44 @@ public class BusController : MonoBehaviour
     private void Move()
     {
         if (moveDir == Vector3.zero)
+        {
+            rigid.useGravity = true;
             return;
+        }
+
+        // 일반 이동
+        if(GetSlopeDirection() == Vector3.zero)
+        {
+            rigid.useGravity = true;
+        }
+        // 경사면 이동
+        else
+        {
+            Debug.Log("OnSlope");
+            rigid.useGravity = false;
+            Debug.Log("Projection : " + moveDir);
+        }
 
         transform.forward = moveDir;
-
         rigid.velocity = transform.forward * moveSpeed;
     }
+
+    // 경사면 방향 추출
+    private Vector3 GetSlopeDirection()
+    {
+        Ray ray = new Ray(transform.position, Vector3.down);
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1.5f, LayerMask.NameToLayer("Tile")))
+        {
+            Debug.DrawLine(hitInfo.point, hitInfo.normal * 1.5f, Color.red, 0.3f);
+            // 경사면에 투영된 벡터방향 정규화
+            return Vector3.ProjectOnPlane(moveDir, hitInfo.normal).normalized;
+        }
+        else
+        {
+            return Vector3.zero;
+        }
+    }
+
 
     private void OnDash(InputValue value)
     {
@@ -55,8 +90,6 @@ public class BusController : MonoBehaviour
             StartCoroutine(DashDelayRoutine());
         }
     }
-
-
     IEnumerator DashDelayRoutine()
     {
         enableDash = false;
