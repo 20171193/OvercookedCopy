@@ -25,12 +25,16 @@ namespace Jc
         private int tileCnt = 0;
         private int curStage = 0;
 
+        [SerializeField]
+        private int clearStage = 0;
+
         private void Start()
         {
             TileSetUp();
             LoadMasterData();
         }
 
+        // 타일맵 세팅
         private void TileSetUp()
         {
             foreach (Transform tileMap in stageTileMaps)
@@ -59,13 +63,35 @@ namespace Jc
             }
         }
 
-
-        // 마스터의 스테이지 클리어정보 받아오기s
+        // 마스터의 스테이지 클리어정보 받아오기
         [ContextMenu("SetTile")]
         private void LoadMasterData()
         {
-            OpenStage(0);
+            // 로드한 데이터를 기반으로 클리어한 스테이지 미리 오픈
+            for (int i = 0; i < clearStage; i++)
+            {
+                OpenedStage(i);
+            }
+            //OpenStage(0);
         }
+
+        private void OpenedStage(int stageNumber)
+        {
+            // 스테이지 타일 세팅
+            for(int i =0; i<3; i++)
+            {
+                List<ChangeableTile> tileList = stageTileInfos[stageNumber].depthList[i].tileList;
+                foreach(ChangeableTile tile in tileList)
+                {
+                    tile.OnChangedSetting();
+                }
+            }
+
+            // 스테이지 입구 세팅
+            stageEntrances[stageNumber].gameObject.SetActive(true);
+            stageEntrances[stageNumber].ActiveEntrance();
+        }
+
         private void OpenStage(int stageNumber)
         {
             curStage = stageNumber;
@@ -73,6 +99,7 @@ namespace Jc
             // 타일 오픈
             openStageRoutine = StartCoroutine(OpenStageRoutine(stageNumber));
         }
+
         IEnumerator OpenStageRoutine(int stageNumber)
         {
             // depth 별 뒤집기
