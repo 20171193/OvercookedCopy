@@ -1,6 +1,7 @@
 using JH;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class RecipeOrder : MonoBehaviour
@@ -103,6 +104,15 @@ public class RecipeOrder : MonoBehaviour
                     }
                     break;
             }
+        }
+    }
+    private void OnOrderOut(InputValue value)
+    {
+        if (OrderList.Count > 0)
+        {
+            // 0번 부터 삭제되게
+            Destroy(OrderList[0]);
+            OrderList.RemoveAt(0);
         }
     }
 

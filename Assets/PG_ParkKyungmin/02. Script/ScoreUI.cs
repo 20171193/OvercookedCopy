@@ -14,6 +14,7 @@ namespace Kyungmin
         [SerializeField] Slider gauge;        // 게이지바
         [SerializeField] TMP_Text scoreText;
         [SerializeField] TMP_Text tipText;
+        [SerializeField] Animator animator;
 
         [SerializeField] int tip = 1;       // 팁의 갯수
         [SerializeField] int maxTip = 4;    // 최대로 받을수 있는 팁
@@ -49,6 +50,7 @@ namespace Kyungmin
         { 
             score++;
             UpdateUI();
+            animator.Play("Coin UI");
         }
 
         private void OnGetTip(InputValue value)
