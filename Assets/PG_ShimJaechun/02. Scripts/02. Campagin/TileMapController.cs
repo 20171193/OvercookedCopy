@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 namespace Jc
 {
@@ -101,7 +98,7 @@ namespace Jc
         {
             changedTileCnt++;
             // 모든 타일이 뒤집힌경우
-            if(changedTileCnt >= tileCnt)
+            if (changedTileCnt >= tileCnt)
             {
                 changedTileCnt = 0;
                 tileCnt = 0;

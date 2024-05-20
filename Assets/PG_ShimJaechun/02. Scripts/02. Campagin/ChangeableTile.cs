@@ -49,6 +49,7 @@ public class ChangeableTile : MonoBehaviour
         meshRenderer.material = originMT;
     }
 
+    // 타일 뒤집기, 머터리얼 변경 루틴
     IEnumerator TileChangeRoutine()
     {
         float time = 180 / rotSpeed;
