@@ -8,15 +8,23 @@ namespace JH
 {
     public class IngredientsObject : MonoBehaviour, IComparable<IngredientsObject>, IPickable
     {
+        [Header("Status")]
         public IngredientsData ingredientsData;
         public IngredientState IngState;
 
-        [SerializeField] bool initialize;
+        [Header("Option")]
+        [SerializeField] bool initialize;   // 플레이 했을때 IngState를 Original로 자동으로 초기화 할지 여부
+
+        [Header("Misc")]
+        public Rigidbody rigid;
 
         private GameObject CurrentObject;
 
+        
+
         void Start()
         {
+            rigid.isKinematic = true;
             switch (IngState)
             {
                 case IngredientState.Original:
@@ -81,5 +89,36 @@ namespace JH
                 return IngState - other.IngState;
             return ingredientsData.id - other.ingredientsData.id;
         }
+
+        public void GoTo(GameObject GoPotint)
+        {
+            rigid.isKinematic = true;
+            gameObject.transform.SetParent(GoPotint.transform, true);
+        }
+        public void Drop()
+        {
+            rigid.isKinematic = false;
+            gameObject.transform.SetParent(null);
+        }
+
+        #region Debug
+#if UNITY_EDITOR
+
+        [Header("Debug")]
+        [SerializeField] GameObject DebugGameObject;
+
+        [ContextMenu("[Debug]GoTo")]
+        public void DebugGoTo()
+        {
+            GoTo(DebugGameObject);
+        }
+
+        [ContextMenu("[Debug]Drop")]
+        public void DebugDrop()
+        {
+            Drop();
+        }
+#endif
+        #endregion
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Fireball : MonoBehaviour
@@ -10,13 +11,14 @@ public class Fireball : MonoBehaviour
     public void SetTargetPos(Vector3 position)
     {
         targetPos = position;
-        StartCoroutine(ThrowRoutine());
+        StartCoroutine(ThrowFireballRoutine());
     }
 
-    IEnumerator ThrowRoutine()
+    IEnumerator ThrowFireballRoutine()
     {
         Vector3 startPoint = transform.position;
         Vector3 endPoint = targetPos;
+
         float xSpeed = (endPoint.x - startPoint.x) / throwTime;
         float zSpeed = (endPoint.z - startPoint.z) / throwTime;
         float ySpeed = -1 * (0.5f * Physics.gravity.y * throwTime * throwTime + startPoint.y) / throwTime;

@@ -8,28 +8,30 @@ namespace JH
     {
         [Header("Map Recipes")]
         [SerializeField] public RecipeList recipeList;
-        public IngredientsObject init;
-        public RecipeData curRecipe;
-        public bool initPlate;
+        public List<IngredientsObject> init;    // 초기 재료 리스트
+        public RecipeData curRecipe;            // 현제 래시피 (어느 래시피인지 저장)
+        public bool initPlate;                  // 생성시 Plate 보유여부
 
-        public bool Plate { get; private set; }
-        private List<IngredientsObject> ingredientList = new List<IngredientsObject>(4);
-        private List<IngredientsObject> ingredientListDebug;
-        private int included;
+        [Header("Components")]
+        public Rigidbody rigid;
 
-        private GameObject curPlate;
-        private GameObject CurrentObject;
+        public bool Plate { get; private set; }                                             // 그릇 여부
+        private List<IngredientsObject> ingredientList = new List<IngredientsObject>(4);    // 현제 포함된 재료 리스트
+        private List<IngredientsObject> ingredientListDebug;                                // 현제 체크중인 재료LIst 디버그모드 확인용 리스트
+        private int included = 0;                                                               // 현제 재료가 몇개 들어있는지
 
-        [Header("Debug")]
-        [SerializeField] IngredientsObject DebugIngredient;
+        private GameObject curPlate;                                                        // 그릇 게임오브젝트 (그릇 디자인)
+        private GameObject CurrentObject;                                                   // 현제 음식 게임오브젝트
+
+        
 
         private void Start()
         {
+            recipeList = Manager_TEMP.recipemanager.recipeList;
             if (initPlate)
                 Plate = true;
-            for (int i = 0; i < 4; i++) ingredientList.Add(null);
-            ingredientList[0] = init;
-            included = 1;
+            ingredientList = init.ToList();
+            for (int i = 0; i < 4; i++) if (ingredientList[i] != null) included++;
             if (Plate)
             {
                 curPlate = Instantiate(recipeList.PlatePrefab, gameObject.transform.position, Quaternion.identity);
@@ -65,19 +67,27 @@ namespace JH
         }
 
         /// <summary>재료를 음식에 추가하는 함수</summary>
-        /// /// <param name="ingredient">ingredient는 IngredientsObject속성을 가리키며, 추가할 재료에 대한 인수입니다.</param>
-        public void AddIngredient(IngredientsObject ingredient)
+        /// <param name="ingredient">ingredient는 IngredientsObject속성을 가리키며, 추가할 재료에 대한 인수입니다.</param>
+        public bool Add(IngredientsObject ingredient)
         {
+            if (!IsAcceptable(1))
+                return false;
             List<IngredientsObject> buf = ingredientList.ToList();
             buf[included] = ingredient;
-            ingredientListDebug = buf.ToList();
             buf.Sort(0, included + 1, null);
-            ingredientListDebug.Sort(0, included + 1, null);
+
+            // [Debug] 현제 비교할 재료리스트 확인용
+            ingredientListDebug = buf.ToList();
+
+            Debug.Log(recipeList.Recipe.Count);
+            // 레시피를 돌면서 들어온 재료로 인한 레시피가 있는지 확인 밑 추가;
             for (int i = 0; i < recipeList.Recipe.Count; i++)
             {
+                Debug.Log(i);
                 Debug.Log(recipeList.Recipe[i].name);
-                if (IsRecipe(buf, i))
+                if (recipeList.IsRecipe(buf, i) && recipeList.PlateState(Plate,i))
                 {
+                    // 레시피 발견시 현제 음식모델 삭제후 새 래시피 음식모델을 재생성
                     Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
                     ingredientList = buf.ToList();
                     CurrentObject.SetActive(false);
@@ -95,50 +105,78 @@ namespace JH
                     }
                     curRecipe = recipeList.Recipe[i];
                     included++;
+                    return true;
                 }
             }
+            return false;
         }
 
-        // 레시피 리스트 내에 있는 레시피인지 확인
-        private bool IsRecipe(List<IngredientsObject> ingredient, int index)
+        /// <summary>음식에 있는 재들을 음식에 옮기는 함수</summary>
+        /// <param name="foodAdd">foodAdd는 IngredientsObject List속성을 가리키며, 추가할 음식 리스트 대한 인수입니다.</param>
+        public bool Add(List<IngredientsObject> foodAdd)
         {
-            for (int i = 0; i < 4; i++)
+            int ingNum = 0;
+            for (int i = 0; i < 4; i++) if (foodAdd[i] != null) ingNum++;
+            if (!IsAcceptable(ingNum))
+                return false;
+            List<IngredientsObject> buf = ingredientList.ToList();
+            for (int i = 0; i < ingNum; i++) buf[included + i] = foodAdd[i];
+            buf.Sort(0, included + 1, null);
+
+            // [Debug] 현제 비교할 재료리스트 확인용
+            ingredientListDebug = buf.ToList();
+
+            // 레시피를 돌면서 들어온 재료로 인한 레시피가 있는지 확인 밑 추가;
+            for (int i = 0; i < recipeList.Recipe.Count; i++)
             {
-                Debug.Log(i);
-                // 그릇이 필수인 레시피
-                if (recipeList.Recipe[index].needPlate)
-                    if (!Plate)
-                        return false;
-                // 들고있는 재료갯수가 적을때
-                if (ingredient[i] == null)
-                    if (recipeList.Recipe[index].ingredients[i] != null)
-                        return false;
-                //들고있는 재료갯수가 많을때
-                if (ingredient[i] != null)
-                    if (recipeList.Recipe[index].ingredients[i] == null)
-                        return false;
-                // 들고있는 재료갯수가 같을때 서로 null값일경우 스킵
-                if (ingredient[i] == null && recipeList.Recipe[index].ingredients[i] == null)
-                    continue;
-                // 들고있는 재료와 상태가 같은지 확인
-                if (recipeList.Recipe[index].ingredients[i] != null)
+                Debug.Log(recipeList.Recipe[i].name);
+                if (recipeList.IsRecipe(buf, i) && recipeList.PlateState(Plate, i))
                 {
-                    if (ingredient[i].ingredientsData.id != recipeList.Recipe[index].ingredients[i].id)
-                        return false;
-                    if (ingredient[i].IngState != recipeList.Recipe[index].ingredientsState[i])
-                        return false;
+                    // 레시피 발견시 현제 음식모델 삭제후 새 래시피 음식모델을 재생성
+                    Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
+                    ingredientList = buf.ToList();
+                    CurrentObject.SetActive(false);
+                    Destroy(CurrentObject);
+                    curRecipe = recipeList.Recipe[i];
+                    if (Plate)
+                    {
+                        CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position + new Vector3(0, curRecipe.platingInterval, 0), Quaternion.identity);
+                        CurrentObject.transform.SetParent(curPlate.transform, true);
+                    }
+                    else
+                    {
+                        CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position, Quaternion.identity);
+                        CurrentObject.transform.SetParent(gameObject.transform, true);
+                    }
+                    curRecipe = recipeList.Recipe[i];
+                    included++;
+                    return true;
                 }
             }
-            return true;
+            return false;
+        }
+
+        public void GoTo(GameObject GoPotint)
+        {
+            rigid.isKinematic = true;
+            gameObject.transform.SetParent(GoPotint.transform, true);
+        }
+        public void Drop()
+        {
+            rigid.isKinematic = false;
+            gameObject.transform.SetParent(null);
         }
 
         #region Debug
 #if UNITY_EDITOR
+        [Header("Debug")]
+        [SerializeField] IngredientsObject DebugIngredient;
+
         [ContextMenu("[Debug]Add Ingredients")]
         public void DebugAdd()
         {
-            if (IsAcceptable(1) && DebugIngredient != null)
-                AddIngredient(DebugIngredient);
+            if (DebugIngredient != null)
+                Add(DebugIngredient);
         }
 
         [ContextMenu("[Debug]Add Plate")]

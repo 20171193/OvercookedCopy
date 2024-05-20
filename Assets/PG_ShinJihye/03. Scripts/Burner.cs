@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,11 +8,12 @@ public class Burner : MonoBehaviour
     [SerializeField] Fireball fireballPrefab;
     [SerializeField] Transform startPoint;
     [SerializeField] Transform targetPoint;
-    [SerializeField] float throwDelay;
+    [SerializeField] float createDelay;
+    [SerializeField] List<FireballTargetLv> fireballTargetLv;
 
     private void OnEnable()
     {
-        StartCoroutine(ThrowFireballRoutine());
+        StartCoroutine(CreateFireballRoutine());
     }
 
     private void OnDisable()
@@ -19,18 +21,31 @@ public class Burner : MonoBehaviour
         StopAllCoroutines();
     }
 
-    IEnumerator ThrowFireballRoutine()
+    IEnumerator CreateFireballRoutine()
     {
         while (true)
         {
-            yield return new WaitForSeconds(throwDelay);
-            ThrowFireball(targetPoint.position);
+            yield return new WaitForSeconds(createDelay);
+            CreateFireball(targetPoint.position);
         }
     }
 
-    public void ThrowFireball(Vector3 targetPos)
+    public void CreateFireball(Vector3 targetPos)
     {
         Fireball fireball = Instantiate(fireballPrefab, startPoint);
-        fireball.SetTargetPos(targetPoint.position);
+        fireball.SetTargetPos(targetPos);
     }
 }
+
+[Serializable]
+public class FireballTargetLv
+{
+    public Vector3[] targetPos;
+
+    public FireballTargetLv(Vector3[] targetPos)
+    {
+        this.targetPos = targetPos;
+    }
+}
+
+
