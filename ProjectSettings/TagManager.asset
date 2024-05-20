@@ -36,7 +36,7 @@ TagManager:
   - 
   - 
   - Tile
-  - 
+  - SlopeTile
   m_SortingLayers:
   - name: Player
     uniqueID: 3061658607

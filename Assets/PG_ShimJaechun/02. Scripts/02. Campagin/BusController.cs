@@ -29,20 +29,17 @@ public class BusController : MonoBehaviour
     [SerializeField]
     private bool isGround = false;
 
-    private void Update()
-    {
-        Vector3 frontPos = transform.position + transform.forward * 0.5f;
-        Vector3 backPos = transform.position + -transform.forward * 0.3f;
-
-        Debug.DrawLine(frontPos, frontPos + Vector3.down * 1.5f);
-        Debug.DrawLine(backPos, backPos + Vector3.down * 1.5f);
-    }
 
     private void FixedUpdate()
     {
         Move();
+        FixRotation();
     }
-
+    // 플레이어 회전방향 고정
+    private void FixRotation()
+    {
+        transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
+    }
     private void OnMove(InputValue value)
     {
         Vector2 inputDir = value.Get<Vector2>();
@@ -57,36 +54,33 @@ public class BusController : MonoBehaviour
             return;
         }
 
-        // 일반 이동
-        if(GetSlopeDirection() == Vector3.zero)
-        {
-            rigid.useGravity = true;
-        }
-        // 경사면 이동
-        else
-        {
-            Debug.Log("OnSlope");
-            rigid.useGravity = false;
-            Debug.Log("Projection : " + moveDir);
-        }
+        // 경사면에 따른 방향 도출
+        SlopeMovement();
 
-        transform.forward = moveDir;
         rigid.velocity = transform.forward * moveSpeed;
     }
 
     // 경사면 방향 추출
-    private Vector3 GetSlopeDirection()
+    private void SlopeMovement()
     {
-        Ray ray = new Ray(transform.position, Vector3.down);
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1.5f, LayerMask.NameToLayer("Tile")))
+        Vector3 frontPos = transform.position + transform.forward * 0.3f + Vector3.up * 0.5f;
+        Vector3 backPos = transform.position + -transform.forward * 0.3f;
+
+        // 초기 방향 세팅
+        transform.forward = moveDir;
+
+        Ray ray = new Ray(frontPos, Vector3.down);
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, 1.5f, LayerMask.GetMask("SlopeTile")))
         {
-            Debug.DrawLine(hitInfo.point, hitInfo.normal * 1.5f, Color.red, 0.3f);
-            // 경사면에 투영된 벡터방향 정규화
-            return Vector3.ProjectOnPlane(moveDir, hitInfo.normal).normalized;
+            // 슬로프 평면에 Hit된 경우
+            rigid.useGravity = false;
+            transform.forward = (hitInfo.point - backPos).normalized;
         }
         else
         {
-            return Vector3.zero;
+            rigid.useGravity = true;
+            transform.forward = moveDir;
         }
     }
 
