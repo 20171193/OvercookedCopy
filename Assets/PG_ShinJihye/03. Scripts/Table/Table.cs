@@ -14,7 +14,6 @@ public class Table: MonoBehaviour
         CookedIngredient,   // 조리된 재료가 있는 테이블
     }
 
-    [SerializeField]
     private Material originMT;
     [SerializeField]
     private MeshRenderer meshRenderer;
@@ -24,8 +23,6 @@ public class Table: MonoBehaviour
 
     private void Awake()
     {
-        Transform child = transform.GetChild(0);
-        meshRenderer = child.GetComponent<MeshRenderer>();
         originMT = meshRenderer.sharedMaterial;
     }
 
