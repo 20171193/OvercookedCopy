@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Jc
@@ -18,10 +15,10 @@ namespace Jc
         private Transform stageInfo;   // 스테이지 정보
 
         private Transform mainCamera;
-        
+
         private void Awake()
         {
-            mainCamera = Camera.main.transform;    
+            mainCamera = Camera.main.transform;
         }
 
         public void ActiveEntrance()
