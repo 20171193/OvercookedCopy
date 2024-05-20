@@ -9,9 +9,9 @@ namespace KIMJAEWON
         private Material originTile;
         [SerializeField]
         private Material changeTile;
-        private Table nearestTable;
+        private GameObject nearestOb;
 
-        private List<Table> tableList = new List<Table>();
+        private List<GameObject> interactableList = new List<GameObject>();
 
         public Color color;
 
@@ -22,67 +22,81 @@ namespace KIMJAEWON
 
         private void CalculateDistance()
         {
-            if (tableList.Count < 1)
+            GameObject nearObject = null;
+            if (interactableList.Count < 1)
             {
                 return;
             }
-            else if (tableList.Count == 1)
+            else if (interactableList.Count == 1)
             {
-                if (nearestTable != null)
-                {
-                    nearestTable.ExitPlayer();
-                }
-                nearestTable = tableList[0];
+                nearObject = interactableList[0];
             }
             else
             {
                 float minDist = -1f;
-                for (int i = 0; i < tableList.Count; i++)
+                for (int i = 0; i < interactableList.Count; i++)
                 {
-                    Table table = tableList[i];
-                    float dist = Vector3.Distance(transform.position, table.transform.position);
+                    GameObject interactable = interactableList[i];
+                    float dist = Vector3.Distance(transform.position, interactable.transform.position);
 
+                    // 최초 탐색
                     if (minDist == -1f)
                     {
                         minDist = dist;
-                        if (nearestTable != null)
-                        {
-                            nearestTable.ExitPlayer();
-                        }
-                        nearestTable = table;
+
+                        nearObject = interactable;
                     }
+                    // 가까운 오브젝트 갱신
                     else if (dist < minDist)
                     {
                         minDist = dist;
-                        if (nearestTable != null)
-                        {
-                            nearestTable.ExitPlayer();
-                        }
-                        nearestTable = table;
+
+                        nearObject = interactable;
                     }
                 }
             }
-            nearestTable.EnterPlayer();
+            RenewObject(nearObject);
+        }
+
+        private void RenewObject(GameObject target)
+        {
+            // 구해진 가장 가까운 값이 없다면
+            if (nearestOb == null)
+            {
+                IHighlightable ob = target.GetComponent<IHighlightable>();
+                // 만약에 IHighlitable 
+                if( ob == null)
+                {
+                    return;
+                }
+
+                // 새로운 오브젝트 할당
+                ob.EnterPlayer();
+                nearestOb = target;
+            }
+            else
+            {
+                IHighlightable prevOb = nearestOb.GetComponent<IHighlightable>();
+                prevOb.ExitPlayer();
+
+                nearestOb = target;
+                IHighlightable nextOb = nearestOb.GetComponent<IHighlightable>();
+                nextOb.EnterPlayer();
+            }
         }
         private void OnTriggerEnter(Collider other)
         {
-            // 충돌한 오브젝트의 태그가 Table이 맞다면
-            if (other.CompareTag("Table"))
+            if (Manager.Layer.interactableLM.Contain(other.gameObject.layer))
             {
-
-                // 테이블 스크립트를 가져온다.
-                Table table = other.GetComponent<Table>();
-                tableList.Add(table);
+                Debug.Log("인식했숩니당");
+                interactableList.Add(other.gameObject);
             }
         }
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Table"))
+            if (Manager.Layer.interactableLM.Contain(other.gameObject.layer))
             {
-                Table table = other.GetComponent<Table>();
-                table.ExitPlayer();
-
-                tableList.Remove(table);
+                interactableList.Remove(other.gameObject);
             }
         }
     }
