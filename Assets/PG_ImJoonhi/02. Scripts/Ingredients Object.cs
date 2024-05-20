@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace JH
 {
-    public class IngredientsObject : MonoBehaviour, IComparable<IngredientsObject>, IPickable
+    public class IngredientsObject : Item, IComparable<IngredientsObject>, IPickable
     {
         [Header("Status")]
         public IngredientsData ingredientsData;

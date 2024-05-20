@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace JH
 {
-    public class Plate : MonoBehaviour, IPickable
+    public class Plate : Item, IPickable
     {
         [SerializeField] RecipeList recipeList;
         public Rigidbody rigid;

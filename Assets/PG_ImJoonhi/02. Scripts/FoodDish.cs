@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JH
 {
-    public class FoodDish : MonoBehaviour, IPickable
+    public class FoodDish : Item, IPickable
     {
         [Header("Map Recipes")]
         [SerializeField] public RecipeList recipeList;
