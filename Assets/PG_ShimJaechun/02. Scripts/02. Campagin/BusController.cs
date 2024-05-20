@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Rendering.UI;
+using Photon.Pun;
+using Photon.Pun.UtilityScripts;
 
-public class BusController : MonoBehaviour
+public class BusController : MonoBehaviourPun
 {
     [Header("Components")]
     [SerializeField]
@@ -114,4 +116,19 @@ public class BusController : MonoBehaviour
         }
     }
 
+    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    //{
+    //    if(stream.IsWriting)
+    //    {
+    //        stream.SendNext(transform.position);
+    //        stream.SendNext(transform.rotation);
+    //        stream.SendNext(transform.localScale);
+    //    }
+    //    else
+    //    {
+    //        transform.position = (Vector3)stream.ReceiveNext();
+    //        transform.rotation = (Quaternion)stream.ReceiveNext();
+    //        transform.localScale = (Vector3)stream.ReceiveNext();
+    //    }
+    //}
 }
