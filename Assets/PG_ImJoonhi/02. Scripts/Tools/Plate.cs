@@ -73,6 +73,9 @@ namespace JH
 
         public void GoTo(GameObject GoPotint)
         {
+            rigid.isKinematic = true;
+            gameObject.transform.position = GoPotint.transform.position;
+            gameObject.transform.rotation = GoPotint.transform.rotation;
             gameObject.transform.SetParent(GoPotint.transform, true);
         }
         public void Drop()
@@ -87,6 +90,7 @@ namespace JH
         [SerializeField] IngredientsObject DebugIngredientObject;
         // [SerializeField] RecipeData DebugRecipe;
         [SerializeField] FoodDish DebugFoodDish;
+        [SerializeField] GameObject DebugGameObject;
 
         [ContextMenu("[Debug]Generate FoodDish")]
         public void DebugGenerate()
@@ -99,6 +103,18 @@ namespace JH
         public void DebugAddPlate()
         {
             IngredientIN(DebugGenPoint, DebugFoodDish);
+        }
+
+        [ContextMenu("[Debug]GoTo")]
+        public void DebugGoTo()
+        {
+            GoTo(DebugGameObject);
+        }
+
+        [ContextMenu("[Debug]Drop")]
+        public void DebugDrop()
+        {
+            Drop();
         }
 
 #endif

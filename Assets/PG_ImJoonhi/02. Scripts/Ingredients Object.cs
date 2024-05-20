@@ -93,6 +93,8 @@ namespace JH
         public void GoTo(GameObject GoPotint)
         {
             rigid.isKinematic = true;
+            gameObject.transform.position = GoPotint.transform.position;
+            gameObject.transform.rotation = GoPotint.transform.rotation;
             gameObject.transform.SetParent(GoPotint.transform, true);
         }
         public void Drop()
