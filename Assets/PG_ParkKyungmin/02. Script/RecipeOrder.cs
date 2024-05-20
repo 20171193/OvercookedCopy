@@ -25,7 +25,24 @@ public class RecipeOrder : MonoBehaviour
 
     private void Start()
     {
+        // 20초에 한번씩 랜덤 호출
+        InvokeRepeating("RandomRecipe", 5.0f, 5.0f);
+    }
 
+    private void RandomRecipe()         // 랜덤 생성
+    {
+        // 레시피가 비어있는지 확인
+        if (recipeList.Recipe == null || recipeList.Recipe.Count == 0)
+        {
+            Debug.Log("레시피가 비어있음");
+            return;
+        }
+
+        // 인덱스의 0번째에서 finishedRecip의 마지막 인덱스 [n]번째 사이에서 랜덤
+        int randomIndex = UnityEngine.Random.Range(0, recipeList.finishedRecipe.Count);
+        RecipeData randomRecipe = recipeList.finishedRecipe[randomIndex];
+        OrderIn(randomRecipe);
+        Debug.Log($"{randomIndex}번째 생성");
     }
 
     private void OrderIn(RecipeData recipe)
@@ -48,7 +65,8 @@ public class RecipeOrder : MonoBehaviour
         OrderUI.GetComponent<Recipe_IGD>().recipe = recipe;
         OrderList.Add(OrderUI);
 
-        // 여기에 완성음식 추가
+        // 완성음식 icon 추가
+        OrderUI.GetComponent<Recipe_IGD>().finishedImage.GetComponent<Image>().sprite = recipe.FoodSprite;
 
         // Recipe_IGD 내부 파란종이 생성
         for (int i = 0; i < num + 1; i++)       //num = 재료갯수
