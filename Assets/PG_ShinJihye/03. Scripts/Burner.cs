@@ -7,15 +7,12 @@ public class Burner : MonoBehaviour
 {
     [SerializeField] Fireball fireballPrefab;
     [SerializeField] Transform startPoint;
+    [SerializeField] Transform targetPoint;
     [SerializeField] float createDelay;
     [SerializeField] List<FireballTargetLv> fireballTargetLv;
 
     private void OnEnable()
     {
-        int fireballTargetLvCnt = fireballTargetLv.Count;  // 11
-        int targetPosLv1Cnt = fireballTargetLv[0].targetPos.Length;  // 2
-        Debug.Log(targetPosLv1Cnt);
-
         StartCoroutine(CreateFireballRoutine());
     }
 
@@ -29,18 +26,14 @@ public class Burner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(createDelay);
-            CreateFireball(fireballTargetLv[0].targetPos);
-            }
+            CreateFireball(targetPoint.position);
         }
-
-    public void CreateFireball(Vector3[] targetPos)
-    {
-        Fireball fireball = null;
-        for (int i = 0; i < fireballTargetLv[0].targetPos.Length; i++)
-    {
-            fireball = Instantiate(fireballPrefab, startPoint);
     }
-        fireball.ThrowFireball();
+
+    public void CreateFireball(Vector3 targetPos)
+    {
+        Fireball fireball = Instantiate(fireballPrefab, startPoint);
+        fireball.SetTargetPos(targetPos);
     }
 }
 
