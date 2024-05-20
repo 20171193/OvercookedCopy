@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Fireball : MonoBehaviour
@@ -35,7 +36,6 @@ public class Fireball : MonoBehaviour
 
         transform.position = endPoint;
         yield return null;
-
 
         // 떨어지고 나서 할 일
     }
