@@ -69,6 +69,7 @@ namespace KIMJAEWON
             // 충돌한 오브젝트의 태그가 Table이 맞다면
             if (other.CompareTag("Table"))
             {
+
                 // 테이블 스크립트를 가져온다.
                 Table table = other.GetComponent<Table>();
                 tableList.Add(table);

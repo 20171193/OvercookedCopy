@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class Table: MonoBehaviour
 {
-    [SerializeField]
+
     private Material originMT;
     [SerializeField]
     private MeshRenderer meshRenderer;
@@ -15,8 +15,6 @@ public class Table: MonoBehaviour
 
     private void Awake()
     {
-        Transform child = transform.GetChild(0);
-        meshRenderer = child.GetComponent<MeshRenderer>();
         originMT = meshRenderer.sharedMaterial;
     }
 
