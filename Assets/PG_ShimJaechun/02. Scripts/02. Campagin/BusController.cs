@@ -29,6 +29,15 @@ public class BusController : MonoBehaviour
     [SerializeField]
     private bool isGround = false;
 
+    private void Update()
+    {
+        Vector3 frontPos = transform.position + transform.forward * 0.5f;
+        Vector3 backPos = transform.position + -transform.forward * 0.3f;
+
+        Debug.DrawLine(frontPos, frontPos + Vector3.down * 1.5f);
+        Debug.DrawLine(backPos, backPos + Vector3.down * 1.5f);
+    }
+
     private void FixedUpdate()
     {
         Move();
