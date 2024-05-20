@@ -120,6 +120,12 @@ namespace JH
         {
             Drop();
         }
+
+        [ContextMenu("[Debug]Destroy")]
+        public void Destorythis()
+        {
+            Destroy(gameObject);
+        }
 #endif
         #endregion
     }
