@@ -4,20 +4,38 @@ using UnityEngine;
 
 public class TrashBin : Table
 {
-    /*public override void PutDown(Table nearestTable, Cube havingObject)
+    [SerializeField] float speed;
+    [SerializeField] float destroyScale;
+
+    public override void Interactable(Cube cube)
     {
+        base.Interactable(cube);
         Debug.Log("TrashBin");
-        Destroy(havingObject.gameObject);
-    }*/
 
-    /*public override void PutDown(GameObject havingObject)
+        StartCoroutine(DestroyItem(cube));
+    }
+
+    IEnumerator DestroyItem(Cube cube)
     {
-        base.PutDown();
+        cube.trashBinAnime.enabled = false;
+        Vector3 cubeScale = cube.transform.localScale;
 
-        
+        float reduceSpeed;
+        bool isDestroyScale = itemScale.x < destroyScale;
 
-        // 
-        // 들고 있는 오브젝트 destroy
-    }*/
+        while (true)
+        {
+            reduceSpeed = Time.deltaTime * speed * -1;
+            Debug.Log(reduceSpeed);
 
+            itemScale = new Vector3(itemScale.x + reduceSpeed, itemScale.y + reduceSpeed, itemScale.z + reduceSpeed);
+
+            if (isDestroyScale)
+            {
+                Destroy(item.gameObject);
+            }
+
+            yield return null;
+        }
+    }
 }

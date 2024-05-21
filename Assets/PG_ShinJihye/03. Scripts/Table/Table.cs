@@ -1,15 +1,9 @@
 using JH;
-using JiHye;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Events;
-
-public class TrashCan : Table
-{
-
-}
 
 public class Table : MonoBehaviour, IHighlightable
 {
@@ -52,8 +46,7 @@ public class Table : MonoBehaviour, IHighlightable
 
     }
 
-    public virtual void Interactable(Item item = null)
+    public virtual void Interactable(Cube cube = null)
     {
-
     }
 }
