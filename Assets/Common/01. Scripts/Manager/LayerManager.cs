@@ -11,6 +11,10 @@ public class LayerManager : Singleton<LayerManager>
     [SerializeField]
     public LayerMask tableLM;
 
+    [Header("아이템")]
+    [SerializeField]
+    public LayerMask itemLM;
+
     [Header("물 타일")]
     [SerializeField]
     public LayerMask waterTileLM;
