@@ -6,7 +6,7 @@ public class TrashBin : Table
 {
     [SerializeField] float speed;
     [SerializeField] float destroyScale;
-
+    /*
     public override void Interactable(Cube cube)
     {
         base.Interactable(cube);
@@ -37,5 +37,5 @@ public class TrashBin : Table
 
             yield return null;
         }
-    }
+    }*/
 }
