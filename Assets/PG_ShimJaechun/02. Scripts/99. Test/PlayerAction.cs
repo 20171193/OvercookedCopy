@@ -197,7 +197,7 @@ namespace Jc
                 return;
             else if(nearestItem == null)    // 가까운 드랍 아이템이 없는 경우
             {
-                //pickedItem = nearestTable.PickUpItem();
+                pickedItem = nearestTable.PickUpItem();
                 if (pickedItem == null) return;
             }
             else if(nearestTable == null)   // 가까운 테이블이 없는 경우
@@ -222,7 +222,7 @@ namespace Jc
                 // 테이블 위 아이템 집기
                 else
                 {
-                    //pickedItem = nearestTable.PickUpItem();
+                    pickedItem = nearestTable.PickUpItem();
                     if (pickedItem == null) return;
                 }
             }
@@ -242,7 +242,7 @@ namespace Jc
                 pickedItem.Drop();
             else
             {
-                //nearestTable.PutDownItem(pickedItem);
+                nearestTable.PutDownItem(pickedItem);
             }
 
             anim.SetTrigger("Pickup");
