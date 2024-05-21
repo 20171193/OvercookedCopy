@@ -14,7 +14,7 @@ public class Test : MonoBehaviour
             Item item = transform.GetComponentInChildren<Item>();
             Debug.Log(item);
 
-            table.Interactable(item);
+            //table.Interactable(item);
         }
     }
 }
