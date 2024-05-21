@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2066065433649661678}
   - component: {fileID: 1861116712512365792}
   - component: {fileID: 7753708760379576098}
-  - component: {fileID: 6571274070408205777}
+  - component: {fileID: 4784525877164716703}
   m_Layer: 0
   m_Name: Meat Sliced Ingredient Object
   m_TagString: Untagged
@@ -46,11 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df228129d8a6a04aab03d18463482d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 7753708760379576098}
+  collid: {fileID: 0}
   Type: 0
   ingredientsData: {fileID: 11400000, guid: ed658f6da2d27cd409e888d1b62e2ab5, type: 2}
   IngState: 1
   initialize: 1
-  rigid: {fileID: 7753708760379576098}
   DebugGameObject: {fileID: 0}
 --- !u!54 &7753708760379576098
 Rigidbody:
@@ -79,8 +80,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &6571274070408205777
-SphereCollider:
+--- !u!65 &4784525877164716703
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -98,5 +99,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.2
-  m_Center: {x: 0, y: 0.2, z: 0}
+  m_Size: {x: 0.2, y: 0.2, z: 0.2}
+  m_Center: {x: 0, y: 0.1, z: 0}
