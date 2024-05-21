@@ -12,6 +12,7 @@ namespace KIMJAEWON
         private Rigidbody rb;
         private Vector2 moveInput;
         [SerializeField] float dashPower;
+        [SerializeField] AnimationCurve curve;
 
         void Start()
         {
@@ -44,6 +45,10 @@ namespace KIMJAEWON
         public void OnMove(InputValue value)
         {
             moveInput = value.Get<Vector2>();
+            if(moveInput.x != 0 && moveInput.y != 0)
+            {
+
+            }
         }
 
         public void OnDash()

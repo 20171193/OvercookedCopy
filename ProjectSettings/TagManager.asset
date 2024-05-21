@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Table
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -11,8 +13,8 @@ TagManager:
   - Player
   - Water
   - UI
-  - 
-  - 
+  - Table
+  - Item
   - 
   - 
   - 
@@ -43,4 +45,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Recipe
+    uniqueID: 1736451221
     locked: 0

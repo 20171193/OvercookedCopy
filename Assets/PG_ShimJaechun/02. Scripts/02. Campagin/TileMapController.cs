@@ -125,7 +125,7 @@ namespace Jc
         {
             changedTileCnt++;
             // 모든 타일이 뒤집힌경우
-            if(changedTileCnt >= tileCnt)
+            if (changedTileCnt >= tileCnt)
             {
                 changedTileCnt = 0;
                 tileCnt = 0;

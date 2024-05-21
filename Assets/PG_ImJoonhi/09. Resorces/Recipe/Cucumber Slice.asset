@@ -14,9 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Cucumber Slice
   Wrong: 0
+  needPlate: 1
   ingredients:
   - {fileID: 11400000, guid: 836b0553e24f94e4b9e4c6cb6b19a059, type: 2}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   ingredientsState: 01000000000000000000000000000000
+  Model: {fileID: 0}

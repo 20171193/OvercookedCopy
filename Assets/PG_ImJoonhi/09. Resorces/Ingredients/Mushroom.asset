@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b83738344b8cc6d4c95d5e448e6b36a6, type: 3}
+  m_Name: Mushroom
+  m_EditorClassIdentifier: 
+  id: 25
+  Name: Mushroom
+  Original: {fileID: 4198333284727528696, guid: bd2cc40a4f71fdd499c6b01601c24ae2,
+    type: 3}
+  Sliced: {fileID: 4704371177802375253, guid: e6b1d19a426e34f45a2a2a94b0fe4f1c, type: 3}
+  Potted: {fileID: 470653089998552927, guid: 2ec2aec7864c8fd44824a91a3c0cb194, type: 3}
+  Paned: {fileID: 0}
+  ingSprite: {fileID: 0}

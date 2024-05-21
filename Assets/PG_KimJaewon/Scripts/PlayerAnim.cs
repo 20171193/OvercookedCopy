@@ -1,72 +1,69 @@
-using System.Collections;
-using System.Collections.Generic;
+using System.Xml.Serialization;
 using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 namespace KIMJAEWON
 {
-    public class PlayerAnim : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
-
-        [SerializeField] int hp = 3;
         Animator anim;
-        [SerializeField] State state;
-        bool isMoving = false;
+        [SerializeField] GameObject Item1;
+        [SerializeField] GameObject Item2;
+
+
+        private bool isPickup = false;
+        
 
         void Start()
         {
-            anim = GetComponent<Animator>(); // Animator 컴포넌트를 가져옴
-            StartCoroutine(StateMachine()); // 상태 머신 코루틴 시작
+            anim = GetComponent<Animator>(); // Animator 컴포넌트 가져오기 .
         }
 
-        enum State
+        void Update()
         {
-            IDLE,
-            MOVE
-        }
+            // 플레이어가 수평 및 수직 입력을 받으면 Move 애니메이션을 트리거
+            float horizontalInput = Input.GetAxisRaw("Horizontal");
+            float verticalInput = Input.GetAxisRaw("Vertical");
 
-        IEnumerator StateMachine()
-        {
-            while (true) 
-            { 
-                if(state != State.IDLE)
-                {
-                    yield return StartCoroutine(state.ToString());
-                }
-                yield return null;
-            }
-        }
-
-        IEnumerator IDLE()
-        {
-            if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Idle")) // 현재 애니메이션이 Idle이 아닐 때
+            if (horizontalInput != 0 || verticalInput != 0)
             {
-                Debug.Log("Anim Played");
-                anim.Play("Idle"); // Idle 애니메이션 재생
+                anim.SetBool("isMoving", true); // isMoving 파라미터를 true로 설정하여 Move 애니메이션을 재생
             }
-            yield return null; 
-        }
-
-        IEnumerator MOVE()
-        {
-            while (isMoving)
+            else
             {
-                if (!anim.GetCurrentAnimatorStateInfo(0).IsName("Move")) // 현재 애니메이션이 Move가 아닐 때
-                {
-                    anim.Play("Move", 0, 0); // Move 애니메이션 재생
-                }
-                yield return null;
+                anim.SetBool("isMoving", false); // isMoving 파라미터를 false로 설정하여 Move 애니메이션을 정지
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ItemPickUp();
+            }
+
+            if (Input.GetKeyDown(KeyCode.LeftControl))
+            {
+                ItemWashing();
+            }
+
+            if (Input.GetKeyDown(KeyCode.RightControl))
+            {
+                ItemCutting();
             }
         }
-
-        // 이동 상태를 설정하는 메서드
-        public void SetMoving(bool moving)
+        
+        void ItemPickUp()
         {
-            isMoving = moving;
+            anim.SetTrigger("Pickup");
         }
+
+        void ItemWashing()
+        {
+            anim.SetTrigger("Washing");
+        }
+
+        void ItemCutting()
+        {
+            anim.SetTrigger("Cutting");
+        }
+
+
     }
 }
-
