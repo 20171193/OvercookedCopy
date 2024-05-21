@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pan : MonoBehaviour
+public class Pan : Item
 {
     [Header("Cook State")]
     public bool OnCooker;
@@ -47,6 +47,7 @@ public class Pan : MonoBehaviour
         CookingObject.transform.SetParent(PanPoint.transform, true);
     }
 
+    /*
     public void GoTo(GameObject GoPotint)
     {
         gameObject.transform.SetParent(GoPotint.transform, true);
@@ -55,6 +56,7 @@ public class Pan : MonoBehaviour
     {
         gameObject.transform.SetParent(null);
     }
+    */
 
 
     #region Debug
