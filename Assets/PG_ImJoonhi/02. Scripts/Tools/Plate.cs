@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace JH
 {
-    public class Plate : MonoBehaviour, IPickable
+    public class Plate : Item, IPickable
     {
         [SerializeField] RecipeList recipeList;
         public Rigidbody rigid;
@@ -17,10 +17,10 @@ namespace JH
         }
 
         /// <summary>그릇에 놓을 재료가 1가지인 ingredientObject 프리팹의 경우 사용하는 함수.</summary>
-        public void IngredientIN(GameObject GeneratePoint, IngredientsObject ingredientObject)
+        public bool IngredientIN(GameObject GeneratePoint, IngredientsObject ingredientObject)
         {
-            if (ingredientObject.IngState != IngredientState.Sliced)
-                return;
+            if (ingredientObject.IngState == IngredientState.Original)
+                return false;
             List<IngredientsObject> buf = new List<IngredientsObject>();
             for (int i = 0; i < 4; i++) buf.Add(null);
             buf[0] = ingredientObject;
@@ -32,19 +32,23 @@ namespace JH
                 {
                     Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
                     GenerateFoodDish(GeneratePoint, buf, recipeList.Recipe[i]);
+                    return true;
                 }
             }
+            return false;
         }
 
         /// <summary>그릇에 놓을 재료가 2개 이상인 foodDish 프리팹인 경우 사용하는 함수.</summary>
-        public void IngredientIN(GameObject GeneratePoint, FoodDish foodDish)
+        public bool IngredientIN(GameObject GeneratePoint, FoodDish foodDish)
         {
             // Debug.Log(recipeList.Recipe[i].name);
             if (!foodDish.Plate)
             {
                 Debug.Log("Put Food on Plate");
                 SwapFoodDish(gameObject, foodDish);
+                return true;
             }
+            return false;
         }
 
         private void GenerateFoodDish(GameObject GeneratePoint, List<IngredientsObject> ingredientObject, RecipeData recipe)
@@ -69,6 +73,9 @@ namespace JH
 
         public void GoTo(GameObject GoPotint)
         {
+            rigid.isKinematic = true;
+            gameObject.transform.position = GoPotint.transform.position;
+            gameObject.transform.rotation = GoPotint.transform.rotation;
             gameObject.transform.SetParent(GoPotint.transform, true);
         }
         public void Drop()
@@ -83,6 +90,7 @@ namespace JH
         [SerializeField] IngredientsObject DebugIngredientObject;
         // [SerializeField] RecipeData DebugRecipe;
         [SerializeField] FoodDish DebugFoodDish;
+        [SerializeField] GameObject DebugGameObject;
 
         [ContextMenu("[Debug]Generate FoodDish")]
         public void DebugGenerate()
@@ -95,6 +103,18 @@ namespace JH
         public void DebugAddPlate()
         {
             IngredientIN(DebugGenPoint, DebugFoodDish);
+        }
+
+        [ContextMenu("[Debug]GoTo")]
+        public void DebugGoTo()
+        {
+            GoTo(DebugGameObject);
+        }
+
+        [ContextMenu("[Debug]Drop")]
+        public void DebugDrop()
+        {
+            Drop();
         }
 
 #endif

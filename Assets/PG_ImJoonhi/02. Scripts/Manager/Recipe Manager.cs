@@ -8,5 +8,6 @@ namespace JH
     {
         // 현제 스테이지가 가지는 레시피 리스트
         public RecipeList recipeList;
+        public IngredientList ingredientList;
     }
 }
