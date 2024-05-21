@@ -23,3 +23,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8087e0d1de9bf754a86fff473ef22cd0, type: 2}
   ingredientsState: 03000000010000000100000000000000
   Model: {fileID: 1635592980736394988, guid: fdd7f4c2b4bdd564d8460f42ec639229, type: 3}
+  FoodSprite: {fileID: 21300000, guid: 51989f792d4e3f548a640ac4ec4f05f6, type: 3}
