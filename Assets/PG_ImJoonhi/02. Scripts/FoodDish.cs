@@ -34,7 +34,9 @@ namespace JH
             ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
 
             rigid = gameObject.GetComponent<Rigidbody>();
+            collid = gameObject.GetComponent<BoxCollider>();
             rigid.isKinematic = true;
+            collid.enabled = false;
 
             if (initPlate)
                 Plate = true;

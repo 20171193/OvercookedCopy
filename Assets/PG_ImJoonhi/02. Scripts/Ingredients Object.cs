@@ -25,7 +25,10 @@ namespace JH
         void Start()
         {
             rigid = gameObject.GetComponent<Rigidbody>();
+            collid = gameObject.GetComponent<BoxCollider>();
             rigid.isKinematic = true;
+            collid.enabled = false;
+
             switch (IngState)
             {
                 case IngredientState.Original:
