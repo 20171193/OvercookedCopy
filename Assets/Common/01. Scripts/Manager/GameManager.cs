@@ -6,33 +6,52 @@ using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
 using Jc;
+using static UnityEditor.Rendering.InspectorCurveEditor;
 
 namespace Jc
 {
     public class GameManager : MonoBehaviourPunCallbacks
     {
+        [SerializeField]
+        private ClientState curState = ClientState.JoiningLobby;
+
         // 인게임 게임매니저
         private void Start()
         {
-            // 인게임 모드
+            // 일반 모드
             if (PhotonNetwork.InRoom)
             {
+                Debug.Log("일반 모드입니다.");
                 PhotonNetwork.LocalPlayer.SetLoad(true);
             }
             // 디버깅 모드
             else
             {
-                Debug.Log("디버깅 모드 시작.");
+                Debug.Log("디버그 모드입니다.");
                 PhotonNetwork.LocalPlayer.NickName = $"DebugPlayer {Random.Range(1000, 10000)}";
                 PhotonNetwork.ConnectUsingSettings();
             }
         }
 
-        //
+        private void Update()
+        {
+            ClientState cState = PhotonNetwork.NetworkClientState;
+            if (curState != cState)
+            {
+                Debug.Log(cState);
+                curState = cState;
+            }
+        }
         public override void OnConnectedToMaster()
         {
             RoomOptions options = new RoomOptions() { IsVisible = false };
             PhotonNetwork.JoinOrCreateRoom("DebugRoom", options, TypedLobby.Default);
+        }
+
+        // 디버깅모드 게임시작
+        public override void OnJoinedRoom()
+        {
+            GameStart();
         }
 
         // 연결 실패 시 타이틀 씬으로 이동
@@ -52,6 +71,11 @@ namespace Jc
         {
             Manager.Scene.LoadScene(SceneManager.SceneType.Main);
             PhotonNetwork.LeaveRoom();
+        }
+
+        private void GameStart()
+        {
+
         }
     }
 }
