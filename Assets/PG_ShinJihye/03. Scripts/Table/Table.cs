@@ -9,7 +9,7 @@ public class TrashCan : Table
 
 }
 
-public class Table: MonoBehaviour, IHighlightable
+public class Table : MonoBehaviour, IHighlightable
 {
     public enum TableState
     {
@@ -27,8 +27,11 @@ public class Table: MonoBehaviour, IHighlightable
     [SerializeField]
     private Material changeMT;
 
+    // 테이블 현재 상태
     private TableState currentState;
 
+    // 테이블 위에 있는 아이템
+    private Item ownItem = null;
 
     private void Awake()
     {
@@ -45,7 +48,12 @@ public class Table: MonoBehaviour, IHighlightable
         meshRenderer.sharedMaterial = originMT;
     }
 
-    public virtual void PutedDown()
+    public virtual void GetItem(Item item)
+    {
+
+    }
+
+    public virtual void Interactable(Item item = null)
     {
 
     }
