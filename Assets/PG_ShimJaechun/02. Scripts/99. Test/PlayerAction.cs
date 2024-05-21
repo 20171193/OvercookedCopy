@@ -8,6 +8,10 @@ namespace Jc
 {
     public class PlayerAction : MonoBehaviour
     {
+        // 플레이어 아이템 소켓
+        [SerializeField]
+        private Transform itemSocket;
+
         // 오브젝트 머터리얼 변경
         private Material originTile;
         [SerializeField]
@@ -38,7 +42,6 @@ namespace Jc
             nearestTable = table;
             nearestTable.EnterPlayer();
         }
-
         private void SetItem(Item item)
         {
             // 이전 아이템 처리
@@ -80,7 +83,6 @@ namespace Jc
             }
             return tmpTable;
         }
-
         // 가장 가까운 아이템 도출
         private Item FindItem()
         {
@@ -113,7 +115,7 @@ namespace Jc
             return tmpItem;
         }
 
-        private void OnItemInteract(InputValue value)
+        private void OnItemControll(InputValue value)
         {
             // 아이템을 들고 있는 상태라면
             if(isPickUp)
@@ -128,6 +130,26 @@ namespace Jc
             }
         }
 
+        private void OnTableInteract(InputValue value)
+        {
+            // 아이템을 들고 있는 상태라면
+            if(isPickUp)
+            {
+                // 추후 던지기 구현
+                return;
+            }
+            else
+            {
+                // 가까운 테이블이 없는 경우
+                if (nearestTable == null) return;
+                else
+                {
+                    // 테이블 상호작용
+                    nearestTable.Interactable();
+                }
+            }
+        }
+
         private void TableInteract()
         {
             // 가까운 테이블이 없는 경우
@@ -137,22 +159,58 @@ namespace Jc
         private void PickUp()
         {
             // 상호작용 할 오브젝트가 없는 경우
-            if (nearestItem == null && nearestTable == null) return; 
+            if (nearestItem == null && nearestTable == null) 
+                return;
+            else if(nearestItem == null)    // 가까운 드랍 아이템이 없는 경우
+            {
+                pickedItem = nearestTable.PickUpItem();
+                if (pickedItem == null) return;
+            }
+            else if(nearestTable == null)   // 가까운 테이블이 없는 경우
+            {
+                pickedItem = nearestItem;
+                pickedItem.GoTo(itemSocket.gameObject);
+            }
+            // 아이템과 테이블 모두 존재할 경우
+            // 거리계산 후 해당 오브젝트 PickUp
+            else
+            {
+                float itemDist = (nearestItem.transform.position - transform.position).sqrMagnitude;
+                float tableDist = (nearestTable.transform.position - transform.position).sqrMagnitude;
 
-            // 가까운 아이템이 있는 경우 아이템 집기
-            // 우선순위 적용
+                // 떨어진 아이템 집기
+                // 추후 조건추가 (아이템을 가지고있지 않은 테이블 일 경우)
+                if (itemDist < tableDist)
+                {
+                    pickedItem = nearestItem;
+                    pickedItem.GoTo(itemSocket.gameObject);
+                }
+                // 테이블 위 아이템 집기
+                else
+                {
+                    pickedItem = nearestTable.PickUpItem();
+                    if (pickedItem == null) return;
+                }
+            }
 
-
-            // 가까운 아이템이 없는 경우 테이블 위의 아이템 집기
-
+            pickedItem.GoTo(itemSocket.gameObject);
+            pickedItem.ExitPlayer();
         }
-        
+
         private void PutDown()
         {
             // 집고있는 아이템이 없는 경우
             if (!isPickUp || pickedItem == null) return;
 
+            // 가까운 테이블이 없는 경우
+            if (nearestTable == null)
+                pickedItem.Drop();
+            else
+            {
+                nearestTable.PutDownItem(pickedItem);
+            }
 
+            pickedItem = null;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -166,7 +224,7 @@ namespace Jc
 
             // 부딪힌 아이템 세팅
             // 현재 아이템을 들고있는 상태가 아닐 경우
-            if(!isPickUp && Manager.Layer.itemLM.Contain(other.gameObject.layer))
+            if(!isPickUp && Manager.Layer.dropItemLM.Contain(other.gameObject.layer))
             {
                 itemList.Add(other.GetComponent<Item>());
                 SetItem(FindItem());
@@ -193,7 +251,7 @@ namespace Jc
             }
 
             // 부딪힌 아이템 세팅
-            if (Manager.Layer.itemLM.Contain(other.gameObject.layer))
+            if (Manager.Layer.dropItemLM.Contain(other.gameObject.layer))
             {
                 Item temp = other.GetComponent<Item>();
 
