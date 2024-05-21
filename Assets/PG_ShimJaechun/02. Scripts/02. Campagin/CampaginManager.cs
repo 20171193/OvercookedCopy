@@ -50,6 +50,7 @@ namespace Jc
             PhotonNetwork.JoinOrCreateRoom("DebugRoom", options, TypedLobby.Default);
         }
 
+        // 디버깅모드 게임시작
         public override void OnJoinedRoom()
         {
             GameStart();
