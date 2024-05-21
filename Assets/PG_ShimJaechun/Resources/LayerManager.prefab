@@ -49,7 +49,13 @@ MonoBehaviour:
     m_Bits: 192
   tableLM:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
+  itemLM:
+    serializedVersion: 2
+    m_Bits: 128
+  dropItemLM:
+    serializedVersion: 2
+    m_Bits: 256
   waterTileLM:
     serializedVersion: 2
     m_Bits: 536870912

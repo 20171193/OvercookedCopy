@@ -8,6 +8,8 @@ namespace Jc
 {
     public class PlayerAction : MonoBehaviour
     {
+        [SerializeField] Animator anim;
+
         // 플레이어 아이템 소켓
         [SerializeField]
         private Transform itemSocket;
@@ -33,6 +35,29 @@ namespace Jc
         // 오브젝트를 들고있는 상태인지?
         private bool isPickUp = false;
 
+        [SerializeField]
+        private bool debug; // 디버그 모드 Gizmos
+
+        [SerializeField]
+        private float range;
+        [SerializeField, Range(0, 360)]
+        private float angle;
+
+        private float preAngle;
+        private float cosAngle;
+        private float CosAngle
+        {
+            get
+            {
+                if (preAngle == angle)
+                    return cosAngle;
+
+                preAngle = angle;
+                cosAngle = Mathf.Cos(angle * 0.5f * Mathf.Deg2Rad);
+                return cosAngle;
+            }
+        }
+
         private void SetTable(Table table)
         {
             // 이전 테이블 처리
@@ -40,6 +65,7 @@ namespace Jc
                 nearestTable.ExitPlayer();
 
             nearestTable = table;
+            if (nearestTable == null) return;
             nearestTable.EnterPlayer();
         }
         private void SetItem(Item item)
@@ -49,6 +75,7 @@ namespace Jc
                 nearestItem.ExitPlayer();
 
             nearestItem = item;
+            if (nearestItem == null) return;
             nearestItem.EnterPlayer();
         }
 
@@ -65,6 +92,13 @@ namespace Jc
             // 여러 개일 경우
             foreach(Table table in tableList)
             {
+                // 전방에 위치한 테이블 인 경우
+                Vector3 dir = (table.transform.position - transform.position).normalized;
+                if(Vector3.Dot(transform.forward, dir) >= CosAngle)
+                {
+                    return table;
+                }
+
                 // 할당된 테이블이 없을 경우
                 if(minDist == -1)
                 {
@@ -163,7 +197,7 @@ namespace Jc
                 return;
             else if(nearestItem == null)    // 가까운 드랍 아이템이 없는 경우
             {
-                pickedItem = nearestTable.PickUpItem();
+                //pickedItem = nearestTable.PickUpItem();
                 if (pickedItem == null) return;
             }
             else if(nearestTable == null)   // 가까운 테이블이 없는 경우
@@ -188,11 +222,12 @@ namespace Jc
                 // 테이블 위 아이템 집기
                 else
                 {
-                    pickedItem = nearestTable.PickUpItem();
+                    //pickedItem = nearestTable.PickUpItem();
                     if (pickedItem == null) return;
                 }
             }
 
+            anim.SetTrigger("Pickup");
             pickedItem.GoTo(itemSocket.gameObject);
             pickedItem.ExitPlayer();
         }
@@ -207,9 +242,10 @@ namespace Jc
                 pickedItem.Drop();
             else
             {
-                nearestTable.PutDownItem(pickedItem);
+                //nearestTable.PutDownItem(pickedItem);
             }
 
+            anim.SetTrigger("Pickup");
             pickedItem = null;
         }
 
@@ -243,11 +279,10 @@ namespace Jc
                 if (!tableList.Contains(temp)) // 리스트 예외처리
                     return;
 
-                if (temp == nearestTable)
-                    nearestTable = null;
-
                 tableList.Remove(temp);
                 SetTable(FindTable());
+                if (temp == nearestTable)
+                    nearestTable = null;
             }
 
             // 부딪힌 아이템 세팅
@@ -260,12 +295,26 @@ namespace Jc
                 if (!itemList.Contains(temp)) // 리스트 예외처리
                     return;
 
-                if (temp == nearestItem)
-                    nearestItem = null;
-
                 itemList.Remove(temp);
                 SetItem(FindItem());
+                if (temp == nearestItem)
+                    nearestItem = null;
             }
+        }
+
+        private void OnDrawGizmosSelected()
+        {
+            if (debug == false)
+                return;
+
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, range);
+
+            Vector3 rightDir = Quaternion.Euler(0, angle * 0.5f, 0) * transform.forward;
+            Vector3 leftDir = Quaternion.Euler(0, angle * -0.5f, 0) * transform.forward;
+
+            Debug.DrawRay(transform.position, rightDir * range, Color.cyan);
+            Debug.DrawRay(transform.position, leftDir * range, Color.cyan);
         }
     }
 }
