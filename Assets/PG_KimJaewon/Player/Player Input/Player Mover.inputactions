@@ -24,9 +24,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Space",
+                    "name": "ItemControll",
                     "type": "Button",
                     "id": "1ee7f448-ebe3-49f5-a62f-7d0a6bcaa828",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "TableInteract",
+                    "type": "Button",
+                    "id": "c45467b5-0d09-4a38-bf39-37895ef98825",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -107,7 +116,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Space",
+                    "action": "ItemControll",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0afd8cb8-7560-4e50-9579-683e167c4264",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "TableInteract",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
