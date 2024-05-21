@@ -6199,7 +6199,7 @@ MonoBehaviour:
   resultUI: {fileID: 259879128}
   scoreText: {fileID: 1584239433}
   tipText: {fileID: 2097897743}
-  gameTime: 100
+  gameTime: 65
   curScore: 0
   curTip: 0
   totalScore: 0
@@ -17710,7 +17710,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 180
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 180
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -18241,7 +18241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 2100000, guid: c1a906e11a3ffb54e902e994c54c13a7, type: 2}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.3254902, g: 0.8, b: 0.16470589, a: 0.83137256}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

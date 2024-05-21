@@ -30,7 +30,7 @@ public class RecipeOrder : MonoBehaviour
     private void Start()
     {
         // 20초에 한번씩 랜덤 호출
-        InvokeRepeating("RandomRecipe", 20.0f, 20.0f);
+        InvokeRepeating("RandomRecipe", 10.0f, 10.0f);
     }
 
     private void RandomRecipe()         // 랜덤 생성
@@ -109,7 +109,7 @@ public class RecipeOrder : MonoBehaviour
             }
         }
     }
-    private void OnOrderOut(InputValue value)
+    public void OnOrderOut(InputValue value)
     {
         if (OrderList.Count > 0)
         {
