@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Jc
@@ -10,6 +7,9 @@ namespace Jc
         [SerializeField]
         private Animator anim;
 
+        [SerializeField]
+        private Animator slopeTileAnim;
+
         [Header("스테이지 넘버 (0~)")]
         [SerializeField]
         private int stageNumber;
@@ -18,15 +18,17 @@ namespace Jc
         private Transform stageInfo;   // 스테이지 정보
 
         private Transform mainCamera;
-        
+
         private void Awake()
         {
-            mainCamera = Camera.main.transform;    
+            mainCamera = Camera.main.transform;
         }
 
         public void ActiveEntrance()
         {
             anim.SetTrigger("OnActive");
+            if(slopeTileAnim != null)
+                slopeTileAnim.SetTrigger("OnActive");
         }
 
         public void EnterStage()

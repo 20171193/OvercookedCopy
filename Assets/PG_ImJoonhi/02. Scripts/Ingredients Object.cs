@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace JH
 {
-    public class IngredientsObject : MonoBehaviour, IComparable<IngredientsObject>, IPickable
+    public class IngredientsObject : Item, IComparable<IngredientsObject>, IPickable
     {
         [Header("Status")]
         public IngredientsData ingredientsData;
@@ -93,6 +93,8 @@ namespace JH
         public void GoTo(GameObject GoPotint)
         {
             rigid.isKinematic = true;
+            gameObject.transform.position = GoPotint.transform.position;
+            gameObject.transform.rotation = GoPotint.transform.rotation;
             gameObject.transform.SetParent(GoPotint.transform, true);
         }
         public void Drop()
@@ -117,6 +119,12 @@ namespace JH
         public void DebugDrop()
         {
             Drop();
+        }
+
+        [ContextMenu("[Debug]Destroy")]
+        public void Destorythis()
+        {
+            Destroy(gameObject);
         }
 #endif
         #endregion

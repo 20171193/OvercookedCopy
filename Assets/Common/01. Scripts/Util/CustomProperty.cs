@@ -82,6 +82,20 @@ namespace Jc
             PhotonHashTable customProperty = room.CustomProperties;
             return customProperty.TryGetValue(GAMESTARTTIME, out object value) ? (double)value : 0;
         }
+
+        public const string BUSSETUP = "BusSetUp";
+        public static void SetBusSetUp(this Room room, bool value)
+        {
+            PhotonHashTable customProperty = new PhotonHashTable();
+            customProperty[BUSSETUP] = value;
+            room.SetCustomProperties(customProperty);
+        }
+        public static bool GetBusSetUp(this Room room)
+        {
+            PhotonHashTable customProperty = room.CustomProperties;
+            return customProperty.TryGetValue(GAMESTARTTIME, out object value) ? (bool)value : false;
+        }
+
         #endregion
     }
 }

@@ -2,10 +2,16 @@ using JH;
 using JiHye;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Table: MonoBehaviour
+public class TrashCan : Table
+{
+
+}
+
+public class Table : MonoBehaviour, IHighlightable
 {
     public enum TableState
     {
@@ -20,6 +26,12 @@ public class Table: MonoBehaviour
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] Material changeMT;
 
+    // 테이블 현재 상태
+    private TableState currentState;
+
+    // 테이블 위에 있는 아이템
+    private Item ownItem = null;
+
     private void Awake()
     {
         originMT = meshRenderer.sharedMaterial;
@@ -27,12 +39,21 @@ public class Table: MonoBehaviour
 
     public void EnterPlayer()
     {
-        meshRenderer.material = changeMT;
+        meshRenderer.sharedMaterial = changeMT;
     }
 
     public void ExitPlayer()
     {
-        meshRenderer.material = originMT;
+        meshRenderer.sharedMaterial = originMT;
     }
 
+    public virtual void GetItem(Item item)
+    {
+
+    }
+
+    public virtual void Interactable(Item item = null)
+    {
+
+    }
 }

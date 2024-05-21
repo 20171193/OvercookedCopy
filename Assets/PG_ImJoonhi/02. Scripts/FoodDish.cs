@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace JH
 {
-    public class FoodDish : MonoBehaviour, IPickable
+    public class FoodDish : Item, IPickable
     {
         [Header("Map Recipes")]
         [SerializeField] public RecipeList recipeList;
@@ -159,6 +159,8 @@ namespace JH
         public void GoTo(GameObject GoPotint)
         {
             rigid.isKinematic = true;
+            gameObject.transform.position = GoPotint.transform.position;
+            gameObject.transform.rotation = GoPotint.transform.rotation;
             gameObject.transform.SetParent(GoPotint.transform, true);
         }
         public void Drop()
@@ -171,6 +173,7 @@ namespace JH
 #if UNITY_EDITOR
         [Header("Debug")]
         [SerializeField] IngredientsObject DebugIngredient;
+        [SerializeField] GameObject DebugGameObject;
 
         [ContextMenu("[Debug]Add Ingredients")]
         public void DebugAdd()
@@ -183,6 +186,18 @@ namespace JH
         public void DebugOnPlate()
         {
             AddPlate();
+        }
+
+        [ContextMenu("[Debug]GoTo")]
+        public void DebugGoTo()
+        {
+            GoTo(DebugGameObject);
+        }
+
+        [ContextMenu("[Debug]Drop")]
+        public void DebugDrop()
+        {
+            Drop();
         }
 #endif
         #endregion

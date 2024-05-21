@@ -46,7 +46,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   interactableLM:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 192
   tableLM:
     serializedVersion: 2
     m_Bits: 0
+  waterTileLM:
+    serializedVersion: 2
+    m_Bits: 536870912

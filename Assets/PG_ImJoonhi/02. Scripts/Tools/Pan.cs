@@ -26,12 +26,17 @@ public class Pan : MonoBehaviour
 
     public bool IngredientIN(IngredientsObject ingredient)
     {
-        if(!Cooking && ingredient.ingredientsData.Paned != null)
+        if(!Cooking && ingredient.ingredientsData.Paned != null && CookingObject == null)
         {
             OnPan(ingredient);
             return true;
         }
         return false;
+    }
+
+    public void TakeOut()
+    {
+        CookingObject = null;
     }
 
     private void OnPan(IngredientsObject ingredient)

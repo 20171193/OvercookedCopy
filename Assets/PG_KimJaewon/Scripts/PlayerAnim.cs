@@ -9,6 +9,10 @@ namespace KIMJAEWON
         [SerializeField] GameObject Item1;
         [SerializeField] GameObject Item2;
 
+
+        private bool isPickup = false;
+        
+
         void Start()
         {
             anim = GetComponent<Animator>(); // Animator 컴포넌트 가져오기 .
