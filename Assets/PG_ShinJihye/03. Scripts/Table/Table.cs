@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Table: MonoBehaviour
+public class TrashCan : Table
+{
+
+}
+
+public class Table: MonoBehaviour, IHighlightable
 {
     public enum TableState
     {
@@ -21,6 +27,9 @@ public class Table: MonoBehaviour
     [SerializeField]
     private Material changeMT;
 
+    private TableState currentState;
+
+
     private void Awake()
     {
         originMT = meshRenderer.sharedMaterial;
@@ -28,12 +37,16 @@ public class Table: MonoBehaviour
 
     public void EnterPlayer()
     {
-        meshRenderer.material = changeMT;
+        meshRenderer.sharedMaterial = changeMT;
     }
 
     public void ExitPlayer()
     {
-        meshRenderer.material = originMT;
+        meshRenderer.sharedMaterial = originMT;
     }
 
+    public virtual void PutedDown()
+    {
+
+    }
 }
