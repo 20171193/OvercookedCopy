@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/PG_ShimJaechun/01. Scenes/SJC_Title.unity
     guid: 1f643e043badee34d94f724e4bacde59
-  - enabled: 1
+  - enabled: 0
     path: Assets/PG_ShimJaechun/01. Scenes/SJC_Main.unity
     guid: 5c7879ff36ed34a47a2a1f4afa48cebf
   - enabled: 1

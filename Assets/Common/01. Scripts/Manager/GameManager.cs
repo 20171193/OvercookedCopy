@@ -25,32 +25,32 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    //
     public override void OnConnectedToMaster()
     {
         RoomOptions options = new RoomOptions() { IsVisible = false };
         PhotonNetwork.JoinOrCreateRoom("DebugRoom", options, TypedLobby.Default);
     }
 
+    // 연결 실패 시 타이틀 씬으로 이동
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.Log($"Disconnected : {cause}");
         Manager.Scene.LoadScene(SceneManager.SceneType.Title);
     }
 
+    // 게임을 퇴장한 경우
     public override void OnLeftRoom()
     {
         Manager.Scene.LoadLevel(SceneManager.SceneType.Campagin);
     }
 
+    // 
     public override void OnMasterClientSwitched(Player newMasterClient)
-    {
-        base.OnMasterClientSwitched(newMasterClient);
-    }
-
-
-
-    void Update()
     {
         
     }
+
+    
+
 }

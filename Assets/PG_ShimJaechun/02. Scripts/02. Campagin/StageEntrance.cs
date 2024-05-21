@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 
 namespace Jc
@@ -9,6 +8,9 @@ namespace Jc
     {
         [SerializeField]
         private Animator anim;
+
+        [SerializeField]
+        private Animator slopeTileAnim;
 
         [Header("스테이지 넘버 (0~)")]
         [SerializeField]
@@ -27,6 +29,8 @@ namespace Jc
         public void ActiveEntrance()
         {
             anim.SetTrigger("OnActive");
+            if(slopeTileAnim != null)
+                slopeTileAnim.SetTrigger("OnActive");
         }
 
         public void EnterStage()
