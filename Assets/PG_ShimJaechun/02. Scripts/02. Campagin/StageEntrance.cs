@@ -7,6 +7,9 @@ namespace Jc
         [SerializeField]
         private Animator anim;
 
+        [SerializeField]
+        private Animator slopeTileAnim;
+
         [Header("스테이지 넘버 (0~)")]
         [SerializeField]
         private int stageNumber;
@@ -24,6 +27,8 @@ namespace Jc
         public void ActiveEntrance()
         {
             anim.SetTrigger("OnActive");
+            if(slopeTileAnim != null)
+                slopeTileAnim.SetTrigger("OnActive");
         }
 
         public void EnterStage()

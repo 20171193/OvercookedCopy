@@ -38,6 +38,13 @@ public class ChangeableTile : MonoBehaviour
         targetPos = transform.position + Vector3.up;
     }
 
+    // 이미 오픈된 스테이지일 경우
+    public void OnChangedSetting()
+    {
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+        meshRenderer.sharedMaterial = changeMT;
+    }
+
     public void OnChangeTile()
     {
         tileChangeRoutine = StartCoroutine(TileChangeRoutine());

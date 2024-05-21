@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Table
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -13,6 +14,7 @@ TagManager:
   - Water
   - UI
   - Table
+  - Item
   - 
   - 
   - 
@@ -34,10 +36,9 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - WaterTile
   - Tile
-  - 
+  - SlopeTile
   m_SortingLayers:
   - name: Player
     uniqueID: 3061658607
