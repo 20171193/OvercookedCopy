@@ -2321,6 +2321,9 @@ MonoBehaviour:
   anim: {fileID: 499167523}
   itemSocket: {fileID: 1598225611}
   changeTile: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
+  debug: 1
+  range: 1.5
+  angle: 60
 --- !u!1001 &512135220
 PrefabInstance:
   m_ObjectHideFlags: 0
