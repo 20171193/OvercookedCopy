@@ -2,15 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrashBin : MonoBehaviour
+public class TrashBin : Table
 {
-    void Start()
+    /*public override void PutDown(Table nearestTable, Cube havingObject)
     {
-        
-    }
+        Debug.Log("TrashBin");
+        Destroy(havingObject.gameObject);
+    }*/
 
-    void Update()
+    /*public override void PutDown(GameObject havingObject)
     {
+        base.PutDown();
+
         
-    }
+
+        // 
+        // 들고 있는 오브젝트 destroy
+    }*/
+
 }
