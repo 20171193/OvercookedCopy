@@ -30,7 +30,7 @@ public class RecipeOrder : MonoBehaviour
     private void Start()
     {
         // 20초에 한번씩 랜덤 호출
-        InvokeRepeating("RandomRecipe", 5.0f, 5.0f);
+        InvokeRepeating("RandomRecipe", 20.0f, 20.0f);
     }
 
     private void RandomRecipe()         // 랜덤 생성

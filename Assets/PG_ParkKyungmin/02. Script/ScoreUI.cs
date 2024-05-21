@@ -15,11 +15,14 @@ namespace Kyungmin
         [SerializeField] Slider gauge;        // 게이지바
         [SerializeField] TMP_Text totalscoreText;
         [SerializeField] TMP_Text tipText;
+        [SerializeField] Animator scoreAnimator;
+        [SerializeField] Animator fireAnimator;
+
 
 
         private void OnEnable()
         {
-            // score와 tip의 초기값 설정 
+            // score와 tip의 초기값
             UpdateUI(0, 0);
         }
 
@@ -42,5 +45,24 @@ namespace Kyungmin
                 tipText.text = $"Tip X {tip}";
             }
         }
+
+        public void GetCoin()
+        {
+            // 코인을 먹었을때 애니메이션 재생
+            scoreAnimator.SetTrigger("OnGetCoin");
+        }
+
+        public void EnableFire()
+        {
+            // fireUI 키고, 애니메이션 재생      
+            fireAnimator.SetBool("IsActiveFire", true);
+        }
+
+        public void DisableFire()
+        {
+            // fireUI, 애니메이션 끄기 
+            fireAnimator.SetBool("IsActiveFire", false);
+        }
+
     }
 }
