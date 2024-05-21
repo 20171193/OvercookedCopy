@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.UIElements;
 using UnityEngine;
 
 namespace JH
@@ -40,7 +37,7 @@ namespace JH
 
         }
 
-        public virtual void Interactable(GameObject GenPoint , Item item = null)
+        public virtual void Interactable(GameObject GenPoint, Item item = null)
         {
             // 테이블에 아이템이 없는경우
             if (ownItem = null)
@@ -113,6 +110,32 @@ namespace JH
                                 Destroy(item);
                                 return;
                         }
+                        return;
+                    case ItemType.Pan:
+                        Pan tempPan = ownItem as Pan;
+                        switch (item.Type)
+                        {
+                            case ItemType.Ingredient:
+                                IngredientsObject temp_PanI_Ingredient = item as IngredientsObject;
+                                if (tempPan.isEmpty())
+                                {
+                                    tempPan.IngredientIN(temp_PanI_Ingredient);
+                                    return;
+                                }
+                                return;
+                            case ItemType.FoodDish:
+                                FoodDish temp_PabF_FoodDish = item as FoodDish;
+                                if (tempPan.isWellDone()) 
+                                {
+                                    if(temp_PabF_FoodDish.Add(tempPan.CookingObject))
+                                        tempPan.TakeOut();
+                                }  
+                                Destroy(item);
+                                return;
+                            // case ItemType.Plate:
+                        }
+                        return;
+                    case ItemType.Pot:
                         return;
                 }
             }

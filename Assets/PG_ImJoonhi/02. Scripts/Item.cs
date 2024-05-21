@@ -7,6 +7,7 @@ public class Item : MonoBehaviour, IPickable, IHighlightable
 {
     public Rigidbody rigid;
     public Collider collid;
+    public MeshRenderer meshRenderer;
     public ItemType Type;
     public void GoTo(GameObject GoPotint)
     {

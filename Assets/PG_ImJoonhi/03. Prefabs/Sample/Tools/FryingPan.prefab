@@ -42,17 +42,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 631f1d720dde0da428a2808031d7e84b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.378189
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 631f1d720dde0da428a2808031d7e84b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 13.926512
+      value: 0.6300001
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 631f1d720dde0da428a2808031d7e84b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.558543
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 631f1d720dde0da428a2808031d7e84b,
         type: 3}
@@ -125,6 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 51b79787a34dd0247991dd22dcea8012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: 0}
+  collid: {fileID: 0}
+  Type: 3
   OnCooker: 0
   Cooking: 0
   CookSpeed: 0

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 262534850685790392}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 5, y: 0.6300001, z: -3.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -50,7 +50,7 @@ MonoBehaviour:
   collid: {fileID: 0}
   Type: 0
   ingredientsData: {fileID: 11400000, guid: ed658f6da2d27cd409e888d1b62e2ab5, type: 2}
-  IngState: 1
+  IngState: 3
   initialize: 1
   DebugGameObject: {fileID: 0}
 --- !u!54 &7753708760379576098
