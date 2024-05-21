@@ -10,7 +10,7 @@ namespace KIMJAEWON
         [SerializeField] GameObject Item2;
 
 
-        private bool isPickup = false;
+        //private bool isPickup = false;
         
 
         void Start()

@@ -3,10 +3,11 @@ using UnityEngine;
 
 namespace JH
 {
-    public class Plate : Item, IPickable
+    public class Plate : Item
     {
         [SerializeField] RecipeList recipeList;
-        public Rigidbody rigid;
+        [SerializeField] IngredientList ingredientPrefabs;
+        // public Rigidbody rigid;
 
         [Header("Prefabs")]
         [SerializeField] FoodDish foodDishPrefab;
@@ -14,6 +15,10 @@ namespace JH
         private void Start()
         {
             recipeList = Manager_TEMP.recipemanager.recipeList;
+            ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
+
+            rigid = gameObject.GetComponent<Rigidbody>();
+            rigid.isKinematic = true;
         }
 
         /// <summary>그릇에 놓을 재료가 1가지인 ingredientObject 프리팹의 경우 사용하는 함수.</summary>
@@ -23,7 +28,7 @@ namespace JH
                 return false;
             List<IngredientsObject> buf = new List<IngredientsObject>();
             for (int i = 0; i < 4; i++) buf.Add(null);
-            buf[0] = ingredientObject;
+            buf[0] = ingredientPrefabs.Find(ingredientObject);
             Debug.Log("?");
             for (int i = 0; i < recipeList.Recipe.Count; i++)
             {
@@ -54,7 +59,7 @@ namespace JH
         private void GenerateFoodDish(GameObject GeneratePoint, List<IngredientsObject> ingredientObject, RecipeData recipe)
         {
             FoodDish foodDish = Instantiate(foodDishPrefab, GeneratePoint.transform.position, Quaternion.identity);
-            foodDish.recipeList = Manager_TEMP.recipemanager.recipeList;
+            // foodDish.recipeList = Manager_TEMP.recipemanager.recipeList;
             foodDish.init = ingredientObject;
             foodDish.curRecipe = recipe;
             foodDish.initPlate = true;
@@ -71,6 +76,7 @@ namespace JH
             Destroy(gameObject);
         }
 
+        /*
         public void GoTo(GameObject GoPotint)
         {
             rigid.isKinematic = true;
@@ -82,6 +88,7 @@ namespace JH
         {
             gameObject.transform.SetParent(null);
         }
+        */
 
         #region Debug
 #if UNITY_EDITOR

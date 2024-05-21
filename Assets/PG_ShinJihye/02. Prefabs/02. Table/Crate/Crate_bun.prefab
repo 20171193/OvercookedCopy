@@ -9,9 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2700061073404069583}
-  m_Layer: 0
+  - component: {fileID: 2814641432581034331}
+  - component: {fileID: 648246886913556683}
+  m_Layer: 6
   m_Name: Crate_bun
-  m_TagString: Untagged
+  m_TagString: Table
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -32,6 +34,41 @@ Transform:
   - {fileID: 1127157370201605649}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2814641432581034331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066540168508209866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2d5852153265f048afceb0a11f7434d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meshRenderer: {fileID: 4025590555692808389}
+  changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
+--- !u!65 &648246886913556683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066540168508209866}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &589636017576337914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -95,6 +132,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate_Bun
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 5b0d60e2caf40d74f966e4d3ef14f629,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013150756355859741, guid: 5b0d60e2caf40d74f966e4d3ef14f629,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7954191209657657062, guid: 5b0d60e2caf40d74f966e4d3ef14f629,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -103,6 +155,12 @@ PrefabInstance:
 --- !u!4 &1127157370201605649 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5b0d60e2caf40d74f966e4d3ef14f629,
+    type: 3}
+  m_PrefabInstance: {fileID: 589636017576337914}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4025590555692808389 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: -4615332422755198657, guid: 5b0d60e2caf40d74f966e4d3ef14f629,
     type: 3}
   m_PrefabInstance: {fileID: 589636017576337914}
   m_PrefabAsset: {fileID: 0}

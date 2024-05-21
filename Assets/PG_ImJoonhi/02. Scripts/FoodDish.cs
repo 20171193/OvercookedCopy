@@ -7,13 +7,16 @@ namespace JH
     public class FoodDish : Item, IPickable
     {
         [Header("Map Recipes")]
-        [SerializeField] public RecipeList recipeList;
+        [SerializeField] RecipeList recipeList;
+        [SerializeField] IngredientList ingredientPrefabs;
         public List<IngredientsObject> init;    // 초기 재료 리스트
         public RecipeData curRecipe;            // 현제 래시피 (어느 래시피인지 저장)
         public bool initPlate;                  // 생성시 Plate 보유여부
 
+        /*
         [Header("Components")]
         public Rigidbody rigid;
+        */
 
         public bool Plate { get; private set; }                                             // 그릇 여부
         private List<IngredientsObject> ingredientList = new List<IngredientsObject>(4);    // 현제 포함된 재료 리스트
@@ -28,6 +31,11 @@ namespace JH
         private void Start()
         {
             recipeList = Manager_TEMP.recipemanager.recipeList;
+            ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
+
+            rigid = gameObject.GetComponent<Rigidbody>();
+            rigid.isKinematic = true;
+
             if (initPlate)
                 Plate = true;
             ingredientList = init.ToList();
@@ -73,7 +81,7 @@ namespace JH
             if (!IsAcceptable(1))
                 return false;
             List<IngredientsObject> buf = ingredientList.ToList();
-            buf[included] = ingredient;
+            buf[included] = ingredientPrefabs.Find(ingredient);
             buf.Sort(0, included + 1, null);
 
             // [Debug] 현제 비교할 재료리스트 확인용
@@ -156,6 +164,7 @@ namespace JH
             return false;
         }
 
+        /*
         public void GoTo(GameObject GoPotint)
         {
             rigid.isKinematic = true;
@@ -168,6 +177,7 @@ namespace JH
             rigid.isKinematic = false;
             gameObject.transform.SetParent(null);
         }
+        */
 
         #region Debug
 #if UNITY_EDITOR
