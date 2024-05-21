@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9042792660543203032}
   - component: {fileID: 6311798529420431800}
-  - component: {fileID: 5621311940341628654}
+  - component: {fileID: 2384437345708009115}
   m_Layer: 6
   m_Name: Plate_return
   m_TagString: Untagged
@@ -55,7 +55,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5621311940341628654
+--- !u!114 &2384437345708009115
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 6297589420081741979}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d5852153265f048afceb0a11f7434d, type: 3}
+  m_Script: {fileID: 11500000, guid: 64e5916a316446542881a6a54dabbb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 6595028635091018781}
