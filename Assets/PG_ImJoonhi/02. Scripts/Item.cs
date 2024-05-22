@@ -46,4 +46,4 @@ public class Item : MonoBehaviour, IPickable, IHighlightable
     }
 }
 
-public enum ItemType { Ingredient, Plate, FoodDish, Pan, Pot}
+public enum ItemType { Ingredient, Plate, FoodDish, Pan, Pot, Extinguisher }
