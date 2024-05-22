@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1068710811624877835
+--- !u!1 &3576047327187671575
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,59 +8,59 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1051884488283657238}
-  - component: {fileID: 6633268003691334631}
-  - component: {fileID: 1547454029681482528}
-  - component: {fileID: 7861974182724061738}
+  - component: {fileID: 3743782105568411068}
+  - component: {fileID: 7073707041589175395}
+  - component: {fileID: 1501407869713563195}
+  - component: {fileID: 398033396245007532}
   m_Layer: 0
-  m_Name: Lettuce Sliced Ingredient Object 1
+  m_Name: Cheese_raw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1051884488283657238
+--- !u!4 &3743782105568411068
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068710811624877835}
+  m_GameObject: {fileID: 3576047327187671575}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.14, y: 0.54, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6633268003691334631
+--- !u!114 &7073707041589175395
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068710811624877835}
+  m_GameObject: {fileID: 3576047327187671575}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1df228129d8a6a04aab03d18463482d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigid: {fileID: 1547454029681482528}
+  rigid: {fileID: 1501407869713563195}
   collid: {fileID: 0}
   meshRenderer: {fileID: 0}
   Type: 0
-  ingredientsData: {fileID: 11400000, guid: 447de78bc0100eb4bba3e5f8d816f4fd, type: 2}
-  IngState: 1
+  ingredientsData: {fileID: 11400000, guid: 07eeae503408d9143a40bc0e514e0947, type: 2}
+  IngState: 0
   initialize: 1
   DebugGameObject: {fileID: 0}
---- !u!54 &1547454029681482528
+--- !u!54 &1501407869713563195
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068710811624877835}
+  m_GameObject: {fileID: 3576047327187671575}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -81,13 +81,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &7861974182724061738
+--- !u!65 &398033396245007532
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1068710811624877835}
+  m_GameObject: {fileID: 3576047327187671575}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -100,5 +100,5 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.2, z: 0.2}
-  m_Center: {x: 0, y: 0.1, z: 0}
+  m_Size: {x: 0.4, y: 0.4, z: 0.4}
+  m_Center: {x: 0, y: 0.2, z: 0}

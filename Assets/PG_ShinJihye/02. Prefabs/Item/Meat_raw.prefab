@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &764042442675115143
+--- !u!1 &3838105597585502401
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,59 +8,59 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 795943260195570902}
-  - component: {fileID: 5509359150982468880}
-  - component: {fileID: 7751858641051008908}
-  - component: {fileID: 942577104498021190}
+  - component: {fileID: 8854945060215038027}
+  - component: {fileID: 5429488032556632203}
+  - component: {fileID: 3956535913613572893}
+  - component: {fileID: 7498098818424341820}
   m_Layer: 0
-  m_Name: Tomato Ingredient Object
+  m_Name: Meat_raw
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &795943260195570902
+--- !u!4 &8854945060215038027
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764042442675115143}
+  m_GameObject: {fileID: 3838105597585502401}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.348325, y: 0.66, z: 0.12159228}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5509359150982468880
+--- !u!114 &5429488032556632203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764042442675115143}
+  m_GameObject: {fileID: 3838105597585502401}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1df228129d8a6a04aab03d18463482d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigid: {fileID: 7751858641051008908}
+  rigid: {fileID: 3956535913613572893}
   collid: {fileID: 0}
   meshRenderer: {fileID: 0}
   Type: 0
-  ingredientsData: {fileID: 11400000, guid: a258d750254743247a6163fd02f5f706, type: 2}
+  ingredientsData: {fileID: 11400000, guid: ed658f6da2d27cd409e888d1b62e2ab5, type: 2}
   IngState: 0
   initialize: 1
   DebugGameObject: {fileID: 0}
---- !u!54 &7751858641051008908
+--- !u!54 &3956535913613572893
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764042442675115143}
+  m_GameObject: {fileID: 3838105597585502401}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -77,17 +77,17 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &942577104498021190
+--- !u!65 &7498098818424341820
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764042442675115143}
+  m_GameObject: {fileID: 3838105597585502401}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
