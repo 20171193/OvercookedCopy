@@ -36,7 +36,6 @@ namespace Kyungmin
         public void RecipeResult(int score)
         {
             // 레시피 제출
-            // 스코어, 팁 올려주기
 
             // 팁계산
             int addTip = Tip * multipleTip;
@@ -87,7 +86,7 @@ namespace Kyungmin
             {
                 curTime -= Time.deltaTime;
 
-                // 내림 한 시간
+                // 내림한 시간
                 int floorTime = Mathf.FloorToInt(curTime);
 
                 // 시간 갱신
@@ -96,10 +95,12 @@ namespace Kyungmin
                     prevTime = floorTime;
                     timerBar.UpdateUI(floorTime);
 
-                    if((floorTime % 30 == 0) && (floorTime > 31 ))
+                    // 30초 마다 애니매이션이 작동하게 하면서 마지막 30초에는 실행하지 않음
+                    if ((floorTime % 30 == 0) && (floorTime > 31))
                     {
-                        timerBar.GetAlarm();                      
+                        timerBar.GetAlarm();
                     }
+                    // 마지막 30초에는 지속되는 애니메이션이 실행되게
                     else if (floorTime == 30)
                     {
                         timerBar.EnableAlarm();

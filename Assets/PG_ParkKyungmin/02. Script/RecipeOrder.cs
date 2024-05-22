@@ -30,7 +30,7 @@ public class RecipeOrder : MonoBehaviour
     private void Start()
     {
         // 20초에 한번씩 랜덤 호출
-        InvokeRepeating("RandomRecipe", 10.0f, 10.0f);
+        InvokeRepeating("RandomRecipe", 20.0f, 20.0f);
     }
 
     private void RandomRecipe()         // 랜덤 생성
@@ -50,7 +50,7 @@ public class RecipeOrder : MonoBehaviour
     }
 
     private void OrderIn(RecipeData recipe)
-    { 
+    {
         // Recipe_IGD 생성
         int num = -1;
         for (int i = 0; i < 4; i++)
@@ -59,7 +59,7 @@ public class RecipeOrder : MonoBehaviour
             {
                 if (num == -1)
                     return;
-                OrderUI = Instantiate(orderUI[i-1], gameObject.transform);
+                OrderUI = Instantiate(orderUI[i - 1], gameObject.transform);
                 break;
             }
             else if (i == 3)
@@ -109,6 +109,16 @@ public class RecipeOrder : MonoBehaviour
             }
         }
     }
+
+    //public void OnOrderOut(Recipe_IGD igd)
+    //{
+    //    Destroy(igd.gameObject);
+    //    OrderList.Remove(igd.gameObject);
+
+    //    // 레시피에 따른 스코어로 수정해야함
+    //    inGameFlow.RecipeResult(10);
+    //}
+
     public void OnOrderOut(InputValue value)
     {
         if (OrderList.Count > 0)
@@ -122,7 +132,7 @@ public class RecipeOrder : MonoBehaviour
         }
     }
 
-#region
+    #region
 #if UNITY_EDITOR
     [ContextMenu("[Debug]Add Order")]
     public void DebugAddOrder()

@@ -15,8 +15,9 @@ namespace Kyungmin
         [SerializeField] Slider gauge;        // 게이지바
         [SerializeField] TMP_Text totalscoreText;
         [SerializeField] TMP_Text tipText;
-        [SerializeField] Animator scoreAnimator;
-        [SerializeField] Animator fireAnimator;
+        [SerializeField] Animator coinAnimator;     // Score가 올랐을때 Coin이 돌아가는 애니메이션
+        [SerializeField] Animator fireAnimator;     // 팁X4가 되었을때 불 애니메이션
+        [SerializeField] Animator textAnimator;     // Score가 올랐을때 text 애니메이션
 
 
 
@@ -49,7 +50,8 @@ namespace Kyungmin
         public void GetCoin()
         {
             // 코인을 먹었을때 애니메이션 재생
-            scoreAnimator.SetTrigger("OnGetCoin");
+            coinAnimator.SetTrigger("OnGetCoin");
+            textAnimator.SetTrigger("OnGetScore");
         }
 
         public void EnableFire()
