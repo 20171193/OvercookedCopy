@@ -13,7 +13,7 @@ public class Table : MonoBehaviour, IHighlightable
     [SerializeField] Material changeMT;
 
     // 테이블 위에 있는 아이템
-    [SerializeField] Item placedItem;
+    public Item placedItem;
 
     // 테이블에 아이템이 놓일 위치 (소켓)
     [SerializeField] GameObject generatePoint;
@@ -22,7 +22,13 @@ public class Table : MonoBehaviour, IHighlightable
     private void Awake()
     {
         originMT = meshRenderer.sharedMaterial;
-        placedItem = GetComponent<Item>();
+        //placedItem = GetComponent<Item>();
+
+        if (transform.childCount >= 2 && transform.GetChild(1) != null)
+        {
+            placedItem = transform.GetChild(1).GetComponent<Item>();
+        }
+        
     }
     public void EnterPlayer()
     {
