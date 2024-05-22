@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,20 +7,35 @@ using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Jc
+namespace KIMJAEWON
 {
+
+
     public class PlayerController : MonoBehaviour
     {
+        [Header("에디터 세팅")]
         public float moveSpeed = 5f;
         public float rotationSpeed = 10f; // 회전 속도를 조절할 변수 추가
         [SerializeField]
         private Rigidbody rb;
-        private Vector2 moveInput;
+
 
         [SerializeField] Animator anim;
-
         [SerializeField] float dashPower;
+        [SerializeField] PhotonView view;
+        [SerializeField] PlayerInput input;
 
+        [Header("밸런싱")]
+        [SerializeField]
+        private Vector2 moveInput;
+
+        private void Awake()
+        {
+            if (view.IsMine == false)
+            {
+                Destroy(input);
+            }
+        }
         private void FixedUpdate()
         {
             Move();

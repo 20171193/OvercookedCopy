@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace KIMJAEWON
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerAnim : MonoBehaviour
     {
         Animator anim;
         [SerializeField] GameObject Item1;
