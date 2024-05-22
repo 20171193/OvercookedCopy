@@ -135,6 +135,7 @@ namespace JH
                         Pan tempPan = ownItem as Pan;
                         switch (item.Type)
                         {
+                            /*
                             case ItemType.Plate:
                                 Plate temp_PanP_Plate = item as Plate;
                                 if (tempPan.isWellDone())
@@ -143,6 +144,7 @@ namespace JH
                                         tempPan.TakeOut();
                                 }
                                 return;
+                            */
                             case ItemType.Ingredient:
                                 IngredientsObject temp_PanI_Ingredient = item as IngredientsObject;
                                 if (tempPan.isEmpty())
@@ -151,6 +153,7 @@ namespace JH
                                     return;
                                 }
                                 return;
+                                /*
                             case ItemType.FoodDish:
                                 FoodDish temp_PanF_FoodDish = item as FoodDish;
                                 if (tempPan.isWellDone()) 
@@ -160,6 +163,7 @@ namespace JH
                                 }  
                                 Destroy(item);
                                 return;
+                                */
                         }
                         return;
                     case ItemType.Pot:

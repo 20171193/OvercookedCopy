@@ -1,9 +1,5 @@
 using JH;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
-using static UnityEditor.Progress;
 
 public class Table : MonoBehaviour, IHighlightable
 {
@@ -21,11 +17,10 @@ public class Table : MonoBehaviour, IHighlightable
     private void Awake()
     {
         originMT = meshRenderer.sharedMaterial;
-        //placedItem = GetComponent<Item>();
 
-        if (transform.childCount >= 2 && transform.GetChild(1) != null)
+        if (transform.childCount >= 3 && transform.GetChild(1) != null)
         {
-            placedItem = transform.GetChild(1).GetComponent<Item>();
+            placedItem = transform.GetChild(2).GetComponent<Item>();
         }
         
     }
@@ -43,6 +38,8 @@ public class Table : MonoBehaviour, IHighlightable
     public virtual void PutDownItem(Item item)
     {
         Debug.Log("table.PutDownItem");
+
+        
 
         // 1. 테이블에 아이템 없음
         if (placedItem = null)
@@ -165,15 +162,17 @@ public class Table : MonoBehaviour, IHighlightable
                             }
                             return;
 
-                        /*
+                        // (2) 손에 든 게 접시일 때
                         case ItemType.Plate:
                             Plate temp_PanP_Plate = item as Plate;
                             if (tempPan.isWellDone())
                             {
-                                if (temp_PanP_Plate.IngredientIN(GenPoint, tempPan.CookingObject))
+                                //if (temp_PanP_Plate.IngredientIN(GenPoint, tempPan.CookingObject))
                                     tempPan.TakeOut();
                             }
                             return;
+
+                        // (3) 손에 든 게 조합된 재료일 때
                         case ItemType.FoodDish:
                             FoodDish temp_PanF_FoodDish = item as FoodDish;
                             if (tempPan.isWellDone())
@@ -183,7 +182,6 @@ public class Table : MonoBehaviour, IHighlightable
                             }
                             Destroy(item);
                             return;
-                        */
                     }
                     return;
             }
