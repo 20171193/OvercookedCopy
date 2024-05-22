@@ -19,7 +19,7 @@ namespace JH
 
             rigid = gameObject.GetComponent<Rigidbody>();
             collid = gameObject.GetComponent<Collider>();
-            meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
             SetOriginMT();
             rigid.isKinematic = true;
             collid.enabled = false;
