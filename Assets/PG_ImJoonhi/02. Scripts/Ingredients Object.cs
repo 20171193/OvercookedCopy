@@ -47,6 +47,8 @@ namespace JH
                     break;
             }
             CurrentObject.transform.SetParent(gameObject.transform, true);
+            meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
         }
 
         public void SetIngredient(IngredientsData ingredient)
