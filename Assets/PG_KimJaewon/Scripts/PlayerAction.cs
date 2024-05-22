@@ -1,13 +1,15 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Jc
+namespace KIMJAEWON
 {
     public class PlayerAction : MonoBehaviour
     {
+        [SerializeField] PhotonView view;
         [SerializeField] Animator anim;
 
         // 플레이어 아이템 소켓
@@ -251,6 +253,11 @@ namespace Jc
 
         private void OnTriggerEnter(Collider other)
         {
+           if(view.IsMine == false)
+            {
+                return;
+            }
+
             // 부딪힌 테이블 세팅
             if (Manager.Layer.tableLM.Contain(other.gameObject.layer))
             {
@@ -269,6 +276,10 @@ namespace Jc
 
         private void OnTriggerExit(Collider other)
         {
+            if (view.IsMine == false)
+            {
+                return;
+            }
             // 벗어난 테이블 세팅
             if (Manager.Layer.tableLM.Contain(other.gameObject.layer))
             {

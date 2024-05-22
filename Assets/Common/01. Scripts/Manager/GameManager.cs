@@ -6,12 +6,13 @@ using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
 using Jc;
-using static UnityEditor.Rendering.InspectorCurveEditor;
 
 namespace Jc
 {
     public class GameManager : MonoBehaviourPunCallbacks
     {
+        public Transform[] spawnposs;
+
         [SerializeField]
         private ClientState curState = ClientState.JoiningLobby;
 
@@ -74,8 +75,8 @@ namespace Jc
         }
 
         private void GameStart()
-        {
-
+        { 
+            PhotonNetwork.Instantiate("Chef_Robot", spawnposs[0].position, spawnposs[0].rotation, 0);
         }
     }
 }

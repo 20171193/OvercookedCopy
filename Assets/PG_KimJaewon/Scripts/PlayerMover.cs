@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using Photon.Pun;
+
 
 namespace KIMJAEWON
 {
@@ -13,7 +15,16 @@ namespace KIMJAEWON
         private Vector2 moveInput;
         [SerializeField] float dashPower;
         [SerializeField] AnimationCurve curve;
+        [SerializeField] PlayerInput input;
+        [SerializeField] PhotonView view;
 
+        private void Awake()
+        {
+            if (view.IsMine == false)
+            {
+                Destroy(input);
+            }
+        }
         void Start()
         {
             rb = GetComponent<Rigidbody>();
