@@ -52,7 +52,7 @@ namespace Jc
         // 디버깅모드 게임시작
         public override void OnJoinedRoom()
         {
-            GameStart();
+            StartCoroutine(DebugRoutine());
         }
 
         // 연결 실패 시 타이틀 씬으로 이동
@@ -76,10 +76,15 @@ namespace Jc
 
         private void GameStart()
         {
-            // 스폰할 위치 지정
-            int spawnIndex = PhotonNetwork.PlayerList.Length - 1;
-            Debug.Log($"PlayerList.Length-1 = {spawnIndex}");
+            // 포톤네트워크가 자체적으로 지원하는 플레이어 넘버링이다. 사용법은 밑을 참조하면 될것같음
+            int spawnIndex = PhotonNetwork.LocalPlayer.GetPlayerNumber();
             PhotonNetwork.Instantiate("Chef_Robot", spawnposs[spawnIndex].position, spawnposs[spawnIndex].rotation, 0);
+        }
+
+        IEnumerator DebugRoutine()
+        {
+            yield return new WaitForSeconds(1f);
+            GameStart();
         }
     }
 }

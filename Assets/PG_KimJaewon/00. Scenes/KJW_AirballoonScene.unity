@@ -3367,8 +3367,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnposs:
-  - {fileID: 4810252090924486405, guid: 1d6400e7014008a48ab5a833b6bd8a4a, type: 3}
-  - {fileID: 4810252090924486405, guid: 1d6400e7014008a48ab5a833b6bd8a4a, type: 3}
+  - {fileID: 1890105711}
+  - {fileID: 2047259797}
   - {fileID: 1489884438}
   - {fileID: 1871841565}
   curState: 3
