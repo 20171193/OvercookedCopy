@@ -5,10 +5,16 @@ using UnityEngine;
 
 public class Item : MonoBehaviour, IPickable, IHighlightable
 {
+    [Header("Components")]
     public Rigidbody rigid;
     public Collider collid;
     public MeshRenderer meshRenderer;
     public ItemType Type;
+
+    private Material originMT;
+    private Material changeMT;
+
+    // IPickable
     public void GoTo(GameObject GoPotint)
     {
         rigid.isKinematic = true;
@@ -24,12 +30,19 @@ public class Item : MonoBehaviour, IPickable, IHighlightable
         gameObject.transform.SetParent(null);
     }
 
+    // IHighlightable
     public void EnterPlayer()
     {
+        meshRenderer.sharedMaterial = changeMT;
     }
-
     public void ExitPlayer()
     {
+        meshRenderer.sharedMaterial = originMT;
+    }
+
+    protected void SetOriginMT()
+    {
+        originMT = meshRenderer.sharedMaterial;
     }
 }
 

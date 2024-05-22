@@ -55,6 +55,7 @@ namespace JH
                 CurrentObject.transform.SetParent(gameObject.transform, true);
             }
             meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
         }
 
         /// <summary>그릇이 없을경우 그릇을 추가해주는 함수.</summary>
@@ -67,6 +68,7 @@ namespace JH
             curPlate.transform.SetParent(gameObject.transform, true);
             CurrentObject.transform.SetParent(curPlate.transform, true);
             meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
             return true;
         }
 

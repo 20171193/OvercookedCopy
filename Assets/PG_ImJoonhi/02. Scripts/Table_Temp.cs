@@ -47,7 +47,7 @@ namespace JH
                     return;
 
                 item.GoTo(this.GeneratePoint);
-                item = ownItem;
+                ownItem = item;
             }
             // 테이블에는 아이템이 있는데 플레이어가 아이템이 없는경우
             if (item == null)
@@ -66,13 +66,21 @@ namespace JH
                         {
                             case ItemType.Ingredient:
                                 IngredientsObject temp_PI_Ingredient = item as IngredientsObject;
-                                tempPlate.IngredientIN(GeneratePoint, temp_PI_Ingredient);
-                                Destroy(item);
+                                if(tempPlate.IngredientIN(GeneratePoint, temp_PI_Ingredient))
+                                    Destroy(item);
                                 return;
                             case ItemType.FoodDish:
                                 FoodDish temp_PF_FoodDish = item as FoodDish;
-                                tempPlate.IngredientIN(GeneratePoint, temp_PF_FoodDish);
-                                Destroy(item);
+                                if (tempPlate.IngredientIN(GeneratePoint, temp_PF_FoodDish))
+                                    Destroy(item);
+                                return;
+                            case ItemType.Pan:
+                                Pan temp_PPan_Pan = item as Pan;
+                                if (temp_PPan_Pan.isWellDone())
+                                {
+                                    if (tempPlate.IngredientIN(GeneratePoint, temp_PPan_Pan.CookingObject))
+                                        temp_PPan_Pan.TakeOut();
+                                }
                                 return;
                         }
                         return;
@@ -82,17 +90,21 @@ namespace JH
                         {
                             case ItemType.Plate:
                                 Plate temp_IP_Plate = item as Plate;
-                                temp_IP_Plate.IngredientIN(GeneratePoint, tempIngredient);
-                                Destroy(ownItem);
-                                ownItem = item;
+                                if (temp_IP_Plate.IngredientIN(GeneratePoint, tempIngredient))
+                                {
+                                    Destroy(ownItem);
+                                    ownItem = item;
+                                }
                                 return;
 
                             case ItemType.FoodDish:
                                 FoodDish temp_IF_Plate = item as FoodDish;
-                                temp_IF_Plate.Add(tempIngredient);
-                                temp_IF_Plate.GoTo(GeneratePoint);
-                                Destroy(ownItem);
-                                ownItem = item;
+                                if (temp_IF_Plate.Add(tempIngredient))
+                                {
+                                    temp_IF_Plate.GoTo(GeneratePoint);
+                                    Destroy(ownItem);
+                                    ownItem = item;
+                                }
                                 return;
                         }
                         return;
@@ -101,13 +113,21 @@ namespace JH
                         switch (item.Type)
                         {
                             case ItemType.FoodDish:
-                                tempFoodDish.AddPlate();
-                                Destroy(item);
+                                if(tempFoodDish.AddPlate())
+                                    Destroy(item);
                                 return;
                             case ItemType.Ingredient:
                                 IngredientsObject temp_FI_Ingredient = item as IngredientsObject;
-                                tempFoodDish.Add(temp_FI_Ingredient);
-                                Destroy(item);
+                                if(tempFoodDish.Add(temp_FI_Ingredient))
+                                    Destroy(item);
+                                return;
+                            case ItemType.Pan:
+                                Pan temp_FPan_Pan = item as Pan;
+                                if (temp_FPan_Pan.isWellDone())
+                                {
+                                    if (tempFoodDish.Add(temp_FPan_Pan.CookingObject))
+                                        temp_FPan_Pan.TakeOut();
+                                }
                                 return;
                         }
                         return;
@@ -115,6 +135,14 @@ namespace JH
                         Pan tempPan = ownItem as Pan;
                         switch (item.Type)
                         {
+                            case ItemType.Plate:
+                                Plate temp_PanP_Plate = item as Plate;
+                                if (tempPan.isWellDone())
+                                {
+                                    if (temp_PanP_Plate.IngredientIN(GenPoint, tempPan.CookingObject))
+                                        tempPan.TakeOut();
+                                }
+                                return;
                             case ItemType.Ingredient:
                                 IngredientsObject temp_PanI_Ingredient = item as IngredientsObject;
                                 if (tempPan.isEmpty())
@@ -124,15 +152,14 @@ namespace JH
                                 }
                                 return;
                             case ItemType.FoodDish:
-                                FoodDish temp_PabF_FoodDish = item as FoodDish;
+                                FoodDish temp_PanF_FoodDish = item as FoodDish;
                                 if (tempPan.isWellDone()) 
                                 {
-                                    if(temp_PabF_FoodDish.Add(tempPan.CookingObject))
+                                    if(temp_PanF_FoodDish.Add(tempPan.CookingObject))
                                         tempPan.TakeOut();
                                 }  
                                 Destroy(item);
                                 return;
-                            // case ItemType.Plate:
                         }
                         return;
                     case ItemType.Pot:
