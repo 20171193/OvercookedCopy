@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2958580778317744633}
+  - component: {fileID: 5928936291110951726}
   m_Layer: 0
   m_Name: Plate_burger
   m_TagString: Untagged
@@ -32,6 +33,29 @@ Transform:
   - {fileID: 8661489128118374632}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5928936291110951726
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8431212439588704097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb043aefb86a194190e4f2dca276c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rigid: {fileID: 0}
+  collid: {fileID: 0}
+  meshRenderer: {fileID: 0}
+  Type: 1
+  recipeList: {fileID: 0}
+  ingredientPrefabs: {fileID: 0}
+  foodDishPrefab: {fileID: 0}
+  DebugGenPoint: {fileID: 0}
+  DebugIngredientObject: {fileID: 0}
+  DebugFoodDish: {fileID: 0}
+  DebugGameObject: {fileID: 0}
 --- !u!1001 &9203513782273980163
 PrefabInstance:
   m_ObjectHideFlags: 0
