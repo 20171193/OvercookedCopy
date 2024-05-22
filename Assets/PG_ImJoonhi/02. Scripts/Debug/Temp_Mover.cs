@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,9 @@ namespace JH
     {
         public float moveSpeed = 5f;
         public float rotationSpeed = 10f;
+
+        [SerializeField] PhotonView view;
+
         private Rigidbody rb;
         private Vector2 moveInput;
 
@@ -19,6 +23,9 @@ namespace JH
 
         private void FixedUpdate()
         {
+            if (view.IsMine == false)
+                return;
+
             Move();
             Rotate();
             playerPosition = new Vector3Int((int)gameObject.transform.position.x, (int)gameObject.transform.position.y, (int)gameObject.transform.position.z);

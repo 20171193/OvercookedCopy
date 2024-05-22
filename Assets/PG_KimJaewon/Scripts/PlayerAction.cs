@@ -1,39 +1,21 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Jc
+namespace KIMJAEWON
 {
     public class PlayerAction : MonoBehaviour
     {
+        [Header("에디터 세팅")]
+        [SerializeField] PhotonView view;
         [SerializeField] Animator anim;
 
         // 플레이어 아이템 소켓
         [SerializeField]
         private Transform itemSocket;
-
-        // 오브젝트 머터리얼 변경
-        private Material originTile;
-        [SerializeField]
-        private Material changeTile;
-
-        // 현재 가장 가까운 테이블
-        private Table nearestTable;
-        // 현재 가장 가까운 아이템
-        private Item nearestItem;
-
-        // 현재 짚고 있는 아이템
-        private Item pickedItem;
-
-        // 부딪힌 테이블 모음
-        private List<Table> tableList = new List<Table>();
-        // 부딪힌 아이템 모음
-        private List<Item> itemList = new List<Item>();
-
-        // 오브젝트를 들고있는 상태인지?
-        private bool isPickUp = false;
 
         [SerializeField]
         private bool debug; // 디버그 모드 Gizmos
@@ -57,6 +39,27 @@ namespace Jc
                 return cosAngle;
             }
         }
+
+        // 현재 가장 가까운 테이블
+        private Table nearestTable;
+        // 현재 가장 가까운 아이템
+        private Item nearestItem;
+
+        // 현재 짚고 있는 아이템
+        private Item pickedItem;
+
+        // 부딪힌 테이블 모음
+        private List<Table> tableList = new List<Table>();
+        // 부딪힌 아이템 모음
+        private List<Item> itemList = new List<Item>();
+
+        // 오브젝트를 들고있는 상태인지?
+        [Header("밸런싱")]
+        [SerializeField]
+        private bool isPickUp = false;
+
+
+
 
         private void SetTable(Table table)
         {
@@ -251,6 +254,11 @@ namespace Jc
 
         private void OnTriggerEnter(Collider other)
         {
+           if(view.IsMine == false)
+            {
+                return;
+            }
+
             // 부딪힌 테이블 세팅
             if (Manager.Layer.tableLM.Contain(other.gameObject.layer))
             {
@@ -269,6 +277,10 @@ namespace Jc
 
         private void OnTriggerExit(Collider other)
         {
+            if (view.IsMine == false)
+            {
+                return;
+            }
             // 벗어난 테이블 세팅
             if (Manager.Layer.tableLM.Contain(other.gameObject.layer))
             {

@@ -47,7 +47,7 @@ namespace JH
                     break;
             }
             CurrentObject.transform.SetParent(gameObject.transform, true);
-            meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
             SetOriginMT();
         }
 
@@ -74,6 +74,8 @@ namespace JH
             Destroy(CurrentObject);
             CurrentObject = (GameObject)Instantiate(ingredientsData.Sliced, gameObject.transform);
             CurrentObject.transform.SetParent(gameObject.transform, true);
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
         }
 
         [ContextMenu("PanHeat")]
@@ -87,6 +89,8 @@ namespace JH
             Destroy(CurrentObject);
             CurrentObject = (GameObject)Instantiate(ingredientsData.Paned, gameObject.transform);
             CurrentObject.transform.SetParent(gameObject.transform, true);
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
         }
 
         public int CompareTo(IngredientsObject other)

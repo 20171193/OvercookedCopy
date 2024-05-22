@@ -31,5 +31,6 @@ public class DebugGameManager : MonoBehaviourPunCallbacks
     public void GameStart()
     {
         Debug.Log("Debug GameStart");
+        PhotonNetwork.Instantiate("Player_Temp", new Vector3(0, 0, 0), Quaternion.identity);
     }
 }
