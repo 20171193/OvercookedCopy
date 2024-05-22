@@ -36,8 +36,7 @@ namespace Kyungmin
         public void RecipeResult(int score)
         {
             // 레시피 제출
-            // 스코어, 팁 올려주기
-            
+
             // 팁계산
             int addTip = Tip * multipleTip;
 
@@ -45,7 +44,15 @@ namespace Kyungmin
             if (multipleTip < MaxMultipleTip)
             {
                 multipleTip++;
+
+                scoreUI.DisableFire();
+                if (multipleTip == MaxMultipleTip)
+                {
+                    scoreUI.EnableFire();
+                }
             }
+
+            scoreUI.GetCoin();
 
             curScore += score;                  // 누적된 score가 현재 점수가 됨
             curTip += addTip;                   // 누적된 tip점수가 현재 tip이 됨
@@ -71,21 +78,41 @@ namespace Kyungmin
         IEnumerator OrderTimer()
         {
             float curTime = gameTime;
+            int prevTime = Mathf.FloorToInt(curTime);
             yield return null;
+
 
             while (curTime > 0)
             {
                 curTime -= Time.deltaTime;
 
-                timerBar.UpdateUI((int)curTime);
+                // 내림한 시간
+                int floorTime = Mathf.FloorToInt(curTime);
 
+                // 시간 갱신
+                if(prevTime > floorTime)
+                {
+                    prevTime = floorTime;
+                    timerBar.UpdateUI(floorTime);
+
+                    // 30초 마다 애니매이션이 작동하게 하면서 마지막 30초에는 실행하지 않음
+                    if ((floorTime % 30 == 0) && (floorTime > 31))
+                    {
+                        timerBar.GetAlarm();
+                    }
+                    // 마지막 30초에는 지속되는 애니메이션이 실행되게
+                    else if (floorTime == 30)
+                    {
+                        timerBar.EnableAlarm();
+                    }
+                }
                 yield return null;
-
             }
 
             curTime = 0;
             Debug.Log("시간 종료");
             Time.timeScale = 0;     // 일시 정지
+            timerBar.DisableAlarm();
             GameTimeOut();
 
         }

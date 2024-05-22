@@ -2,15 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlateReturn : MonoBehaviour
+public class PlateReturn : Table
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        
-    }
 }

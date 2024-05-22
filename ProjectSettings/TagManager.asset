@@ -15,7 +15,7 @@ TagManager:
   - UI
   - Table
   - Item
-  - 
+  - DropItem
   - 
   - 
   - 
@@ -45,6 +45,9 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Coin
+    uniqueID: 4023533643
     locked: 0
   - name: Recipe
     uniqueID: 1736451221

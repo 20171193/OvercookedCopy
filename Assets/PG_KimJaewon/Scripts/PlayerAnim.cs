@@ -3,14 +3,14 @@ using UnityEngine;
 
 namespace KIMJAEWON
 {
-    public class PlayerController : MonoBehaviour
+    public class PlayerAnim : MonoBehaviour
     {
         Animator anim;
         [SerializeField] GameObject Item1;
         [SerializeField] GameObject Item2;
 
 
-        private bool isPickup = false;
+        //private bool isPickup = false;
         
 
         void Start()
