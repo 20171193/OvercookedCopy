@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2725296e51e05408051b5f774307e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Type: 2
   recipeList: {fileID: 0}
   init:
   - {fileID: 3005730386860548586, guid: dac831b84b1ee644fa3ea6c5724e31c8, type: 3}
@@ -55,8 +56,10 @@ MonoBehaviour:
   - {fileID: 0}
   curRecipe: {fileID: 11400000, guid: e291b1467f5160c4e806756fe6c60931, type: 2}
   initPlate: 0
+  rigid: {fileID: 0}
   DebugIngredient: {fileID: 6365874675984787040, guid: ee5f5bfb4a1ef03458dbd02704bc812c,
     type: 3}
+  DebugGameObject: {fileID: 0}
 --- !u!54 &1050853494965746040
 Rigidbody:
   m_ObjectHideFlags: 0

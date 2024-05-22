@@ -4,16 +4,19 @@ using UnityEngine;
 
 namespace JH
 {
-    public class FoodDish : MonoBehaviour, IPickable
+    public class FoodDish : Item, IPickable
     {
         [Header("Map Recipes")]
-        [SerializeField] public RecipeList recipeList;
+        [SerializeField] RecipeList recipeList;
+        [SerializeField] IngredientList ingredientPrefabs;
         public List<IngredientsObject> init;    // 초기 재료 리스트
         public RecipeData curRecipe;            // 현제 래시피 (어느 래시피인지 저장)
         public bool initPlate;                  // 생성시 Plate 보유여부
 
+        /*
         [Header("Components")]
         public Rigidbody rigid;
+        */
 
         public bool Plate { get; private set; }                                             // 그릇 여부
         private List<IngredientsObject> ingredientList = new List<IngredientsObject>(4);    // 현제 포함된 재료 리스트
@@ -28,6 +31,13 @@ namespace JH
         private void Start()
         {
             recipeList = Manager_TEMP.recipemanager.recipeList;
+            ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
+            
+            rigid = gameObject.GetComponent<Rigidbody>();
+            collid = gameObject.GetComponent<BoxCollider>();
+            rigid.isKinematic = true;
+            collid.enabled = false;
+
             if (initPlate)
                 Plate = true;
             ingredientList = init.ToList();
@@ -44,6 +54,8 @@ namespace JH
                 CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position, Quaternion.identity);
                 CurrentObject.transform.SetParent(gameObject.transform, true);
             }
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
         }
 
         /// <summary>그릇이 없을경우 그릇을 추가해주는 함수.</summary>
@@ -55,6 +67,8 @@ namespace JH
             curPlate = Instantiate(recipeList.PlatePrefab, gameObject.transform.position, Quaternion.identity);
             curPlate.transform.SetParent(gameObject.transform, true);
             CurrentObject.transform.SetParent(curPlate.transform, true);
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
             return true;
         }
 
@@ -73,7 +87,7 @@ namespace JH
             if (!IsAcceptable(1))
                 return false;
             List<IngredientsObject> buf = ingredientList.ToList();
-            buf[included] = ingredient;
+            buf[included] = ingredientPrefabs.Find(ingredient);
             buf.Sort(0, included + 1, null);
 
             // [Debug] 현제 비교할 재료리스트 확인용
@@ -156,9 +170,12 @@ namespace JH
             return false;
         }
 
+        /*
         public void GoTo(GameObject GoPotint)
         {
             rigid.isKinematic = true;
+            gameObject.transform.position = GoPotint.transform.position;
+            gameObject.transform.rotation = GoPotint.transform.rotation;
             gameObject.transform.SetParent(GoPotint.transform, true);
         }
         public void Drop()
@@ -166,11 +183,13 @@ namespace JH
             rigid.isKinematic = false;
             gameObject.transform.SetParent(null);
         }
+        */
 
         #region Debug
 #if UNITY_EDITOR
         [Header("Debug")]
         [SerializeField] IngredientsObject DebugIngredient;
+        [SerializeField] GameObject DebugGameObject;
 
         [ContextMenu("[Debug]Add Ingredients")]
         public void DebugAdd()
@@ -183,6 +202,18 @@ namespace JH
         public void DebugOnPlate()
         {
             AddPlate();
+        }
+
+        [ContextMenu("[Debug]GoTo")]
+        public void DebugGoTo()
+        {
+            GoTo(DebugGameObject);
+        }
+
+        [ContextMenu("[Debug]Drop")]
+        public void DebugDrop()
+        {
+            Drop();
         }
 #endif
         #endregion

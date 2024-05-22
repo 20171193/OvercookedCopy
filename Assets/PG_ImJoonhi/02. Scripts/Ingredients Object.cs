@@ -6,7 +6,7 @@ using UnityEngine;
 
 namespace JH
 {
-    public class IngredientsObject : MonoBehaviour, IComparable<IngredientsObject>, IPickable
+    public class IngredientsObject : Item, IComparable<IngredientsObject>, IPickable
     {
         [Header("Status")]
         public IngredientsData ingredientsData;
@@ -16,7 +16,7 @@ namespace JH
         [SerializeField] bool initialize;   // 플레이 했을때 IngState를 Original로 자동으로 초기화 할지 여부
 
         [Header("Misc")]
-        public Rigidbody rigid;
+        // public Rigidbody rigid;
 
         private GameObject CurrentObject;
 
@@ -24,7 +24,11 @@ namespace JH
 
         void Start()
         {
+            rigid = gameObject.GetComponent<Rigidbody>();
+            collid = gameObject.GetComponent<BoxCollider>();
             rigid.isKinematic = true;
+            collid.enabled = false;
+
             switch (IngState)
             {
                 case IngredientState.Original:
@@ -43,6 +47,8 @@ namespace JH
                     break;
             }
             CurrentObject.transform.SetParent(gameObject.transform, true);
+            meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
         }
 
         public void SetIngredient(IngredientsData ingredient)
@@ -90,9 +96,11 @@ namespace JH
             return ingredientsData.id - other.ingredientsData.id;
         }
 
-        public void GoTo(GameObject GoPotint)
+        /*public void GoTo(GameObject GoPotint)
         {
             rigid.isKinematic = true;
+            gameObject.transform.position = GoPotint.transform.position;
+            gameObject.transform.rotation = GoPotint.transform.rotation;
             gameObject.transform.SetParent(GoPotint.transform, true);
         }
         public void Drop()
@@ -100,6 +108,7 @@ namespace JH
             rigid.isKinematic = false;
             gameObject.transform.SetParent(null);
         }
+        */
 
         #region Debug
 #if UNITY_EDITOR
@@ -117,6 +126,12 @@ namespace JH
         public void DebugDrop()
         {
             Drop();
+        }
+
+        [ContextMenu("[Debug]Destroy")]
+        public void Destorythis()
+        {
+            Destroy(gameObject);
         }
 #endif
         #endregion

@@ -6,82 +6,124 @@ namespace KIMJAEWON
 {
     public class ObjectTrigger : MonoBehaviour
     {
+        [SerializeField]
         private Material originTile;
+
         [SerializeField]
         private Material changeTile;
-        private Table nearestTable;
-
-        private List<Table> tableList = new List<Table>();
+        private GameObject nearestOb;
+        
+        //리스트로 나와 부딪히는 테이블을 담아놓는다
+        private List<GameObject> interactableList = new List<GameObject>();
 
         public Color color;
 
         private void Update()
         {
+            // 매 프레임마다 테이블과 나의 거리를 계산해준다
             CalculateDistance();
         }
 
+        // 나와 테이블의 거리 계산식
         private void CalculateDistance()
         {
-            if (tableList.Count < 1)
+            // 먼저 GameObject를 null 선언해준다 (비어있어야 하기 때문)
+            GameObject nearObject = null;
+
+            // 만약 나에게 부딪히는 테이블의 카운트가 0이라면
+            if (interactableList.Count < 1)
             {
+                // 그냥 리턴해준다
                 return;
             }
-            else if (tableList.Count == 1)
+            // 만약 나에게 부딪히는 테이블의 카운트가 1이라면
+            else if (interactableList.Count == 1)
             {
-                if (nearestTable != null)
+                // 리스트의 첫 번째 오브젝트를 nearObject로 설정
+                nearObject = interactableList[0];
+            }
+            // 만약 나에게 부딪히는 테이블의 카운트가 2 이상이라면
+            else
+            {
+                // 최소 거리를 -1로 초기화
+                float minDist = -1f;
+
+                // 리스트를 순회하면서 가장 가까운 오브젝트 찾기
+                for (int i = 0; i < interactableList.Count; i++)
                 {
-                    nearestTable.ExitPlayer();
+                    // 현재 오브젝트를 가져옴
+                    GameObject interactable = interactableList[i];
+
+                    // 현재 오브젝트와의 거리를 계산
+                    float dist = Vector3.Distance(transform.position, interactable.transform.position);
+
+                    // 최초 탐색
+                    if (minDist == -1f)
+                    {
+                        // 최소 거리를 현재 거리로 설정
+                        minDist = dist;
+
+                        // 가장 가까운 오브젝트를 현재 오브젝트로 설정
+                        nearObject = interactable;
+                    }
+                    // 가까운 오브젝트 갱신
+                    else if (dist < minDist)
+                    {
+                        // 최소 거리를 현재 거리로 갱신
+                        minDist = dist;
+
+                        // 가장 가까운 오브젝트를 현재 오브젝트로 갱신
+                        nearObject = interactable;
+                    }
                 }
-                nearestTable = tableList[0];
+            }
+            // 가장 가까운 오브젝트를 갱신하는 함수 호출
+            RenewObject(nearObject);
+        }
+
+
+        private void RenewObject(GameObject target)
+        {
+            // 구해진 가장 가까운 값이 없다면
+            if (nearestOb == null)
+            {
+                IHighlightable ob = target.GetComponent<IHighlightable>();
+                if( ob == null)
+                {
+                    return;
+                }
+
+                // 새로운 오브젝트 할당
+                ob.EnterPlayer();
+                nearestOb = target;
             }
             else
             {
-                float minDist = -1f;
-                for (int i = 0; i < tableList.Count; i++)
-                {
-                    Table table = tableList[i];
-                    float dist = Vector3.Distance(transform.position, table.transform.position);
+                IHighlightable prevOb = nearestOb.GetComponent<IHighlightable>();
+                prevOb.ExitPlayer();
 
-                    if (minDist == -1f)
-                    {
-                        minDist = dist;
-                        if (nearestTable != null)
-                        {
-                            nearestTable.ExitPlayer();
-                        }
-                        nearestTable = table;
-                    }
-                    else if (dist < minDist)
-                    {
-                        minDist = dist;
-                        if (nearestTable != null)
-                        {
-                            nearestTable.ExitPlayer();
-                        }
-                        nearestTable = table;
-                    }
-                }
+                nearestOb = target;
+                IHighlightable nextOb = nearestOb.GetComponent<IHighlightable>();
+                nextOb.EnterPlayer();
             }
-            nearestTable.EnterPlayer();
         }
+        
+        // 콜라이더 부딪히는거 식
         private void OnTriggerEnter(Collider other)
         {
-            // 충돌한 오브젝트의 태그가 Table이 맞다면
-            if (other.CompareTag("Table"))
+            if (Manager.Layer.interactableLM.Contain(other.gameObject.layer))
             {
-                // 테이블 스크립트를 가져온다.
-                Table table = other.GetComponent<Table>();
-                tableList.Add(table);
+                Debug.Log("인식했숩니당");
+                interactableList.Add(other.gameObject);
             }
         }
+        
+        // 콜라이더 나갈때 식
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("Table"))
+            if (Manager.Layer.interactableLM.Contain(other.gameObject.layer))
             {
-                Table table = other.GetComponent<Table>();
-                table.ExitPlayer();
-
-                tableList.Remove(table);
+                interactableList.Remove(other.gameObject);
             }
         }
     }
