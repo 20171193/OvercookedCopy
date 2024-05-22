@@ -75,8 +75,11 @@ namespace Jc
         }
 
         private void GameStart()
-        { 
-            PhotonNetwork.Instantiate("Chef_Robot", spawnposs[0].position, spawnposs[0].rotation, 0);
+        {
+            // 스폰할 위치 지정
+            int spawnIndex = PhotonNetwork.PlayerList.Length - 1;
+            Debug.Log($"PlayerList.Length-1 = {spawnIndex}");
+            PhotonNetwork.Instantiate("Chef_Robot", spawnposs[spawnIndex].position, spawnposs[spawnIndex].rotation, 0);
         }
     }
 }

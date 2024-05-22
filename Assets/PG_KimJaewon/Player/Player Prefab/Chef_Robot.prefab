@@ -1647,8 +1647,8 @@ GameObject:
   - component: {fileID: 8158981633924170128}
   - component: {fileID: 6714261707808562342}
   - component: {fileID: 3730351465251875085}
-  - component: {fileID: 9038513374888083449}
-  - component: {fileID: 5175684398714967971}
+  - component: {fileID: 2100289462090103939}
+  - component: {fileID: 1737204288391383154}
   - component: {fileID: 1145323995289174180}
   - component: {fileID: 8511825047598162824}
   - component: {fileID: 724012812520139205}
@@ -1780,7 +1780,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &9038513374888083449
+--- !u!114 &2100289462090103939
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1789,16 +1789,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3798307164750158718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0393115a906d3d244bfaa5783e4ca252, type: 3}
+  m_Script: {fileID: 11500000, guid: 67a069dadd498e446919518371594085, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  view: {fileID: 1145323995289174180}
   anim: {fileID: 3730351465251875085}
   itemSocket: {fileID: 1567786749727042154}
   changeTile: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
   debug: 1
   range: 1.5
   angle: 60
---- !u!114 &5175684398714967971
+--- !u!114 &1737204288391383154
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1807,14 +1808,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 3798307164750158718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14da81528860553479f6c2b32dd1a0be, type: 3}
+  m_Script: {fileID: 11500000, guid: 5eb4248ebf19b9e4c9f8583b069988ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
   rotationSpeed: 10
   rb: {fileID: 8158981633924170128}
+  moveInput: {x: 0, y: 0}
   anim: {fileID: 3730351465251875085}
-  dashPower: 5
+  dashPower: 0
+  input: {fileID: 5457951560996110327}
+  view: {fileID: 1145323995289174180}
 --- !u!114 &1145323995289174180
 MonoBehaviour:
   m_ObjectHideFlags: 0

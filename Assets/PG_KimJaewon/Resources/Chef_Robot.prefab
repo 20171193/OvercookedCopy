@@ -1241,14 +1241,13 @@ GameObject:
   - component: {fileID: 489159322770587963}
   - component: {fileID: 1485765833078583671}
   - component: {fileID: 8372313301881732914}
-  - component: {fileID: 1337295256496540124}
   - component: {fileID: 2664189232599510015}
-  - component: {fileID: 4418479159715753341}
-  - component: {fileID: 6199272211159623766}
   - component: {fileID: 8202420195480395030}
   - component: {fileID: -4758426464179867055}
   - component: {fileID: 4968141317042347557}
   - component: {fileID: -2488311600808948828}
+  - component: {fileID: 1633846068457510252}
+  - component: {fileID: 1747429180094494401}
   m_Layer: 0
   m_Name: Chef_Robot
   m_TagString: Player
@@ -1355,55 +1354,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.7945051, z: 1}
   m_Center: {x: 0, y: 0.7001543, z: 0}
---- !u!114 &1337295256496540124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3952147656503621187}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8bd8d79a8562aa448874c9aace21d302, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dropPosition: {fileID: 0}
-  tableList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!95 &2664189232599510015
 Animator:
   serializedVersion: 5
@@ -1425,45 +1375,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4418479159715753341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3952147656503621187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0393115a906d3d244bfaa5783e4ca252, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  view: {fileID: 8202420195480395030}
-  anim: {fileID: 2664189232599510015}
-  itemSocket: {fileID: 432522431396221969}
-  changeTile: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
-  debug: 1
-  range: 1.5
-  angle: 60
---- !u!114 &6199272211159623766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3952147656503621187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 14da81528860553479f6c2b32dd1a0be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 5
-  rotationSpeed: 10
-  rb: {fileID: 1485765833078583671}
-  moveInput: {x: 0, y: 0}
-  anim: {fileID: 2664189232599510015}
-  dashPower: 5
-  input: {fileID: 489159322770587963}
-  view: {fileID: 8202420195480395030}
 --- !u!114 &8202420195480395030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1551,6 +1462,45 @@ MonoBehaviour:
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
+--- !u!114 &1633846068457510252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3952147656503621187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67a069dadd498e446919518371594085, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 8202420195480395030}
+  anim: {fileID: 2664189232599510015}
+  itemSocket: {fileID: 432522431396221969}
+  debug: 1
+  range: 1.5
+  angle: 60
+  isPickUp: 0
+--- !u!114 &1747429180094494401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3952147656503621187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5eb4248ebf19b9e4c9f8583b069988ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 5
+  rotationSpeed: 10
+  rb: {fileID: 1485765833078583671}
+  anim: {fileID: 2664189232599510015}
+  dashPower: 0
+  view: {fileID: 8202420195480395030}
+  input: {fileID: 489159322770587963}
+  moveInput: {x: 0, y: 0}
 --- !u!1 &4020624370237100651
 GameObject:
   m_ObjectHideFlags: 0
