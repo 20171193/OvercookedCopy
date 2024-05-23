@@ -4,4 +4,9 @@ using UnityEngine;
 
 public class IngredientBox : Table
 {
+
+
+
+
+
 }

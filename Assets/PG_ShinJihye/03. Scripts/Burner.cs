@@ -5,14 +5,15 @@ using UnityEngine;
 
 public class Burner : MonoBehaviour
 {
-    [SerializeField] Fireball fireballPrefab;
-    [SerializeField] Transform startPoint;
-    [SerializeField] Transform targetPoint;
-    [SerializeField] float createDelay;
-    [SerializeField] List<FireballTargetLv> fireballTargetLv;
+    [SerializeField] Fireball fireballPrefab; // Fireball 프리팹
+    [SerializeField] Transform startPoint; // Fireball 시작 지점
+    [SerializeField] Transform[] targetPoints; // 목표 지점 배열
+    [SerializeField] float createDelay; // Fireball 생성 간격
+    [SerializeField] List<FireballTargetLv> fireballTargetLv; // Fireball 목표 레벨 리스트
 
     private void OnEnable()
     {
+        fireballPrefab = Instantiate(fireballPrefab);
         StartCoroutine(CreateFireballRoutine());
     }
 
@@ -26,14 +27,20 @@ public class Burner : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(createDelay);
-            CreateFireball(targetPoint.position);
+            foreach (Transform target in targetPoints)
+            {
+                CreateFireball(target);
+            }
         }
     }
 
-    public void CreateFireball(Vector3 targetPos)
+    public void CreateFireball(Transform target)
     {
-        Fireball fireball = Instantiate(fireballPrefab, startPoint);
-        fireball.SetTargetPos(targetPos);
+       
+        // Fireball을 시작 지점에서 생성
+        Fireball fireball = Instantiate(fireballPrefab, startPoint.position, startPoint.rotation);
+        // Fireball의 목표 위치 설정
+        fireball.SetTargetPos(target.position);
     }
 }
 
@@ -47,5 +54,3 @@ public class FireballTargetLv
         this.targetPos = targetPos;
     }
 }
-
-

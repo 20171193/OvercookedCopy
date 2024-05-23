@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 341442189228431301}
   - component: {fileID: 5310335661295471257}
   - component: {fileID: -2084510603977101845}
+  - component: {fileID: 188843935222664350}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -4849,7 +4850,6 @@ ParticleSystemRenderer:
   m_RendererPriority: 0
   m_Materials:
   - {fileID: 2100000, guid: 6bce94b90fc7bcb48a509e80d03ac628, type: 2}
-  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4914,5 +4914,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: adcadcdd8456b2c41bf7700cac55bfe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPos: []
+  targetPos: {x: 0, y: 0, z: 0}
   throwTime: 2
+--- !u!65 &188843935222664350
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3762708236899377100}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.7364695, y: 3.2768452, z: 1}
+  m_Center: {x: -0.23076606, y: 1.1384231, z: 0}
