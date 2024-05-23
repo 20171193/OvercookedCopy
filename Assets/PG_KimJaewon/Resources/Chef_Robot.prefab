@@ -355,7 +355,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1639520242033444954
 GameObject:
@@ -1253,7 +1253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6532140815298052681
 Transform:
   m_ObjectHideFlags: 0
@@ -1395,7 +1395,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 4968141317042347557}
   - {fileID: -2488311600808948828}
-  sceneViewId: 0
+  sceneViewId: 1
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &4968141317042347557
@@ -1459,8 +1459,8 @@ MonoBehaviour:
   view: {fileID: 8202420195480395030}
   anim: {fileID: 2664189232599510015}
   itemSocket: {fileID: 432522431396221969}
-  debug: 1
-  range: 1.5
+  debug: 0
+  range: 1
   angle: 60
   nearestTable: {fileID: 0}
   nearestItem: {fileID: 0}
