@@ -163,7 +163,7 @@ public class Table : MonoBehaviour, IHighlightable
                         case ItemType.FoodDish:
                             if (tempFoodDish.AddPlate())
                                 Destroy(item.gameObject);
-                            return true;
+                            return false;
 
                         // (3) 손에 든 게 프라이팬일 때
                         case ItemType.Pan:
