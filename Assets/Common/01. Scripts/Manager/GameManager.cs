@@ -12,7 +12,7 @@ namespace Jc
     public class GameManager : MonoBehaviourPunCallbacks
     {
         public Transform[] spawnposs;
-
+        public string[] chefNames;
         [SerializeField]
         private ClientState curState = ClientState.JoiningLobby;
 
@@ -78,7 +78,7 @@ namespace Jc
         {
             // 포톤네트워크가 자체적으로 지원하는 플레이어 넘버링이다. 사용법은 밑을 참조하면 될것같음
             int spawnIndex = PhotonNetwork.LocalPlayer.GetPlayerNumber();
-            PhotonNetwork.Instantiate("Chef_Robot", spawnposs[spawnIndex].position, spawnposs[spawnIndex].rotation, 0);
+            PhotonNetwork.Instantiate(chefNames[spawnIndex], spawnposs[spawnIndex].position, spawnposs[spawnIndex].rotation, 0);
         }
 
         IEnumerator DebugRoutine()

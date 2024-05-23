@@ -355,7 +355,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1639520242033444954
 GameObject:
@@ -1459,9 +1459,12 @@ MonoBehaviour:
   view: {fileID: 8202420195480395030}
   anim: {fileID: 2664189232599510015}
   itemSocket: {fileID: 432522431396221969}
-  debug: 1
-  range: 1.5
+  debug: 0
+  range: 1
   angle: 60
+  nearestTable: {fileID: 0}
+  nearestItem: {fileID: 0}
+  pickedItem: {fileID: 0}
   isPickUp: 0
 --- !u!114 &1747429180094494401
 MonoBehaviour:

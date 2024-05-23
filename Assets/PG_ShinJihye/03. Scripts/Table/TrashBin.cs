@@ -7,10 +7,12 @@ public class TrashBin : Table
     [SerializeField] float speed;
     [SerializeField] float destroyScale;
     
-    public override void PutDownItem(Item item)
+    public override bool PutDownItem(Item item)
     {
         Debug.Log("TrashBin");
         Debug.Log(item.name);
+
+        return true;
 
         //StartCoroutine(DestroyItem(item));
     }
