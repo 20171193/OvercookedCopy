@@ -11,10 +11,10 @@ namespace JH
         [PunRPC]
         /// <summary>재료를 생성 및 부여하는 함수</summary>
         /// <param name="GeneratePoint">GeneratePoint는 생성한 재료 GameObject를 자식으로 넣을 위치에 대한 인수입니다.</param>
-        void TakeIngredient(GameObject GeneratePoint)
+        void TakeIngredient(Transform GeneratePoint)
         {
-            GameObject ingObj = PhotonNetwork.Instantiate($"Ingredient Prefab/{ingredientObject.name}", GeneratePoint.transform.position, GeneratePoint.transform.rotation);
-            ingObj.transform.SetParent(GeneratePoint.transform);
+            GameObject ingObj = PhotonNetwork.Instantiate($"Ingredient Prefab/{ingredientObject.name}", GeneratePoint.position, GeneratePoint.rotation);
+            ingObj.transform.SetParent(GeneratePoint);
         }
 
         [PunRPC]
@@ -36,7 +36,8 @@ namespace JH
             if (DebugGenpoint != null)
             {
                 PhotonView photonView = PhotonView.Get(this);
-                TakeIngredient(DebugGenpoint);
+                // TakeIngredient(DebugGenpoint.transform);
+                photonView.RPC("TakeIngredient", RpcTarget.All, DebugGenpoint.transform);
             }
         }
 #endif
