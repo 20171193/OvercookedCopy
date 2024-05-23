@@ -195,8 +195,7 @@ namespace KIMJAEWON
 
         private void PickUp()
         {
-            // 상호작용 할 오브젝트가 없는 경우
-            if (nearestItem == null && nearestTable == null)
+            if (nearestItem == null && nearestTable == null)    // 상호작용 할 오브젝트가 없는 경우
                 return;
             else if (nearestItem == null)    // 가까운 드랍 아이템이 없는 경우
             {

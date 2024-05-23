@@ -53,8 +53,6 @@ public class Table : MonoBehaviour, IHighlightable
     {
         Debug.Log("table.PutDownItem");
 
-        
-
         // 1. 테이블에 아이템 없음
         if (placedItem == null)
         {
@@ -72,7 +70,7 @@ public class Table : MonoBehaviour, IHighlightable
         {
             switch (placedItem.Type)
             {
-                // 1-1. 테이블에 접시 있을 때
+                // 1-1. 테이블에 접시 있을 때 X
                 case ItemType.Plate:
                     Plate tempPlate = placedItem as Plate;
                     switch (item.Type)
@@ -103,7 +101,7 @@ public class Table : MonoBehaviour, IHighlightable
                     }
                     return;
 
-                // 1-2. 테이블에 재료 있을 떄
+                // 1-2. 테이블에 재료 있을 떄 X
                 case ItemType.Ingredient:
                     IngredientsObject tempIngredient = placedItem as IngredientsObject;
                     switch (item.Type)
@@ -131,7 +129,7 @@ public class Table : MonoBehaviour, IHighlightable
                     }
                     return;
 
-                // 1-3. 테이블에 조합된 재료 있을 때
+                // 1-3. 테이블에 조합된 재료 있을 때 X
                 case ItemType.FoodDish:
                     FoodDish tempFoodDish = placedItem as FoodDish;
                     switch (item.Type)
@@ -166,7 +164,7 @@ public class Table : MonoBehaviour, IHighlightable
                     Pan tempPan = placedItem as Pan;
                     switch (item.Type)
                     {
-                        // (1) 손에 든 게 재료일 때
+                        // (1) 손에 든 게 재료일 때 O
                         case ItemType.Ingredient:
                             IngredientsObject temp_PanI_Ingredient = item as IngredientsObject;
                             if (tempPan.isEmpty())
@@ -176,7 +174,7 @@ public class Table : MonoBehaviour, IHighlightable
                             }
                             return;
 
-                        // (2) 손에 든 게 접시일 때
+                        // (2) 손에 든 게 접시일 때 X
                         case ItemType.Plate:
                             Plate temp_PanP_Plate = item as Plate;
                             if (tempPan.isWellDone())
@@ -220,6 +218,8 @@ public class Table : MonoBehaviour, IHighlightable
     // 테이블에 아이템 놓을 수 있는지 여부
     public virtual bool PutDownItem()
     {
+        // 불났으면 false
+
         if (placedItem == null)
         {
             return true;
