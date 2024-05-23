@@ -408,7 +408,6 @@ Transform:
   - {fileID: 8042612087617052747}
   - {fileID: 8785547607874786208}
   - {fileID: 805909788690477611}
-  - {fileID: 1306989557156851236}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &9050481777409150199
@@ -597,8 +596,8 @@ MonoBehaviour:
   anim: {fileID: 3001103407665217833}
   itemSocket: {fileID: 1306989557156851236}
   debug: 0
-  range: 0
-  angle: 0
+  range: 1.5
+  angle: 60
   nearestTable: {fileID: 0}
   nearestItem: {fileID: 0}
   pickedItem: {fileID: 0}
@@ -1494,7 +1493,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1306989557156851236}
   m_Layer: 0
-  m_Name: ItemSocket
+  m_Name: ItemStock
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1508,12 +1507,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5995611397372667435}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.0424, z: 0.0497}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1788647787411008529}
+  m_Father: {fileID: 7357046783014330098}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6462424621669337945
 GameObject:
@@ -1763,6 +1762,7 @@ Transform:
   - {fileID: 4507689427744288585}
   - {fileID: 7032964248478751980}
   - {fileID: 296178530260937226}
+  - {fileID: 1306989557156851236}
   m_Father: {fileID: 5840796790018169064}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &3269783909779909871
