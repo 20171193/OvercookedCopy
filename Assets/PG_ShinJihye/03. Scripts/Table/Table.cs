@@ -1,4 +1,5 @@
 using JH;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Table : MonoBehaviour, IHighlightable
@@ -12,6 +13,8 @@ public class Table : MonoBehaviour, IHighlightable
 
     // 테이블에 아이템이 놓일 위치 (소켓)
     [SerializeField] GameObject generatePoint;
+    [SerializeField] int childIndex;
+
 
 
     private void Awake()
@@ -22,7 +25,10 @@ public class Table : MonoBehaviour, IHighlightable
         {
             placedItem = transform.GetChild(2).GetComponent<Item>();
         }
-        
+
+        Transform temp = transform.GetChild(childIndex);
+        if (temp != null)
+            generatePoint = temp.gameObject;
     }
     public void EnterPlayer()
     {
@@ -42,10 +48,10 @@ public class Table : MonoBehaviour, IHighlightable
         
 
         // 1. 테이블에 아이템 없음
-        if (placedItem = null)
+        if (placedItem == null)
         {
             // 플레이어에게 아이템 없음 (return)
-            if (item = null)
+            if (item == null)
                 return;
 
             // 플레이어에게 아이템 있음 (아이템을 테이블로)

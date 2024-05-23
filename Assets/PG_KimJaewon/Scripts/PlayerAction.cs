@@ -41,11 +41,14 @@ namespace KIMJAEWON
         }
 
         // 현재 가장 가까운 테이블
+        [SerializeField]
         private Table nearestTable;
         // 현재 가장 가까운 아이템
+        [SerializeField]
         private Item nearestItem;
 
         // 현재 짚고 있는 아이템
+        [SerializeField]
         private Item pickedItem;
 
         // 부딪힌 테이블 모음
@@ -57,9 +60,6 @@ namespace KIMJAEWON
         [Header("밸런싱")]
         [SerializeField]
         private bool isPickUp = false;
-
-
-
 
         private void SetTable(Table table)
         {
@@ -93,17 +93,17 @@ namespace KIMJAEWON
             Table tmpTable = null;
             float minDist = -1f;
             // 여러 개일 경우
-            foreach(Table table in tableList)
+            foreach (Table table in tableList)
             {
                 // 전방에 위치한 테이블 인 경우
                 Vector3 dir = (table.transform.position - transform.position).normalized;
-                if(Vector3.Dot(transform.forward, dir) >= CosAngle)
+                if (Vector3.Dot(transform.forward, dir) >= CosAngle)
                 {
                     return table;
                 }
 
                 // 할당된 테이블이 없을 경우
-                if(minDist == -1)
+                if (minDist == -1)
                 {
                     tmpTable = table;
                     minDist = (table.transform.position - transform.position).sqrMagnitude;
@@ -112,7 +112,7 @@ namespace KIMJAEWON
 
                 // 가까운 테이블 갱신
                 float tempDist = (table.transform.position - transform.position).sqrMagnitude;
-                if(tempDist < minDist)
+                if (tempDist < minDist)
                 {
                     tmpTable = table;
                     minDist = tempDist;
@@ -155,9 +155,9 @@ namespace KIMJAEWON
         private void OnItemControll(InputValue value)
         {
             // 아이템을 들고 있는 상태라면
-            if(isPickUp)
+            if (isPickUp)
             {
-                // 내려놓기
+                Debug.Log("아이템을 들고 있습니다.");
                 PutDown();
             }
             else
@@ -170,7 +170,7 @@ namespace KIMJAEWON
         private void OnTableInteract(InputValue value)
         {
             // 아이템을 들고 있는 상태라면
-            if(isPickUp)
+            if (isPickUp)
             {
                 // 추후 던지기 구현
                 return;
@@ -196,17 +196,16 @@ namespace KIMJAEWON
         private void PickUp()
         {
             // 상호작용 할 오브젝트가 없는 경우
-            if (nearestItem == null && nearestTable == null) 
+            if (nearestItem == null && nearestTable == null)
                 return;
-            else if(nearestItem == null)    // 가까운 드랍 아이템이 없는 경우
+            else if (nearestItem == null)    // 가까운 드랍 아이템이 없는 경우
             {
                 pickedItem = nearestTable.PickUpItem();
                 if (pickedItem == null) return;
             }
-            else if(nearestTable == null)   // 가까운 테이블이 없는 경우
+            else if (nearestTable == null)   // 가까운 테이블이 없는 경우
             {
                 pickedItem = nearestItem;
-                pickedItem.GoTo(itemSocket.gameObject);
             }
             // 아이템과 테이블 모두 존재할 경우
             // 거리계산 후 해당 오브젝트 PickUp
@@ -220,7 +219,6 @@ namespace KIMJAEWON
                 if (itemDist < tableDist)
                 {
                     pickedItem = nearestItem;
-                    pickedItem.GoTo(itemSocket.gameObject);
                 }
                 // 테이블 위 아이템 집기
                 else
@@ -232,6 +230,7 @@ namespace KIMJAEWON
 
             anim.SetTrigger("Pickup");
             pickedItem.GoTo(itemSocket.gameObject);
+            isPickUp = true;
             pickedItem.ExitPlayer();
         }
 
@@ -249,12 +248,13 @@ namespace KIMJAEWON
             }
 
             anim.SetTrigger("Pickup");
+            isPickUp = false;
             pickedItem = null;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-           if(view.IsMine == false)
+            if (view.IsMine == false)
             {
                 return;
             }
@@ -268,7 +268,7 @@ namespace KIMJAEWON
 
             // 부딪힌 아이템 세팅
             // 현재 아이템을 들고있는 상태가 아닐 경우
-            if(!isPickUp && Manager.Layer.dropItemLM.Contain(other.gameObject.layer))
+            if (!isPickUp && Manager.Layer.dropItemLM.Contain(other.gameObject.layer))
             {
                 itemList.Add(other.GetComponent<Item>());
                 SetItem(FindItem());
@@ -285,7 +285,7 @@ namespace KIMJAEWON
             if (Manager.Layer.tableLM.Contain(other.gameObject.layer))
             {
                 Table temp = other.GetComponent<Table>();
-                
+
                 if (temp == null) // 컴포넌트 예외처리
                     return;
                 if (!tableList.Contains(temp)) // 리스트 예외처리
