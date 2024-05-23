@@ -353,7 +353,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2209713475248516372
 GameObject:
@@ -1612,7 +1612,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 2658391272151853950}
   - {fileID: 4739165832513980478}
-  sceneViewId: 0
+  sceneViewId: 3
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &2658391272151853950
@@ -1631,16 +1631,16 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: isMoving
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Pickup
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Washing
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Cutting
   m_SynchronizeLayers:
   - SynchronizeType: 0
@@ -1677,7 +1677,7 @@ MonoBehaviour:
   anim: {fileID: 5682212362106396973}
   itemSocket: {fileID: 4489084820371335435}
   debug: 0
-  range: 1.5
+  range: 1
   angle: 60
   nearestTable: {fileID: 0}
   nearestItem: {fileID: 0}
