@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6394,79 +6394,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1425441113}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1428840488
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3952147656503621187, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_Name
-      value: Chef_Robot
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.7850828
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.00000047683716
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.9699419
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8202420195480395030, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d973136f1a5a13d48890f32f81d321af, type: 3}
 --- !u!1001 &1434106058
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7825,6 +7752,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1666539581}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1671195395
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3952147656503621187, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_Name
+      value: Chef_Robot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.7850828
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.9699419
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202420195480395030, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d973136f1a5a13d48890f32f81d321af, type: 3}
 --- !u!1 &1673864632
 GameObject:
   m_ObjectHideFlags: 0
@@ -11044,7 +11044,7 @@ SceneRoots:
   - {fileID: 773170453}
   - {fileID: 2006317408}
   - {fileID: 1906322617}
+  - {fileID: 1671195395}
   - {fileID: 1081667844}
   - {fileID: 854863179}
   - {fileID: 1279581000}
-  - {fileID: 1428840488}
