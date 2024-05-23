@@ -8,27 +8,40 @@ public class Item : MonoBehaviourPun, IPickable, IHighlightable
     public Collider collid;
     public MeshRenderer meshRenderer;
     public ItemType Type;
-    public PhotonView PhotonView;
+    public PhotonView photonview;
 
     private Material originMT;
     private Material changeMT;
 
     // IPickable
     [PunRPC]
-    public void Hold(int objectPhotonID, int HoldPointPhotonID)
+    public void Hold(int HoldPointPhotonID)
     {
-        GameObject HoldPoint = PhotonView.Find(HoldPointPhotonID).gameObject;
-        Debug.Log("!!!");
+        Debug.Log($"Finding {HoldPointPhotonID}");
+        Transform HoldPoint = PhotonView.Find(HoldPointPhotonID).gameObject.transform;
+        Debug.Log($"Found {HoldPoint.gameObject.name}");
+        rigid.isKinematic = true;
+        collid.enabled = false;
+        gameObject.layer = 7;
+        gameObject.transform.position = HoldPoint.position;
+        gameObject.transform.rotation = HoldPoint.rotation;
+        gameObject.transform.SetParent(HoldPoint, true);
+        Debug.Log($"Hold {HoldPoint.gameObject.name}");
     }
 
-    public void GoTo(GameObject GoPotint)
+    public void GoTo(GameObject GoPoint)
     {
+        /*
         rigid.isKinematic = true;
         collid.enabled = false;
         gameObject.layer = 7;
         gameObject.transform.position = GoPotint.transform.position;
         gameObject.transform.rotation = GoPotint.transform.rotation;
         gameObject.transform.SetParent(GoPotint.transform, true);
+        */
+        Debug.Log($"GOTO {GoPoint.name}");
+        Debug.Log($"GOTO ID {GoPoint.GetPhotonView().ViewID}");
+        photonview.RPC("Hold", RpcTarget.All, GoPoint.GetPhotonView().ViewID);
     }
 
     public void Drop()

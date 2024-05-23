@@ -50,9 +50,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rigid: {fileID: 1669378012754528667}
-  collid: {fileID: 0}
+  collid: {fileID: 5057106875190765512}
   meshRenderer: {fileID: 0}
   Type: 0
+  photonview: {fileID: 0}
   ingredientsData: {fileID: 11400000, guid: 447de78bc0100eb4bba3e5f8d816f4fd, type: 2}
   IngState: 0
   initialize: 1

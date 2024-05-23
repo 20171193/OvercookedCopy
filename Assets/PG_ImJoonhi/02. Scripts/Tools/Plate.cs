@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace JH
 
         private void Start()
         {
+            photonview = gameObject.GetPhotonView();
             recipeList = Manager_TEMP.recipemanager.recipeList;
             ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
 
@@ -63,6 +65,7 @@ namespace JH
 
         private Item GenerateFoodDish(GameObject GeneratePoint, List<IngredientsObject> ingredientObject, RecipeData recipe)
         {
+            /*
             FoodDish foodDish = Instantiate(foodDishPrefab, GeneratePoint.transform.position, Quaternion.identity);
             // foodDish.recipeList = Manager_TEMP.recipemanager.recipeList;
             foodDish.init = ingredientObject;
@@ -71,6 +74,16 @@ namespace JH
             foodDish.rigid.isKinematic = rigid.isKinematic;
             foodDish.transform.SetParent(GeneratePoint.transform, true);
             Destroy(gameObject);
+            return foodDish;
+            */
+            GameObject temp_foodDish = PhotonNetwork.Instantiate("Colaborate Food/Colaborate Food", GeneratePoint.transform.position, Quaternion.identity);
+            FoodDish foodDish = temp_foodDish.GetComponent<FoodDish>();
+            foodDish.init = ingredientObject;
+            foodDish.curRecipe = recipe;
+            foodDish.initPlate = true;
+            foodDish.rigid.isKinematic = rigid.isKinematic;
+            foodDish.GoTo(GeneratePoint);
+            PhotonNetwork.Destroy(gameObject);
             return foodDish;
         }
 

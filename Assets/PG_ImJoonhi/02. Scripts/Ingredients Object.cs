@@ -1,7 +1,5 @@
+using Photon.Pun;
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace JH
@@ -20,10 +18,11 @@ namespace JH
 
         private GameObject CurrentObject;
 
-        
+
 
         void Start()
         {
+            photonview = gameObject.GetPhotonView();
             rigid = gameObject.GetComponent<Rigidbody>();
             collid = gameObject.GetComponent<BoxCollider>();
             rigid.isKinematic = true;

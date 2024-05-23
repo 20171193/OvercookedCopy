@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -30,6 +31,7 @@ namespace JH
 
         private void Start()
         {
+            photonview = gameObject.GetPhotonView();
             recipeList = Manager_TEMP.recipemanager.recipeList;
             ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
             
