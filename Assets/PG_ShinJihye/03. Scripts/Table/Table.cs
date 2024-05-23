@@ -10,11 +10,13 @@ public class Table : MonoBehaviour, IHighlightable
     // 테이블 위에 있는 아이템
     public Item placedItem;
 
-    // 테이블에 아이템이 놓일 위치 (소켓)
+    // 테이블에 아이템이 놓일 위치
     [SerializeField] GameObject generatePoint;
 
     // generatePoint 인덱스 찾기 위한 임시 변수
     [SerializeField] int childIndex;
+
+    public int ChildIndex { get; set; }
 
     private void Awake()
     {

@@ -8193,6 +8193,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1906322617}
     m_Modifications:
+    - target: {fileID: 2384437345708009115, guid: 0c1f7b399b7d1b3428d3604e4e27d4d5,
+        type: 3}
+      propertyPath: childIndex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2384437345708009115, guid: 0c1f7b399b7d1b3428d3604e4e27d4d5,
+        type: 3}
+      propertyPath: newPlatePrefab
+      value: 
+      objectReference: {fileID: 5928936291110951726, guid: e8b46b3ad157ac84ebfc2ebd411d2020,
+        type: 3}
+    - target: {fileID: 2384437345708009115, guid: 0c1f7b399b7d1b3428d3604e4e27d4d5,
+        type: 3}
+      propertyPath: plateRespawnTime
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6297589420081741979, guid: 0c1f7b399b7d1b3428d3604e4e27d4d5,
         type: 3}
       propertyPath: m_Name
@@ -9143,6 +9159,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1875951308}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1878838749 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2384437345708009115, guid: 0c1f7b399b7d1b3428d3604e4e27d4d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1725714129}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e5916a316446542881a6a54dabbb53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1883920818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11105,6 +11133,11 @@ PrefabInstance:
       propertyPath: childIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6991681822661574634, guid: e621cab02e0c2a349aeb8142d1d5781c,
+        type: 3}
+      propertyPath: plateReturn
+      value: 
+      objectReference: {fileID: 1878838749}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
