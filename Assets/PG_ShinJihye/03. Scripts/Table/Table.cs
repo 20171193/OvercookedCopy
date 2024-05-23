@@ -52,6 +52,7 @@ public class Table : MonoBehaviour, IHighlightable
     public virtual void PutDownItem(Item item)
     {
         Debug.Log("table.PutDownItem");
+        Item tempItem = null;
 
         // 1. 테이블에 아이템 없음
         if (placedItem == null)
@@ -77,17 +78,24 @@ public class Table : MonoBehaviour, IHighlightable
                     {
                         // (1) 손에 든 게 재료일 때
                         case ItemType.Ingredient:
-                            Debug.Log("!");
                             IngredientsObject temp_PI_Ingredient = item as IngredientsObject;
-                            if (tempPlate.IngredientIN(generatePoint, temp_PI_Ingredient))
+                            tempItem = tempPlate.IngredientIN(generatePoint, temp_PI_Ingredient);
+                            if (tempItem != null)
+                            {
+                                placedItem = tempItem;
                                 Destroy(item.gameObject);
+                            }
+                            else
+                            {
+                                Debug.Log("Fail");
+                            }
                             return;
 
                         // (2) 손에 든 게 조합된 재료일 때
                         case ItemType.FoodDish:
                             FoodDish temp_PF_FoodDish = item as FoodDish;
                             if (tempPlate.IngredientIN(generatePoint, temp_PF_FoodDish))
-                                Destroy(item);
+                                Destroy(item.gameObject);
                             return;
 
                         // (3) 손에 든 게 프라이팬일 때
@@ -110,10 +118,15 @@ public class Table : MonoBehaviour, IHighlightable
                         // (1) 손에 든 게 접시일 때
                         case ItemType.Plate:
                             Plate temp_IP_Plate = item as Plate;
-                            if (temp_IP_Plate.IngredientIN(generatePoint, tempIngredient))
+                            tempItem = temp_IP_Plate.IngredientIN(generatePoint, tempIngredient);
+                            if (tempItem != null)
                             {
-                                Destroy(placedItem);
-                                placedItem = item;
+                                Destroy(placedItem.gameObject);
+                                placedItem = tempItem;
+                            }
+                            else
+                            {
+                                Debug.Log("Fail");
                             }
                             return;
 
@@ -123,7 +136,7 @@ public class Table : MonoBehaviour, IHighlightable
                             if (temp_IF_Plate.Add(tempIngredient))
                             {
                                 temp_IF_Plate.GoTo(generatePoint);
-                                Destroy(placedItem);
+                                Destroy(placedItem.gameObject);
                                 placedItem = item;
                             }
                             return;
@@ -139,13 +152,13 @@ public class Table : MonoBehaviour, IHighlightable
                         case ItemType.Ingredient:
                             IngredientsObject temp_FI_Ingredient = item as IngredientsObject;
                             if (tempFoodDish.Add(temp_FI_Ingredient))
-                                Destroy(item);
+                                Destroy(item.gameObject);
                             return;
 
                         // (2) 손에 든 게 조합된 재료일 때
                         case ItemType.FoodDish:
                             if (tempFoodDish.AddPlate())
-                                Destroy(item);
+                                Destroy(item.gameObject);
                             return;
 
                         // (3) 손에 든 게 프라이팬일 때
@@ -193,7 +206,7 @@ public class Table : MonoBehaviour, IHighlightable
                                 if (temp_PanF_FoodDish.Add(tempPan.CookingObject))
                                     tempPan.TakeOut();
                             }
-                            Destroy(item);
+                            Destroy(item.gameObject);
                             return;
                     }
                     return;
