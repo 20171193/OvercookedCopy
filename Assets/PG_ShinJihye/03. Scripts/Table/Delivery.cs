@@ -13,12 +13,12 @@ public class Delivery : Table
         addScore = 5;
     }
 
-    public override void PutDownItem(Item item)
+    public override bool PutDownItem(Item item)
     {
         if (item.Type != ItemType.Plate)
         {
             Debug.Log("접시가 필요합니다.");
-            return;
+            return false;
         }
         Debug.Log("1");
         base.PutDownItem(item);
@@ -26,6 +26,7 @@ public class Delivery : Table
 
         Debug.Log(item.name);
         StartCoroutine(DeliveryMenu(item));
+        return true;
     }
 
     IEnumerator DeliveryMenu(Item item)
