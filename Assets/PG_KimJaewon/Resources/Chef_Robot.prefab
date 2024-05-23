@@ -1462,6 +1462,9 @@ MonoBehaviour:
   debug: 1
   range: 1.5
   angle: 60
+  nearestTable: {fileID: 0}
+  nearestItem: {fileID: 0}
+  pickedItem: {fileID: 0}
   isPickUp: 0
 --- !u!114 &1747429180094494401
 MonoBehaviour:
