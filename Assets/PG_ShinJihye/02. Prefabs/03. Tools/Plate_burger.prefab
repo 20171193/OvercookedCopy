@@ -53,7 +53,7 @@ MonoBehaviour:
   Type: 1
   recipeList: {fileID: 0}
   ingredientPrefabs: {fileID: 0}
-  foodDishPrefab: {fileID: 4264565337557243990, guid: 0c548628daa51c2428883be5c9580d91,
+  foodDishPrefab: {fileID: 8956479520290030205, guid: 736dc4fdd93ebd342881a2cc595b01ae,
     type: 3}
   DebugGenPoint: {fileID: 0}
   DebugIngredientObject: {fileID: 0}
