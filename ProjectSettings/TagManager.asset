@@ -3,14 +3,19 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Table
+  - Item
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
+  - Table
+  - Item
+  - DropItem
   - 
   - 
   - 
@@ -31,13 +36,19 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - WaterTile
+  - Tile
+  - SlopeTile
   m_SortingLayers:
+  - name: Player
+    uniqueID: 3061658607
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Coin
+    uniqueID: 4023533643
+    locked: 0
+  - name: Recipe
+    uniqueID: 1736451221
     locked: 0
