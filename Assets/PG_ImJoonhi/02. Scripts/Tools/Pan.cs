@@ -2,6 +2,7 @@ using JH;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Pan : Item
@@ -12,17 +13,30 @@ public class Pan : Item
     public float CookSpeed;
 
     [SerializeField]
-    [Range(0.0f, 10.0f)]
+    [Range(0.0f, 15.0f)]
     private float progress;
     private double startTime;
 
     [Header("Potints")]
     [SerializeField] GameObject PanPoint;
 
+    [Header("Map Recipes")]
+    [SerializeField] IngredientList ingredientPrefabs;
+
     [Header("Debug")]
     [SerializeField] IngredientsObject DebugCookingObject;
 
-    private IngredientsObject CookingObject;
+    public IngredientsObject CookingObject { get; private set; }
+
+    private void Start()
+    {
+        ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
+        rigid = gameObject.GetComponent<Rigidbody>();
+        collid = gameObject.GetComponent<BoxCollider>();
+        meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+        rigid.isKinematic = true;
+        collid.enabled = false;
+    }
 
     public bool IngredientIN(IngredientsObject ingredient)
     {
@@ -36,15 +50,37 @@ public class Pan : Item
 
     public void TakeOut()
     {
+        progress = 0f;
+        Destroy(CookingObject);
         CookingObject = null;
     }
+
+    public bool isWellDone()
+    {
+        if (progress >= 10f && progress <= 15f)
+            return true;
+        return false;
+    }
+
+    public bool isEmpty()
+    {
+        if (CookingObject == null)
+            return true;
+        return false;
+    }
+
 
     private void OnPan(IngredientsObject ingredient)
     {
         Cooking = true;
+        ingredient.GoTo(PanPoint);
         CookingObject = ingredient;
         CookingObject.transform.position = PanPoint.transform.position;
         CookingObject.transform.SetParent(PanPoint.transform, true);
+        // 임시
+        CookingObject.PanHeated();
+        Cooking = false;
+        progress = 10f;
     }
 
     /*

@@ -32,9 +32,11 @@ namespace JH
         {
             recipeList = Manager_TEMP.recipemanager.recipeList;
             ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
-
+            
             rigid = gameObject.GetComponent<Rigidbody>();
+            collid = gameObject.GetComponent<BoxCollider>();
             rigid.isKinematic = true;
+            collid.enabled = false;
 
             if (initPlate)
                 Plate = true;
@@ -52,6 +54,8 @@ namespace JH
                 CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position, Quaternion.identity);
                 CurrentObject.transform.SetParent(gameObject.transform, true);
             }
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
         }
 
         /// <summary>그릇이 없을경우 그릇을 추가해주는 함수.</summary>
@@ -63,6 +67,8 @@ namespace JH
             curPlate = Instantiate(recipeList.PlatePrefab, gameObject.transform.position, Quaternion.identity);
             curPlate.transform.SetParent(gameObject.transform, true);
             CurrentObject.transform.SetParent(curPlate.transform, true);
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
             return true;
         }
 

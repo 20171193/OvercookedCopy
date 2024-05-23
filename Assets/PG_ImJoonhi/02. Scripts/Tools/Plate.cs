@@ -18,7 +18,11 @@ namespace JH
             ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
 
             rigid = gameObject.GetComponent<Rigidbody>();
+            collid = gameObject.GetComponent<Collider>();
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
             rigid.isKinematic = true;
+            collid.enabled = false;
         }
 
         /// <summary>그릇에 놓을 재료가 1가지인 ingredientObject 프리팹의 경우 사용하는 함수.</summary>

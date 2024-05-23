@@ -25,7 +25,10 @@ namespace JH
         void Start()
         {
             rigid = gameObject.GetComponent<Rigidbody>();
+            collid = gameObject.GetComponent<BoxCollider>();
             rigid.isKinematic = true;
+            collid.enabled = false;
+
             switch (IngState)
             {
                 case IngredientState.Original:
@@ -44,6 +47,8 @@ namespace JH
                     break;
             }
             CurrentObject.transform.SetParent(gameObject.transform, true);
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
         }
 
         public void SetIngredient(IngredientsData ingredient)
@@ -69,6 +74,8 @@ namespace JH
             Destroy(CurrentObject);
             CurrentObject = (GameObject)Instantiate(ingredientsData.Sliced, gameObject.transform);
             CurrentObject.transform.SetParent(gameObject.transform, true);
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
         }
 
         [ContextMenu("PanHeat")]
@@ -82,6 +89,8 @@ namespace JH
             Destroy(CurrentObject);
             CurrentObject = (GameObject)Instantiate(ingredientsData.Paned, gameObject.transform);
             CurrentObject.transform.SetParent(gameObject.transform, true);
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
         }
 
         public int CompareTo(IngredientsObject other)

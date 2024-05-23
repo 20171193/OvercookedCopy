@@ -6,20 +6,21 @@ public class TrashBin : Table
 {
     [SerializeField] float speed;
     [SerializeField] float destroyScale;
-    /*
-    public override void Interactable(Cube cube)
+    
+    public override void PutDownItem(Item item)
     {
-        base.Interactable(cube);
         Debug.Log("TrashBin");
+        Debug.Log(item.name);
 
-        StartCoroutine(DestroyItem(cube));
+        //StartCoroutine(DestroyItem(item));
     }
 
-    IEnumerator DestroyItem(Cube cube)
+    IEnumerator DestroyItem(Item item)
     {
-        cube.trashBinAnime.enabled = false;
-        Vector3 cubeScale = cube.transform.localScale;
+        //item.trashBinAnime.enabled = false;
 
+        Vector3 cubeScale = item.transform.localScale;
+        /*
         float reduceSpeed;
         bool isDestroyScale = itemScale.x < destroyScale;
 
@@ -36,6 +37,7 @@ public class TrashBin : Table
             }
 
             yield return null;
-        }
-    }*/
+        }*/
+        yield return null;
+    }
 }

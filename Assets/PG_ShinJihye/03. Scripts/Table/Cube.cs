@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
-    // Item 클래스 임시로
+    // Item 클래스 임시
 
     public Animator trashBinAnime;
 
@@ -12,4 +12,6 @@ public class Cube : MonoBehaviour
     {
         trashBinAnime = gameObject.GetComponent<Animator>();
     }
+
+
 }

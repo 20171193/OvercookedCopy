@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1060730762619216289}
   - component: {fileID: 2489380798286467471}
   - component: {fileID: -7105341679264326584}
-  - component: {fileID: 1950714494794915902}
+  - component: {fileID: 7712464461730862705}
   m_Layer: 0
   m_Name: Ingredient Object Init
   m_TagString: Untagged
@@ -46,10 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1df228129d8a6a04aab03d18463482d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rigid: {fileID: -7105341679264326584}
+  collid: {fileID: 0}
+  Type: 0
   ingredientsData: {fileID: 0}
   IngState: 0
   initialize: 1
-  rigid: {fileID: -7105341679264326584}
   DebugGameObject: {fileID: 0}
 --- !u!54 &-7105341679264326584
 Rigidbody:
@@ -78,8 +80,8 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &1950714494794915902
-SphereCollider:
+--- !u!65 &7712464461730862705
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -97,5 +99,5 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.4, y: 0.4, z: 0.4}
+  m_Center: {x: 0, y: 0.2, z: 0}
