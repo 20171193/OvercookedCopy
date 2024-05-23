@@ -29,7 +29,7 @@ namespace JH
         }
 
         /// <summary>그릇에 놓을 재료가 1가지인 ingredientObject 프리팹의 경우 사용하는 함수.</summary>
-        public bool IngredientIN(GameObject GeneratePoint, IngredientsObject ingredientObject)
+        public Item IngredientIN(GameObject GeneratePoint, IngredientsObject ingredientObject)
         {
             List<IngredientsObject> buf = new List<IngredientsObject>();
             for (int i = 0; i < 4; i++) buf.Add(null);
@@ -42,11 +42,10 @@ namespace JH
                 if (recipeList.IsRecipe(buf, i))
                 {
                     Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
-                    GenerateFoodDish(GeneratePoint, buf, recipeList.Recipe[i]);
-                    return true;
+                    return GenerateFoodDish(GeneratePoint, buf, recipeList.Recipe[i]);
                 }
             }
-            return false;
+            return null;
         }
 
         /// <summary>그릇에 놓을 재료가 2개 이상인 foodDish 프리팹인 경우 사용하는 함수.</summary>
@@ -62,7 +61,7 @@ namespace JH
             return false;
         }
 
-        private void GenerateFoodDish(GameObject GeneratePoint, List<IngredientsObject> ingredientObject, RecipeData recipe)
+        private Item GenerateFoodDish(GameObject GeneratePoint, List<IngredientsObject> ingredientObject, RecipeData recipe)
         {
             FoodDish foodDish = Instantiate(foodDishPrefab, GeneratePoint.transform.position, Quaternion.identity);
             // foodDish.recipeList = Manager_TEMP.recipemanager.recipeList;
@@ -72,6 +71,7 @@ namespace JH
             foodDish.rigid.isKinematic = rigid.isKinematic;
             foodDish.transform.SetParent(GeneratePoint.transform, true);
             Destroy(gameObject);
+            return foodDish;
         }
 
         private void SwapFoodDish(GameObject GeneratePoint, FoodDish foodDish)

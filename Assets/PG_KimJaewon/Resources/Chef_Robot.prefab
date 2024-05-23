@@ -1253,7 +1253,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6532140815298052681
 Transform:
   m_ObjectHideFlags: 0
@@ -1462,6 +1462,9 @@ MonoBehaviour:
   debug: 1
   range: 1.5
   angle: 60
+  nearestTable: {fileID: 0}
+  nearestItem: {fileID: 0}
+  pickedItem: {fileID: 0}
   isPickUp: 0
 --- !u!114 &1747429180094494401
 MonoBehaviour:
