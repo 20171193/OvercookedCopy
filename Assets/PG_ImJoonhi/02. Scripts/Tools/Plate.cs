@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace JH
@@ -11,6 +12,8 @@ namespace JH
 
         [Header("Prefabs")]
         [SerializeField] FoodDish foodDishPrefab;
+
+        private List<IngredientsObject> ingredientListDebug;
 
         private void Start()
         {
@@ -28,15 +31,14 @@ namespace JH
         /// <summary>그릇에 놓을 재료가 1가지인 ingredientObject 프리팹의 경우 사용하는 함수.</summary>
         public bool IngredientIN(GameObject GeneratePoint, IngredientsObject ingredientObject)
         {
-            if (ingredientObject.IngState == IngredientState.Original)
-                return false;
             List<IngredientsObject> buf = new List<IngredientsObject>();
             for (int i = 0; i < 4; i++) buf.Add(null);
             buf[0] = ingredientPrefabs.Find(ingredientObject);
+            ingredientListDebug = buf.ToList();
             Debug.Log("?");
             for (int i = 0; i < recipeList.Recipe.Count; i++)
             {
-                // Debug.Log(recipeList.Recipe[i].name);
+                Debug.Log(recipeList.Recipe[i].name);
                 if (recipeList.IsRecipe(buf, i))
                 {
                     Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
