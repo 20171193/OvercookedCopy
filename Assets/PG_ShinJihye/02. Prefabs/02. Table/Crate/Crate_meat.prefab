@@ -103,6 +103,7 @@ MonoBehaviour:
   changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
+  childIndex: 1
 --- !u!1001 &5468161748936503147
 PrefabInstance:
   m_ObjectHideFlags: 0

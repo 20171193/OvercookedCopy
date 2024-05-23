@@ -13,23 +13,31 @@ public class Table : MonoBehaviour, IHighlightable
 
     // 테이블에 아이템이 놓일 위치 (소켓)
     [SerializeField] GameObject generatePoint;
+
+    // generatePoint 인덱스 찾기 위한 임시 변수
     [SerializeField] int childIndex;
-
-
 
     private void Awake()
     {
         originMT = meshRenderer.sharedMaterial;
 
-        if (transform.childCount >= 3 && transform.GetChild(1) != null)
-        {
-            placedItem = transform.GetChild(2).GetComponent<Item>();
-        }
-
+        // generatePoint 있는지 null 체크 (에러 방지)
         Transform temp = transform.GetChild(childIndex);
         if (temp != null)
+        {
             generatePoint = temp.gameObject;
+        }
+
+        // 게임 시작 시 테이블에 아이템이 미리 놓여져 있는 경우 해당 아이템 placedItem에 할당
+        placedItem = transform.GetComponentInChildren<Item>();
+        int placedItemIndex = transform.childCount;
+        if (placedItem != null && generatePoint != null)
+        {
+            placedItem = transform.GetChild(placedItemIndex - 1).GetComponent<Item>();
+            placedItem.transform.position = generatePoint.gameObject.transform.position;
+        }
     }
+
     public void EnterPlayer()
     {
         meshRenderer.sharedMaterial = changeMT;
