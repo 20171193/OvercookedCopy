@@ -1,5 +1,4 @@
 using JH;
-using UnityEditorInternal;
 using UnityEngine;
 
 public class Table : MonoBehaviour, IHighlightable
@@ -194,7 +193,7 @@ public class Table : MonoBehaviour, IHighlightable
                             if (tempPan.isWellDone())
                             {
                                 //if (temp_PanP_Plate.IngredientIN(GenPoint, tempPan.CookingObject))
-                                    tempPan.TakeOut();
+                                tempPan.TakeOut();
                             }
                             return;
 
@@ -225,7 +224,7 @@ public class Table : MonoBehaviour, IHighlightable
 
         Item returnItem = placedItem;
         placedItem = null;
-        
+
         return returnItem;
     }
 
