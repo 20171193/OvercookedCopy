@@ -111,7 +111,6 @@ namespace Jc
 
             mainVC.transform.position = endVCpos;
             mainVC.transform.rotation = Quaternion.Euler(endVCrot);
-            loadingGroup.SetActive(false);
             SetActivePanel(Panel.Main);
             yield return null;
         }
