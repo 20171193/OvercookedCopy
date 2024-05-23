@@ -77,9 +77,10 @@ public class Table : MonoBehaviour, IHighlightable
                     {
                         // (1) 손에 든 게 재료일 때
                         case ItemType.Ingredient:
+                            Debug.Log("!");
                             IngredientsObject temp_PI_Ingredient = item as IngredientsObject;
                             if (tempPlate.IngredientIN(generatePoint, temp_PI_Ingredient))
-                                Destroy(item);
+                                Destroy(item.gameObject);
                             return;
 
                         // (2) 손에 든 게 조합된 재료일 때
