@@ -13,6 +13,8 @@ public class Table : MonoBehaviour, IHighlightable
 
     // 테이블에 아이템이 놓일 위치 (소켓)
     [SerializeField] GameObject generatePoint;
+    [SerializeField] int childIndex;
+
 
 
     private void Awake()
@@ -24,7 +26,7 @@ public class Table : MonoBehaviour, IHighlightable
             placedItem = transform.GetChild(2).GetComponent<Item>();
         }
 
-        Transform temp = transform.GetChild(1);
+        Transform temp = transform.GetChild(childIndex);
         if (temp != null)
             generatePoint = temp.gameObject;
     }
