@@ -11,16 +11,14 @@ namespace JH
         [PunRPC]
         /// <summary>재료를 생성 및 부여하는 함수</summary>
         /// <param name="GeneratePoint">GeneratePoint는 생성한 재료 GameObject를 자식으로 넣을 위치에 대한 인수입니다.</param>
-        void TakeIngredient(Transform GeneratePoint)
+        void TakeIngredient(GameObject GeneratePoint)
         {
-            GameObject ingObj = PhotonNetwork.Instantiate($"Ingredient Prefab/{ingredientObject.name}", GeneratePoint.position, GeneratePoint.rotation);
-            ingObj.transform.SetParent(GeneratePoint);
-        }
-
-        [PunRPC]
-        void SetGenPoint()
-        {
-
+            PhotonView photonView = PhotonView.Get(this);
+            GameObject ingObj = PhotonNetwork.Instantiate($"Ingredient Prefab/{ingredientObject.name}", GeneratePoint.transform.position, GeneratePoint.transform.rotation);
+            // ingObj.transform.SetParent(GeneratePoint.transform);
+            Debug.Log($"{ingObj.GetPhotonView().ViewID} , {GeneratePoint.GetPhotonView().ViewID}");
+            Debug.Log($"{PhotonView.Find(ingObj.GetPhotonView().ViewID).gameObject.name} , {PhotonView.Find(GeneratePoint.GetPhotonView().ViewID).gameObject.name}");
+            photonView.RPC("Hold", RpcTarget.All, ingObj.GetPhotonView().ViewID, DebugGenpoint.GetPhotonView().ViewID);
         }
 
 
@@ -35,9 +33,8 @@ namespace JH
         {
             if (DebugGenpoint != null)
             {
-                PhotonView photonView = PhotonView.Get(this);
-                // TakeIngredient(DebugGenpoint.transform);
-                photonView.RPC("TakeIngredient", RpcTarget.All, DebugGenpoint.transform);
+                // PhotonView photonView = PhotonView.Get(this);
+                TakeIngredient(DebugGenpoint);
             }
         }
 #endif

@@ -1,28 +1,26 @@
 using UnityEngine;
 using Photon.Pun;
 
-public class Item : MonoBehaviour, IPickable, IHighlightable
+public class Item : MonoBehaviourPun, IPickable, IHighlightable
 {
     [Header("Components")]
     public Rigidbody rigid;
     public Collider collid;
     public MeshRenderer meshRenderer;
     public ItemType Type;
+    public PhotonView PhotonView;
 
     private Material originMT;
     private Material changeMT;
 
     // IPickable
     [PunRPC]
-    public void GoTo2(Transform GoPotint)
+    public void Hold(int objectPhotonID, int HoldPointPhotonID)
     {
-        rigid.isKinematic = true;
-        collid.enabled = false;
-        gameObject.layer = 7;
-        gameObject.transform.position = GoPotint.position;
-        gameObject.transform.rotation = GoPotint.rotation;
-        gameObject.transform.SetParent(GoPotint, true);
+        GameObject HoldPoint = PhotonView.Find(HoldPointPhotonID).gameObject;
+        Debug.Log("!!!");
     }
+
     public void GoTo(GameObject GoPotint)
     {
         rigid.isKinematic = true;
