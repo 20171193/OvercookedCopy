@@ -11,7 +11,7 @@ namespace Jc
         private static LobbyManager inst;
         public static LobbyManager Inst { get { return inst; } }
 
-        public enum Panel { Login, Main, Campagin, Room }
+        public enum Panel { Title, Login, Main, Campagin, Room }
 
         [SerializeField]
         private LoginPanel loginPanel;
@@ -71,13 +71,6 @@ namespace Jc
                 PhotonNetwork.JoinLobby();
             }
         }
-
-        // 
-        //public override void OnConnected()
-        //{
-        //    //SetActivePanel(Panel.Menu);
-        //}
-
 
         // 연결이 실패한 경우
         public override void OnDisconnected(DisconnectCause cause)

@@ -14,7 +14,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &7342470534798686896
 Transform:
@@ -48,13 +48,12 @@ GameObject:
   - component: {fileID: 1319243239586386406}
   - component: {fileID: 31335626770425508}
   - component: {fileID: 4898031635523623594}
-  - component: {fileID: 3173841602658865468}
   m_Layer: 0
   m_Name: Trapdoor_plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!4 &1319243239586386406
 Transform:
@@ -87,7 +86,7 @@ MeshRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3581843882635295716}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_StaticShadowCaster: 0
@@ -121,28 +120,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3173841602658865468
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3581843882635295716}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &2084612530750406929
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -225,6 +202,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trapdoor_floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e57db59aee5961148961470e088f6380,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100170996494995985, guid: e57db59aee5961148961470e088f6380,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -320,6 +307,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trapdoor_floor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e57db59aee5961148961470e088f6380,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100170996494995985, guid: e57db59aee5961148961470e088f6380,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -409,10 +406,20 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -3405819520744533835, guid: 69ea35672648eb44391aab6cac3b4b0a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 69ea35672648eb44391aab6cac3b4b0a,
         type: 3}
       propertyPath: m_Name
       value: Trapdoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 69ea35672648eb44391aab6cac3b4b0a,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -508,6 +515,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Trapdoor_floor
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e57db59aee5961148961470e088f6380,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100170996494995985, guid: e57db59aee5961148961470e088f6380,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -601,6 +618,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Trapdoor_floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e57db59aee5961148961470e088f6380,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1100170996494995985, guid: e57db59aee5961148961470e088f6380,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

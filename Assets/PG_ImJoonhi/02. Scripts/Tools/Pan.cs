@@ -33,7 +33,7 @@ public class Pan : Item
         ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
         rigid = gameObject.GetComponent<Rigidbody>();
         collid = gameObject.GetComponent<BoxCollider>();
-        meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
+        meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
         rigid.isKinematic = true;
         collid.enabled = false;
     }

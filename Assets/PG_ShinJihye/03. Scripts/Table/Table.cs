@@ -1,4 +1,5 @@
 using JH;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class Table : MonoBehaviour, IHighlightable
@@ -13,18 +14,30 @@ public class Table : MonoBehaviour, IHighlightable
     // 테이블에 아이템이 놓일 위치 (소켓)
     [SerializeField] GameObject generatePoint;
 
+    // generatePoint 인덱스 찾기 위한 임시 변수
+    [SerializeField] int childIndex;
 
     private void Awake()
     {
         originMT = meshRenderer.sharedMaterial;
-        //placedItem = GetComponent<Item>();
 
-        if (transform.childCount >= 2 && transform.GetChild(1) != null)
+        // generatePoint 있는지 null 체크 (에러 방지)
+        Transform temp = transform.GetChild(childIndex);
+        if (temp != null)
         {
-            placedItem = transform.GetChild(1).GetComponent<Item>();
+            generatePoint = temp.gameObject;
         }
-        
+
+        // 게임 시작 시 테이블에 아이템이 미리 놓여져 있는 경우 해당 아이템 placedItem에 할당
+        placedItem = transform.GetComponentInChildren<Item>();
+        int placedItemIndex = transform.childCount;
+        if (placedItem != null && generatePoint != null)
+        {
+            placedItem = transform.GetChild(placedItemIndex - 1).GetComponent<Item>();
+            placedItem.transform.position = generatePoint.gameObject.transform.position;
+        }
     }
+
     public void EnterPlayer()
     {
         meshRenderer.sharedMaterial = changeMT;
@@ -41,10 +54,10 @@ public class Table : MonoBehaviour, IHighlightable
         Debug.Log("table.PutDownItem");
 
         // 1. 테이블에 아이템 없음
-        if (placedItem = null)
+        if (placedItem == null)
         {
             // 플레이어에게 아이템 없음 (return)
-            if (item = null)
+            if (item == null)
                 return;
 
             // 플레이어에게 아이템 있음 (아이템을 테이블로)
@@ -57,7 +70,7 @@ public class Table : MonoBehaviour, IHighlightable
         {
             switch (placedItem.Type)
             {
-                // 1-1. 테이블에 접시 있을 때
+                // 1-1. 테이블에 접시 있을 때 X
                 case ItemType.Plate:
                     Plate tempPlate = placedItem as Plate;
                     switch (item.Type)
@@ -88,7 +101,7 @@ public class Table : MonoBehaviour, IHighlightable
                     }
                     return;
 
-                // 1-2. 테이블에 재료 있을 떄
+                // 1-2. 테이블에 재료 있을 떄 X
                 case ItemType.Ingredient:
                     IngredientsObject tempIngredient = placedItem as IngredientsObject;
                     switch (item.Type)
@@ -116,7 +129,7 @@ public class Table : MonoBehaviour, IHighlightable
                     }
                     return;
 
-                // 1-3. 테이블에 조합된 재료 있을 때
+                // 1-3. 테이블에 조합된 재료 있을 때 X
                 case ItemType.FoodDish:
                     FoodDish tempFoodDish = placedItem as FoodDish;
                     switch (item.Type)
@@ -151,7 +164,7 @@ public class Table : MonoBehaviour, IHighlightable
                     Pan tempPan = placedItem as Pan;
                     switch (item.Type)
                     {
-                        // (1) 손에 든 게 재료일 때
+                        // (1) 손에 든 게 재료일 때 O
                         case ItemType.Ingredient:
                             IngredientsObject temp_PanI_Ingredient = item as IngredientsObject;
                             if (tempPan.isEmpty())
@@ -161,15 +174,17 @@ public class Table : MonoBehaviour, IHighlightable
                             }
                             return;
 
-                        /*
+                        // (2) 손에 든 게 접시일 때 X
                         case ItemType.Plate:
                             Plate temp_PanP_Plate = item as Plate;
                             if (tempPan.isWellDone())
                             {
-                                if (temp_PanP_Plate.IngredientIN(GenPoint, tempPan.CookingObject))
+                                //if (temp_PanP_Plate.IngredientIN(GenPoint, tempPan.CookingObject))
                                     tempPan.TakeOut();
                             }
                             return;
+
+                        // (3) 손에 든 게 조합된 재료일 때
                         case ItemType.FoodDish:
                             FoodDish temp_PanF_FoodDish = item as FoodDish;
                             if (tempPan.isWellDone())
@@ -179,7 +194,6 @@ public class Table : MonoBehaviour, IHighlightable
                             }
                             Destroy(item);
                             return;
-                        */
                     }
                     return;
             }
@@ -204,6 +218,8 @@ public class Table : MonoBehaviour, IHighlightable
     // 테이블에 아이템 놓을 수 있는지 여부
     public virtual bool PutDownItem()
     {
+        // 불났으면 false
+
         if (placedItem == null)
         {
             return true;

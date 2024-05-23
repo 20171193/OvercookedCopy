@@ -75,6 +75,11 @@ namespace KIMJAEWON
             Vector3 dashDir = transform.forward; // 플레이어의 현재 방향으로 대쉬하도록 수정
             rb.AddForce(dashDir * dashPower, ForceMode.Impulse);
         }
+
+        private void Start()
+        {
+           
+        }
     }
 }
 

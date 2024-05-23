@@ -18,8 +18,8 @@ namespace JH
             ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
 
             rigid = gameObject.GetComponent<Rigidbody>();
-            collid = gameObject.GetComponent<BoxCollider>();
-            meshRenderer = transform.GetChild(0).GetComponent<MeshRenderer>();
+            collid = gameObject.GetComponent<Collider>();
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
             SetOriginMT();
             rigid.isKinematic = true;
             collid.enabled = false;
