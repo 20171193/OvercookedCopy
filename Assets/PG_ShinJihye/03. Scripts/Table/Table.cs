@@ -233,7 +233,7 @@ public class Table : MonoBehaviour, IHighlightable
 
         Item returnItem = placedItem;
         placedItem = null;
-        
+
         return returnItem;
     }
 
