@@ -17,12 +17,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/PG_ImJoonhi/00. Scenes/IJH_SampleScene02.unity
     guid: 446d40e200208924486496763b48a930
-  - enabled: 1
+  - enabled: 0
     path: Assets/PG_ImJoonhi/00. Scenes/SJH_AirballoonScene _ IJH.unity
     guid: 0ed66588b88337e45a8f5e4870b67b3b
   - enabled: 0
     path: Assets/PG_KimJaewon/00. Scenes/KJW EDIT _SJH_AirballoonScene.unity
     guid: 22afaf029de840b479dfa3ec20c41a40
+  - enabled: 1
+    path: Assets/PG_ShinJihye/00. Scenes/SJH_AirballoonScene.unity
+    guid: 9b73991a521dea84a85606118be8457d
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 7b381f4b0db3fbc4fa6d162655591a56,
       type: 2}

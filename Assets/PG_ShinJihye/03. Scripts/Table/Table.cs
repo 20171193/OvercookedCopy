@@ -1,4 +1,5 @@
 using JH;
+using Photon.Pun;
 using UnityEngine;
 
 public class Table : MonoBehaviour, IHighlightable
