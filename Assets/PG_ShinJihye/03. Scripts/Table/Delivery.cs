@@ -22,7 +22,6 @@ public class Delivery : Table
             base.PutDownItem(item);  // 제출대에 내려놓기
 
             StartCoroutine(MenuDeliveryRoutine(item));
-            plateReturn.PlateRespawn();
 
             return true;
         }
@@ -40,5 +39,7 @@ public class Delivery : Table
         yield return new WaitForSeconds(1.0f);
 
         Destroy(item.gameObject);
+
+        plateReturn.PlateRespawn();
     }
 }

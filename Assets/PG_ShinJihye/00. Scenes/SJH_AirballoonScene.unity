@@ -438,6 +438,11 @@ PrefabInstance:
       propertyPath: childIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5114695877859766125, guid: a61cba7ab6a45ce42a439c15166736f2,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6401458378996982945, guid: a61cba7ab6a45ce42a439c15166736f2,
         type: 3}
       propertyPath: m_Layer
@@ -1076,6 +1081,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114695877859766125, guid: a61cba7ab6a45ce42a439c15166736f2,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6401458378996982945, guid: a61cba7ab6a45ce42a439c15166736f2,
         type: 3}
@@ -2044,6 +2054,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2869052335609530238, guid: c98637b9f5b641d43808cb0a538bb62b,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3732329651427563569, guid: c98637b9f5b641d43808cb0a538bb62b,
         type: 3}
       propertyPath: m_Name
@@ -2671,6 +2686,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5114695877859766125, guid: a61cba7ab6a45ce42a439c15166736f2,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6401458378996982945, guid: a61cba7ab6a45ce42a439c15166736f2,
         type: 3}
@@ -4442,6 +4462,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7858263739647354686, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -6576,6 +6601,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate_meat
       objectReference: {fileID: 0}
+    - target: {fileID: 5554965638529515188, guid: 0409ef7bf148ba14abce3332af505727,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5594185110821753266, guid: 0409ef7bf148ba14abce3332af505727,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7386,6 +7416,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7858263739647354686, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -8207,6 +8242,11 @@ PrefabInstance:
     - target: {fileID: 2384437345708009115, guid: 0c1f7b399b7d1b3428d3604e4e27d4d5,
         type: 3}
       propertyPath: plateRespawnTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2384437345708009115, guid: 0c1f7b399b7d1b3428d3604e4e27d4d5,
+        type: 3}
+      propertyPath: spawnPointChildIndex
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6297589420081741979, guid: 0c1f7b399b7d1b3428d3604e4e27d4d5,
@@ -8823,6 +8863,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7906201529345359522, guid: e7b6aba4c04599149a35c301b4683e4b,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8941,6 +8986,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 830973676}
     m_Modifications:
+    - target: {fileID: 3186419579911346309, guid: f82917eb696efe349923d13fe3d12053,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3278222104268908178, guid: f82917eb696efe349923d13fe3d12053,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9069,6 +9119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7858263739647354686, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -9779,6 +9834,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7718524394504781678, guid: 179929ead6af3d849ad5b10f9107d4f9,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9886,6 +9946,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5709570898116252862, guid: a48f004d461a38c488357a36a239d397,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11138,6 +11203,11 @@ PrefabInstance:
       propertyPath: plateReturn
       value: 
       objectReference: {fileID: 1878838749}
+    - target: {fileID: 6991681822661574634, guid: e621cab02e0c2a349aeb8142d1d5781c,
+        type: 3}
+      propertyPath: genPointChildIndex
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
