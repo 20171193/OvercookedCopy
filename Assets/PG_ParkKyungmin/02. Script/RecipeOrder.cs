@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
+using Photon.Pun;
 
 public class RecipeOrder : MonoBehaviour
 {
@@ -150,6 +151,8 @@ public class RecipeOrder : MonoBehaviour
             OrderList.RemoveAt(0);
         }
     }
+
+
 #endif
     #endregion
 }

@@ -35,7 +35,7 @@ namespace Kyungmin
         }
         public void RecipeResult(int score)
         {
-            // 레시피 제출
+            // 레시피 제출 -> 방장에게 점수를 신청함 -> 신청받은 방장이 점수를 올림
 
             // 팁계산
             int addTip = Tip * multipleTip;
@@ -123,13 +123,18 @@ namespace Kyungmin
             {
                 stream.SendNext(curScore);
                 stream.SendNext(curTip);
-                stream.SendNext(totalScore);               
+                stream.SendNext(totalScore);
+                stream.SendNext(multipleTip);
+
             }
             else // if(stream.IsReading)
             {
                 curScore = (int)stream.ReceiveNext();
                 curTip = (int)stream.ReceiveNext();
-                totalScore = (int)stream.ReceiveNext();               
+                totalScore = (int)stream.ReceiveNext();
+                multipleTip = (int)stream.ReceiveNext();
+                scoreUI.UpdateUI(totalScore, multipleTip);
+                scoreUI.GetCoin();
             }
         }
     }
