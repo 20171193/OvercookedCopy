@@ -4,11 +4,20 @@ using UnityEngine;
 
 public class ChoppingTable : Table
 {
-    [SerializeField] float choppingTime; // 6번
-    [SerializeField] float currentTime;
-    [SerializeField] float choppingSpeed;
-
+    // 다지기 진행 과정 표시 바
     [SerializeField] BillBoard choppingBar;
+
+    // 칼
+    [SerializeField] GameObject knife;
+
+    // 다지기 끝내는데에 걸리는 총 시간(6)
+    [SerializeField] float choppingTime;
+
+    // 다지기 현재 진행 시간
+    [SerializeField] float currentTime;
+
+    // 다지기 속도
+    [SerializeField] float choppingSpeed;
 
     private void OnEnable()
     {
@@ -20,7 +29,10 @@ public class ChoppingTable : Table
 
     public override bool PutDownItem(Item item)
     {
-        return base.PutDownItem(item);
+        base.PutDownItem(item);
+        knife.SetActive(false);
+
+        return true;
     }
 
     public override Item PickUpItem()

@@ -294,6 +294,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 36
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1337,6 +1342,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1485,6 +1495,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1562,6 +1577,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -2179,6 +2199,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4337248181902006574, guid: e8b46b3ad157ac84ebfc2ebd411d2020,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8431212439588704097, guid: e8b46b3ad157ac84ebfc2ebd411d2020,
         type: 3}
       propertyPath: m_Name
@@ -2305,17 +2330,17 @@ PrefabInstance:
     - target: {fileID: 3335173256371732125, guid: 7db692e2aa5f2c84ca8a79942ad63983,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3335173256371732125, guid: 7db692e2aa5f2c84ca8a79942ad63983,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3335173256371732125, guid: 7db692e2aa5f2c84ca8a79942ad63983,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 3335173256371732125, guid: 7db692e2aa5f2c84ca8a79942ad63983,
         type: 3}
@@ -2358,6 +2383,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 33
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -2437,6 +2467,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2510,6 +2545,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -2669,6 +2709,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -2853,6 +2898,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -3179,6 +3229,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -3564,6 +3619,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -4510,6 +4570,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4337248181902006574, guid: e8b46b3ad157ac84ebfc2ebd411d2020,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 5928936291110951726, guid: e8b46b3ad157ac84ebfc2ebd411d2020,
         type: 3}
       propertyPath: foodDishPrefab
@@ -4629,6 +4694,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 27
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4703,6 +4773,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4776,6 +4851,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -4923,6 +5003,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 34
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -5083,6 +5168,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5237,6 +5327,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 24
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5385,6 +5480,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 21
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5459,6 +5559,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5524,79 +5629,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1163479632}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1196601380
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3952147656503621187, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_Name
-      value: Chef_Robot
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.7850828
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.00000047683716
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2.9699419
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8202420195480395030, guid: d973136f1a5a13d48890f32f81d321af,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d973136f1a5a13d48890f32f81d321af, type: 3}
 --- !u!1001 &1210338106
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5841,6 +5873,79 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 530236531}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1255565783
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3952147656503621187, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_Name
+      value: Chef_Robot
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.7850828
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.9699419
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6532140815298052681, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8202420195480395030, guid: d973136f1a5a13d48890f32f81d321af,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d973136f1a5a13d48890f32f81d321af, type: 3}
 --- !u!1001 &1279581000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6335,6 +6440,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 26
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6498,6 +6608,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 19
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6575,6 +6690,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -6805,6 +6925,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1434106058}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1442259916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 892827265836622170, guid: a61cba7ab6a45ce42a439c15166736f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 46288287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1445868619
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6817,6 +6943,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -7144,6 +7275,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -7589,6 +7725,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 32
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7751,6 +7892,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -8005,6 +8151,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4337248181902006574, guid: e8b46b3ad157ac84ebfc2ebd411d2020,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8431212439588704097, guid: e8b46b3ad157ac84ebfc2ebd411d2020,
         type: 3}
@@ -8651,6 +8802,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4337248181902006574, guid: e8b46b3ad157ac84ebfc2ebd411d2020,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8431212439588704097, guid: e8b46b3ad157ac84ebfc2ebd411d2020,
         type: 3}
       propertyPath: m_Name
@@ -8768,6 +8924,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -8917,6 +9078,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -9506,6 +9672,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9676,10 +9847,11 @@ MonoBehaviour:
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   genPointChildIndex: 1
+  choppingBar: {fileID: 1974640031}
+  knife: {fileID: 1442259916}
   choppingTime: 0
   currentTime: 0
   choppingSpeed: 0
-  choppingBar: {fileID: 1974640031}
 --- !u!1001 &1902949052
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9964,6 +10136,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Table_wood
       objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10068,6 +10245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -10590,6 +10772,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Table_wood
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -12080,5 +12267,5 @@ SceneRoots:
   - {fileID: 1081667844}
   - {fileID: 854863179}
   - {fileID: 1279581000}
-  - {fileID: 1196601380}
+  - {fileID: 1255565783}
   - {fileID: 1589737598}
