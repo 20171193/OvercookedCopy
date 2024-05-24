@@ -85,7 +85,8 @@ public class Table : MonoBehaviour, IHighlightable
                             tempItem = tempPlate.IngredientIN(generatePoint, temp_PI_Ingredient);
                             if (tempItem != null)
                             {
-                                placedItem = tempItem;
+                                // placedItem = tempItem;
+                                gameObject.GetPhotonView().RPC("ChangePlacedItem", RpcTarget.All, tempItem.photonView.ViewID);
                                 item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                                 return true;
                             }
@@ -99,7 +100,7 @@ public class Table : MonoBehaviour, IHighlightable
                         case ItemType.FoodDish:
                             FoodDish temp_PF_FoodDish = item as FoodDish;
                             if (tempPlate.IngredientIN(generatePoint, temp_PF_FoodDish))
-                                PhotonNetwork.Destroy(item.gameObject);
+                                item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                             return true;
 
                         // (3) 손에 든 게 프라이팬일 때
@@ -126,7 +127,7 @@ public class Table : MonoBehaviour, IHighlightable
                             tempItem = temp_IP_Plate.IngredientIN(generatePoint, tempIngredient);
                             if (tempItem != null)
                             {
-                                PhotonNetwork.Destroy(placedItem.gameObject);
+                                placedItem.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                                 placedItem = tempItem;
                                 return true;
                             }
@@ -142,7 +143,7 @@ public class Table : MonoBehaviour, IHighlightable
                             if (temp_IF_Plate.Add(tempIngredient))
                             {
                                 temp_IF_Plate.GoTo(generatePoint);
-                                PhotonNetwork.Destroy(placedItem.gameObject);
+                                placedItem.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                                 placedItem = item;
                                 return true;
                             }
@@ -159,13 +160,13 @@ public class Table : MonoBehaviour, IHighlightable
                         case ItemType.Ingredient:
                             IngredientsObject temp_FI_Ingredient = item as IngredientsObject;
                             if (tempFoodDish.Add(temp_FI_Ingredient))
-                                PhotonNetwork.Destroy(item.gameObject);
+                                item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                             return true;
 
                         // (2) 손에 든 게 조합된 재료일 때
                         case ItemType.FoodDish:
                             if (tempFoodDish.AddPlate())
-                                PhotonNetwork.Destroy(item.gameObject);
+                                item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                             return false;
 
                         // (3) 손에 든 게 프라이팬일 때
@@ -216,7 +217,7 @@ public class Table : MonoBehaviour, IHighlightable
                                     tempPan.TakeOut();
                                 return true;
                             }
-                            PhotonNetwork.Destroy(item.gameObject);
+                            item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                             return false;
                     }
                     return false;
@@ -228,6 +229,14 @@ public class Table : MonoBehaviour, IHighlightable
         // override 함 (base 없음)
 
     }
+
+    // 테이블 아이템 변경 동기화
+    [PunRPC]
+    public void ChangePlacedItem(int ItemID)
+    {
+        placedItem = PhotonView.Find(ItemID).gameObject.GetComponent<Item>();
+    }
+
 
     // 테이블에 있는 아이템 집기
     public virtual Item PickUpItem()

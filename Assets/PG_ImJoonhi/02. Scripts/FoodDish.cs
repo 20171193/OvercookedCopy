@@ -104,7 +104,9 @@ namespace JH
             if (!IsAcceptable(1))
                 return false;
             List<IngredientsObject> buf = ingredientList.ToList();
-            buf[included] = ingredientPrefabs.Find(ingredient);
+            int ingredientTypeNum = 0;
+            int ingredientNum = 0;
+            buf[included] = ingredientPrefabs.Find(ingredient, ref ingredientTypeNum, ref ingredientNum);
             buf.Sort(0, included + 1, null);
 
             // [Debug] 현제 비교할 재료리스트 확인용
@@ -124,6 +126,10 @@ namespace JH
                     CurrentObject.SetActive(false);
                     Destroy(CurrentObject);
                     curRecipe = recipeList.Recipe[i];
+                    Debug.Log("write");
+                    photonView.RPC("ChangeFoodDishList", RpcTarget.Others, i, ingredientTypeNum, ingredientNum);
+                    photonView.RPC("PunExchangeFoodModel", RpcTarget.All);
+                    /*
                     if (Plate)
                     {
                         CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position + new Vector3(0, curRecipe.platingInterval, 0), Quaternion.identity);
@@ -136,6 +142,9 @@ namespace JH
                     }
                     curRecipe = recipeList.Recipe[i];
                     included++;
+                    */
+                    curRecipe = recipeList.Recipe[i];
+                    included++;
                     return true;
                 }
             }
@@ -143,9 +152,29 @@ namespace JH
         }
 
         [PunRPC]
+        public void ChangeFoodDishList(int recipeNum, int ingredientTypeNum, int ingredientNum)
+        {
+            List<IngredientsObject> buf = ingredientList.ToList();
+            buf[included] = ingredientPrefabs.Find(ingredientTypeNum, ingredientNum);
+            buf.Sort(0, included + 1, null);
+            ingredientList = buf.ToList();
+            curRecipe = recipeList.Recipe[recipeNum];
+            included++;
+        }
+
+        [PunRPC]
         public void PunExchangeFoodModel()
         {
-
+            if (Plate)
+            {
+                CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position + new Vector3(0, curRecipe.platingInterval, 0), Quaternion.identity);
+                CurrentObject.transform.SetParent(curPlate.transform, true);
+            }
+            else
+            {
+                CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position, Quaternion.identity);
+                CurrentObject.transform.SetParent(gameObject.transform, true);
+            }
         }
 
         /// <summary>음식에 있는 재들을 음식에 옮기는 함수</summary>
