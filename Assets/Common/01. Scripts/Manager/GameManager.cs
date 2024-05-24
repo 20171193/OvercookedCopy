@@ -19,6 +19,7 @@ namespace Jc
         // 인게임 게임매니저
         private void Start()
         {
+            Manager.Scene.FadeOut();
             // 일반 모드
             if (PhotonNetwork.InRoom)
             {
@@ -80,6 +81,39 @@ namespace Jc
             int spawnIndex = PhotonNetwork.LocalPlayer.GetChef();
             PhotonNetwork.Instantiate(chefNames[spawnIndex], spawnposs[spawnIndex].position, spawnposs[spawnIndex].rotation, 0);
         }
+
+        public override void OnPlayerPropertiesUpdate(Player targetPlayer, PhotonHashtable changedProps)
+        {
+            if (changedProps.ContainsKey(CustomProperty.LOAD))
+            {
+                if (PlayerLoadCount() == PhotonNetwork.PlayerList.Length)
+                {
+                    Debug.Log($"PlayerLoadCount = {PlayerLoadCount()}, Photon = {PhotonNetwork.PlayerList.Length}");
+                    if (PhotonNetwork.IsMasterClient)
+                        PhotonNetwork.CurrentRoom.SetGameStart(true);
+                }
+            }
+        }
+
+        public override void OnRoomPropertiesUpdate(PhotonHashtable changedProps)
+        {
+            if (changedProps.ContainsKey(CustomProperty.GAMESTART))
+            {
+                GameStart();
+            }
+        }
+
+        private int PlayerLoadCount()
+        {
+            int loadCount = 0;
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                if (player.GetLoad())
+                    loadCount++;
+            }
+            return loadCount;
+        }
+
 
         IEnumerator DebugRoutine()
         {
