@@ -39,18 +39,16 @@ public class Pan : Item
     private void Start()
     {
         ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
-        rigid = gameObject.GetComponent<Rigidbody>();
-        collid = gameObject.GetComponent<BoxCollider>();
         meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
-        rigid.isKinematic = true;
-        collid.enabled = false;
+        SetOriginMT();
     }
 
     public bool IngredientIN(IngredientsObject ingredient)
     {
         if(!Cooking && ingredient.ingredientsData.Paned != null && CookingObject == null)
         {
-            OnPan(ingredient);
+            // OnPan(ingredient);
+            photonView.RPC("OnPan", RpcTarget.All, ingredient.photonView.ViewID);
             return true;
         }
         return false;
@@ -59,7 +57,8 @@ public class Pan : Item
     public void TakeOut()
     {
         progress = 0f;
-        Destroy(CookingObject);
+        // Destroy(CookingObject);
+        CookingObject.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
         CookingObject = null;
     }
 
@@ -77,14 +76,15 @@ public class Pan : Item
         return false;
     }
 
-
-    private void OnPan(IngredientsObject ingredient)
+    [PunRPC]
+    private void OnPan(int ingredient)
     {
         Cooking = true;
-        ingredient.GoTo(PanPoint);
-        CookingObject = ingredient;
-        CookingObject.transform.position = PanPoint.transform.position;
-        CookingObject.transform.SetParent(PanPoint.transform, true);
+        CookingObject = PhotonView.Find(ingredient).gameObject.GetComponent<IngredientsObject>();
+        CookingObject.GoTo(PanPoint);
+        // CookingObject.transform.position = PanPoint.transform.position;
+        // CookingObject.transform.SetParent(PanPoint.transform, true);
+
         // 임시
         CookingObject.PanHeated();
         Cooking = false;
