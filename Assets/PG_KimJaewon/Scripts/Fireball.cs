@@ -15,7 +15,9 @@ namespace KJW
 
         private void Awake()
         {
+            // Fireball 의 콜라이더를 가져와서
             collider = GetComponent<Collider>();
+            // Fireball 이 
             collider.enabled = false;
         }
 

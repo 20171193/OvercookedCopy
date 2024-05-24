@@ -1247,6 +1247,7 @@ GameObject:
   - component: {fileID: -2488311600808948828}
   - component: {fileID: 1633846068457510252}
   - component: {fileID: 1747429180094494401}
+  - component: {fileID: -4660707227788637516}
   m_Layer: 0
   m_Name: Chef_Robot
   m_TagString: Player
@@ -1395,6 +1396,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 4968141317042347557}
   - {fileID: -2488311600808948828}
+  - {fileID: -4660707227788637516}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -1411,7 +1413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
-  m_SynchronizeAngularVelocity: 1
+  m_SynchronizeAngularVelocity: 0
   m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &-2488311600808948828
@@ -1486,6 +1488,22 @@ MonoBehaviour:
   view: {fileID: 8202420195480395030}
   input: {fileID: 489159322770587963}
   moveInput: {x: 0, y: 0}
+--- !u!114 &-4660707227788637516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3952147656503621187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4020624370237100651
 GameObject:
   m_ObjectHideFlags: 0

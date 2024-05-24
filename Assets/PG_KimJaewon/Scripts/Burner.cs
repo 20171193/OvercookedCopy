@@ -15,7 +15,7 @@ namespace KJW
 
         private void OnEnable()
         {
-            fireballPrefab = Instantiate(fireballPrefab);
+            //fireballPrefab = Instantiate(fireballPrefab);
             StartCoroutine(CreateFireballRoutine());
         }
 
