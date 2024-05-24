@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2837450956553737093}
-  - component: {fileID: 5114695877859766125}
   - component: {fileID: 8613828114242495495}
   m_Layer: 6
   m_Name: ChoppingTable
@@ -37,23 +36,6 @@ Transform:
   - {fileID: 4895254392193566146}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5114695877859766125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4783127723070226176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2d5852153265f048afceb0a11f7434d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  meshRenderer: {fileID: 4727957868682768293}
-  changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
-  placedItem: {fileID: 0}
-  generatePoint: {fileID: 0}
-  childIndex: 1
 --- !u!65 &8613828114242495495
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -332,12 +314,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 987824da6218fa442b07be19d6ebe1bb, type: 3}
---- !u!23 &4727957868682768293 stripped
-MeshRenderer:
-  m_CorrespondingSourceObject: {fileID: 3766965425445283087, guid: 987824da6218fa442b07be19d6ebe1bb,
-    type: 3}
-  m_PrefabInstance: {fileID: 8492636304545237674}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8237469391050779969 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 987824da6218fa442b07be19d6ebe1bb,
