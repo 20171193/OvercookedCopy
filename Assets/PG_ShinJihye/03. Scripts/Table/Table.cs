@@ -65,7 +65,8 @@ public class Table : MonoBehaviour, IHighlightable
 
             // 플레이어에게 아이템 있음 (아이템을 테이블로)
             item.GoTo(generatePoint);
-            placedItem = item;
+            // placedItem = item;
+            gameObject.GetPhotonView().RPC("ChangePlacedItem", RpcTarget.All, item.photonView.ViewID);
             return true;
         }
 
@@ -237,6 +238,12 @@ public class Table : MonoBehaviour, IHighlightable
         placedItem = PhotonView.Find(ItemID).gameObject.GetComponent<Item>();
     }
 
+    [PunRPC]
+    public void EmptyPlacedItem()
+    {
+        placedItem = null;
+    }
+
 
     // 테이블에 있는 아이템 집기
     public virtual Item PickUpItem()
@@ -244,7 +251,8 @@ public class Table : MonoBehaviour, IHighlightable
         Debug.Log("table.PickUpItem");
 
         Item returnItem = placedItem;
-        placedItem = null;
+        // placedItem = null;
+        gameObject.GetPhotonView().RPC("EmptyPlacedItem", RpcTarget.All);
 
         return returnItem;
     }
