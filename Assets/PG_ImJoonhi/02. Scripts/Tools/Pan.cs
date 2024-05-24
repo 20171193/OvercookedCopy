@@ -28,6 +28,14 @@ public class Pan : Item
 
     public IngredientsObject CookingObject { get; private set; }
 
+    private void Awake()
+    {
+        rigid = gameObject.GetComponent<Rigidbody>();
+        collid = gameObject.GetComponent<BoxCollider>();
+        rigid.isKinematic = true;
+        collid.enabled = false;
+    }
+
     private void Start()
     {
         ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
