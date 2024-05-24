@@ -2,10 +2,12 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using Photon.Pun.UtilityScripts;
 
 namespace Jc
 {
-    public class TileMapController : MonoBehaviour
+    public class TileMapController : MonoBehaviourPun, IPunObservable
     { 
         // 카메라 컨트롤용
         [SerializeField]
@@ -51,13 +53,13 @@ namespace Jc
         private void Update()
         {
             // 디버그 전용
-            if(Input.GetKey(KeyCode.O))
+            if(PhotonNetwork.IsMasterClient && Input.GetKey(KeyCode.O))
             {
-                OpenStage(0);
+                RequestOpenStage(0);
             }
-            if (Input.GetKey(KeyCode.P))
+            if (PhotonNetwork.IsMasterClient && Input.GetKey(KeyCode.P))
             {
-                OpenStage(1);
+                RequestOpenStage(1);
             }
         }
 
@@ -97,19 +99,42 @@ namespace Jc
             // 로드한 데이터를 기반으로 클리어한 스테이지 미리 오픈
             for (int i = 0; i < clearStage; i++)
             {
-                OpenedStage(i);
+                RequestOpenedStage(i);
             }
-            //OpenStage(0);
         }
 
+        [PunRPC]
+        private void RequestOpenStage(int stageNumber)
+        {
+            // 스테이지 오픈 요청
+            photonView.RPC("OpenedStage", RpcTarget.AllViaServer, stageNumber);
+        }
+        [PunRPC]
+        private void RequestOpenedStage(int stageNumber)
+        {
+            // 로드된 스테이지 미리 오픈 요청
+            photonView.RPC("OpenedStage", RpcTarget.AllViaServer, stageNumber);
+        }
+
+        // 스테이지 오픈
+        [PunRPC]
+        private void OpenStage(int stageNumber)
+        {
+            curStage = stageNumber;
+            // 카메라 액션
+            ChangeCamera(stageNumber);
+            // 타일 오픈
+            openStageRoutine = StartCoroutine(OpenStageRoutine(stageNumber));
+        }
         // 로드된 스테이지 미리 오픈
+        [PunRPC]
         private void OpenedStage(int stageNumber)
         {
             // 스테이지 타일 세팅
-            for(int i =0; i<3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 List<ChangeableTile> tileList = stageTileInfos[stageNumber].depthList[i].tileList;
-                foreach(ChangeableTile tile in tileList)
+                foreach (ChangeableTile tile in tileList)
                 {
                     tile.OnChangedSetting();
                 }
@@ -120,15 +145,6 @@ namespace Jc
             stageEntrances[stageNumber].ActiveEntrance();
         }
 
-        // 스테이지 오픈
-        private void OpenStage(int stageNumber)
-        {
-            curStage = stageNumber;
-            // 카메라 액션
-            ChangeCamera(stageNumber);
-            // 타일 오픈
-            openStageRoutine = StartCoroutine(OpenStageRoutine(stageNumber));
-        }
         IEnumerator OpenStageRoutine(int stageNumber)
         {
             // depth 별 뒤집기
@@ -205,6 +221,11 @@ namespace Jc
         {
             yield return new WaitForSeconds(cameraActionTime);
             CameraInitSetting();
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+
         }
     }
 }
