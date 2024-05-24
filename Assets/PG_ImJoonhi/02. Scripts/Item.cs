@@ -40,9 +40,9 @@ public class Item : MonoBehaviourPun, IPickable, IHighlightable
         rigid.isKinematic = true;
         collid.enabled = false;
         gameObject.layer = 7;
-        gameObject.transform.position = GoPotint.transform.position;
-        gameObject.transform.rotation = GoPotint.transform.rotation;
-        gameObject.transform.SetParent(GoPotint.transform, true);
+        gameObject.transform.position = GoPoint.transform.position;
+        gameObject.transform.rotation = GoPoint.transform.rotation;
+        gameObject.transform.SetParent(GoPoint.transform, true);
         */
         Debug.Log($"GOTO {GoPoint.name}");
         Debug.Log($"GOTO ID {GoPoint.GetPhotonView().ViewID}");
