@@ -20,6 +20,8 @@ namespace Jc
 
         private void Start()
         {
+            Manager.Scene.FadeOut();
+
             // 일반 모드 
             if (PhotonNetwork.InRoom)
             {
@@ -67,7 +69,7 @@ namespace Jc
         public override void OnLeftRoom()
         {
             Debug.Log("Left Room");
-            Manager.Scene.LoadLevel(SceneManager.SceneType.Title);
+            Manager.Scene.LoadLevel(SceneManager.SceneType.Main);
         }
 
         public override void OnMasterClientSwitched(Player newMasterClient)

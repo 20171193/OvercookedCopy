@@ -243,10 +243,31 @@ namespace KIMJAEWON
 
             // 가까운 테이블이 없는 경우
             if (nearestTable == null)
+            {
                 pickedItem.Drop();
+                anim.SetTrigger("Pickup");
+                isPickUp = false;
+                pickedItem = null;
+            }
+            // 테이블 위에 올려놓기
             else
             {
-                successPutDown = nearestTable.PutDownItem(pickedItem);
+                Item putDownItem = pickedItem;
+
+                // 프라이팬 처리
+                if(pickedItem.Type == ItemType.Pan)
+                {
+                    Pan pan = pickedItem.GetComponent<Pan>();
+                    if (pan == null) return;
+                    // 팬 위에 아이템이 있는 경우
+                    if(pan.CookingObject != null)
+                    {
+                        putDownItem = pan.CookingObject;
+                    }
+                }
+
+                successPutDown = nearestTable.PutDownItem(putDownItem);
+
                 if (successPutDown)
                 {
                     anim.SetTrigger("Pickup");

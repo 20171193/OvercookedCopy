@@ -47,11 +47,13 @@ namespace Jc
         private void OnTriggerEnter(Collider other)
         {
             stageInfo.gameObject.SetActive(true);
+            other.GetComponent<BusController>().stageNumber = stageNumber;
         }
 
         private void OnTriggerExit(Collider other)
         {
             stageInfo.gameObject.SetActive(false);
+            other.GetComponent<BusController>().stageNumber = -1;
         }
     }
 }

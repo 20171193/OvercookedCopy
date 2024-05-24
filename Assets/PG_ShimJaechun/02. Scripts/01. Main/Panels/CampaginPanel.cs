@@ -45,6 +45,7 @@ namespace Jc
             RoomOptions options = new RoomOptions() { MaxPlayers = 4 };
 
             PhotonNetwork.CreateRoom(roomName: _roomName, roomOptions: options);
+            LobbyManager.Inst.ActiveLoading();
         }
 
         // 룸 생성 취소
@@ -61,11 +62,13 @@ namespace Jc
             RoomOptions options = new RoomOptions() { MaxPlayers = 4 };
 
             PhotonNetwork.JoinRandomOrCreateRoom(roomName: _roomName, roomOptions: options);
+            LobbyManager.Inst.ActiveLoading();
         }
 
         public void LeaveCampagin()
         {
             PhotonNetwork.LeaveLobby();
+            LobbyManager.Inst.ActiveLoading();
         }
     }
 }
