@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8067089056054884496
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6420105313598308177}
+  - component: {fileID: 3626088355921992135}
+  m_Layer: 0
+  m_Name: Ingredient List (Burger)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6420105313598308177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8067089056054884496}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 62.589386, y: -68.41637, z: 73.58802}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3626088355921992135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8067089056054884496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d25285361eea176478c29423261d85e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OriginalingredientsList:
+  - {fileID: 804358854101595898, guid: de844d2e8f68bd54598525639f32702f, type: 3}
+  - {fileID: 1861116712512365792, guid: 678d67221ff0422489399f77f53f4ed3, type: 3}
+  - {fileID: 2142484546557838347, guid: 7db692e2aa5f2c84ca8a79942ad63983, type: 3}
+  - {fileID: 4246680316334423512, guid: a55fba16fa6e57d4a878ee0f577f221f, type: 3}
+  - {fileID: 6442976680779017105, guid: 94ea0fb6484a73e47954b78c5582e113, type: 3}
+  SlicedingredientsList:
+  - {fileID: 2142484546557838347, guid: 50a6b4e4e3f514241840841b178d721d, type: 3}
+  - {fileID: 4246680316334423512, guid: f25fa658bbd729a43be2498947a3d447, type: 3}
+  - {fileID: 1861116712512365792, guid: 7a473f9d7dd84b94988a8ef9557d3844, type: 3}
+  PanedingredientsList:
+  - {fileID: 1861116712512365792, guid: 601d88582a2b23a4da1f173e4f9d1629, type: 3}
+  PottedingredientsList: []

@@ -1,5 +1,7 @@
+using Cinemachine;
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using PhotonHashTable = ExitGames.Client.Photon.Hashtable;
@@ -11,28 +13,45 @@ namespace Jc
         private static LobbyManager inst;
         public static LobbyManager Inst { get { return inst; } }
 
-        public enum Panel { Title, Login, Main, Campagin, Room }
+        public enum Panel { Title, Main, Campagin, Room }
 
         [SerializeField]
-        private LoginPanel loginPanel;
+        private TitleController titleController;    // 타이틀 패널
 
         [SerializeField]
-        private MainPanel mainPanel;
+        private MainPanel mainPanel;                // 메인 패널
 
         [SerializeField]
-        private CampaginPanel campaignPanel;
+        private CampaginPanel campaignPanel;        // 캠페인 패널
 
         [SerializeField]
-        private LobbyPanel lobbyPanel;
+        private LobbyPanel lobbyPanel;              // 로비 패널
 
         [SerializeField]
-        private RoomPanel roomPanel;
+        private RoomPanel roomPanel;                // 방 패널
 
         [SerializeField]
         private ClientState curState = ClientState.JoiningLobby;
 
         // 방을 나갔을 경우 바로 로비로 이동하기위해 사용
-        bool isExitRoom = false;    
+        bool isExitRoom = false;
+
+        [SerializeField]
+        private GameObject loadingGroup;        // 로딩 패널
+
+        [Header("타이틀 씬 이벤트 카메라")]
+        [SerializeField]
+        private CinemachineVirtualCamera mainVC;    // 타이틀 씬 카메라
+        [SerializeField]
+        private Vector3 startVCpos;            // 카메라 시작 위치
+        [SerializeField]
+        private Vector3 startVCrot;            // 카메라 시작 회전값
+        [SerializeField]
+        private Vector3 endVCpos;              // 카메라 종료 위치
+        [SerializeField]
+        private Vector3 endVCrot;               // 카메라 종료 회전값
+        [SerializeField]
+        private float loadingTime;               // 타이틀 -> 메인 전환시간
 
         private void Awake()
         {
@@ -50,7 +69,6 @@ namespace Jc
                 OnJoinedLobby();
             else
                 OnDisconnected(DisconnectCause.None);
-
         }
 
         private void Update()
@@ -63,13 +81,38 @@ namespace Jc
         {
             Debug.Log("마스터서버 연결 성공");
 
+            // 최초 한 번 실행 (로그인에 성공한 경우)
             if (!isExitRoom)
-                SetActivePanel(Panel.Main);
+            { 
+                StartCoroutine(FirstJoinLobbyRoutine());
+            }
             else
             {
                 isExitRoom = false;
                 PhotonNetwork.JoinLobby();
             }
+        }
+        // 최초 로비 입장루틴
+        IEnumerator FirstJoinLobbyRoutine()
+        {
+            float rate = 0f;
+            loadingGroup.SetActive(true);
+            titleController.gameObject.SetActive(false);
+            yield return null;
+
+            while(rate < 1f)
+            {
+                rate += Time.deltaTime / loadingTime;
+                // 메인 카메라 위칫값 적용
+                mainVC.transform.position = Vector3.Lerp(startVCpos, endVCpos, rate);
+                mainVC.transform.rotation = Quaternion.Euler(Vector3.Lerp(startVCrot, endVCrot, rate));
+                yield return null;
+            }
+
+            mainVC.transform.position = endVCpos;
+            mainVC.transform.rotation = Quaternion.Euler(endVCrot);
+            SetActivePanel(Panel.Main);
+            yield return null;
         }
 
         // 연결이 실패한 경우
@@ -86,7 +129,7 @@ namespace Jc
                     break;
             }
 
-            SetActivePanel(Panel.Login);
+            SetActivePanel(Panel.Title);
         }
 
         // 방 생성 실패
@@ -166,7 +209,7 @@ namespace Jc
 
         public void SetActivePanel(Panel panel)
         {
-            loginPanel.gameObject.SetActive(panel == Panel.Login);
+            titleController.gameObject.SetActive(panel == Panel.Title);
             mainPanel.gameObject.SetActive(panel == Panel.Main);
             campaignPanel.gameObject.SetActive(panel == Panel.Campagin);
             roomPanel.gameObject.SetActive(panel == Panel.Room);
@@ -179,5 +222,7 @@ namespace Jc
             curState = PhotonNetwork.NetworkClientState;
             Debug.Log(curState);
         }
+
+
     }
 }

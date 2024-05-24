@@ -31,6 +31,6 @@ public class DebugGameManager : MonoBehaviourPunCallbacks
     public void GameStart()
     {
         Debug.Log("Debug GameStart");
-        PhotonNetwork.Instantiate("Sample Player/Player_Temp", new Vector3(0, 0, 0), Quaternion.identity);
+        PhotonNetwork.Instantiate("Sample Player/Chef_Robot", new Vector3(0, 0, 0), Quaternion.identity);
     }
 }

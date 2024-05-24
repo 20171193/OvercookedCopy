@@ -61,6 +61,9 @@ namespace KIMJAEWON
         [SerializeField]
         private bool isPickUp = false;
 
+        // 내려놓기 성공했는지 실패했는지
+        bool successPutDown;
+
         private void SetTable(Table table)
         {
             // 이전 테이블 처리
@@ -243,12 +246,15 @@ namespace KIMJAEWON
                 pickedItem.Drop();
             else
             {
-                nearestTable.PutDownItem(pickedItem);
+                successPutDown = nearestTable.PutDownItem(pickedItem);
+                if (successPutDown)
+                {
+                    anim.SetTrigger("Pickup");
+                    isPickUp = false;
+                    pickedItem = null;
+                }
+                return;
             }
-
-            anim.SetTrigger("Pickup");
-            isPickUp = false;
-            pickedItem = null;
         }
 
         private void OnTriggerEnter(Collider other)
