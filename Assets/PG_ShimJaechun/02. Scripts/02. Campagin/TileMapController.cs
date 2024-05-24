@@ -107,13 +107,13 @@ namespace Jc
         private void RequestOpenStage(int stageNumber)
         {
             // 스테이지 오픈 요청
-            photonView.RPC("OpenedStage", RpcTarget.AllViaServer, stageNumber);
+            photonView.RPC("OpenStage", RpcTarget.All, stageNumber);
         }
         [PunRPC]
         private void RequestOpenedStage(int stageNumber)
         {
             // 로드된 스테이지 미리 오픈 요청
-            photonView.RPC("OpenedStage", RpcTarget.AllViaServer, stageNumber);
+            photonView.RPC("OpenedStage", RpcTarget.All, stageNumber);
         }
 
         // 스테이지 오픈
