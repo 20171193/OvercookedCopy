@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -15,25 +16,30 @@ namespace JH
 
         private List<IngredientsObject> ingredientListDebug;
 
-        private void Start()
+        private void Awake()
         {
-            recipeList = Manager_TEMP.recipemanager.recipeList;
-            ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
-
             rigid = gameObject.GetComponent<Rigidbody>();
-            collid = gameObject.GetComponent<Collider>();
-            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
-            SetOriginMT();
+            collid = gameObject.GetComponent<BoxCollider>();
             rigid.isKinematic = true;
             collid.enabled = false;
         }
 
+        private void Start()
+        {
+            recipeList = Manager_TEMP.recipemanager.recipeList;
+            ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
+        }
+
         /// <summary>그릇에 놓을 재료가 1가지인 ingredientObject 프리팹의 경우 사용하는 함수.</summary>
-        public Item IngredientIN(GameObject GeneratePoint, IngredientsObject ingredientObject)
+        public FoodDish IngredientIN(GameObject GeneratePoint, IngredientsObject ingredientObject)
         {
             List<IngredientsObject> buf = new List<IngredientsObject>();
             for (int i = 0; i < 4; i++) buf.Add(null);
-            buf[0] = ingredientPrefabs.Find(ingredientObject);
+            int ingredientTypeNum = 0;
+            int ingredientNum = 0;
+            buf[0] = ingredientPrefabs.Find(ingredientObject, ref ingredientTypeNum, ref ingredientNum);
             ingredientListDebug = buf.ToList();
             Debug.Log("?");
             for (int i = 0; i < recipeList.Recipe.Count; i++)
@@ -42,7 +48,7 @@ namespace JH
                 if (recipeList.IsRecipe(buf, i))
                 {
                     Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
-                    return GenerateFoodDish(GeneratePoint, buf, recipeList.Recipe[i]);
+                    return GenerateFoodDish(GeneratePoint, buf, recipeList.Recipe[i], i, ingredientTypeNum, ingredientNum);
                 }
             }
             return null;
@@ -61,8 +67,9 @@ namespace JH
             return false;
         }
 
-        private Item GenerateFoodDish(GameObject GeneratePoint, List<IngredientsObject> ingredientObject, RecipeData recipe)
+        private FoodDish GenerateFoodDish(GameObject GeneratePoint, List<IngredientsObject> ingredientObject, RecipeData recipe, int recipeNum, int ingredientTypeNum, int ingredientNum)
         {
+            /*
             FoodDish foodDish = Instantiate(foodDishPrefab, GeneratePoint.transform.position, Quaternion.identity);
             // foodDish.recipeList = Manager_TEMP.recipemanager.recipeList;
             foodDish.init = ingredientObject;
@@ -72,6 +79,42 @@ namespace JH
             foodDish.transform.SetParent(GeneratePoint.transform, true);
             Destroy(gameObject);
             return foodDish;
+            */
+            GameObject temp_foodDish = PhotonNetwork.Instantiate("Colaborate Food/Colaborate Food", GeneratePoint.transform.position, Quaternion.identity);
+            FoodDish foodDish = temp_foodDish.GetComponent<FoodDish>();
+
+            // 현제 클라이언트용
+            foodDish.init = ingredientObject;
+            foodDish.curRecipe = recipe;
+            foodDish.initPlate = true;
+            foodDish.rigid.isKinematic = rigid.isKinematic;
+
+            // 현제 클라이언트 제외 클라이언트용
+            Debug.Log("write");
+            photonView.RPC("SetFoodDish", RpcTarget.Others, PhotonView.Get(foodDish).ViewID, recipeNum, ingredientTypeNum, ingredientNum);
+            Debug.Log("foodDish Goto");
+
+            foodDish.GoTo(GeneratePoint);
+            // PhotonNetwork.Destroy(gameObject);
+            gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
+            return foodDish;
+        }
+
+        [PunRPC]
+        public void SetFoodDish(int foodDishID, int recipeNum, int ingredientTypeNum, int ingredientNum)
+        {
+            FoodDish foodDish = PhotonView.Find(foodDishID).gameObject.GetComponent<FoodDish>();
+            /*
+            foodDish.init = ingredientObject;
+            foodDish.curRecipe = recipe;
+            */
+            List<IngredientsObject> buf = new List<IngredientsObject>();
+            for (int i = 0; i < 4; i++) buf.Add(null);
+            buf[0] = ingredientPrefabs.Find(ingredientTypeNum, ingredientNum);
+            foodDish.init = buf;
+            foodDish.curRecipe = recipeList.Recipe[recipeNum];
+            foodDish.initPlate = true;
+            foodDish.rigid.isKinematic = rigid.isKinematic;
         }
 
         private void SwapFoodDish(GameObject GeneratePoint, FoodDish foodDish)
@@ -81,20 +124,6 @@ namespace JH
             foodDish.transform.rotation = GeneratePoint.transform.rotation;
             Destroy(gameObject);
         }
-
-        /*
-        public void GoTo(GameObject GoPotint)
-        {
-            rigid.isKinematic = true;
-            gameObject.transform.position = GoPotint.transform.position;
-            gameObject.transform.rotation = GoPotint.transform.rotation;
-            gameObject.transform.SetParent(GoPotint.transform, true);
-        }
-        public void Drop()
-        {
-            gameObject.transform.SetParent(null);
-        }
-        */
 
         #region Debug
 #if UNITY_EDITOR

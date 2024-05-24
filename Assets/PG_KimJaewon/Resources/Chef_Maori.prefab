@@ -1464,6 +1464,7 @@ GameObject:
   - component: {fileID: 4739165832513980478}
   - component: {fileID: 3046789726906631921}
   - component: {fileID: 6271240122278539916}
+  - component: {fileID: -6858545106891219966}
   m_Layer: 0
   m_Name: Chef_Maori
   m_TagString: Untagged
@@ -1612,7 +1613,8 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 2658391272151853950}
   - {fileID: 4739165832513980478}
-  sceneViewId: 3
+  - {fileID: -6858545106891219966}
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!114 &2658391272151853950
@@ -1659,7 +1661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
+  m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &3046789726906631921
 MonoBehaviour:
@@ -1703,6 +1705,22 @@ MonoBehaviour:
   view: {fileID: 7541956162352804818}
   input: {fileID: 3904459144360197762}
   moveInput: {x: 0, y: 0}
+--- !u!114 &-6858545106891219966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6637675297834710222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &6668681297191317650
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 using JH;
+using Photon.Pun;
 using UnityEngine;
 
 public class Table : MonoBehaviour, IHighlightable
@@ -10,18 +11,18 @@ public class Table : MonoBehaviour, IHighlightable
     // 테이블 위에 있는 아이템
     public Item placedItem;
 
-    // 테이블에 아이템이 놓일 위치 (소켓)
+    // 테이블에 아이템이 놓일 위치
     [SerializeField] GameObject generatePoint;
 
     // generatePoint 인덱스 찾기 위한 임시 변수
-    [SerializeField] int childIndex;
+    [SerializeField] int genPointChildIndex;
 
     private void Awake()
     {
         originMT = meshRenderer.sharedMaterial;
 
         // generatePoint 있는지 null 체크 (에러 방지)
-        Transform temp = transform.GetChild(childIndex);
+        Transform temp = transform.GetChild(genPointChildIndex);
         if (temp != null)
         {
             generatePoint = temp.gameObject;
@@ -82,8 +83,9 @@ public class Table : MonoBehaviour, IHighlightable
                             tempItem = tempPlate.IngredientIN(generatePoint, temp_PI_Ingredient);
                             if (tempItem != null)
                             {
-                                placedItem = tempItem;
-                                Destroy(item.gameObject);
+                                // placedItem = tempItem;
+                                gameObject.GetPhotonView().RPC("ChangePlacedItem", RpcTarget.All, tempItem.photonView.ViewID);
+                                item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                                 return true;
                             }
                             else
@@ -96,7 +98,7 @@ public class Table : MonoBehaviour, IHighlightable
                         case ItemType.FoodDish:
                             FoodDish temp_PF_FoodDish = item as FoodDish;
                             if (tempPlate.IngredientIN(generatePoint, temp_PF_FoodDish))
-                                Destroy(item.gameObject);
+                                item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                             return true;
 
                         // (3) 손에 든 게 프라이팬일 때
@@ -123,7 +125,7 @@ public class Table : MonoBehaviour, IHighlightable
                             tempItem = temp_IP_Plate.IngredientIN(generatePoint, tempIngredient);
                             if (tempItem != null)
                             {
-                                Destroy(placedItem.gameObject);
+                                placedItem.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                                 placedItem = tempItem;
                                 return true;
                             }
@@ -139,7 +141,7 @@ public class Table : MonoBehaviour, IHighlightable
                             if (temp_IF_Plate.Add(tempIngredient))
                             {
                                 temp_IF_Plate.GoTo(generatePoint);
-                                Destroy(placedItem.gameObject);
+                                placedItem.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                                 placedItem = item;
                                 return true;
                             }
@@ -156,14 +158,14 @@ public class Table : MonoBehaviour, IHighlightable
                         case ItemType.Ingredient:
                             IngredientsObject temp_FI_Ingredient = item as IngredientsObject;
                             if (tempFoodDish.Add(temp_FI_Ingredient))
-                                Destroy(item.gameObject);
+                                item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                             return true;
 
                         // (2) 손에 든 게 조합된 재료일 때
                         case ItemType.FoodDish:
                             if (tempFoodDish.AddPlate())
-                                Destroy(item.gameObject);
-                            return true;
+                                item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
+                            return false;
 
                         // (3) 손에 든 게 프라이팬일 때
                         case ItemType.Pan:
@@ -213,7 +215,7 @@ public class Table : MonoBehaviour, IHighlightable
                                     tempPan.TakeOut();
                                 return true;
                             }
-                            Destroy(item.gameObject);
+                            item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                             return false;
                     }
                     return false;
@@ -226,6 +228,14 @@ public class Table : MonoBehaviour, IHighlightable
 
     }
 
+    // 테이블 아이템 변경 동기화
+    [PunRPC]
+    public void ChangePlacedItem(int ItemID)
+    {
+        placedItem = PhotonView.Find(ItemID).gameObject.GetComponent<Item>();
+    }
+
+
     // 테이블에 있는 아이템 집기
     public virtual Item PickUpItem()
     {
@@ -233,7 +243,7 @@ public class Table : MonoBehaviour, IHighlightable
 
         Item returnItem = placedItem;
         placedItem = null;
-        
+
         return returnItem;
     }
 
@@ -253,9 +263,5 @@ public class Table : MonoBehaviour, IHighlightable
     public virtual void Interactable()
     {
         Debug.Log("table.Interactable");
-
-        // 1. 도마 : 다지기
-
-
     }
 }

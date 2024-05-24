@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigid: {fileID: 8298523992585183807}
   collid: {fileID: 0}
+  meshRenderer: {fileID: 0}
   Type: 0
   ingredientsData: {fileID: 11400000, guid: 8087e0d1de9bf754a86fff473ef22cd0, type: 2}
   IngState: 0

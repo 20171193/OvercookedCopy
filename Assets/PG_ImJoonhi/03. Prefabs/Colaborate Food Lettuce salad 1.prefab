@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2725296e51e05408051b5f774307e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rigid: {fileID: 0}
+  rigid: {fileID: 1050853494965746040}
   collid: {fileID: 0}
   meshRenderer: {fileID: 0}
   Type: 2
