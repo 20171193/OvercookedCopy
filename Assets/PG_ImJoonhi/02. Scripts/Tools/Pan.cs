@@ -45,7 +45,7 @@ public class Pan : Item
 
     public bool IngredientIN(IngredientsObject ingredient)
     {
-        if(!Cooking && ingredient.ingredientsData.Paned != null && CookingObject == null)
+        if(!Cooking && ingredient.ingredientsData.Paned != null && ingredient.IngState != IngredientState.Paned && CookingObject == null)
         {
             // OnPan(ingredient);
             photonView.RPC("OnPan", RpcTarget.All, ingredient.photonView.ViewID);

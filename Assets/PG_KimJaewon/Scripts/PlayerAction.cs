@@ -1,4 +1,5 @@
 using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -63,6 +64,11 @@ namespace KIMJAEWON
 
         // 내려놓기 성공했는지 실패했는지
         bool successPutDown;
+
+        public void SetPickedItem(Item Pickeditem)
+        {
+            pickedItem = Pickeditem;
+        }
 
         private void SetTable(Table table)
         {
@@ -253,18 +259,6 @@ namespace KIMJAEWON
             else
             {
                 Item putDownItem = pickedItem;
-
-                // 프라이팬 처리
-                if(pickedItem.Type == ItemType.Pan)
-                {
-                    Pan pan = pickedItem.GetComponent<Pan>();
-                    if (pan == null) return;
-                    // 팬 위에 아이템이 있는 경우
-                    if(pan.CookingObject != null)
-                    {
-                        putDownItem = pan.CookingObject;
-                    }
-                }
 
                 successPutDown = nearestTable.PutDownItem(putDownItem);
 

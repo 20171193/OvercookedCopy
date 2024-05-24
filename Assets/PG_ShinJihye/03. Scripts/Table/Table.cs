@@ -1,4 +1,5 @@
 using JH;
+using KIMJAEWON;
 using Photon.Pun;
 using UnityEngine;
 
@@ -107,9 +108,16 @@ public class Table : MonoBehaviour, IHighlightable
                             Pan temp_PPan_Pan = item as Pan;
                             if (temp_PPan_Pan.isWellDone())
                             {
-                                if (tempPlate.IngredientIN(generatePoint, temp_PPan_Pan.CookingObject))
+                                // 그릇에 제료 이동이 됬을때 및 플레이어 후라이팬 유지
+                                FoodDish temp_GeneratedFoodDish_PPan = tempPlate.IngredientIN(generatePoint, temp_PPan_Pan.CookingObject);
+                                if (temp_GeneratedFoodDish_PPan != null)
+                                {
                                     temp_PPan_Pan.TakeOut();
-                                return true;
+                                    placedItem = temp_GeneratedFoodDish_PPan;
+                                    return false;
+                                }
+                                // 그릇에 제료 이동이 안됬을때 및 플레이어 후라이팬 유지
+                                return false;
                             }
                             return false;
                     }
@@ -158,9 +166,14 @@ public class Table : MonoBehaviour, IHighlightable
                         // (1) 손에 든 게 재료일 때
                         case ItemType.Ingredient:
                             IngredientsObject temp_FI_Ingredient = item as IngredientsObject;
+                            // 레시피가 있는경우 플레이어 빈손
                             if (tempFoodDish.Add(temp_FI_Ingredient))
+                            {
                                 item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
-                            return true;
+                                return true;
+                            }
+                            // 레시피가 없는경우 플레이어 유지
+                            return false;
 
                         // (2) 손에 든 게 조합된 재료일 때
                         case ItemType.FoodDish:
@@ -173,9 +186,14 @@ public class Table : MonoBehaviour, IHighlightable
                             Pan temp_FPan_Pan = item as Pan;
                             if (temp_FPan_Pan.isWellDone())
                             {
+                                // 재료 이동 됨 및 플레이어 음식조합 유지
                                 if (tempFoodDish.Add(temp_FPan_Pan.CookingObject))
+                                {
                                     temp_FPan_Pan.TakeOut();
-                                return true;
+                                    return false;
+                                }
+                                // 재료 이동 안됨 및 플레이어 음식조합 유지
+                                return false;
                             }
                             return false;
                     }
@@ -191,8 +209,11 @@ public class Table : MonoBehaviour, IHighlightable
                             IngredientsObject temp_PanI_Ingredient = item as IngredientsObject;
                             if (tempPan.isEmpty())
                             {
-                                tempPan.IngredientIN(temp_PanI_Ingredient);
-                                return true;
+                                // 재료 이동 완료 및 플레이어 빈손
+                                if (tempPan.IngredientIN(temp_PanI_Ingredient))
+                                    return true;
+                                // 재료 이동 안됨 및 플레이어 유지
+                                return false;
                             }
                             return false;
 
@@ -201,9 +222,17 @@ public class Table : MonoBehaviour, IHighlightable
                             Plate temp_PanP_Plate = item as Plate;
                             if (tempPan.isWellDone())
                             {
-                                //if (temp_PanP_Plate.IngredientIN(GenPoint, tempPan.CookingObject))
-                                tempPan.TakeOut();
-                                return true;
+                                // 재료 이동 됨 및 플레이어 그릇 유지
+                                GameObject tempGenpoint = temp_PanP_Plate.gameObject.transform.parent.gameObject;
+                                FoodDish temp_GeneratedFoodDish_PanP = temp_PanP_Plate.IngredientIN(tempGenpoint, tempPan.CookingObject);
+                                if (temp_GeneratedFoodDish_PanP != null)
+                                {
+                                    tempPan.TakeOut();
+                                    tempGenpoint.transform.parent.parent.parent.gameObject.GetComponent<PlayerAction>().SetPickedItem(temp_GeneratedFoodDish_PanP);
+                                    return false;
+                                }
+                                // 재료 이동 안됨 및 플레이어 그릇 유지
+                                return false;
                             }
                             return false;
 
@@ -212,9 +241,14 @@ public class Table : MonoBehaviour, IHighlightable
                             FoodDish temp_PanF_FoodDish = item as FoodDish;
                             if (tempPan.isWellDone())
                             {
+                                // 재료 이동 됨 및 플레이어 음식 유지
                                 if (temp_PanF_FoodDish.Add(tempPan.CookingObject))
+                                {
                                     tempPan.TakeOut();
-                                return true;
+                                    return false;
+                                }
+                                // 재료 이동 안됨 및 플레이어 음식 유지
+                                return false;
                             }
                             item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                             return false;
