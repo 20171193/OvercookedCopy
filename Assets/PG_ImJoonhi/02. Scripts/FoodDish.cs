@@ -124,7 +124,8 @@ namespace JH
                     Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
                     ingredientList = buf.ToList();
                     CurrentObject.SetActive(false);
-                    Destroy(CurrentObject);
+                    // Destroy(CurrentObject);
+                    photonView.RPC("DestroyFoodDishModel", RpcTarget.MasterClient);
                     curRecipe = recipeList.Recipe[i];
                     Debug.Log("write");
                     photonView.RPC("ChangeFoodDishList", RpcTarget.Others, i, ingredientTypeNum, ingredientNum);
@@ -175,6 +176,12 @@ namespace JH
                 CurrentObject = (GameObject)Instantiate(curRecipe.Model, gameObject.transform.position, Quaternion.identity);
                 CurrentObject.transform.SetParent(gameObject.transform, true);
             }
+        }
+
+        [PunRPC]
+        public void DestroyFoodDishModel()
+        {
+            PhotonNetwork.Destroy(CurrentObject);
         }
 
         /// <summary>음식에 있는 재들을 음식에 옮기는 함수</summary>
