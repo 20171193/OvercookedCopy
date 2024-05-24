@@ -5,11 +5,11 @@ using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SocialPlatforms;
+using Photon.Pun;
 
 namespace Kyungmin
 {
-    public class InGameFlow : MonoBehaviour
+    public class InGameFlow : MonoBehaviour, IPunObservable
     {
         [SerializeField] TimerBar timerBar;
         [SerializeField] ScoreUI scoreUI;
@@ -115,6 +115,22 @@ namespace Kyungmin
             timerBar.DisableAlarm();
             GameTimeOut();
 
+        }
+
+        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+        {
+            if(stream.IsWriting)
+            {
+                stream.SendNext(curScore);
+                stream.SendNext(curTip);
+                stream.SendNext(totalScore);               
+            }
+            else // if(stream.IsReading)
+            {
+                curScore = (int)stream.ReceiveNext();
+                curTip = (int)stream.ReceiveNext();
+                totalScore = (int)stream.ReceiveNext();               
+            }
         }
     }
 }

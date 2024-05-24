@@ -15,16 +15,14 @@ public class Table : MonoBehaviour, IHighlightable
     [SerializeField] GameObject generatePoint;
 
     // generatePoint 인덱스 찾기 위한 임시 변수
-    [SerializeField] int childIndex;
-
-    public int ChildIndex { get; set; }
+    [SerializeField] int genPointChildIndex;
 
     private void Awake()
     {
         originMT = meshRenderer.sharedMaterial;
 
         // generatePoint 있는지 null 체크 (에러 방지)
-        Transform temp = transform.GetChild(childIndex);
+        Transform temp = transform.GetChild(genPointChildIndex);
         if (temp != null)
         {
             generatePoint = temp.gameObject;
@@ -273,9 +271,5 @@ public class Table : MonoBehaviour, IHighlightable
     public virtual void Interactable()
     {
         Debug.Log("table.Interactable");
-
-        // 1. 도마 : 다지기
-
-
     }
 }

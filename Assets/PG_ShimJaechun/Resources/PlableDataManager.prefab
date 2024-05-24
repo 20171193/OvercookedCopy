@@ -45,14 +45,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chefInfos:
-  - chefName: Alien
-    sprite: {fileID: 21300000, guid: c15ce1d5d518f5c4ab0435e1e86b4d36, type: 3}
+  - chefName: AlienPink
+    sprite: {fileID: 21300000, guid: d4acd3abc3b1f2e4faa2a1c653e98a43, type: 3}
     prefab: {fileID: 0}
-  - chefName: Asianmale
-    sprite: {fileID: 21300000, guid: 7c15b42d5aa3dfc498e8559be1699a9f, type: 3}
+  - chefName: Maori
+    sprite: {fileID: 21300000, guid: 386ba53cecf78c442b23024f453c5ddf, type: 3}
     prefab: {fileID: 0}
-  - chefName: Polarbear
-    sprite: {fileID: 21300000, guid: 2f8a9ceaa1dd2264291413164bc33f13, type: 3}
+  - chefName: RedFox
+    sprite: {fileID: 21300000, guid: 84594a8b3378d9645b30ad28d7ac3ae1, type: 3}
     prefab: {fileID: 0}
   - chefName: Robot
     sprite: {fileID: 21300000, guid: 688df4d2d9719114f8f82c4c13c6b2fd, type: 3}
