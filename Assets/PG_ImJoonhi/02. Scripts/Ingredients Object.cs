@@ -18,16 +18,16 @@ namespace JH
 
         private GameObject CurrentObject;
 
-
-
-        void Start()
+        private void Awake()
         {
-            photonview = gameObject.GetPhotonView();
             rigid = gameObject.GetComponent<Rigidbody>();
             collid = gameObject.GetComponent<BoxCollider>();
             rigid.isKinematic = true;
             collid.enabled = false;
+        }
 
+        void Start()
+        {
             switch (IngState)
             {
                 case IngredientState.Original:
@@ -68,6 +68,39 @@ namespace JH
             if (ingredientsData.Sliced == null)
                 return;
             Debug.Log("Slice");
+            /*
+            IngState = IngredientState.Sliced;
+            CurrentObject.SetActive(false);
+            Destroy(CurrentObject);
+            CurrentObject = (GameObject)Instantiate(ingredientsData.Sliced, gameObject.transform);
+            CurrentObject.transform.SetParent(gameObject.transform, true);
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
+            */
+            photonView.RPC("IngSlice", RpcTarget.All);
+        }
+
+        [ContextMenu("PanHeat")]
+        public void PanHeated()
+        {
+            if (ingredientsData.Paned == null)
+                return;
+            Debug.Log("Panned");
+            /*
+            IngState = IngredientState.Paned;
+            CurrentObject.SetActive(false);
+            Destroy(CurrentObject);
+            CurrentObject = (GameObject)Instantiate(ingredientsData.Paned, gameObject.transform);
+            CurrentObject.transform.SetParent(gameObject.transform, true);
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
+            */
+            photonView.RPC("IngPanHeat", RpcTarget.All);
+        }
+
+        [PunRPC]
+        public void IngSlice()
+        {
             IngState = IngredientState.Sliced;
             CurrentObject.SetActive(false);
             Destroy(CurrentObject);
@@ -77,12 +110,9 @@ namespace JH
             SetOriginMT();
         }
 
-        [ContextMenu("PanHeat")]
-        public void PanHeated()
+        [PunRPC]
+        public void IngPanHeat()
         {
-            if (ingredientsData.Paned == null)
-                return;
-            Debug.Log("Panned");
             IngState = IngredientState.Paned;
             CurrentObject.SetActive(false);
             Destroy(CurrentObject);
@@ -98,20 +128,6 @@ namespace JH
                 return IngState - other.IngState;
             return ingredientsData.id - other.ingredientsData.id;
         }
-
-        /*public void GoTo(GameObject GoPotint)
-        {
-            rigid.isKinematic = true;
-            gameObject.transform.position = GoPotint.transform.position;
-            gameObject.transform.rotation = GoPotint.transform.rotation;
-            gameObject.transform.SetParent(GoPotint.transform, true);
-        }
-        public void Drop()
-        {
-            rigid.isKinematic = false;
-            gameObject.transform.SetParent(null);
-        }
-        */
 
         #region Debug
 #if UNITY_EDITOR

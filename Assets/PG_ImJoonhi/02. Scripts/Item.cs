@@ -8,10 +8,15 @@ public class Item : MonoBehaviourPun, IPickable, IHighlightable
     public Collider collid;
     public MeshRenderer meshRenderer;
     public ItemType Type;
-    public PhotonView photonview;
 
     private Material originMT;
     private Material changeMT;
+    [PunRPC]
+    // photonView.RPC("DestroyItem", RpcTarget.MasterClient);
+    public void DestroyItem()
+    {
+        PhotonNetwork.Destroy(gameObject);
+    }
 
     // IPickable
     [PunRPC]
@@ -41,7 +46,7 @@ public class Item : MonoBehaviourPun, IPickable, IHighlightable
         */
         Debug.Log($"GOTO {GoPoint.name}");
         Debug.Log($"GOTO ID {GoPoint.GetPhotonView().ViewID}");
-        photonview.RPC("Hold", RpcTarget.All, GoPoint.GetPhotonView().ViewID);
+        photonView.RPC("Hold", RpcTarget.All, GoPoint.GetPhotonView().ViewID);
     }
 
     public void Drop()

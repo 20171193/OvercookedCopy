@@ -23,7 +23,7 @@ namespace JH
         public void TakeIngredient(GameObject GeneratePoint)
         {
             PhotonView photonView = PhotonView.Get(this);
-            photonView.RPC("GenIngredient", RpcTarget.All, GeneratePoint.GetPhotonView().ViewID);
+            photonView.RPC("GenIngredient", RpcTarget.MasterClient, GeneratePoint.GetPhotonView().ViewID);
         }
 
 

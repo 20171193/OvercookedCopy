@@ -53,7 +53,6 @@ MonoBehaviour:
   collid: {fileID: 8943046449725416791}
   meshRenderer: {fileID: 0}
   Type: 2
-  photonview: {fileID: 0}
   recipeList: {fileID: 0}
   ingredientPrefabs: {fileID: 0}
   init:
