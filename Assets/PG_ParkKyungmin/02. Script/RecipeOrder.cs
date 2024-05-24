@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using Photon.Pun;
 
-public class RecipeOrder : MonoBehaviourPun
+public class RecipeOrder : MonoBehaviourPunCallbacks
 {
     [Header("Init")]
     public RecipeList recipeList;
@@ -31,7 +31,10 @@ public class RecipeOrder : MonoBehaviourPun
     private void Start()
     {
         // 20초에 한번씩 랜덤 호출
-        InvokeRepeating("RandomRecipe", 20.0f, 20.0f);
+        if (PhotonNetwork.IsMasterClient)
+        {
+            InvokeRepeating("RandomRecipe", 20.0f, 20.0f);
+        }
     }
 
     private void RandomRecipe()         // 랜덤 생성
@@ -48,21 +51,22 @@ public class RecipeOrder : MonoBehaviourPun
         RecipeData randomRecipe = recipeList.finishedRecipe[randomIndex];
 
         // 모든 클라이언트에게 레시피 생성 요청
+        //photonView.RPC("OrderIn", RpcTarget.All, randomIndex);
+
+        // 모든 클라이언트에게 레시피 생성 요청
         photonView.RPC("OrderIn", RpcTarget.All, randomIndex);
         Debug.Log($"{randomIndex}번째 생성");
     }
 
     [PunRPC]
-    private void OrderIn(int recipeIndex)
+    private void OrderIn(RecipeData randomRecipe)
     {
-
-        RecipeData recipe = recipeList.finishedRecipe[recipeIndex];
 
         // Recipe_IGD 생성
         int num = -1;
         for (int i = 0; i < 4; i++)
         {
-            if (recipe.ingredients[i] == null)
+            if (randomRecipe.ingredients[i] == null)
             {
                 if (num == -1)
                     return;
@@ -73,17 +77,17 @@ public class RecipeOrder : MonoBehaviourPun
                 OrderUI = Instantiate(orderUI[3], gameObject.transform);
             num++;
         }
-        OrderUI.GetComponent<Recipe_IGD>().recipe = recipe;
+        OrderUI.GetComponent<Recipe_IGD>().recipe = randomRecipe;
         OrderList.Add(OrderUI);
 
         // 완성음식 icon 추가
-        OrderUI.GetComponent<Recipe_IGD>().finishedImage.GetComponent<Image>().sprite = recipe.FoodSprite;
+        OrderUI.GetComponent<Recipe_IGD>().finishedImage.GetComponent<Image>().sprite = randomRecipe.FoodSprite;
 
         // Recipe_IGD 내부 파란종이 생성
         for (int i = 0; i < num + 1; i++)       //num = 재료갯수
         {
             // 파란종이 내부 재료그림 추가
-            switch (recipe.ingredientsState[i])
+            switch (randomRecipe.ingredientsState[i])
             {
                 case IngredientState.Original:
                 case IngredientState.Sliced:
@@ -91,7 +95,7 @@ public class RecipeOrder : MonoBehaviourPun
                     InstantIngUI = Instantiate(IngredientUI[0], OrderUI.GetComponent<Recipe_IGD>().IngredientGroup.transform);
                     // 아이콘을 생성, 재료의 스프라이트를 설정
                     IconUI = Instantiate(Icon, InstantIngUI.transform);
-                    IconUI.GetComponent<Image>().sprite = recipe.ingredients[i].ingSprite;
+                    IconUI.GetComponent<Image>().sprite = randomRecipe.ingredients[i].ingSprite;
                     break;
                 case IngredientState.Paned:
                 case IngredientState.Potted:
@@ -99,9 +103,9 @@ public class RecipeOrder : MonoBehaviourPun
                     InstantIngUI = Instantiate(IngredientUI[1], OrderUI.GetComponent<Recipe_IGD>().IngredientGroup.transform);
                     // 아이콘을 생성, 재료의 스프라이트를 설정
                     IconUI = Instantiate(Icon, InstantIngUI.transform);
-                    IconUI.GetComponent<Image>().sprite = recipe.ingredients[i].ingSprite;
+                    IconUI.GetComponent<Image>().sprite = randomRecipe.ingredients[i].ingSprite;
                     IconUI = Instantiate(Icon, InstantIngUI.transform);
-                    switch (recipe.ingredientsState[i])
+                    switch (randomRecipe.ingredientsState[i])
                     {
                         case IngredientState.Paned:
                             // 상태가 'Paned'인 경우 아이콘 스프라이트를 설정
@@ -141,22 +145,22 @@ public class RecipeOrder : MonoBehaviourPun
 
     #region
 #if UNITY_EDITOR
-    [ContextMenu("[Debug]Add Order")]
-    public void DebugAddOrder()
-    {
-        if (OrderList.Count < 4)
-            OrderIn(recipeDataDebug);
-    }
+    //[ContextMenu("[Debug]Add Order")]
+    //public void DebugAddOrder()
+    //{
+    //    if (OrderList.Count < 4)
+    //        OrderIn(recipeDataDebug);
+    //}
 
-    [ContextMenu("[Debug]Delete Order")]
-    public void DebugDeleteOrder()
-    {
-        if (OrderList.Count > 0)
-        {
-            Destroy(OrderList[0]);
-            OrderList.RemoveAt(0);
-        }
-    }
+    //[ContextMenu("[Debug]Delete Order")]
+    //public void DebugDeleteOrder()
+    //{
+    //    if (OrderList.Count > 0)
+    //    {
+    //        Destroy(OrderList[0]);
+    //        OrderList.RemoveAt(0);
+    //    }
+    //}
 
 
 #endif
