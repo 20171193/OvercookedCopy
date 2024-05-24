@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -121,8 +122,11 @@ namespace Jc
             // 로비에서 방 비활성화
             PhotonNetwork.CurrentRoom.IsVisible = false;
 
-            // 게임씬 로드
-            Manager.Scene.LoadLevel(SceneManager.SceneType.Campagin);
+            // 캠페인 씬 로드
+            Manager.Scene.LoadLevelWithDelay(SceneManager.SceneType.Campagin);
+
+            // 캠페인 씬 로드
+            //Manager.Scene.LoadLevel(SceneManager.SceneType.Campagin);
         }
 
         // 방 나가기 

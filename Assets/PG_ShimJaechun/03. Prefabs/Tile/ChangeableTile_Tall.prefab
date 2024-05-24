@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meshRenderer: {fileID: 7479345619322676585}
   changeMT: {fileID: 2100000, guid: ae136fb2c39b38243a3d26c486e8ff07, type: 2}
-  rotSpeed: 150
+  rotSpeed: 200
 --- !u!1001 &488538287798663309
 PrefabInstance:
   m_ObjectHideFlags: 0

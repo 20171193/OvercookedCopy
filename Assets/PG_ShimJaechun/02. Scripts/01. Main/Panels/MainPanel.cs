@@ -8,10 +8,12 @@ namespace Jc
 {
     public class MainPanel : MonoBehaviour
     {
+
         // 캠페인 버튼 클릭
         public void OnClickCampaignButton()
         {
             PhotonNetwork.JoinLobby();
+            LobbyManager.Inst.ActiveLoading();
         }
         
         // 옵션 버튼 클릭

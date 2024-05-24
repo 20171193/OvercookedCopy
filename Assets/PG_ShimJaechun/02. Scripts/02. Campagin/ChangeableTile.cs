@@ -97,7 +97,7 @@ public class ChangeableTile : MonoBehaviour
         float rate = 0f;
         while(rate < 1)
         {
-            rate += Time.deltaTime / 2f;
+            rate += Time.deltaTime;
 
             transform.position = Vector3.Lerp(targetPos, originPos, rate);
             yield return null;
