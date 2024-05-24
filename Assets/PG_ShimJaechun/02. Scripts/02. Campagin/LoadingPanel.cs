@@ -9,13 +9,14 @@ namespace Jc
     {
         [SerializeField]
         private Image fadeInPanel;
+        public Image FadeInPanel;
 
         [SerializeField]
         private Color fadeInColor;         // 페이드인 컬러
-
+        public Color FadeInColor {get { return fadeInColor; } }
         [SerializeField]
         private Color fadeOutColor;        // 페이드아웃 컬러
-
+        public Color FadeOutColor {get { return fadeOutColor; } }
         private void Awake()
         {
             fadeInColor = fadeInPanel.color;

@@ -61,6 +61,15 @@ public class SceneManager : Singleton<SceneManager>
         loadingPanel.gameObject.SetActive(true);
         loadingPanel.FadeIn(loadDelayTime);
     }
+
+    // 유저 접속 대기
+    public void LoadDelay()
+    {
+        // 페이드인 상태로 대기
+        loadingPanel.gameObject.SetActive(true);
+        loadingPanel.FadeInPanel.color = loadingPanel.FadeInColor;
+    }
+
     public void FadeOut()
     {
         loadingPanel.gameObject.SetActive(true);
