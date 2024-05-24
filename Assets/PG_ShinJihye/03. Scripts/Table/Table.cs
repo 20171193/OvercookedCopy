@@ -1,4 +1,5 @@
 using JH;
+using Photon.Pun;
 using UnityEngine;
 
 public class Table : MonoBehaviour, IHighlightable
@@ -83,7 +84,7 @@ public class Table : MonoBehaviour, IHighlightable
                             if (tempItem != null)
                             {
                                 placedItem = tempItem;
-                                Destroy(item.gameObject);
+                                item.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
                                 return true;
                             }
                             else
@@ -96,7 +97,7 @@ public class Table : MonoBehaviour, IHighlightable
                         case ItemType.FoodDish:
                             FoodDish temp_PF_FoodDish = item as FoodDish;
                             if (tempPlate.IngredientIN(generatePoint, temp_PF_FoodDish))
-                                Destroy(item.gameObject);
+                                PhotonNetwork.Destroy(item.gameObject);
                             return true;
 
                         // (3) 손에 든 게 프라이팬일 때
@@ -123,7 +124,7 @@ public class Table : MonoBehaviour, IHighlightable
                             tempItem = temp_IP_Plate.IngredientIN(generatePoint, tempIngredient);
                             if (tempItem != null)
                             {
-                                Destroy(placedItem.gameObject);
+                                PhotonNetwork.Destroy(placedItem.gameObject);
                                 placedItem = tempItem;
                                 return true;
                             }
@@ -139,7 +140,7 @@ public class Table : MonoBehaviour, IHighlightable
                             if (temp_IF_Plate.Add(tempIngredient))
                             {
                                 temp_IF_Plate.GoTo(generatePoint);
-                                Destroy(placedItem.gameObject);
+                                PhotonNetwork.Destroy(placedItem.gameObject);
                                 placedItem = item;
                                 return true;
                             }
@@ -156,13 +157,13 @@ public class Table : MonoBehaviour, IHighlightable
                         case ItemType.Ingredient:
                             IngredientsObject temp_FI_Ingredient = item as IngredientsObject;
                             if (tempFoodDish.Add(temp_FI_Ingredient))
-                                Destroy(item.gameObject);
+                                PhotonNetwork.Destroy(item.gameObject);
                             return true;
 
                         // (2) 손에 든 게 조합된 재료일 때
                         case ItemType.FoodDish:
                             if (tempFoodDish.AddPlate())
-                                Destroy(item.gameObject);
+                                PhotonNetwork.Destroy(item.gameObject);
                             return false;
 
                         // (3) 손에 든 게 프라이팬일 때
@@ -213,7 +214,7 @@ public class Table : MonoBehaviour, IHighlightable
                                     tempPan.TakeOut();
                                 return true;
                             }
-                            Destroy(item.gameObject);
+                            PhotonNetwork.Destroy(item.gameObject);
                             return false;
                     }
                     return false;
