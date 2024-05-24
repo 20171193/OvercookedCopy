@@ -9,7 +9,7 @@ using Photon.Pun;
 
 namespace Kyungmin
 {
-    public class InGameFlow : MonoBehaviour, IPunObservable
+    public class InGameFlow : MonoBehaviourPunCallbacks, IPunObservable
     {
         [SerializeField] TimerBar timerBar;
         [SerializeField] ScoreUI scoreUI;
@@ -31,8 +31,8 @@ namespace Kyungmin
         {
             timerBar.gauge.maxValue = gameTime;
             StartCoroutine(OrderTimer());
-
         }
+
         public void RecipeResult(int score)
         {
             // 레시피 제출 -> 방장에게 점수를 신청함 -> 신청받은 방장이 점수를 올림
@@ -58,10 +58,33 @@ namespace Kyungmin
             curTip += addTip;                   // 누적된 tip점수가 현재 tip이 됨
             totalScore += addTip + score;       // 총 점수
 
+            // PhotonNetwork를 사용하여 점수 업데이트 요청
+            photonView.RPC("RequestScoreUpdate", RpcTarget.MasterClient, totalScore, multipleTip);
+        }
+
+        [PunRPC]
+        public void RequestScoreUpdate(int totalScore, int multipleTip, PhotonMessageInfo info)
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                // 방장이 점수를 업데이트
+                UpdateScore(totalScore, multipleTip);
+
+                // 모든 클라이언트에게 업데이트된 점수를 전송
+                photonView.RPC("UpdateScore", RpcTarget.All, totalScore, multipleTip);
+            }
+        }
+
+        [PunRPC]
+        public void UpdateScore(int totalScore, int multipleTip)
+        {
+            this.totalScore = totalScore;
+            this.multipleTip = multipleTip;
+
             scoreUI.UpdateUI(totalScore, multipleTip);
         }
 
-        public void GameTimeOut()
+            public void GameTimeOut()
         {
             // n초 뒤에 결과창 UI 키기
             resultUI.gameObject.SetActive(true);
