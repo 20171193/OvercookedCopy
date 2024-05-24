@@ -6,6 +6,7 @@ using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
 using Jc;
+using UnityEngine.Events;
 
 namespace Jc
 {
@@ -15,6 +16,8 @@ namespace Jc
         public string[] chefNames;
         [SerializeField]
         private ClientState curState = ClientState.JoiningLobby;
+
+        public UnityAction OnAllPlayerReady;
 
         // 인게임 게임매니저
         private void Start()
@@ -99,6 +102,7 @@ namespace Jc
         {
             if (changedProps.ContainsKey(CustomProperty.GAMESTART))
             {
+                OnAllPlayerReady?.Invoke();
                 GameStart();
             }
         }
