@@ -12,6 +12,7 @@ namespace KJW
         [SerializeField] Vector3 targetPos;
         [SerializeField] float throwTime;
         private Collider collider;
+
         private void Awake()
         {
             collider = GetComponent<Collider>();

@@ -63,8 +63,7 @@ namespace KJW
             Fireball fireball = Instantiate(fireballPrefab, startPoint.position, startPoint.rotation);
             // Fireball의 목표 위치 설정
             fireball.SetTargetPos(target.position);
-
-            Destroy(fireball.gameObject, 5f);
+            Destroy(fireball.gameObject, 8f);
         }
     }
 
