@@ -15,14 +15,14 @@ public class Table : MonoBehaviour, IHighlightable
     [SerializeField] GameObject generatePoint;
 
     // generatePoint 인덱스 찾기 위한 임시 변수
-    [SerializeField] int genPointChildIndex;
+    public int childIndex;
 
     private void Awake()
     {
         originMT = meshRenderer.sharedMaterial;
 
         // generatePoint 있는지 null 체크 (에러 방지)
-        Transform temp = transform.GetChild(genPointChildIndex);
+        Transform temp = transform.GetChild(childIndexs);
         if (temp != null)
         {
             generatePoint = temp.gameObject;

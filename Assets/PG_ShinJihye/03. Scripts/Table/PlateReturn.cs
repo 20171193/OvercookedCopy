@@ -14,7 +14,7 @@ public class PlateReturn : Table
     [SerializeField] GameObject spawnPoint;
 
     // spawnPoint 인덱스 찾기 위한 임시 변수
-    [SerializeField] int spawnPointChildIndex;
+    //[SerializeField] int spawnPointChildIndex;
 
     public void PlateRespawn()
     {
@@ -22,9 +22,8 @@ public class PlateReturn : Table
         Transform temp = transform.GetChild(spawnPointChildIndex);
         if (temp != null)
         {
-            Debug.Log("11");
+            genPointChildIndex = -1;
             spawnPoint = temp.gameObject;
-            Debug.Log("22");
         }
 
         StartCoroutine(PlateRespawnRoutine(spawnPoint));

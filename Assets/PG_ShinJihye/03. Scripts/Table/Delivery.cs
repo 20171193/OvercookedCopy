@@ -11,7 +11,6 @@ public class Delivery : Table
     private void OnEnable()
     {
         finalScore = 0;
-        addScore = 5;
     }
 
     public override bool PutDownItem(Item item)
