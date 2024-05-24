@@ -385,7 +385,7 @@ GameObject:
   - component: {fileID: 7376887859976334915}
   - component: {fileID: 3493675750591346161}
   - component: {fileID: 1915846724008558139}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Chef_AlienPink
   m_TagString: Untagged
   m_Icon: {fileID: 0}
