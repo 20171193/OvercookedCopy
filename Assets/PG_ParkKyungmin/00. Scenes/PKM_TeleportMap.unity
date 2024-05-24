@@ -722,7 +722,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.1, y: 1.5, z: 0.2}
+  m_Size: {x: 2.1, y: 1.5, z: 0.5}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &138493922 stripped
 GameObject:
@@ -4717,7 +4717,7 @@ Transform:
   m_GameObject: {fileID: 520797526}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19, y: 0, z: 3.5}
+  m_LocalPosition: {x: 19, y: 0, z: 3.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4739,7 +4739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 1016624436}
-  exitDistance: 2
+  exitDistance: 3
 --- !u!65 &520797529
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4759,8 +4759,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: -0.83, y: 1, z: 0}
+  m_Size: {x: 2, y: 2, z: 0.3}
+  m_Center: {x: -0.83, y: 1, z: -0.1}
 --- !u!4 &523914186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: cdcd133c0e333a144a607d9cca40bbdf,
@@ -4816,7 +4816,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 840527616}
-  exitDistance: 2
+  exitDistance: 3
 --- !u!65 &532961273
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4836,8 +4836,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 2, y: 2, z: 0.3}
+  m_Center: {x: 0, y: 1, z: -0.1}
 --- !u!1001 &546308854
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4957,7 +4957,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.1, y: 1.5, z: 0.2}
+  m_Size: {x: 2.1, y: 1.5, z: 0.5}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!4 &558557928 stripped
 Transform:
@@ -5112,7 +5112,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 1045269184}
-  exitDistance: 2
+  exitDistance: 3
 --- !u!4 &630029623
 Transform:
   m_ObjectHideFlags: 0
@@ -5122,7 +5122,7 @@ Transform:
   m_GameObject: {fileID: 630029621}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 0, z: 3.5}
+  m_LocalPosition: {x: 15, y: 0, z: 3.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5150,8 +5150,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0.51, y: 1, z: 0}
+  m_Size: {x: 2, y: 2, z: 0.3}
+  m_Center: {x: 0.51, y: 1, z: -0.1}
 --- !u!1001 &635449289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5381,7 +5381,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.1, y: 1.5, z: 0.2}
+  m_Size: {x: 2.1, y: 1.5, z: 0.5}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!4 &715232539 stripped
 Transform:
@@ -5408,7 +5408,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.1, y: 1.5, z: 0.2}
+  m_Size: {x: 2.1, y: 1.5, z: 0.5}
   m_Center: {x: 0, y: 1, z: 0}
 --- !u!1001 &715244035
 PrefabInstance:
@@ -6696,7 +6696,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 532961270}
-  exitDistance: 2
+  exitDistance: 3
 --- !u!4 &840527618
 Transform:
   m_ObjectHideFlags: 0
@@ -6706,7 +6706,7 @@ Transform:
   m_GameObject: {fileID: 840527616}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6, y: 0, z: 3.5}
+  m_LocalPosition: {x: 6, y: 0, z: 3.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -6734,8 +6734,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 2, y: 2, z: 0.3}
+  m_Center: {x: 0, y: 1, z: -0.1}
 --- !u!4 &858610454 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3e7fe291deca3924a9ec922194f597e9,
@@ -8204,7 +8204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 520797526}
-  exitDistance: 2
+  exitDistance: 3
 --- !u!4 &1016624438
 Transform:
   m_ObjectHideFlags: 0
@@ -8242,8 +8242,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 2, y: 2, z: 0.3}
+  m_Center: {x: 0, y: 1, z: -0.1}
 --- !u!4 &1019703176 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2644781329032658812, guid: 8e8d9ee5f676803408977507d7ea9efe,
@@ -8423,7 +8423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 630029621}
-  exitDistance: 2
+  exitDistance: 3
 --- !u!65 &1045269187
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8443,8 +8443,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 2, y: 2, z: 0.3}
+  m_Center: {x: 0, y: 1, z: -0.1}
 --- !u!4 &1047868216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2644781329032658812, guid: 8e8d9ee5f676803408977507d7ea9efe,
@@ -11339,7 +11339,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2.1, y: 1.5, z: 0.2}
+  m_Size: {x: 2.1, y: 1.5, z: 0.5}
   m_Center: {x: -0.6, y: 1, z: 0}
 --- !u!1 &1446709252 stripped
 GameObject:
@@ -12588,7 +12588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 1899115647}
-  exitDistance: 2
+  exitDistance: 3
 --- !u!4 &1608500880
 Transform:
   m_ObjectHideFlags: 0
@@ -12598,7 +12598,7 @@ Transform:
   m_GameObject: {fileID: 1608500878}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.6, y: 0, z: 3.5}
+  m_LocalPosition: {x: 3.6, y: 0, z: 3.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12626,8 +12626,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Size: {x: 2, y: 2, z: 0.3}
+  m_Center: {x: 0, y: 1, z: -0.1}
 --- !u!1001 &1611755598
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15294,7 +15294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 1608500878}
-  exitDistance: 2
+  exitDistance: 3
 --- !u!65 &1899115650
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15314,8 +15314,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 2, z: 0.2}
-  m_Center: {x: 0.51, y: 1, z: 0}
+  m_Size: {x: 2, y: 2, z: 0.3}
+  m_Center: {x: 0.51, y: 1, z: -0.1}
 --- !u!1001 &1901449387
 PrefabInstance:
   m_ObjectHideFlags: 0

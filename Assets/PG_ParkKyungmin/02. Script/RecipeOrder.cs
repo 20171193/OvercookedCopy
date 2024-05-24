@@ -7,7 +7,7 @@ using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using Photon.Pun;
 
-public class RecipeOrder : MonoBehaviour
+public class RecipeOrder : MonoBehaviourPun
 {
     [Header("Init")]
     public RecipeList recipeList;
@@ -46,12 +46,18 @@ public class RecipeOrder : MonoBehaviour
         // 인덱스의 0번째에서 finishedRecip의 마지막 인덱스 [n]번째 사이에서 랜덤
         int randomIndex = UnityEngine.Random.Range(0, recipeList.finishedRecipe.Count);
         RecipeData randomRecipe = recipeList.finishedRecipe[randomIndex];
-        OrderIn(randomRecipe);
+
+        // 모든 클라이언트에게 레시피 생성 요청
+        photonView.RPC("OrderIn", RpcTarget.All, randomIndex);
         Debug.Log($"{randomIndex}번째 생성");
     }
 
-    private void OrderIn(RecipeData recipe)
+    [PunRPC]
+    private void OrderIn(int recipeIndex)
     {
+
+        RecipeData recipe = recipeList.finishedRecipe[recipeIndex];
+
         // Recipe_IGD 생성
         int num = -1;
         for (int i = 0; i < 4; i++)
@@ -138,7 +144,7 @@ public class RecipeOrder : MonoBehaviour
     [ContextMenu("[Debug]Add Order")]
     public void DebugAddOrder()
     {
-        if(OrderList.Count < 4)
+        if (OrderList.Count < 4)
             OrderIn(recipeDataDebug);
     }
 
