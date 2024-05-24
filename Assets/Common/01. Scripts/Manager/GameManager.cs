@@ -81,6 +81,7 @@ namespace Jc
         private void GameStart()
         {
             // 포톤네트워크가 자체적으로 지원하는 플레이어 넘버링이다. 사용법은 밑을 참조하면 될것같음
+            OnAllPlayerReady?.Invoke();
             int spawnIndex = PhotonNetwork.LocalPlayer.GetChef();
             PhotonNetwork.Instantiate(chefNames[spawnIndex], spawnposs[spawnIndex].position, spawnposs[spawnIndex].rotation, 0);
         }
@@ -102,7 +103,6 @@ namespace Jc
         {
             if (changedProps.ContainsKey(CustomProperty.GAMESTART))
             {
-                OnAllPlayerReady?.Invoke();
                 GameStart();
             }
         }

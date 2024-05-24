@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using Photon.Pun;
-
+using Jc;
 public class RecipeOrder : MonoBehaviourPunCallbacks
 {
     [Header("Init")]
@@ -22,6 +22,9 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
     [Header("Debug")]
     [SerializeField] RecipeData recipeDataDebug;
 
+    [SerializeField]
+    private GameManager gameManager;
+
     private List<GameObject> OrderList = new List<GameObject>();
 
     private GameObject OrderUI;
@@ -30,10 +33,15 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
 
     private void Start()
     {
+        gameManager.OnAllPlayerReady += RecipeSpawnRoutine;
+    }
+
+    private void RecipeSpawnRoutine()
+    {
         // 20초에 한번씩 랜덤 호출
         if (PhotonNetwork.IsMasterClient)
         {
-            InvokeRepeating("RandomRecipe", 20.0f, 20.0f);
+            InvokeRepeating("RandomRecipe", 10.0f, 10.0f);
         }
     }
 
@@ -47,8 +55,7 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
         }
 
         // 인덱스의 0번째에서 finishedRecip의 마지막 인덱스 [n]번째 사이에서 랜덤
-        int randomIndex = UnityEngine.Random.Range(0, recipeList.finishedRecipe.Count);
-        RecipeData randomRecipe = recipeList.finishedRecipe[randomIndex];
+        int randomIndex = UnityEngine.Random.Range(0, recipeList.finishedRecipe.Count-1);
 
         // 모든 클라이언트에게 레시피 생성 요청
         //photonView.RPC("OrderIn", RpcTarget.All, randomIndex);
@@ -59,8 +66,9 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    private void OrderIn(RecipeData randomRecipe)
+    private void OrderIn(int randomIndex)
     {
+        RecipeData randomRecipe = recipeList.finishedRecipe[randomIndex];
 
         // Recipe_IGD 생성
         int num = -1;
