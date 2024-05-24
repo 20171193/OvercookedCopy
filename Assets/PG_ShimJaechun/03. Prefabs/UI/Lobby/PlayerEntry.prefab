@@ -634,7 +634,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c15ce1d5d518f5c4ab0435e1e86b4d36, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4acd3abc3b1f2e4faa2a1c653e98a43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -656,7 +656,7 @@ GameObject:
   - component: {fileID: 3327631009754060786}
   - component: {fileID: 8326132917234766992}
   m_Layer: 5
-  m_Name: Button_Chef_PolarBear
+  m_Name: Button_Chef_RedFox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -922,7 +922,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2f8a9ceaa1dd2264291413164bc33f13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 84594a8b3378d9645b30ad28d7ac3ae1, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1110,7 +1110,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: c15ce1d5d518f5c4ab0435e1e86b4d36, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d4acd3abc3b1f2e4faa2a1c653e98a43, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1185,7 +1185,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7c15b42d5aa3dfc498e8559be1699a9f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 386ba53cecf78c442b23024f453c5ddf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1270,7 +1270,7 @@ GameObject:
   - component: {fileID: 1813523521812411923}
   - component: {fileID: 2727559623212285262}
   m_Layer: 5
-  m_Name: Button_Chef_Asian_Male
+  m_Name: Button_Chef_Maori
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
