@@ -36,8 +36,7 @@ namespace Jc
         // 방을 나갔을 경우 바로 로비로 이동하기위해 사용
         bool isExitRoom = false;
 
-        [SerializeField]
-        private GameObject loadingGroup;        // 로딩 패널
+        public LoadingPanel loadingPanel;        // 로딩 패널
 
         [Header("타이틀 씬 이벤트 카메라")]
         [SerializeField]
@@ -52,10 +51,30 @@ namespace Jc
         private Vector3 endVCrot;               // 카메라 종료 회전값
         [SerializeField]
         private float loadingTime;               // 타이틀 -> 메인 전환시간
+        
+        [Header("메뉴 타이틀 이미지 그룹")]
+        [SerializeField]
+        private GameObject titleImage;      // 메뉴 타이틀 이미지
+        [Header("메뉴 페널")]
+        [SerializeField]
+        private GameObject menuPanel;
 
         private void Awake()
         {
             inst = this;
+            titleImage.SetActive(false);
+            menuPanel.SetActive(false);
+        }
+
+        public override void OnEnable()
+        {
+            base.OnEnable();
+            Manager.Scene.OnDisconnected += DisconnectSetting;
+        }
+        public override void OnDisable()
+        {
+            base.OnDisable();
+            Manager.Scene.OnDisconnected -= DisconnectSetting;
         }
 
         private void Start()
@@ -74,6 +93,20 @@ namespace Jc
         private void Update()
         {
             CheckCurrentState();
+        }
+
+        // 로딩 시작
+        public void ActiveLoading()
+        {
+            loadingPanel.gameObject.SetActive(true);
+        }
+        // 로딩 종료 (페이드 아웃)
+        public void DisActiveLoading(float fadeTime = 0f)
+        {
+            // 이미 비활성화된 상태라면 return
+            if (!loadingPanel.gameObject.activeSelf) return;
+
+            loadingPanel.FadeOut(fadeTime);
         }
 
         // 로그인 성공
@@ -96,7 +129,8 @@ namespace Jc
         IEnumerator FirstJoinLobbyRoutine()
         {
             float rate = 0f;
-            loadingGroup.SetActive(true);
+            loadingPanel.gameObject.SetActive(true);
+            loadingPanel.FadeOut(2f);
             titleController.gameObject.SetActive(false);
             yield return null;
 
@@ -111,8 +145,13 @@ namespace Jc
 
             mainVC.transform.position = endVCpos;
             mainVC.transform.rotation = Quaternion.Euler(endVCrot);
-            SetActivePanel(Panel.Main);
+            titleImage.SetActive(true);
+            menuPanel.SetActive(true);
+            DisActiveLoading(1.2f);
             yield return null;
+
+            yield return new WaitForSeconds(1.2f);
+            SetActivePanel(Panel.Main);
         }
 
         // 연결이 실패한 경우
@@ -130,6 +169,16 @@ namespace Jc
             }
 
             SetActivePanel(Panel.Title);
+            DisconnectSetting();
+        }
+        
+        // 서버연결 해제 시 패널 UI 기본세팅
+        private void DisconnectSetting()
+        {
+            titleImage.SetActive(false);
+            menuPanel.SetActive(false);
+            isExitRoom = false;
+            titleController.gameObject.SetActive(true);
         }
 
         // 방 생성 실패
@@ -147,6 +196,7 @@ namespace Jc
         // 방 참가
         public override void OnJoinedRoom()
         {
+            DisActiveLoading(0.5f);
             SetActivePanel(Panel.Room);
         }
 
@@ -160,6 +210,7 @@ namespace Jc
         {
             isExitRoom = true;
             Debug.Log("Left Room");
+            DisActiveLoading(0.5f);
             SetActivePanel(Panel.Campagin);
         }
 
@@ -167,6 +218,7 @@ namespace Jc
         public override void OnJoinedLobby()
         {
             Debug.Log("Join Lobby");
+            DisActiveLoading(0.5f);
             SetActivePanel(Panel.Campagin);
         }
 
@@ -174,39 +226,36 @@ namespace Jc
         public override void OnLeftLobby()
         {
             Debug.Log("Left Lobby");
+            DisActiveLoading(0.5f);
             SetActivePanel(Panel.Main);
         }
-
         // 방 리스트가 업데이트된 경우 (로비)
         public override void OnRoomListUpdate(List<RoomInfo> roomList)
         {
             lobbyPanel.UpdateRoomList(roomList);
         }
-
         // 플레이어가 방에 입장한 경우 (방)
         public override void OnPlayerEnteredRoom(Player newPlayer)
         {
             roomPanel.PlayerEnterRoom(newPlayer);
         }
-
         // 플레이어가 방에서 퇴장한 경우 (방)
         public override void OnPlayerLeftRoom(Player otherPlayer)
         {
             roomPanel.PlayerLeftRoom(otherPlayer);
         }
-
         // 방장이 변경된 경우 (방)
         public override void OnMasterClientSwitched(Player newMasterClient)
         {
             roomPanel.MasterClientSwitched(newMasterClient);
         }
-
         // 플레이어의 프로퍼티가 갱신된 경우
         public override void OnPlayerPropertiesUpdate(Player targetPlayer, PhotonHashTable changedProps)
         {
             roomPanel.PlayerPropertiesUpdate(targetPlayer, changedProps);
         }
 
+        // 패널 UI관리 메서드
         public void SetActivePanel(Panel panel)
         {
             titleController.gameObject.SetActive(panel == Panel.Title);
@@ -215,6 +264,7 @@ namespace Jc
             roomPanel.gameObject.SetActive(panel == Panel.Room);
         }
 
+        // 현재 네트워크 상태 체크
         private void CheckCurrentState()
         {
             if (curState == PhotonNetwork.NetworkClientState) return;

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,10 +6,22 @@ using UnityEngine;
 namespace Jc
 {
     public class TileMapController : MonoBehaviour
-    {
+    { 
+        // 카메라 컨트롤용
+        [SerializeField]
+        private CinemachineVirtualCamera mainCam;
+        [SerializeField]
+        private CinemachineVirtualCamera[] stageCams;
+
+        [SerializeField]
+        private float cameraActionTime;
+        private const int currentPriority = 4;  // 현재 카메라 우선순위
+
+        // 스테이지 별 타일맵
         [SerializeField]
         private Transform[] stageTileMaps;
 
+        // 스테이지 별 입구
         [SerializeField]
         private StageEntrance[] stageEntrances;
 
@@ -23,6 +36,7 @@ namespace Jc
 
         private int changedTileCnt = 0;
         private int tileCnt = 0;
+        [SerializeField]
         private int curStage = 0;
 
         [SerializeField]
@@ -32,6 +46,19 @@ namespace Jc
         {
             TileSetUp();
             LoadMasterData();
+        }
+
+        private void Update()
+        {
+            // 디버그 전용
+            if(Input.GetKey(KeyCode.O))
+            {
+                OpenStage(0);
+            }
+            if (Input.GetKey(KeyCode.P))
+            {
+                OpenStage(1);
+            }
         }
 
         // 타일맵 세팅
@@ -75,6 +102,7 @@ namespace Jc
             //OpenStage(0);
         }
 
+        // 로드된 스테이지 미리 오픈
         private void OpenedStage(int stageNumber)
         {
             // 스테이지 타일 세팅
@@ -92,14 +120,15 @@ namespace Jc
             stageEntrances[stageNumber].ActiveEntrance();
         }
 
+        // 스테이지 오픈
         private void OpenStage(int stageNumber)
         {
             curStage = stageNumber;
             // 카메라 액션
+            ChangeCamera(stageNumber);
             // 타일 오픈
             openStageRoutine = StartCoroutine(OpenStageRoutine(stageNumber));
         }
-
         IEnumerator OpenStageRoutine(int stageNumber)
         {
             // depth 별 뒤집기
@@ -120,7 +149,6 @@ namespace Jc
                 tileList[i].OnChangedTile += CountingChangedTile;
             }
         }
-
         public void CountingChangedTile()
         {
             changedTileCnt++;
@@ -149,6 +177,34 @@ namespace Jc
                     tileList[j].ResetTile();
                 }
             }
+        }
+
+        // 카메라 우선순위 초기세팅
+        private void CameraInitSetting()
+        {
+            mainCam.Priority = currentPriority;
+            foreach(CinemachineVirtualCamera cam in stageCams)
+            {
+                cam.Priority = 0;
+            }
+        }
+
+        // 카메라 액션
+        private void ChangeCamera(int stageNumber = 0)
+        {
+            mainCam.Priority = 0;
+            for(int i =0; i<stageCams.Length; i++)
+            {
+                if (i == stageNumber)
+                    stageCams[i].Priority = currentPriority;
+            }
+            StartCoroutine(CameraActionRoutine());
+        }
+
+        IEnumerator CameraActionRoutine()
+        {
+            yield return new WaitForSeconds(cameraActionTime);
+            CameraInitSetting();
         }
     }
 }
