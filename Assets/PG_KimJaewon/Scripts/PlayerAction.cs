@@ -243,10 +243,16 @@ namespace KIMJAEWON
 
             // 가까운 테이블이 없는 경우
             if (nearestTable == null)
+            {
                 pickedItem.Drop();
+                anim.SetTrigger("Pickup");
+                isPickUp = false;
+                pickedItem = null;
+            }
             else
             {
                 successPutDown = nearestTable.PutDownItem(pickedItem);
+
                 if (successPutDown)
                 {
                     anim.SetTrigger("Pickup");
