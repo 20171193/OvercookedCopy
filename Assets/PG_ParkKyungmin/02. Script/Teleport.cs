@@ -23,7 +23,6 @@ namespace Kyungmin
             // Player가 무한으로 텔레포트를 타는 문제가 발생하게 되어
             // exitDistance를 두어서 출구가 아닌 출구에서 exitDistance만큼 앞으로 텔레포트 하게 함
             player.transform.position = outObj.transform.position - outObj.transform.forward * exitDistance;
-;
         }
     }
 }

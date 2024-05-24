@@ -24,8 +24,8 @@ EditorBuildSettings:
     path: Assets/PG_KimJaewon/00. Scenes/KJW_AirballoonScene.unity
     guid: 25199220256e5d94fac5ee915dd7e0fb
   - enabled: 1
-    path: Assets/PG_ImJoonhi/00. Scenes/SJH_AirballoonScene _ IJH.unity
-    guid: 0ed66588b88337e45a8f5e4870b67b3b
+    path: Assets/PG_ParkKyungmin/00. Scenes/PKM_TeleportMap.unity
+    guid: 484bf4402e7bb6648b4e2b7cf1fe0d67
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 7b381f4b0db3fbc4fa6d162655591a56,
       type: 2}

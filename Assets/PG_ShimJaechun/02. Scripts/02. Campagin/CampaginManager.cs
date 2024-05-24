@@ -40,7 +40,7 @@ namespace Jc
         {
             ClientState cState = PhotonNetwork.NetworkClientState;
             if (curState != cState)
-            { 
+            {
                 Debug.Log(cState);
                 curState = cState;
             }

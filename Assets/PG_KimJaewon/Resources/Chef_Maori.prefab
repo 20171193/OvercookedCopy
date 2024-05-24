@@ -1488,7 +1488,7 @@ GameObject:
   - component: {fileID: 3046789726906631921}
   - component: {fileID: 6271240122278539916}
   - component: {fileID: -6858545106891219966}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Chef_Maori
   m_TagString: Untagged
   m_Icon: {fileID: 0}
