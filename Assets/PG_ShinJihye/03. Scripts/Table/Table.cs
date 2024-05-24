@@ -23,7 +23,7 @@ public class Table : MonoBehaviour, IHighlightable
         originMT = meshRenderer.sharedMaterial;
 
         // generatePoint 있는지 null 체크 (에러 방지)
-        Transform temp = transform.GetChild(childIndexs);
+        Transform temp = transform.GetChild(childIndex);
         if (temp != null)
         {
             generatePoint = temp.gameObject;

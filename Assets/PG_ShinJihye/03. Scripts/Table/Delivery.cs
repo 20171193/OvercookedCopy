@@ -41,4 +41,10 @@ public class Delivery : Table
 
         plateReturn.PlateRespawn();
     }
+
+    public override Item PickUpItem()
+    {
+        // 집어들기 불가능
+        return null;
+    }
 }

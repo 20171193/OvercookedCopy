@@ -13,16 +13,12 @@ public class PlateReturn : Table
     // 새 접시 스폰 위치
     [SerializeField] GameObject spawnPoint;
 
-    // spawnPoint 인덱스 찾기 위한 임시 변수
-    //[SerializeField] int spawnPointChildIndex;
-
     public void PlateRespawn()
     {
         // spawnPoint 있는지 null 체크 (에러 방지)
-        Transform temp = transform.GetChild(spawnPointChildIndex);
+        Transform temp = transform.GetChild(childIndex);
         if (temp != null)
         {
-            genPointChildIndex = -1;
             spawnPoint = temp.gameObject;
         }
 
@@ -37,4 +33,16 @@ public class PlateReturn : Table
         Instantiate(newPlatePrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
     }
 
+    public override Item PickUpItem()
+    {
+        // 디버그 확인
+        Item pickedItem = base.PickUpItem();
+        return pickedItem;
+    }
+
+    public override bool PutDownItem(Item item)
+    {
+        // 내려놓기 불가능
+        return false;
+    }
 }
