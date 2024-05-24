@@ -1008,7 +1008,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4272690603446311565
 GameObject:
@@ -2062,6 +2062,7 @@ GameObject:
   - component: {fileID: 5925802900933072708}
   - component: {fileID: 1372113596217214267}
   - component: {fileID: 8213305379955433142}
+  - component: {fileID: -1873464825105037138}
   m_Layer: 0
   m_Name: Chef_RedFox
   m_TagString: Untagged
@@ -2077,7 +2078,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7713911085457906256}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.0358108, y: -0.2, z: -14.184405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2088,7 +2089,7 @@ Transform:
   - {fileID: 1874205900152805064}
   - {fileID: 5291457383349529122}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &9158108216466420858
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2114,7 +2115,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!65 &339434447293349164
 BoxCollider:
@@ -2210,6 +2211,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 7069738019923572833}
   - {fileID: 5925802900933072708}
+  - {fileID: -1873464825105037138}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -2227,7 +2229,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
+  m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &5925802900933072708
 MonoBehaviour:
@@ -2245,16 +2247,16 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: isMoving
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Pickup
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Washing
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Cutting
   m_SynchronizeLayers:
   - SynchronizeType: 0
@@ -2275,7 +2277,7 @@ MonoBehaviour:
   anim: {fileID: 7584759098311717248}
   itemSocket: {fileID: 2274543249709320610}
   debug: 0
-  range: 1.5
+  range: 1
   angle: 60
   nearestTable: {fileID: 0}
   nearestItem: {fileID: 0}
@@ -2301,6 +2303,22 @@ MonoBehaviour:
   view: {fileID: 5487440928361882182}
   input: {fileID: 8833979049896186182}
   moveInput: {x: 0, y: 0}
+--- !u!114 &-1873464825105037138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7713911085457906256}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &7880228887689495976
 GameObject:
   m_ObjectHideFlags: 0

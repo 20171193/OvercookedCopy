@@ -12,6 +12,9 @@ GameObject:
   - component: {fileID: 5928936291110951726}
   - component: {fileID: -274661988640539299}
   - component: {fileID: -6827017013231025957}
+  - component: {fileID: 4337248181902006574}
+  - component: {fileID: 6306001871354910332}
+  - component: {fileID: 2560890433971094078}
   m_Layer: 0
   m_Name: Plate_burger
   m_TagString: Untagged
@@ -53,7 +56,7 @@ MonoBehaviour:
   Type: 1
   recipeList: {fileID: 0}
   ingredientPrefabs: {fileID: 0}
-  foodDishPrefab: {fileID: 4264565337557243990, guid: 0c548628daa51c2428883be5c9580d91,
+  foodDishPrefab: {fileID: 8956479520290030205, guid: ca6ab5b7d28a17545a7c84792002d482,
     type: 3}
   DebugGenPoint: {fileID: 0}
   DebugIngredientObject: {fileID: 0}
@@ -107,6 +110,62 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 0.02, z: 1}
   m_Center: {x: 0, y: -0.01, z: 0}
+--- !u!114 &4337248181902006574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8431212439588704097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 1
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 6306001871354910332}
+  - {fileID: 2560890433971094078}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &6306001871354910332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8431212439588704097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &2560890433971094078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8431212439588704097}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
 --- !u!1001 &9203513782273980163
 PrefabInstance:
   m_ObjectHideFlags: 0

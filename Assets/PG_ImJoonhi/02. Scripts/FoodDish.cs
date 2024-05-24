@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -26,17 +27,19 @@ namespace JH
         private GameObject curPlate;                                                        // 그릇 게임오브젝트 (그릇 디자인)
         private GameObject CurrentObject;                                                   // 현제 음식 게임오브젝트
 
-        
+
+        private void Awake()
+        {
+            rigid = gameObject.GetComponent<Rigidbody>();
+            collid = gameObject.GetComponent<BoxCollider>();
+            rigid.isKinematic = true;
+            collid.enabled = false;
+        }
 
         private void Start()
         {
             recipeList = Manager_TEMP.recipemanager.recipeList;
             ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
-            
-            rigid = gameObject.GetComponent<Rigidbody>();
-            collid = gameObject.GetComponent<BoxCollider>();
-            rigid.isKinematic = true;
-            collid.enabled = false;
 
             if (initPlate)
                 Plate = true;
@@ -63,13 +66,27 @@ namespace JH
         {
             if (Plate)
                 return false;
+            /*
             Plate = true;
             curPlate = Instantiate(recipeList.PlatePrefab, gameObject.transform.position, Quaternion.identity);
             curPlate.transform.SetParent(gameObject.transform, true);
             CurrentObject.transform.SetParent(curPlate.transform, true);
             meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
             SetOriginMT();
+            */
+            photonView.RPC("PunAddPlate", RpcTarget.All);
             return true;
+        }
+
+        [PunRPC]
+        public void PunAddPlate()
+        {
+            Plate = true;
+            curPlate = Instantiate(recipeList.PlatePrefab, gameObject.transform.position, Quaternion.identity);
+            curPlate.transform.SetParent(gameObject.transform, true);
+            CurrentObject.transform.SetParent(curPlate.transform, true);
+            meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+            SetOriginMT();
         }
 
         /// <summary>음식이 추가재료를 감당가능한지 여부 확인 함수. 음식 조합 가능한 최대치는 4개 입니다.</summary>
@@ -125,6 +142,12 @@ namespace JH
             return false;
         }
 
+        [PunRPC]
+        public void PunExchangeFoodModel()
+        {
+
+        }
+
         /// <summary>음식에 있는 재들을 음식에 옮기는 함수</summary>
         /// <param name="foodAdd">foodAdd는 IngredientsObject List속성을 가리키며, 추가할 음식 리스트 대한 인수입니다.</param>
         public bool Add(List<IngredientsObject> foodAdd)
@@ -169,21 +192,6 @@ namespace JH
             }
             return false;
         }
-
-        /*
-        public void GoTo(GameObject GoPotint)
-        {
-            rigid.isKinematic = true;
-            gameObject.transform.position = GoPotint.transform.position;
-            gameObject.transform.rotation = GoPotint.transform.rotation;
-            gameObject.transform.SetParent(GoPotint.transform, true);
-        }
-        public void Drop()
-        {
-            rigid.isKinematic = false;
-            gameObject.transform.SetParent(null);
-        }
-        */
 
         #region Debug
 #if UNITY_EDITOR

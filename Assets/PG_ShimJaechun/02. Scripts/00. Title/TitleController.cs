@@ -4,47 +4,34 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace Jc
 {
+    // 메인 타이틀
     public class TitleController : MonoBehaviour
     {
-        private bool isLoadScene;
-
         [SerializeField]
-        private float loadTime;             // 씬 전환 로딩시간
-
+        private GameObject titleText;   // 타이틀 텍스트
         [SerializeField]
-        private Image loadingFadeImage;     // 로딩 페이드인 이미지
+        private GameObject loginPanel;  // 로그인 패널
         [SerializeField]
-        private GameObject loadingGroup;    // 로딩 그룹
+        private bool isActiveLogin;     // 로그인 패널 활성화 여부
 
         private void OnEnable()
         {
-            isLoadScene = false;
-        }
-
-        public void ActiveLoginPanel()
-        {
+            // 로그인창 초기세팅
+            // 타이틀 텍스트 활성화
+            titleText.SetActive(true);
+            // 로그인 패널 비활성화
+            loginPanel.SetActive(false);
 
         }
 
         private void Update()
         {
-            if (!isLoadScene && Input.GetKey(KeyCode.Space))
+            if(!isActiveLogin && Input.GetKey(KeyCode.Space))
             {
-                isLoadScene = true;
-                Manager.Scene.LoadScene(SceneManager.SceneType.Main);
-            }
-        }
-
-        IEnumerator LoadSceneRoutine()
-        {
-            float time = loadTime;
-            yield return null;
-
-            while(time > 0)
-            {
-                time -= Time.deltaTime;
-
-                yield return null;
+                // 타이틀 텍스트 비활성화
+                titleText.SetActive(false);
+                // 로그인 패널 활성화
+                loginPanel.SetActive(true);
             }
         }
     }

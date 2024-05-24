@@ -51,7 +51,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 1.5
+  m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &533522435774736816
 GameObject:
@@ -384,6 +384,7 @@ GameObject:
   - component: {fileID: -7038758995482566090}
   - component: {fileID: 7376887859976334915}
   - component: {fileID: 3493675750591346161}
+  - component: {fileID: 1915846724008558139}
   m_Layer: 0
   m_Name: Chef_AlienPink
   m_TagString: Untagged
@@ -526,16 +527,16 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: isMoving
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Pickup
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Washing
   - Type: 9
-    SynchronizeType: 0
+    SynchronizeType: 2
     Name: Cutting
   m_SynchronizeLayers:
   - SynchronizeType: 0
@@ -554,7 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizeVelocity: 1
   m_SynchronizeAngularVelocity: 0
-  m_TeleportEnabled: 0
+  m_TeleportEnabled: 1
   m_TeleportIfDistanceGreaterThan: 3
 --- !u!114 &-7038758995482566090
 MonoBehaviour:
@@ -577,6 +578,7 @@ MonoBehaviour:
   ObservedComponents:
   - {fileID: 2170940261857456063}
   - {fileID: -5536428490994974916}
+  - {fileID: 1915846724008558139}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -596,7 +598,7 @@ MonoBehaviour:
   anim: {fileID: 3001103407665217833}
   itemSocket: {fileID: 1306989557156851236}
   debug: 0
-  range: 1.5
+  range: 1
   angle: 60
   nearestTable: {fileID: 0}
   nearestItem: {fileID: 0}
@@ -622,6 +624,22 @@ MonoBehaviour:
   view: {fileID: -7038758995482566090}
   input: {fileID: 3538798458960606277}
   moveInput: {x: 0, y: 0}
+--- !u!114 &1915846724008558139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936412119210487241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 0
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &1115136802595120190
 GameObject:
   m_ObjectHideFlags: 0
