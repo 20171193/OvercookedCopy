@@ -20072,6 +20072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 949a07269bccfc54e8b0d44e3fcde380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  campaginManager: {fileID: 158272203}
   mainCam: {fileID: 3685939612242772654}
   stageCams:
   - {fileID: 492035254}
@@ -20089,7 +20090,6 @@ MonoBehaviour:
   stageTileInfos: []
   cycleTime: 0.3
   curStage: 0
-  clearStage: 0
 --- !u!4 &711766141
 Transform:
   m_ObjectHideFlags: 0

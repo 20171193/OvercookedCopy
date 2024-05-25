@@ -16,6 +16,8 @@ namespace Jc
 
         private void OnEnable()
         {
+            Manager.Sound.PlayBGM(SoundManager.BGMType.Title);
+
             // 로그인창 초기세팅
             // 타이틀 텍스트 활성화
             titleText.SetActive(true);
