@@ -9,6 +9,9 @@ namespace Jc
 {
     public class TileMapController : MonoBehaviourPun, IPunObservable
     { 
+        [SerializeField]
+        private CampaginManager campaginManager;
+
         // 카메라 컨트롤용
         [SerializeField]
         private CinemachineVirtualCamera mainCam;
@@ -38,16 +41,19 @@ namespace Jc
 
         private int changedTileCnt = 0;
         private int tileCnt = 0;
-        [SerializeField]
-        private int curStage = 0;
 
         [SerializeField]
-        private int clearStage = 0;
+        private int curStage;
+
+        private void Awake()
+        {
+            // 모든 유저가 로드된 경우 타일맵 세팅 
+            campaginManager.OnCampaiginSetted += LoadMasterData;
+        }
 
         private void Start()
         {
             TileSetUp();
-            LoadMasterData();
         }
 
         private void Update()
@@ -96,11 +102,22 @@ namespace Jc
         [ContextMenu("SetTile")]
         private void LoadMasterData()
         {
-            // 로드한 데이터를 기반으로 클리어한 스테이지 미리 오픈
-            for (int i = 0; i < clearStage; i++)
+            bool[] clearStage = Manager.PlableData.LoadUserStageScore();
+            int openStage = 0;
+            for(int i =0; i<3; i++)
             {
-                RequestOpenedStage(i);
+                if (clearStage[i] == true)   // 이미 클리어한 스테이지라면 
+                    RequestOpenedStage(i);  // 미리 오픈
+                else
+                { 
+                    // 클리어하지 못한 스테이지라면 오픈 액션
+                    openStage = i;
+                    break;
+                }
             }
+
+            // 스테이지 오픈
+            RequestOpenStage(openStage);
         }
 
         [PunRPC]

@@ -32,6 +32,8 @@ namespace Jc
 
         private void OnEnable()
         {
+            Manager.Sound.PlayBGM(SoundManager.BGMType.Room);
+
             PhotonNetwork.LocalPlayer.SetReady(false);
             PhotonNetwork.LocalPlayer.SetLoad(false);
 
@@ -51,6 +53,8 @@ namespace Jc
         }
         private void OnDisable()
         {
+            Manager.Sound.PlayBGM(SoundManager.BGMType.Title);
+
             // 딕셔너리에 할당된 엔트리 제거
             foreach (int actorNumber in playerDictionary.Keys)
             {
