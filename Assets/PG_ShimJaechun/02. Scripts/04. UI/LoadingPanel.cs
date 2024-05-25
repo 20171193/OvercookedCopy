@@ -9,7 +9,7 @@ namespace Jc
     {
         [SerializeField]
         private Image fadeInPanel;
-        public Image FadeInPanel;
+        public Image FadeInPanel { get { return fadeInPanel; } }
 
         [SerializeField]
         private Color fadeInColor;         // 페이드인 컬러
