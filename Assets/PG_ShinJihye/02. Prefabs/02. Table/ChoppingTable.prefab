@@ -81,13 +81,11 @@ MonoBehaviour:
   knife: {fileID: 892827265836622170}
   choppingBar: {fileID: 5345133030295217725}
   currentTimeBar: {fileID: 3279507160466536359}
-  choppingTime: 0
-  choppingCount: 0
-  choppingInterval: 0
+  choppingTime: 8
+  choppingCount: 8
+  choppingInterval: 0.5
+  slicedItemPrefab: {fileID: 0}
   currentTimeBarSizeX: 0
-  currentTime: 0
-  slicedItemPrefab: {fileID: 6633268003691334631, guid: 0eedae671f1fbf543aef68c785284c3e,
-    type: 3}
 --- !u!114 &7728888536854061061
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,6 +267,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2837450956553737093}
     m_Modifications:
+    - target: {fileID: 1050020224300006834, guid: 6b5c96bfb883d3a49a41035edd1ff4d7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326550990315381089, guid: 6b5c96bfb883d3a49a41035edd1ff4d7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1561491508084792529, guid: 6b5c96bfb883d3a49a41035edd1ff4d7,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -339,6 +347,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knife
       objectReference: {fileID: 0}
+    - target: {fileID: 6496180799669876809, guid: 6b5c96bfb883d3a49a41035edd1ff4d7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -364,6 +377,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2837450956553737093}
     m_Modifications:
+    - target: {fileID: 366636802712097757, guid: 65b34ceb623af364991f73ea28baeec9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4592078179780042365, guid: 65b34ceb623af364991f73ea28baeec9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -418,6 +436,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ChoppingBoard
+      objectReference: {fileID: 0}
+    - target: {fileID: 9054445262077602259, guid: 65b34ceb623af364991f73ea28baeec9,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
