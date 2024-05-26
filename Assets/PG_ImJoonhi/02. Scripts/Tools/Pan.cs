@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Pan : Item
+public class Pan : Item, IPunObservable
 {
     [Header("Cook State")]
     public bool OnCooker;
@@ -16,6 +16,7 @@ public class Pan : Item
     [Range(0.0f, 15.0f)]
     private float progress;
     private double startTime;
+    private IEnumerator progressUpdate;
 
     [Header("Potints")]
     [SerializeField] GameObject PanPoint;
@@ -27,6 +28,7 @@ public class Pan : Item
     [SerializeField] IngredientsObject DebugCookingObject;
 
     public IngredientsObject CookingObject { get; private set; }
+
 
     private void Awake()
     {
@@ -91,16 +93,57 @@ public class Pan : Item
         progress = 10f;
     }
 
-    /*
-    public void GoTo(GameObject GoPotint)
+    public void ProgressChange()
     {
-        gameObject.transform.SetParent(GoPotint.transform, true);
+        if (CookingObject == null && progressUpdate == null)
+        {
+            return;
+        }
+        else if (CookingObject == null && progressUpdate != null)
+        {
+            StopCoroutine(progressUpdate);
+            progressUpdate = null;
+            return;
+        }
+        else if (progress < 15f && progressUpdate == null && Cooking == true)
+        {
+            progressUpdate = WaitForSeconds();
+            StartCoroutine(progressUpdate);
+            return;
+        }
+        else if (progressUpdate != null && Cooking == false)
+        {
+            StopCoroutine(progressUpdate);
+            progressUpdate = null;
+            return;
+        }
+        else if (progress >= 15f && Cooking == true)
+        {
+            StopCoroutine(progressUpdate);
+            progressUpdate = null;
+            return;
+        }
     }
-    public void Drop()
+
+    IEnumerator WaitForSeconds()
     {
-        gameObject.transform.SetParent(null);
+        yield return new WaitForSeconds(0.2f);
+        if(progress < 0.15f)
+            progress += 0.2f;
     }
-    */
+
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if(stream.IsWriting)
+        {
+            stream.SendNext(progress);
+        }
+        else
+        {
+            progress = (float)stream.ReceiveNext();
+        }
+    }
 
 
     #region Debug
