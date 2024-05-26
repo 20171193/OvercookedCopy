@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3826721325019846606}
   - component: {fileID: 7559690963216454562}
   - component: {fileID: 6991681822661574634}
+  - component: {fileID: 8835776537551386644}
   m_Layer: 6
   m_Name: Pass
   m_TagString: Untagged
@@ -74,6 +75,31 @@ MonoBehaviour:
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 2
+  finalScore: 0
+  addScore: 5
+  plateReturn: {fileID: 0}
+--- !u!114 &8835776537551386644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 27347363093501450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5851701570849481755
 GameObject:
   m_ObjectHideFlags: 0
@@ -83,6 +109,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 507653984625982357}
+  - component: {fileID: 4119068465657372103}
   m_Layer: 6
   m_Name: GeneratePoint
   m_TagString: Untagged
@@ -105,6 +132,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3826721325019846606}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4119068465657372103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5851701570849481755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &1768798838642489381
 PrefabInstance:
   m_ObjectHideFlags: 0
