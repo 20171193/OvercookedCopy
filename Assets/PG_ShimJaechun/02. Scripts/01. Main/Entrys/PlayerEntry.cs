@@ -57,7 +57,7 @@ namespace Jc
             else
             {
                 // 레디 체크
-                playerReady.text = player.GetReady() ? "Ready" : "";
+                playerReady.text = player.GetReady() ? "준비" : "";
             }
 
             chefImage.sprite = Manager.PlableData.chefInfos[player.GetChef()].sprite;
@@ -66,7 +66,7 @@ namespace Jc
         public void OnMasterSetting()
         {
             player.SetReady(true);
-            playerReady.text = "Master";
+            playerReady.text = "방장";
             playerReady.color = Color.red;
         }
 
@@ -77,7 +77,7 @@ namespace Jc
             {
                 // 레디 갱신
                 bool ready = (bool)value;
-                playerReady.text = ready ? "Ready" : "";
+                playerReady.text = ready ? "준비" : "";
             }
 
             if(property.TryGetValue(CustomProperty.CHEF, out object index))

@@ -5,6 +5,9 @@ namespace Jc
     public class StageEntrance : MonoBehaviour
     {
         [SerializeField]
+        private AudioSource audioSource;
+
+        [SerializeField]
         private Animator anim;
 
         [SerializeField]
@@ -46,12 +49,18 @@ namespace Jc
 
         private void OnTriggerEnter(Collider other)
         {
+            // 효과음 출력
+            if(!audioSource.isPlaying)
+                audioSource.Play();
+
             stageInfo.gameObject.SetActive(true);
+            other.GetComponent<BusController>().stageNumber = stageNumber;
         }
 
         private void OnTriggerExit(Collider other)
         {
             stageInfo.gameObject.SetActive(false);
+            other.GetComponent<BusController>().stageNumber = -1;
         }
     }
 }

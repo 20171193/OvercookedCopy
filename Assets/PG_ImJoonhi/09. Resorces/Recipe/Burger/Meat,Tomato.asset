@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff938e0a6165a4f4f945b3ba423244f3, type: 3}
+  m_Name: Meat,Tomato
+  m_EditorClassIdentifier: 
+  Name: Meat,Tomato
+  Wrong: 0
+  needPlate: 1
+  platingInterval: 0
+  ingredients:
+  - {fileID: 11400000, guid: ed658f6da2d27cd409e888d1b62e2ab5, type: 2}
+  - {fileID: 11400000, guid: a258d750254743247a6163fd02f5f706, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  ingredientsState: 03000000010000000000000000000000
+  Model: {fileID: 6361885038168700565, guid: c503699daac895a408ca62248ee1a38d, type: 3}
+  FoodSprite: {fileID: 0}

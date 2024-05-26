@@ -1,5 +1,6 @@
 using Photon.Pun;
 using Photon.Realtime;
+using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using UnityEngine;
@@ -31,6 +32,8 @@ namespace Jc
 
         private void OnEnable()
         {
+            Manager.Sound.PlayBGM(SoundManager.BGMType.Room);
+
             PhotonNetwork.LocalPlayer.SetReady(false);
             PhotonNetwork.LocalPlayer.SetLoad(false);
 
@@ -50,6 +53,8 @@ namespace Jc
         }
         private void OnDisable()
         {
+            Manager.Sound.PlayBGM(SoundManager.BGMType.Title);
+
             // 딕셔너리에 할당된 엔트리 제거
             foreach (int actorNumber in playerDictionary.Keys)
             {
@@ -121,8 +126,11 @@ namespace Jc
             // 로비에서 방 비활성화
             PhotonNetwork.CurrentRoom.IsVisible = false;
 
-            // 게임씬 로드
-            Manager.Scene.LoadLevel(SceneManager.SceneType.Campagin);
+            // 캠페인 씬 로드
+            Manager.Scene.LoadLevelWithDelay(SceneManager.SceneType.Campagin);
+
+            // 캠페인 씬 로드
+            //Manager.Scene.LoadLevel(SceneManager.SceneType.Campagin);
         }
 
         // 방 나가기 

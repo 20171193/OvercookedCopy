@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -264,6 +264,86 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7b0b42d3aa32db4ea77edbf9e33b28d, type: 3}
+--- !u!1001 &169206925
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3730551149803307665, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      propertyPath: m_Name
+      value: Bun Ingredient Object
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909585713114446072, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909585713114446072, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.00000047683716
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909585713114446072, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909585713114446072, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909585713114446072, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909585713114446072, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909585713114446072, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909585713114446072, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909585713114446072, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8909585713114446072, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3730551149803307665, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 339334456}
+    - targetCorrespondingSourceObject: {fileID: 3730551149803307665, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 339334455}
+    - targetCorrespondingSourceObject: {fileID: 3730551149803307665, guid: 94ea0fb6484a73e47954b78c5582e113,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 339334454}
+  m_SourcePrefab: {fileID: 100100000, guid: 94ea0fb6484a73e47954b78c5582e113, type: 3}
 --- !u!54 &182346024 stripped
 Rigidbody:
   m_CorrespondingSourceObject: {fileID: 1198915550257874704, guid: ca6ab5b7d28a17545a7c84792002d482,
@@ -601,6 +681,68 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2725296e51e05408051b5f774307e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &339334449 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3730551149803307665, guid: 94ea0fb6484a73e47954b78c5582e113,
+    type: 3}
+  m_PrefabInstance: {fileID: 169206925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &339334454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339334449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizeVelocity: 1
+  m_SynchronizeAngularVelocity: 0
+  m_TeleportEnabled: 0
+  m_TeleportIfDistanceGreaterThan: 3
+--- !u!114 &339334455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339334449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &339334456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 339334449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 339334455}
+  - {fileID: 339334454}
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &350467079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2914,6 +3056,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6371165901689551650, guid: ca6ab5b7d28a17545a7c84792002d482,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6371165901689551650, guid: ca6ab5b7d28a17545a7c84792002d482,
+        type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8196810627269077661, guid: ca6ab5b7d28a17545a7c84792002d482,
         type: 3}
       propertyPath: m_Name
@@ -3805,6 +3957,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6371165901689551650, guid: ca6ab5b7d28a17545a7c84792002d482,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6371165901689551650, guid: ca6ab5b7d28a17545a7c84792002d482,
+        type: 3}
+      propertyPath: ObservedComponents.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8196810627269077661, guid: ca6ab5b7d28a17545a7c84792002d482,
         type: 3}
       propertyPath: m_Name
@@ -4012,125 +4174,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: DishPrefab
-      value: 
-      objectReference: {fileID: 8099483502110383182, guid: d7b0b42d3aa32db4ea77edbf9e33b28d,
-        type: 3}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: PlatePrefab
-      value: 
-      objectReference: {fileID: 485470925780645039, guid: fee6b9a78396dbb44aba7dedbe0472ea,
-        type: 3}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.size
-      value: 17
-      objectReference: {fileID: 0}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[0]
-      value: 
-      objectReference: {fileID: 11400000, guid: 10584475ce4e87c40ab12d559d566f46,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: e291b1467f5160c4e806756fe6c60931,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: e4c446848fc278343a18ceea49f98d0f,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: ecd0aef1531fae34ab815c13b3dd8bc7,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: 700ee3e1f18e0c540914cc58c12829a5,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: cc8df23a87fd34b418bb773e618f3d0d,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: dc2127209db9a3d4aa3dbb3e362f9f62,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: 30033605ef550a944a3d025aca6457c9,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[8]
-      value: 
-      objectReference: {fileID: 11400000, guid: 2c2fbc4efc77be145aac2f815883407a,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[9]
-      value: 
-      objectReference: {fileID: 11400000, guid: da5bda0c3102ef345bfacc68ffb19c7a,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[10]
-      value: 
-      objectReference: {fileID: 11400000, guid: 385deac6a8000134a8f9df5d1ddbefd4,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[11]
-      value: 
-      objectReference: {fileID: 11400000, guid: ed6b547bc33353e46b4b93983c6905a5,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[12]
-      value: 
-      objectReference: {fileID: 11400000, guid: f206173d641787d4e80af1a1f4152dd8,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[13]
-      value: 
-      objectReference: {fileID: 11400000, guid: 93663bd31faa9e44bb059e653ec83498,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[14]
-      value: 
-      objectReference: {fileID: 11400000, guid: 309cd40d552f9b1448854e67831a3114,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[15]
-      value: 
-      objectReference: {fileID: 11400000, guid: f220ad964a1420f4da80f7622e46f704,
-        type: 2}
-    - target: {fileID: 7546116939826066121, guid: 179efe2199d7cbf4d8de41aa40adbdf3,
-        type: 3}
-      propertyPath: Recipe.Array.data[16]
-      value: 
-      objectReference: {fileID: 11400000, guid: 10f1b7c604e7885408a28594809dc669,
-        type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4381,3 +4424,4 @@ SceneRoots:
   - {fileID: 1550238919}
   - {fileID: 922780862}
   - {fileID: 1734628296}
+  - {fileID: 169206925}

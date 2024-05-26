@@ -5,6 +5,7 @@ using Photon.Realtime;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
@@ -18,8 +19,14 @@ namespace Jc
         [SerializeField]
         private GameObject masterBus;
 
+        public UnityAction OnCampaiginSetted;
+
         private void Start()
         {
+            Manager.Sound.PlayBGM(SoundManager.BGMType.Campagin);
+
+            Manager.Scene.FadeOut();
+
             // 일반 모드 
             if (PhotonNetwork.InRoom)
             {
@@ -38,7 +45,7 @@ namespace Jc
         {
             ClientState cState = PhotonNetwork.NetworkClientState;
             if (curState != cState)
-            { 
+            {
                 Debug.Log(cState);
                 curState = cState;
             }
@@ -67,7 +74,7 @@ namespace Jc
         public override void OnLeftRoom()
         {
             Debug.Log("Left Room");
-            Manager.Scene.LoadLevel(SceneManager.SceneType.Title);
+            Manager.Scene.LoadLevel(SceneManager.SceneType.Main);
         }
 
         public override void OnMasterClientSwitched(Player newMasterClient)
@@ -100,6 +107,8 @@ namespace Jc
                 masterBus.GetComponent<PlayerInput>().enabled = true;
             else
                 Destroy(masterBus.GetComponent<PlayerInput>());
+
+            OnCampaiginSetted?.Invoke();
         }
 
         private int PlayerLoadCount()
