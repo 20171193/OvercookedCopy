@@ -1669,6 +1669,12 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 2
     Name: Cutting
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsWashing
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsChopping
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -1702,6 +1708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   view: {fileID: 7541956162352804818}
   anim: {fileID: 5682212362106396973}
+  audioController: {fileID: 2190853560584957239}
   itemSocket: {fileID: 4489084820371335435}
   debug: 0
   range: 1
@@ -1710,6 +1717,8 @@ MonoBehaviour:
   nearestItem: {fileID: 0}
   pickedItem: {fileID: 0}
   isPickUp: 0
+  successPutDown: 0
+  onInteract: 0
 --- !u!114 &6271240122278539916
 MonoBehaviour:
   m_ObjectHideFlags: 0

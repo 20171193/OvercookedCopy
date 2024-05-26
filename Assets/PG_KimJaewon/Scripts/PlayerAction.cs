@@ -270,7 +270,7 @@ namespace KIMJAEWON
 
 
             audioController.PlaySFX(PlayerAudioController.SFXType.PickUp);
-            anim.SetTrigger("Pickup");
+            anim.SetBool("IsPicked", true);
             pickedItem.GoTo(itemSocket.gameObject);
             isPickUp = true;
             pickedItem.ExitPlayer();
@@ -288,7 +288,7 @@ namespace KIMJAEWON
                 audioController.PlaySFX(PlayerAudioController.SFXType.PutDown);
 
                 pickedItem.Drop();
-                anim.SetTrigger("Pickup");
+                anim.SetBool("IsPicked", false);
                 isPickUp = false;
                 pickedItem = null;
             }
@@ -303,7 +303,7 @@ namespace KIMJAEWON
                 {
                     audioController.PlaySFX(PlayerAudioController.SFXType.PutDown);
 
-                    anim.SetTrigger("Pickup");
+                    anim.SetBool("IsPicked", false);
                     isPickUp = false;
                     pickedItem = null;
                 }

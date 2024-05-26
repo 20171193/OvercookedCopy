@@ -385,6 +385,7 @@ GameObject:
   - component: {fileID: 1915846724008558139}
   - component: {fileID: 7376887859976334915}
   - component: {fileID: 3493675750591346161}
+  - component: {fileID: 4686911278104165424}
   m_Layer: 3
   m_Name: Chef_AlienPink
   m_TagString: Untagged
@@ -539,6 +540,12 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 2
     Name: Cutting
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsWashing
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsChopping
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -613,6 +620,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   view: {fileID: -7038758995482566090}
   anim: {fileID: 3001103407665217833}
+  audioController: {fileID: 4686911278104165424}
   itemSocket: {fileID: 1306989557156851236}
   debug: 0
   range: 1
@@ -621,6 +629,8 @@ MonoBehaviour:
   nearestItem: {fileID: 0}
   pickedItem: {fileID: 0}
   isPickUp: 0
+  successPutDown: 0
+  onInteract: 0
 --- !u!114 &3493675750591346161
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -641,6 +651,24 @@ MonoBehaviour:
   view: {fileID: -7038758995482566090}
   input: {fileID: 3538798458960606277}
   moveInput: {x: 0, y: 0}
+--- !u!114 &4686911278104165424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 936412119210487241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9320eb7b658b0e48b704d8271a30e4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioSources:
+  - {fileID: 4148829495434500878}
+  - {fileID: 7759810835237165712}
+  - {fileID: 1625390195711868374}
+  - {fileID: 274276646047982458}
+  - {fileID: 4187239392453545324}
 --- !u!1 &1115136802595120190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2343,9 +2371,39 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b194e9e8b110014ea1072defdbc389a, type: 3}
+--- !u!82 &274276646047982458 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7719323019879999550, guid: 1b194e9e8b110014ea1072defdbc389a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7561234035332172612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1625390195711868374 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 9106398904124946066, guid: 1b194e9e8b110014ea1072defdbc389a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7561234035332172612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &4148829495434500878 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5871986080237490250, guid: 1b194e9e8b110014ea1072defdbc389a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7561234035332172612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &4187239392453545324 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5977110417244554792, guid: 1b194e9e8b110014ea1072defdbc389a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7561234035332172612}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5223937795013184310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2346870136632164466, guid: 1b194e9e8b110014ea1072defdbc389a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7561234035332172612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &7759810835237165712 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 242777236096717268, guid: 1b194e9e8b110014ea1072defdbc389a,
     type: 3}
   m_PrefabInstance: {fileID: 7561234035332172612}
   m_PrefabAsset: {fileID: 0}
