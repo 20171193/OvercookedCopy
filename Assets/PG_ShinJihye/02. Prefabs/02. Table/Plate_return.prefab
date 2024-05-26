@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5638551754221929838}
+  - component: {fileID: 3281183367635880360}
   m_Layer: 6
   m_Name: SpawnPoint
   m_TagString: Untagged
@@ -31,6 +32,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 9042792660543203032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3281183367635880360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3087717341844987012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6297589420081741979
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,6 +65,7 @@ GameObject:
   - component: {fileID: 9042792660543203032}
   - component: {fileID: 6311798529420431800}
   - component: {fileID: 2384437345708009115}
+  - component: {fileID: 5025728950269651023}
   m_Layer: 6
   m_Name: Plate_return
   m_TagString: Untagged
@@ -103,6 +127,32 @@ MonoBehaviour:
   changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
+  childIndex: 1
+  plateRespawnTime: 0
+  newPlatePrefab: {fileID: 0}
+  spawnPoint: {fileID: 0}
+--- !u!114 &5025728950269651023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6297589420081741979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &2622654157878259035
 PrefabInstance:
   m_ObjectHideFlags: 0

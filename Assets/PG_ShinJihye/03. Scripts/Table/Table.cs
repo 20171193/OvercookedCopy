@@ -5,39 +5,40 @@ using UnityEngine;
 
 public class Table : MonoBehaviour, IHighlightable
 {
-    private Material originMT;
+    [SerializeField] private Material originMT;
     [SerializeField] MeshRenderer meshRenderer;
     [SerializeField] Material changeMT;
 
     // 테이블 위에 있는 아이템
     public Item placedItem;
-
     // 테이블에 아이템이 놓일 위치
-    [SerializeField] GameObject generatePoint;
+    public GameObject generatePoint;
 
     // generatePoint 인덱스 찾기 위한 임시 변수
-    [SerializeField] int genPointChildIndex;
+    public int childIndex;
+
 
     private void Awake()
     {
         originMT = meshRenderer.sharedMaterial;
 
         // generatePoint 있는지 null 체크 (에러 방지)
-        Transform temp = transform.GetChild(genPointChildIndex);
+        Transform temp = transform.GetChild(childIndex);
         if (temp != null)
         {
             generatePoint = temp.gameObject;
         }
 
         // 게임 시작 시 테이블에 아이템이 미리 놓여져 있는 경우 해당 아이템 placedItem에 할당
-        placedItem = transform.GetComponentInChildren<Item>();
-        int placedItemIndex = transform.childCount;
+        placedItem = generatePoint.transform.GetComponentInChildren<Item>();
+        //int placedItemIndex = transform.childCount;
         if (placedItem != null && generatePoint != null)
         {
-            placedItem = transform.GetChild(placedItemIndex - 1).GetComponent<Item>();
+            //placedItem = transform.GetChild(placedItemIndex - 1).GetComponent<Item>();
             placedItem.transform.position = generatePoint.gameObject.transform.position;
         }
     }
+
 
     public void EnterPlayer()
     {
@@ -47,6 +48,7 @@ public class Table : MonoBehaviour, IHighlightable
     {
         meshRenderer.sharedMaterial = originMT;
     }
+
 
     // 테이블에 아이템 놓기 (item: 플레이어가 들고 있는 아이템)
     public virtual bool PutDownItem(Item item)
@@ -96,7 +98,7 @@ public class Table : MonoBehaviour, IHighlightable
                                 return false;
                             }
 
-                        // (2) 손에 든 게 조합된 재료일 때
+                        // (2) 손에 든 게 재료 담긴 접시일 때 (불가능)
                         case ItemType.FoodDish:
                             FoodDish temp_PF_FoodDish = item as FoodDish;
                             if (tempPlate.IngredientIN(generatePoint, temp_PF_FoodDish))

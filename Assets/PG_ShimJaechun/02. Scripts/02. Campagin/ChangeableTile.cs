@@ -25,6 +25,8 @@ public class ChangeableTile : MonoBehaviour
     // 변경될 위치
     private Vector3 targetPos;
 
+    public UnityAction OnReversing;
+    public UnityAction OnFloating;
 
     private Coroutine tileChangeRoutine;
     private Coroutine tileFloatRoutine;
@@ -59,6 +61,7 @@ public class ChangeableTile : MonoBehaviour
     // 타일 뒤집기, 머터리얼 변경 루틴
     IEnumerator TileChangeRoutine()
     {
+        OnReversing?.Invoke();
         float time = 180 / rotSpeed;
         float rate = 0;
 
@@ -94,6 +97,7 @@ public class ChangeableTile : MonoBehaviour
 
     IEnumerator TileFloatingRoutine()
     {
+        OnFloating?.Invoke();
         float rate = 0f;
         while(rate < 1)
         {

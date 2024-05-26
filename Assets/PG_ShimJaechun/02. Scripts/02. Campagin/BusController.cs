@@ -18,6 +18,9 @@ public class BusController : MonoBehaviourPun
     [SerializeField]
     private GameObject boatObject;
 
+    [SerializeField]
+    private AudioSource waterInSource;
+
     [Header("Specs")]
     [SerializeField]
     private float maxMoveSpeed;
@@ -111,6 +114,7 @@ public class BusController : MonoBehaviourPun
     {
         if (Manager.Layer.waterTileLM.Contain(other.gameObject.layer))
         {
+            waterInSource.Play();   // 사운드 출력
             Debug.Log("Enter Water");
             anim.SetBool("IsInWater", true);
             boatObject.SetActive(true);
