@@ -47,7 +47,7 @@ public class Pan : Item, IPunObservable
 
     public bool IngredientIN(IngredientsObject ingredient)
     {
-        if(!Cooking && ingredient.ingredientsData.Paned != null && ingredient.IngState != IngredientState.Paned && CookingObject == null)
+        if (!Cooking && ingredient.ingredientsData.Paned != null && ingredient.IngState != IngredientState.Paned && CookingObject == null)
         {
             // OnPan(ingredient);
             photonView.RPC("OnPan", RpcTarget.All, ingredient.photonView.ViewID);
@@ -128,14 +128,14 @@ public class Pan : Item, IPunObservable
     IEnumerator WaitForSeconds()
     {
         yield return new WaitForSeconds(0.2f);
-        if(progress < 0.15f)
+        if (progress < 0.15f)
             progress += 0.2f;
     }
 
 
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if(stream.IsWriting)
+        if (stream.IsWriting)
         {
             stream.SendNext(progress);
         }
@@ -160,11 +160,23 @@ public class Pan : Item, IPunObservable
         CookingObject.PanHeated();
     }
 
-    [ContextMenu("[Debug]TIme")]
+    [ContextMenu("[Debug]Time")]
     public void DebugTime()
     {
         startTime = PhotonNetwork.Time;
         Debug.Log(startTime);
+    }
+
+    [ContextMenu("[Debug]Cooking")]
+    public void CookingONOFF()
+    {
+        Cooking = !Cooking;
+    }
+
+    [ContextMenu("[Debug]CheckState")]
+    public void CheckState()
+    {
+        ProgressChange();
     }
 #endif
     #endregion
