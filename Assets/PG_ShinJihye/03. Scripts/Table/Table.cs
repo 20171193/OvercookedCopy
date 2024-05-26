@@ -3,6 +3,8 @@ using KIMJAEWON;
 using Photon.Pun;
 using UnityEngine;
 
+public enum TableType { None, ChoppingTable, Cooker, Delivery, IngredientBox, PlateReturn, Sink, TrashBin }
+
 public class Table : MonoBehaviour, IHighlightable
 {
     [SerializeField] private Material originMT;
@@ -11,6 +13,7 @@ public class Table : MonoBehaviour, IHighlightable
 
     // 테이블 위에 있는 아이템
     public Item placedItem;
+
     // 테이블에 아이템이 놓일 위치
     public GameObject generatePoint;
 
@@ -31,10 +34,8 @@ public class Table : MonoBehaviour, IHighlightable
 
         // 게임 시작 시 테이블에 아이템이 미리 놓여져 있는 경우 해당 아이템 placedItem에 할당
         placedItem = generatePoint.transform.GetComponentInChildren<Item>();
-        //int placedItemIndex = transform.childCount;
         if (placedItem != null && generatePoint != null)
         {
-            //placedItem = transform.GetChild(placedItemIndex - 1).GetComponent<Item>();
             placedItem.transform.position = generatePoint.gameObject.transform.position;
         }
     }
@@ -98,7 +99,7 @@ public class Table : MonoBehaviour, IHighlightable
                                 return false;
                             }
 
-                        // (2) 손에 든 게 재료 담긴 접시일 때 (불가능)
+                        // (2) 손에 든 게 재료 담긴 접시일 때
                         case ItemType.FoodDish:
                             FoodDish temp_PF_FoodDish = item as FoodDish;
                             if (tempPlate.IngredientIN(generatePoint, temp_PF_FoodDish))
@@ -292,7 +293,7 @@ public class Table : MonoBehaviour, IHighlightable
     }
 
     // 테이블에 아이템 놓을 수 있는지 여부
-    public virtual bool PutDownItem()
+    /*public virtual bool PutDownItem()
     {
         // 불났으면 false
 
@@ -301,11 +302,13 @@ public class Table : MonoBehaviour, IHighlightable
             return true;
         }
         return false;
-    }
+    }*/
 
     // 테이블 상호작용
-    public virtual void Interactable()
+    public virtual TableType Interactable()
     {
         Debug.Log("table.Interactable");
+
+        return TableType.None;
     }
 }
