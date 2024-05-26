@@ -54,7 +54,7 @@ MonoBehaviour:
   meshRenderer: {fileID: 0}
   Type: 0
   ingredientsData: {fileID: 11400000, guid: ed658f6da2d27cd409e888d1b62e2ab5, type: 2}
-  IngState: 3
+  IngState: 1
   initialize: 1
   DebugGameObject: {fileID: 0}
 --- !u!54 &1053971610131592604
@@ -123,7 +123,9 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1238904454531563562}
+  - {fileID: -198155605948322154}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

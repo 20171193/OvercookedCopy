@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028331, g: 0.2257133, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -535,6 +535,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728888536854061061, guid: a61cba7ab6a45ce42a439c15166736f2,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 8160708585952993968, guid: a61cba7ab6a45ce42a439c15166736f2,
         type: 3}
@@ -1179,6 +1184,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728888536854061061, guid: a61cba7ab6a45ce42a439c15166736f2,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 95
       objectReference: {fileID: 0}
     - target: {fileID: 8160708585952993968, guid: a61cba7ab6a45ce42a439c15166736f2,
         type: 3}
@@ -2846,6 +2856,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7728888536854061061, guid: a61cba7ab6a45ce42a439c15166736f2,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 98
       objectReference: {fileID: 0}
     - target: {fileID: 8160708585952993968, guid: a61cba7ab6a45ce42a439c15166736f2,
         type: 3}
@@ -4756,6 +4771,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2113707866}
     m_Modifications:
+    - target: {fileID: 1083887942715126220, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 92
+      objectReference: {fileID: 0}
     - target: {fileID: 3308223707908237628, guid: 76f4364ce52b5db4cb70d5d55d835d59,
         type: 3}
       propertyPath: m_Name
@@ -4815,6 +4835,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044789914275564574, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 91
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -7911,6 +7936,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2113707866}
     m_Modifications:
+    - target: {fileID: 1083887942715126220, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 94
+      objectReference: {fileID: 0}
     - target: {fileID: 3308223707908237628, guid: 76f4364ce52b5db4cb70d5d55d835d59,
         type: 3}
       propertyPath: m_Name
@@ -7970,6 +8000,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044789914275564574, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 93
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -8884,6 +8919,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1906322617}
     m_Modifications:
+    - target: {fileID: 3281183367635880360, guid: 0c1f7b399b7d1b3428d3604e4e27d4d5,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 89
+      objectReference: {fileID: 0}
+    - target: {fileID: 5025728950269651023, guid: 0c1f7b399b7d1b3428d3604e4e27d4d5,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 6297589420081741979, guid: 0c1f7b399b7d1b3428d3604e4e27d4d5,
         type: 3}
       propertyPath: m_Name
@@ -9799,6 +9844,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2113707866}
     m_Modifications:
+    - target: {fileID: 1083887942715126220, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 101
+      objectReference: {fileID: 0}
     - target: {fileID: 3308223707908237628, guid: 76f4364ce52b5db4cb70d5d55d835d59,
         type: 3}
       propertyPath: m_Name
@@ -9858,6 +9908,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9044789914275564574, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11940,10 +11995,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4119068465657372103, guid: e621cab02e0c2a349aeb8142d1d5781c,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 96
+      objectReference: {fileID: 0}
     - target: {fileID: 6991681822661574634, guid: e621cab02e0c2a349aeb8142d1d5781c,
         type: 3}
       propertyPath: childIndex
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8835776537551386644, guid: e621cab02e0c2a349aeb8142d1d5781c,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 97
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
