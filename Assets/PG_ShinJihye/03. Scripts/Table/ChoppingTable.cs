@@ -1,38 +1,41 @@
 using JH;
 using KIMJAEWON;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChoppingTable : Table
 {
     // IngredientsObject
     private IngredientsObject ingObject;
-
-    // 다지기 진행 표시 바
-    [SerializeField] BillBoard choppingBar;
-    // 다지기 진행 현재 시간 표시 바
-    [SerializeField] RectTransform currentTimeBar;
     // 칼
     [SerializeField] GameObject knife;
 
+    // 다지기 진행 표시 바
+    [SerializeField] BillBoard choppingBar;
+    // 다지기 현재 시간 표시 바
+    [SerializeField] RectTransform currentTimeBar;
     // 다지는데에 걸리는 총 시간
     [SerializeField] float choppingTime;
-    // 다지기 현재 남은 시간
-    [SerializeField] float currentTime;
-    // 다지기 횟수
+    // 다지기 총 횟수
     [SerializeField] int choppingCount;
     // 다지기 속도 텀
     [SerializeField] float choppingInterval;
 
+    // 다지기 현재 시간 표시 바 길이
+    [SerializeField] float currentTimeBarSizeX;
+    // 다지기 현재 남은 시간
+    [SerializeField] float currentTime;
+
+    // 다진 후 바뀔 프리팹
+    [SerializeField] Item slicedItemPrefab;
+    
 
     private void OnEnable()
     {
         SetBillboardPos();
+        InitChoppingValue();
         choppingBar.gameObject.SetActive(false);
-        choppingTime = 8.0f;
-        currentTime = choppingTime;
-        choppingCount = 8;
-        choppingInterval = 0.5f;
     }
 
 
@@ -62,6 +65,14 @@ public class ChoppingTable : Table
         choppingBar.transform.Translate(dir);
     }
 
+    // 시작 시 다지기 관련 변수 초기화
+    private void InitChoppingValue()
+    {
+        currentTimeBarSizeX = currentTimeBar.sizeDelta.x;
+        currentTime = choppingTime;
+    }
+
+
     public override bool PutDownItem(Item item)
     {
         base.PutDownItem(item);
@@ -78,48 +89,57 @@ public class ChoppingTable : Table
         return returnItem;
     }
 
+
     Coroutine chopping;
 
     // 상호작용 - 다지기
     public override void Interactable()
     {
-        // 놓여진 아이템이 없을 경우 X
-        if (placedItem == null)
-            return;
-
-        // 놓인 아이템의 Type이 Ingredient가 아닌 경우 X
-        if (placedItem.Type != ItemType.Ingredient)
-            return;
-
-        // 놓인 아이템의 Type이 Ingredient인 경우 && 아이템의 State가 Original인 경우
         ingObject = (IngredientsObject)placedItem;
-        if (ingObject.IngState != 0)
-            return;
 
-        Debug.Log("실행");
-        choppingBar.gameObject.SetActive(true);
-        // 애니메이션 실행
-        chopping = StartCoroutine(ChoppingRoutine());
+        // 놓여진 아이템 있고, 아이템의 Type이 Ingredient이고, 아이템의 State가 Original인 경우
+        if (placedItem != null && placedItem.Type == ItemType.Ingredient && ingObject.IngState == 0)
+        {
+            Debug.Log("코루틴 시작");
+
+            choppingBar.gameObject.SetActive(true);
+            // 애니메이션 실행
+            chopping = StartCoroutine(ChoppingRoutine());
+            StopCoroutine(chopping);
+            // 애니메이션 중지
+            choppingBar.gameObject.SetActive(false);
+
+            // Original 아이템 삭제
+            Destroy(placedItem);
+            // Sliced 아이템 생성
+            Instantiate(slicedItemPrefab, generatePoint.transform);
+            
+            Debug.Log("코루틴 시작");
+
+            InitChoppingValue();
+        }
+
+        return;
     }
 
     IEnumerator ChoppingRoutine()
     {
-        float subtractTime = choppingTime / choppingCount;
-        float subtractSize = currentTimeBar.sizeDelta.x / choppingCount;
+        float subtractTime = currentTime / choppingCount;
+        float subtractSize = currentTimeBarSizeX  / choppingCount;
 
-        while (currentTime > 0.1f)
+        Debug.Log("실행");
+
+        yield return new WaitForSeconds(choppingInterval);
+
+        while (currentTime > 0.1f && currentTimeBarSizeX > 0)
         {
             currentTime -= subtractTime;
-            //currentTimeBar.sizeDelta = new Vector3(currentTimeBar.sizeDelta.x - subtractSize, currentTimeBar.sizeDelta.y);
+            currentTimeBarSizeX -= subtractSize;
+            currentTimeBar.sizeDelta = new Vector2(currentTimeBarSizeX, currentTimeBar.sizeDelta.y);
             yield return new WaitForSeconds(choppingInterval);
+            Debug.Log("while");
         }
 
-        StopCoroutine(chopping);
-        // 애니메이션 중지
-        choppingBar.gameObject.SetActive(false);
         Debug.Log("중지");
-
-        Debug.Log("코루틴 끝");
-
     }
 }
