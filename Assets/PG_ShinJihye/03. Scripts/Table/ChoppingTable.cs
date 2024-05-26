@@ -22,13 +22,11 @@ public class ChoppingTable : Table
     // 다지기 속도 텀
     [SerializeField] float choppingInterval;
 
-    // 다지기 현재 시간 표시 바 길이
-    [SerializeField] float currentTimeBarSizeX;
-    // 다지기 현재 남은 시간
-    [SerializeField] float currentTime;
-
     // 다진 후 바뀔 프리팹
     [SerializeField] Item slicedItemPrefab;
+
+    // test
+    [SerializeField] float currentTimeBarSizeX;
     
 
     private void OnEnable()
@@ -68,8 +66,8 @@ public class ChoppingTable : Table
     // 시작 시 다지기 관련 변수 초기화
     private void InitChoppingValue()
     {
-        currentTimeBarSizeX = currentTimeBar.sizeDelta.x;
-        currentTime = choppingTime;
+        choppingTime = 8;
+        currentTimeBar.sizeDelta = new Vector2(0.8f, 0.12f);
     }
 
 
@@ -100,23 +98,13 @@ public class ChoppingTable : Table
         // 놓여진 아이템 있고, 아이템의 Type이 Ingredient이고, 아이템의 State가 Original인 경우
         if (placedItem != null && placedItem.Type == ItemType.Ingredient && ingObject.IngState == 0)
         {
-            Debug.Log("코루틴 시작");
+            Debug.Log("시작");
 
             choppingBar.gameObject.SetActive(true);
             // 애니메이션 실행
             chopping = StartCoroutine(ChoppingRoutine());
-            StopCoroutine(chopping);
-            // 애니메이션 중지
-            choppingBar.gameObject.SetActive(false);
 
-            // Original 아이템 삭제
-            Destroy(placedItem);
-            // Sliced 아이템 생성
-            Instantiate(slicedItemPrefab, generatePoint.transform);
-            
-            Debug.Log("코루틴 시작");
-
-            InitChoppingValue();
+            Debug.Log("완료");
         }
 
         return;
@@ -124,22 +112,35 @@ public class ChoppingTable : Table
 
     IEnumerator ChoppingRoutine()
     {
-        float subtractTime = currentTime / choppingCount;
-        float subtractSize = currentTimeBarSizeX  / choppingCount;
+        currentTimeBarSizeX = currentTimeBar.sizeDelta.x;
+        float subtractTime = choppingTime / choppingCount;
+        float subtractSize = currentTimeBarSizeX / choppingCount;
 
-        Debug.Log("실행");
+        Debug.Log("코루틴 실행");
 
         yield return new WaitForSeconds(choppingInterval);
 
-        while (currentTime > 0.1f && currentTimeBarSizeX > 0)
+        while (choppingTime > 0.1f && currentTimeBarSizeX > 0)
         {
-            currentTime -= subtractTime;
+            choppingTime -= subtractTime;
             currentTimeBarSizeX -= subtractSize;
             currentTimeBar.sizeDelta = new Vector2(currentTimeBarSizeX, currentTimeBar.sizeDelta.y);
             yield return new WaitForSeconds(choppingInterval);
             Debug.Log("while");
         }
 
-        Debug.Log("중지");
+        StopCoroutine(chopping);
+        // 애니메이션 중지
+        choppingBar.gameObject.SetActive(false);
+
+        // Original 아이템 삭제
+        Destroy(placedItem);
+        // Sliced 아이템 생성
+        
+        Instantiate(slicedItemPrefab, generatePoint.transform);
+
+        InitChoppingValue();
+
+        Debug.Log("코루틴 중지");
     }
 }

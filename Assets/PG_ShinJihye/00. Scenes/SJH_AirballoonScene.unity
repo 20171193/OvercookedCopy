@@ -397,8 +397,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8838418008997152528, guid: a61cba7ab6a45ce42a439c15166736f2,
         type: 3}
+      propertyPath: choppingTimeBar
+      value: 
+      objectReference: {fileID: 1360892356}
+    - target: {fileID: -8838418008997152528, guid: a61cba7ab6a45ce42a439c15166736f2,
+        type: 3}
       propertyPath: choppingInterval
-      value: 0.5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 716634174858107070, guid: a61cba7ab6a45ce42a439c15166736f2,
         type: 3}
@@ -7278,6 +7283,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1140472229}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &1360892356 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 3279507160466536359, guid: a61cba7ab6a45ce42a439c15166736f2,
+    type: 3}
+  m_PrefabInstance: {fileID: 46288287}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1368758864
 PrefabInstance:
   m_ObjectHideFlags: 0
