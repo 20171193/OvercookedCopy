@@ -92,7 +92,7 @@ public class ChoppingTable : Table
     Coroutine chopping;
 
     // 상호작용 - 다지기
-    public override void Interactable()
+    public override TableType Interactable()
     {
         ingObject = (IngredientsObject)placedItem;
 
@@ -110,7 +110,7 @@ public class ChoppingTable : Table
             Debug.Log("완료");
         }
 
-        return;
+        return TableType.ChoppingTable;
     }
 
     IEnumerator ChoppingRoutine(Item placedItem)
