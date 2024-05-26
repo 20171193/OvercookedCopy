@@ -403,7 +403,7 @@ PrefabInstance:
     - target: {fileID: -8838418008997152528, guid: a61cba7ab6a45ce42a439c15166736f2,
         type: 3}
       propertyPath: choppingInterval
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 716634174858107070, guid: a61cba7ab6a45ce42a439c15166736f2,
         type: 3}

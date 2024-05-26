@@ -1,5 +1,6 @@
 using JH;
 using KIMJAEWON;
+using Photon.Pun;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -23,7 +24,7 @@ public class ChoppingTable : Table
     [SerializeField] float choppingInterval;
 
     // 다진 후 바뀔 프리팹
-    [SerializeField] Item slicedItemPrefab;
+    [SerializeField] GameObject slicedItemPrefab;
 
     // test
     [SerializeField] float currentTimeBarSizeX;
@@ -102,7 +103,9 @@ public class ChoppingTable : Table
 
             choppingBar.gameObject.SetActive(true);
             // 애니메이션 실행
-            chopping = StartCoroutine(ChoppingRoutine());
+            chopping = StartCoroutine(ChoppingRoutine(placedItem));
+
+
 
             Debug.Log("완료");
         }
@@ -110,7 +113,7 @@ public class ChoppingTable : Table
         return;
     }
 
-    IEnumerator ChoppingRoutine()
+    IEnumerator ChoppingRoutine(Item placedItem)
     {
         currentTimeBarSizeX = currentTimeBar.sizeDelta.x;
         float subtractTime = choppingTime / choppingCount;
@@ -129,15 +132,20 @@ public class ChoppingTable : Table
             Debug.Log("while");
         }
 
-        StopCoroutine(chopping);
         // 애니메이션 중지
         choppingBar.gameObject.SetActive(false);
 
         // Original 아이템 삭제
-        Destroy(placedItem);
+        PhotonNetwork.Destroy(placedItem.gameObject);
+        Debug.Log("삭제함");
+
         // Sliced 아이템 생성
-        
-        Instantiate(slicedItemPrefab, generatePoint.transform);
+        slicedItemPrefab = PhotonNetwork.Instantiate("Lettuce_sliced", generatePoint.transform.position, generatePoint.transform.rotation);
+        slicedItemPrefab.transform.SetParent(generatePoint.transform, true);
+        Item newPlacedItem = slicedItemPrefab.GetComponent<Item>();
+        Debug.Log(newPlacedItem);
+        this.placedItem = newPlacedItem;
+        Debug.Log("생성함");
 
         InitChoppingValue();
 
