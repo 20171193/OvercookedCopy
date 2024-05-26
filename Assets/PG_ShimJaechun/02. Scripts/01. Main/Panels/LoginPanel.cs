@@ -29,6 +29,8 @@ namespace Jc
             // 로그인 성공 처리
             PhotonNetwork.LocalPlayer.NickName = idInputField.text;
             PhotonNetwork.ConnectUsingSettings();
+            // 사운드 출력
+            Manager.Sound.PlaySFX(SoundManager.SFXType.Click);
         }
     }
 }
