@@ -146,6 +146,7 @@ namespace Jc
             mainVC.transform.position = endVCpos;
             mainVC.transform.rotation = Quaternion.Euler(endVCrot);
             titleImage.SetActive(true);
+            Manager.Sound.PlaySFX(SoundManager.SFXType.PopUp);
             menuPanel.SetActive(true);
             DisActiveLoading(1.2f);
             yield return null;

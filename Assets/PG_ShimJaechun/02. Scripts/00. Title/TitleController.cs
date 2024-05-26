@@ -26,14 +26,22 @@ namespace Jc
 
         }
 
+        private void OnDisable()
+        {
+            isActiveLogin = false;
+        }
+
         private void Update()
         {
             if(!isActiveLogin && Input.GetKey(KeyCode.Space))
             {
+                isActiveLogin = true;
                 // 타이틀 텍스트 비활성화
                 titleText.SetActive(false);
                 // 로그인 패널 활성화
                 loginPanel.SetActive(true);
+
+                Manager.Sound.PlaySFX(SoundManager.SFXType.PopUp);
             }
         }
     }
