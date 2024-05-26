@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering.UI;
 using Photon.Pun;
 using Photon.Pun.UtilityScripts;
+using Cinemachine;
 
 public class BusController : MonoBehaviourPun
 {
@@ -115,6 +116,7 @@ public class BusController : MonoBehaviourPun
         if (Manager.Layer.waterTileLM.Contain(other.gameObject.layer))
         {
             waterInSource.Play();   // 사운드 출력
+
             Debug.Log("Enter Water");
             anim.SetBool("IsInWater", true);
             boatObject.SetActive(true);

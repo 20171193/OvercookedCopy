@@ -9,8 +9,6 @@ using UnityEngine.InputSystem;
 
 namespace KIMJAEWON
 {
-
-
     public class PlayerController : MonoBehaviour
     {
         [Header("에디터 세팅")]
