@@ -11,8 +11,6 @@ namespace KIMJAEWON
 {
     public class PlayerAction : MonoBehaviour
     {
-        enum TableType { None, ChoppingBoard, CreateBox, Sink }
-
         [Header("에디터 세팅")]
         [SerializeField] PhotonView view;
         [SerializeField] Animator anim;
@@ -198,7 +196,7 @@ namespace KIMJAEWON
                 else
                 {
                     // 테이블 상호작용
-                    nearestTable.Interactable();
+                    TableInteract();
                 }
             }
         }
@@ -208,20 +206,22 @@ namespace KIMJAEWON
             // 가까운 테이블이 없는 경우
             if (nearestTable == null) return;
 
-            TableType type = TableType.None;
-            //TableType type = nearestTable.Interactable();
+            TableType type = nearestTable.TableType;
 
             // 상호작용이 불가능한 경우
-            //if (type == TableType.None) return;
+            if (type == TableType.None) return;
+
+
+
             // 각 테이블 별 상호작용
             switch (type)
             {
-                case TableType.ChoppingBoard:
+                case TableType.ChoppingTable:
                     // 일정시간 머무르기
                     audioController.PlaySFX(PlayerAudioController.SFXType.Chop);
 
                     break;
-                case TableType.CreateBox:
+                case TableType.:
                     // 아이템 반환받기
                     audioController.PlaySFX(PlayerAudioController.SFXType.PickUp);
 
