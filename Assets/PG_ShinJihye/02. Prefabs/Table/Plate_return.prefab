@@ -129,7 +129,7 @@ MonoBehaviour:
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
-  tableType: 0
+  tableType: 5
   plateRespawnTime: 5
   spawnPoint: {fileID: 0}
   spawnPlate: {fileID: 0}

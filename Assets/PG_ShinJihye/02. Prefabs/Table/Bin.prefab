@@ -129,7 +129,7 @@ MonoBehaviour:
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
-  tableType: 0
+  tableType: 7
   speed: 0
   destroyScale: 0
 --- !u!114 &6894170111331756627

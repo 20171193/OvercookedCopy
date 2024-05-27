@@ -7462,15 +7462,15 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 830973676}
     m_Modifications:
+    - target: {fileID: -1844857602163586084, guid: 0409ef7bf148ba14abce3332af505727,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 107
+      objectReference: {fileID: 0}
     - target: {fileID: 4896140933736966563, guid: 0409ef7bf148ba14abce3332af505727,
         type: 3}
       propertyPath: m_Name
       value: Crate_meat
-      objectReference: {fileID: 0}
-    - target: {fileID: 5554965638529515188, guid: 0409ef7bf148ba14abce3332af505727,
-        type: 3}
-      propertyPath: genPointChildIndex
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5594185110821753266, guid: 0409ef7bf148ba14abce3332af505727,
         type: 3}
@@ -7575,7 +7575,7 @@ PrefabInstance:
     - target: {fileID: 259452224270942129, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: sceneViewId
-      value: 99
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3130238668503277143, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -7585,12 +7585,7 @@ PrefabInstance:
     - target: {fileID: 4795973081457232556, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
       propertyPath: sceneViewId
-      value: 98
-      objectReference: {fileID: 0}
-    - target: {fileID: 5328122569825417681, guid: 02b4f95e696d89240b40adaf1bca500d,
-        type: 3}
-      propertyPath: sceneViewId
-      value: 126
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6470992780620546031, guid: 02b4f95e696d89240b40adaf1bca500d,
         type: 3}
@@ -9855,6 +9850,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 830973676}
     m_Modifications:
+    - target: {fileID: -657813874885902855, guid: e7b6aba4c04599149a35c301b4683e4b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 106
+      objectReference: {fileID: 0}
     - target: {fileID: 5626695956673245943, guid: e7b6aba4c04599149a35c301b4683e4b,
         type: 3}
       propertyPath: m_Name
@@ -9909,11 +9909,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7906201529345359522, guid: e7b6aba4c04599149a35c301b4683e4b,
-        type: 3}
-      propertyPath: genPointChildIndex
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10033,11 +10028,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 830973676}
     m_Modifications:
-    - target: {fileID: 3186419579911346309, guid: f82917eb696efe349923d13fe3d12053,
-        type: 3}
-      propertyPath: genPointChildIndex
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3278222104268908178, guid: f82917eb696efe349923d13fe3d12053,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10092,6 +10082,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Crate_cheese
+      objectReference: {fileID: 0}
+    - target: {fileID: 8422131843611547449, guid: f82917eb696efe349923d13fe3d12053,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 99
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10989,10 +10984,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7718524394504781678, guid: 179929ead6af3d849ad5b10f9107d4f9,
+    - target: {fileID: 7574816138999071261, guid: 179929ead6af3d849ad5b10f9107d4f9,
         type: 3}
-      propertyPath: genPointChildIndex
-      value: 1
+      propertyPath: sceneViewId
+      value: 108
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11103,30 +11098,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5709570898116252862, guid: a48f004d461a38c488357a36a239d397,
+    - target: {fileID: 6901824944380424736, guid: a48f004d461a38c488357a36a239d397,
         type: 3}
-      propertyPath: ingObject
-      value: 
-      objectReference: {fileID: 669664315396003870, guid: 0f8c3f01638317a44bb084e4144128fa,
-        type: 3}
-    - target: {fileID: 5709570898116252862, guid: a48f004d461a38c488357a36a239d397,
-        type: 3}
-      propertyPath: tableType
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5709570898116252862, guid: a48f004d461a38c488357a36a239d397,
-        type: 3}
-      propertyPath: genPointChildIndex
-      value: 1
+      propertyPath: sceneViewId
+      value: 98
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1066540168508209866, guid: a48f004d461a38c488357a36a239d397,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2014539477}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a48f004d461a38c488357a36a239d397, type: 3}
 --- !u!4 &2014539475 stripped
 Transform:
@@ -11134,27 +11114,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2014539474}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2014539476 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1066540168508209866, guid: a48f004d461a38c488357a36a239d397,
-    type: 3}
-  m_PrefabInstance: {fileID: 2014539474}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2014539477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2014539476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0080b48b42b27c46bca46226ee71330, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ingredientObject: {fileID: 669664315396003870, guid: 0f8c3f01638317a44bb084e4144128fa,
-    type: 3}
-  DebugGenpoint: {fileID: 0}
 --- !u!1 &2021452765
 GameObject:
   m_ObjectHideFlags: 0

@@ -130,7 +130,7 @@ MonoBehaviour:
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
-  tableType: 0
+  tableType: 2
 --- !u!114 &1083887942715126220
 MonoBehaviour:
   m_ObjectHideFlags: 0

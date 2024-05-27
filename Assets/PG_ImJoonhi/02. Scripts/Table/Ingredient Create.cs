@@ -13,7 +13,7 @@ namespace JH
         public void GenIngredient(int PlayerHoldPointPhotonID)
         {
             Transform HoldPoint = PhotonView.Find(PlayerHoldPointPhotonID).gameObject.transform;
-            GameObject ingObj = PhotonNetwork.Instantiate($"Ingredient Prefab/{ingredientObject.name}", HoldPoint.position, HoldPoint.rotation);
+            GameObject ingObj = PhotonNetwork.Instantiate($"Ingredient_Create/{ingredientObject.name}", HoldPoint.position, HoldPoint.rotation);
             Debug.Log($"IngObj : {HoldPoint.gameObject.name}");
             Debug.Log($"IngObj : {ingObj.name}");
             ingObj.GetComponent<IngredientsObject>().GoTo(HoldPoint.gameObject);

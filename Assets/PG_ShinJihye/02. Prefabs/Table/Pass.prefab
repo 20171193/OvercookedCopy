@@ -76,7 +76,7 @@ MonoBehaviour:
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 2
-  tableType: 0
+  tableType: 3
   finalScore: 0
   addScore: 5
   plateReturn: {fileID: 0}
