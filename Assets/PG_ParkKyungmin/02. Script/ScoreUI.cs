@@ -43,7 +43,7 @@ namespace Kyungmin
             else
             {
                 // tip이 0이 아닐때는 tip의 수치를 나타내줌
-                tipText.text = $"Tip X {tip}";
+                tipText.text = $"팁 X {tip}";
             }
         }
 

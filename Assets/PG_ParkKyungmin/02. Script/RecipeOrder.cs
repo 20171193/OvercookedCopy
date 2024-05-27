@@ -33,10 +33,10 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        gameManager.OnAllPlayerReady += RecipeSpawnRoutine;
+      
     }
 
-    private void RecipeSpawnRoutine()
+    public void RecipeSpawnRoutine()
     {
         // 20초에 한번씩 랜덤 호출
         if (PhotonNetwork.IsMasterClient)
