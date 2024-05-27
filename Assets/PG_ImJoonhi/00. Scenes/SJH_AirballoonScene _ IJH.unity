@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028355, g: 0.22571374, b: 0.30692255, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2163,6 +2163,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6894170111331756627, guid: c98637b9f5b641d43808cb0a538bb62b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 109
+      objectReference: {fileID: 0}
+    - target: {fileID: 6954331630690768027, guid: c98637b9f5b641d43808cb0a538bb62b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 108
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4718,6 +4728,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8456320644423035648, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 106
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819635207047269310, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 105
+      objectReference: {fileID: 0}
     - target: {fileID: 9044789914275564574, guid: 76f4364ce52b5db4cb70d5d55d835d59,
         type: 3}
       propertyPath: sceneViewId
@@ -7028,6 +7048,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 830973676}
     m_Modifications:
+    - target: {fileID: -1844857602163586084, guid: 0409ef7bf148ba14abce3332af505727,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 104
+      objectReference: {fileID: 0}
     - target: {fileID: 4896140933736966563, guid: 0409ef7bf148ba14abce3332af505727,
         type: 3}
       propertyPath: m_Name
@@ -7882,6 +7907,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456320644423035648, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 103
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819635207047269310, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 102
       objectReference: {fileID: 0}
     - target: {fileID: 9044789914275564574, guid: 76f4364ce52b5db4cb70d5d55d835d59,
         type: 3}
@@ -9400,6 +9435,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 830973676}
     m_Modifications:
+    - target: {fileID: -657813874885902855, guid: e7b6aba4c04599149a35c301b4683e4b,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 114
+      objectReference: {fileID: 0}
     - target: {fileID: 5626695956673245943, guid: e7b6aba4c04599149a35c301b4683e4b,
         type: 3}
       propertyPath: m_Name
@@ -9707,6 +9747,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Crate_cheese
       objectReference: {fileID: 0}
+    - target: {fileID: 8422131843611547449, guid: f82917eb696efe349923d13fe3d12053,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 110
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9790,6 +9835,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456320644423035648, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 8819635207047269310, guid: 76f4364ce52b5db4cb70d5d55d835d59,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 111
       objectReference: {fileID: 0}
     - target: {fileID: 9044789914275564574, guid: 76f4364ce52b5db4cb70d5d55d835d59,
         type: 3}
@@ -10578,6 +10633,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7574816138999071261, guid: 179929ead6af3d849ad5b10f9107d4f9,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 107
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10685,6 +10745,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6901824944380424736, guid: a48f004d461a38c488357a36a239d397,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 113
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
