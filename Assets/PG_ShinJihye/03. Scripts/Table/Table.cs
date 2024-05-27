@@ -20,6 +20,10 @@ public class Table : MonoBehaviour, IHighlightable
     // generatePoint 인덱스 찾기 위한 임시 변수
     public int childIndex;
 
+    // 테이블 타입
+    [SerializeField]
+    protected TableType tableType;
+    public TableType TableType { get { return tableType; } }
 
     private void Awake()
     {
@@ -311,4 +315,13 @@ public class Table : MonoBehaviour, IHighlightable
 
         return TableType.None;
     }
+
+    public virtual bool IsInteractable(Item item = null)
+    {
+        if (item == null)
+            return true;
+
+        return false;
+    }
+
 }
