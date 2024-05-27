@@ -308,14 +308,6 @@ public class Table : MonoBehaviour, IHighlightable
         return false;
     }*/
 
-    // 테이블 상호작용
-    public virtual TableType Interactable()
-    {
-        Debug.Log("table.Interactable");
-
-        return TableType.None;
-    }
-
     public virtual bool IsInteractable(Item item = null)
     {
         if (item == null)

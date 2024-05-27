@@ -221,7 +221,7 @@ namespace KIMJAEWON
                     audioController.PlaySFX(PlayerAudioController.SFXType.Chop);
 
                     break;
-                case TableType.:
+                case TableType.IngredientBox:
                     // 아이템 반환받기
                     audioController.PlaySFX(PlayerAudioController.SFXType.PickUp);
 

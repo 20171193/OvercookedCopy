@@ -51,7 +51,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 0
+  sceneViewId: 101
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &6297589420081741979
@@ -123,14 +123,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64e5916a316446542881a6a54dabbb53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originMT: {fileID: 0}
   meshRenderer: {fileID: 6595028635091018781}
   changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
-  plateRespawnTime: 0
-  newPlatePrefab: {fileID: 0}
+  plateRespawnTime: 5
   spawnPoint: {fileID: 0}
+  spawnPlate: {fileID: 0}
+  placedPlateList: []
 --- !u!114 &5025728950269651023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,7 +152,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 0
+  sceneViewId: 100
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1001 &2622654157878259035
