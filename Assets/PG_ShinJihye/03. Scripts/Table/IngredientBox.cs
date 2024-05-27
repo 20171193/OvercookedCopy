@@ -14,16 +14,8 @@ public class IngredientBox : Table
         tableType = TableType.IngredientBox;
     }
 
-    public override bool IsInteractable(Item item = null)
+    public void Interactable(GameObject itemSocket)
     {
-        return base.IsInteractable(item);
-    }
-
-    public override TableType Interactable()
-    {
-        //return base.Interactable();
-        ingCreate.TakeIngredient(generatePoint);
-
-        return TableType.IngredientBox;
+        ingCreate.TakeIngredient(itemSocket);
     }
 }

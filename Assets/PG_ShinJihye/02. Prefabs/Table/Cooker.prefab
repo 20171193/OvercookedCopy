@@ -52,7 +52,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 98
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &3308223707908237628
@@ -130,6 +130,7 @@ MonoBehaviour:
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
+  tableType: 0
 --- !u!114 &1083887942715126220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,7 +150,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 95
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1001 &2753666678146770305
@@ -218,12 +219,12 @@ PrefabInstance:
     - target: {fileID: 6011214321024470657, guid: 11504af95cf86744eaeb3667971bcf7d,
         type: 3}
       propertyPath: sceneViewId
-      value: 81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6652764699640229439, guid: 11504af95cf86744eaeb3667971bcf7d,
         type: 3}
       propertyPath: sceneViewId
-      value: 80
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

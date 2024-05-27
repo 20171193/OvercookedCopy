@@ -51,7 +51,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 101
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &6297589420081741979
@@ -129,6 +129,7 @@ MonoBehaviour:
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
+  tableType: 0
   plateRespawnTime: 5
   spawnPoint: {fileID: 0}
   spawnPlate: {fileID: 0}
@@ -152,7 +153,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 100
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1001 &2622654157878259035
