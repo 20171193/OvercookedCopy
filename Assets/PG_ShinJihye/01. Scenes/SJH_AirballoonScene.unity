@@ -1980,6 +1980,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bin
       objectReference: {fileID: 0}
+    - target: {fileID: 3732329651427563569, guid: c98637b9f5b641d43808cb0a538bb62b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6894170111331756627, guid: c98637b9f5b641d43808cb0a538bb62b,
         type: 3}
       propertyPath: sceneViewId
@@ -3674,6 +3679,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Sink
+      objectReference: {fileID: 0}
+    - target: {fileID: 883336716795219523, guid: 9b3f7210b6dcd974dbfe5e968b1905b5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3016191507865055679, guid: 9b3f7210b6dcd974dbfe5e968b1905b5,
         type: 3}
