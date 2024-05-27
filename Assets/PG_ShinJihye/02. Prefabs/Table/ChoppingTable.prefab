@@ -225,11 +225,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChoppingBar
       objectReference: {fileID: 0}
-    - target: {fileID: 5669235940340337832, guid: a10c7b161165303469b9be913fa33049,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -267,31 +262,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2837450956553737093}
     m_Modifications:
-    - target: {fileID: 1050020224300006834, guid: 6b5c96bfb883d3a49a41035edd1ff4d7,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1326550990315381089, guid: 6b5c96bfb883d3a49a41035edd1ff4d7,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 1561491508084792529, guid: 6b5c96bfb883d3a49a41035edd1ff4d7,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.6999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 1561491508084792529, guid: 6b5c96bfb883d3a49a41035edd1ff4d7,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.6999999
-      objectReference: {fileID: 0}
-    - target: {fileID: 1561491508084792529, guid: 6b5c96bfb883d3a49a41035edd1ff4d7,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.6999998
-      objectReference: {fileID: 0}
     - target: {fileID: 1561491508084792529, guid: 6b5c96bfb883d3a49a41035edd1ff4d7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -347,11 +317,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knife
       objectReference: {fileID: 0}
-    - target: {fileID: 6496180799669876809, guid: 6b5c96bfb883d3a49a41035edd1ff4d7,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -377,11 +342,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2837450956553737093}
     m_Modifications:
-    - target: {fileID: 366636802712097757, guid: 65b34ceb623af364991f73ea28baeec9,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
-      objectReference: {fileID: 0}
     - target: {fileID: 4592078179780042365, guid: 65b34ceb623af364991f73ea28baeec9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -436,11 +396,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ChoppingBoard
-      objectReference: {fileID: 0}
-    - target: {fileID: 9054445262077602259, guid: 65b34ceb623af364991f73ea28baeec9,
-        type: 3}
-      propertyPath: m_Layer
-      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
