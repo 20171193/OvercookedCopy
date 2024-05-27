@@ -232,7 +232,7 @@ namespace KIMJAEWON
                     IngredientBox igdBox = nearestTable.GetComponent<IngredientBox>();
                     if (igdBox == null) return;
                     igdBox.Interactable(itemSocket);
-           
+
                     // PickUp 애니메이션
                     audioController.PlaySFX(PlayerAudioController.SFXType.PickUp);
                     break;
