@@ -220,6 +220,8 @@ namespace KIMJAEWON
                 case TableType.ChoppingTable:
                     ChoppingTable choppingTable = nearestTable.GetComponent<ChoppingTable>();
                     if (choppingTable == null) return;
+                    if (!choppingTable.IsInteractable()) return;
+
                     choppingTable.Interactable();
                     // 액션 추가
                     choppingTable.OnSliced += OnEndChopping;
@@ -232,6 +234,8 @@ namespace KIMJAEWON
                 case TableType.IngredientBox:
                     IngredientBox igdBox = nearestTable.GetComponent<IngredientBox>();
                     if (igdBox == null) return;
+                    if (!igdBox.IsInteractable()) return;
+
                     igdBox.Interactable(itemSocket.gameObject);
 
                     audioController.PlaySFX(PlayerAudioController.SFXType.PickUp);
