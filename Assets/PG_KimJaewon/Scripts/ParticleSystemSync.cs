@@ -25,6 +25,15 @@ public class ParticleSystemSync : MonoBehaviourPun, IPunObservable
                 PlayParticles();
             }
         }
+
+        // 마스터 클라이언트인지 확인
+        if (PhotonNetwork.IsMasterClient)
+        {
+            Debug.Log("호출완료");
+            // 마스터 클라이언트에서만 RPC 호출
+            photonView.RPC("MyRpcMethod", RpcTarget.All);
+
+        }
     }
 
     public void PlayParticles()
