@@ -127,11 +127,12 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 3
+  Synchronization: 2
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2263491762716440782}
+  - {fileID: -2868790017787484094}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
