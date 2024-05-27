@@ -33,22 +33,23 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        gameManager.OnAllPlayerReady += RecipeSpawnRoutine;
+
     }
 
-    private void RecipeSpawnRoutine()
+    public void RecipeSpawnRoutine()
     {
         // 20초에 한번씩 랜덤 호출
         if (PhotonNetwork.IsMasterClient)
         {
-            InvokeRepeating("RandomRecipe", 10.0f, 10.0f);
+            RandomRecipe();
+            InvokeRepeating("RandomRecipe", 20.0f, 20.0f);
         }
     }
 
     private void RandomRecipe()         // 랜덤 생성
     {
         // 레시피가 비어있는지 확인
-        if (recipeList.Recipe == null || recipeList.Recipe.Count == 0)
+        if (recipeList.Recipe == null || recipeList.Recipe.Count == 0 || OrderList.Count >= 4)
         {
             Debug.Log("레시피가 비어있음");
             return;
@@ -57,10 +58,7 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
         // 인덱스의 0번째에서 finishedRecip의 마지막 인덱스 [n]번째 사이에서 랜덤
         int randomIndex = UnityEngine.Random.Range(0, recipeList.finishedRecipe.Count-1);
 
-        // 모든 클라이언트에게 레시피 생성 요청
-        //photonView.RPC("OrderIn", RpcTarget.All, randomIndex);
-
-        // 모든 클라이언트에게 레시피 생성 요청
+        // 레시피 생성 요청
         photonView.RPC("OrderIn", RpcTarget.All, randomIndex);
         Debug.Log($"{randomIndex}번째 생성");
     }
@@ -129,26 +127,13 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
         }
     }
 
-    //public void OnOrderOut(Recipe_IGD igd)
-    //{
-    //    Destroy(igd.gameObject);
-    //    OrderList.Remove(igd.gameObject);
-
-    //    // 레시피에 따른 스코어로 수정해야함
-    //    inGameFlow.RecipeResult(10);
-    //}
-
-    public void OnOrderOut(InputValue value)
+    public void OnOrderOut(Recipe_IGD igd)
     {
-        if (OrderList.Count > 0)
-        {
-            // 0번 부터 삭제되게
-            Destroy(OrderList[0]);
-            OrderList.RemoveAt(0);
+        Destroy(igd.gameObject);
+        OrderList.Remove(igd.gameObject);
 
-            // 레시피에 따른 스코어로 수정해야함
-            inGameFlow.RecipeResult(10);
-        }
+        // 레시피에 따른 스코어로 수정해야함
+        inGameFlow.RecipeResult(10);
     }
 
     #region

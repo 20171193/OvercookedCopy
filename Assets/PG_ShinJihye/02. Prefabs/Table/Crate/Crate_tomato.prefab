@@ -42,6 +42,8 @@ GameObject:
   - component: {fileID: 7519250306205001922}
   - component: {fileID: 6270925230298480162}
   - component: {fileID: 7718524394504781678}
+  - component: {fileID: -3514089663867884075}
+  - component: {fileID: 7574816138999071261}
   m_Layer: 6
   m_Name: Crate_tomato
   m_TagString: Untagged
@@ -99,11 +101,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd37d0104e3184f41ba21650e81db2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originMT: {fileID: 0}
   meshRenderer: {fileID: 6995180717390681832}
   changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
+  tableType: 4
+  ingCreate: {fileID: -3514089663867884075}
+--- !u!114 &-3514089663867884075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042108171122694795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0080b48b42b27c46bca46226ee71330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientObject: {fileID: 764042442675115143, guid: 3644dc34e7852864fa423efaf07ae58a,
+    type: 3}
+  DebugGenpoint: {fileID: 0}
+--- !u!114 &7574816138999071261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7042108171122694795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &6836697681707831255
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,6 +18,10 @@ public class PlateReturn : Table
     // 쌓여있는 새 접시 리스트
     [SerializeField] List<Item> placedPlateList;
 
+    private void Start()
+    {
+        tableType = TableType.PlateReturn;
+    }
 
     public void PlateRespawn()
     {

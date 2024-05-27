@@ -54,6 +54,7 @@ MonoBehaviour:
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
+  tableType: 0
 --- !u!65 &1286835953326471309
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -94,7 +95,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 65
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &3473649749256808827
@@ -148,7 +149,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 22
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1001 &6055772285045541946

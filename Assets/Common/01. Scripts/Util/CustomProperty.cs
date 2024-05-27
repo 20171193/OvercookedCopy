@@ -39,6 +39,19 @@ namespace Jc
             return customProperty.TryGetValue(LOAD, out object value) ? (bool)value : false;
         }
         #endregion
+        public const string GAMELOAD = "GameLoad";
+        public static void SetGameLoad(this Player player, bool value)
+        {
+            PhotonHashTable customProperty = new PhotonHashTable();
+            customProperty[GAMELOAD] = value;
+            player.SetCustomProperties(customProperty);
+        }
+        public static bool GetGameLoad(this Player player)
+        {
+            PhotonHashTable customProperty = player.CustomProperties;
+            return customProperty.TryGetValue(GAMELOAD, out object value) ? (bool)value : false;
+        }
+
         #region Player Chef
         public const string CHEF = "Chef";
         public static void SetChef(this Player player, int value)

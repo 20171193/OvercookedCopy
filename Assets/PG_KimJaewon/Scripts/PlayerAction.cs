@@ -3,6 +3,7 @@ using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -200,7 +201,6 @@ namespace KIMJAEWON
                 }
             }
         }
-
         private void TableInteract()
         {
             // 가까운 테이블이 없는 경우
@@ -224,17 +224,18 @@ namespace KIMJAEWON
                     choppingTable.Interactable();
 
                     // Chopping 애니메이션
-                    
+
                     audioController.PlaySFX(PlayerAudioController.SFXType.Chop);
                     break;
                 // 재료상자 테이블
                 case TableType.IngredientBox:
                     IngredientBox igdBox = nearestTable.GetComponent<IngredientBox>();
                     if (igdBox == null) return;
-                    igdBox.Interactable(itemSocket);
-           
-                    // PickUp 애니메이션
+                    igdBox.Interactable(itemSocket.gameObject);
+
                     audioController.PlaySFX(PlayerAudioController.SFXType.PickUp);
+                    anim.SetBool("IsPicked", true);
+                    isPickUp = true;
                     break;
 
                 // 싱크대 테이블
@@ -407,6 +408,17 @@ namespace KIMJAEWON
 
             Debug.DrawRay(transform.position, rightDir * range, Color.cyan);
             Debug.DrawRay(transform.position, leftDir * range, Color.cyan);
+        }
+
+        public void OnTeleportIn()
+        {
+            anim.SetTrigger("OnTeleportIn");
+            GetComponent<PlayerInput>().enabled = false;
+        }
+        public void OnTeleportOut()
+        {
+            anim.SetTrigger("OnTeleportOut");
+            StartCoroutine(Extension.ActionDelay(0.2f, () => GetComponent<PlayerInput>().enabled = true));
         }
     }
 }

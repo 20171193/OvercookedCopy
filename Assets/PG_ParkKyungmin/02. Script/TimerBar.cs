@@ -48,7 +48,5 @@ namespace Kyungmin
             // 애니메이션 끄기 
             animator.SetBool("IsPlayLoop", false);
         }
-
-
     }
 }

@@ -18,7 +18,7 @@ public class SceneManager : Singleton<SceneManager>
     }
     [SerializeField]
     private LoadingPanel loadingPanel;
-    private float loadDelayTime = 2f;
+    private float loadDelayTime = 0.5f;
     public UnityAction OnDisconnected;
 
     // 로드 씬 (플레이어 별 씬 변경)
