@@ -111,7 +111,7 @@ public class ChoppingTable : Table
         if (item != null)
             return false;
 
-        if (placedItem == null && placedItem.Type != ItemType.Ingredient && ingObject.IngState != 0)
+        if (placedItem == null || placedItem.Type != ItemType.Ingredient || ingObject.IngState != 0)
             return false;
 
         if (ingObject.CanSlice() == false)
