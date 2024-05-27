@@ -3,6 +3,7 @@ using Photon.Pun;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -200,7 +201,6 @@ namespace KIMJAEWON
                 }
             }
         }
-
         private void TableInteract()
         {
             // 가까운 테이블이 없는 경우
@@ -408,6 +408,17 @@ namespace KIMJAEWON
 
             Debug.DrawRay(transform.position, rightDir * range, Color.cyan);
             Debug.DrawRay(transform.position, leftDir * range, Color.cyan);
+        }
+
+        public void OnTeleportIn()
+        {
+            anim.SetBool("IsTeleport", true); 
+            GetComponent<PlayerInput>().enabled = false;
+        }
+        public void OnTeleportOut()
+        {
+            anim.SetBool("IsTeleport", false);
+            StartCoroutine(Extension.ActionDelay(0.2f, () => GetComponent<PlayerInput>().enabled = true));
         }
     }
 }
