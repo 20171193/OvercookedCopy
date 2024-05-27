@@ -16,10 +16,7 @@ public class IngredientBox : Table
 
     public override bool IsInteractable(Item item = null)
     {
-        if (item == null)
-            return true;
-
-        return false;
+        return base.IsInteractable(item);
     }
 
     public override TableType Interactable()

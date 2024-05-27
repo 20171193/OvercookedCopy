@@ -318,6 +318,9 @@ public class Table : MonoBehaviour, IHighlightable
 
     public virtual bool IsInteractable(Item item = null)
     {
+        if (item == null)
+            return true;
+
         return false;
     }
 
