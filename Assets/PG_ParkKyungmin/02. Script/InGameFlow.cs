@@ -169,6 +169,7 @@ namespace Kyungmin
             // 3초 뒤 실행
             yield return new WaitForSeconds(3.0f);
             // RecipeOrder의 RecipeSpawn 코루틴 실행
+            readyUIAnim.SetTrigger("OnStart");
             recipeOrder.RecipeSpawnRoutine();
 
             // 현재 시간이 0보다 크거나 게임이 진행중인 경우

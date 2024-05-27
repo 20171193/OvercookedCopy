@@ -3396,7 +3396,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4279227746
+    rgba: 4279227350
   m_fontColor: {r: 0.8392157, g: 0.826098, b: 0.058823526, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -4961,7 +4961,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 1016624436}
-  exitDistance: 3
+  exitDistance: 2
 --- !u!65 &520797529
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5038,7 +5038,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 840527616}
-  exitDistance: 3
+  exitDistance: 2
 --- !u!65 &532961273
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5374,7 +5374,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 1045269184}
-  exitDistance: 3
+  exitDistance: 2
 --- !u!4 &630029623
 Transform:
   m_ObjectHideFlags: 0
@@ -6958,7 +6958,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 532961270}
-  exitDistance: 3
+  exitDistance: 2
 --- !u!4 &840527618
 Transform:
   m_ObjectHideFlags: 0
@@ -7353,7 +7353,7 @@ PrefabInstance:
     - target: {fileID: 5478254366170151076, guid: 9f5c639f884f2ee4a8626b4860305d91,
         type: 3}
       propertyPath: gameTime
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 5478254366170151076, guid: 9f5c639f884f2ee4a8626b4860305d91,
         type: 3}
@@ -8698,7 +8698,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 520797526}
-  exitDistance: 3
+  exitDistance: 2
 --- !u!4 &1016624438
 Transform:
   m_ObjectHideFlags: 0
@@ -8917,7 +8917,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 630029621}
-  exitDistance: 3
+  exitDistance: 2
 --- !u!65 &1045269187
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -13281,7 +13281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 1899115647}
-  exitDistance: 3
+  exitDistance: 2
 --- !u!4 &1608500880
 Transform:
   m_ObjectHideFlags: 0
@@ -15987,7 +15987,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   outObj: {fileID: 1608500878}
-  exitDistance: 3
+  exitDistance: 2
 --- !u!65 &1899115650
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16831,7 +16831,7 @@ RectTransform:
   m_GameObject: {fileID: 1999134912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 346749056}
