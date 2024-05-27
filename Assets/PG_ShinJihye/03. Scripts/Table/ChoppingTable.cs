@@ -23,8 +23,8 @@ public class ChoppingTable : Table
     // 다지기 속도 텀
     [SerializeField] float choppingInterval;
 
-    // 다진 후 바뀔 프리팹
-    //[SerializeField] GameObject slicedItemPrefab;
+    // 다지기 진행중인지 아닌지
+    [SerializeField] bool isChopping;
 
     // test
     [SerializeField] float currentTimeBarSizeX;
@@ -39,6 +39,7 @@ public class ChoppingTable : Table
         SetBillboardPos();
         InitChoppingValue();
         choppingBar.gameObject.SetActive(false);
+        isChopping = false;
     }
 
 
@@ -78,6 +79,11 @@ public class ChoppingTable : Table
 
     public override bool PutDownItem(Item item)
     {
+        bool isPutDown = base.PutDownItem(item);
+
+        if (!isPutDown)
+            return false;
+
         base.PutDownItem(item);
         knife.SetActive(false);
 
@@ -87,6 +93,9 @@ public class ChoppingTable : Table
 
     public override Item PickUpItem()
     {
+        if (isChopping)
+            return null;
+
         Item returnItem = base.PickUpItem();
         knife.SetActive(true);
         
@@ -111,6 +120,8 @@ public class ChoppingTable : Table
     // 다지기 상호작용 실행
     public void Interactable()
     {
+        isChopping = true;
+
         choppingBar.gameObject.SetActive(true);  // UI 바 나타남
 
         // Player 애니메이션 실행
@@ -143,6 +154,8 @@ public class ChoppingTable : Table
         choppingBar.gameObject.SetActive(false);  // UI 바 사라짐
 
         ingObject.Slice();  // 재료 다지면 Sliced 프리팹으로 바뀜
+
+        isChopping = false;
 
         InitChoppingValue();
 
