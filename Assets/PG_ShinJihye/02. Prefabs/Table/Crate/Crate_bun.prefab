@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 2700061073404069583}
   - component: {fileID: 648246886913556683}
   - component: {fileID: 5709570898116252862}
+  - component: {fileID: 6334541692881655866}
+  - component: {fileID: 6901824944380424736}
   m_Layer: 6
   m_Name: Crate_bun
   m_TagString: Table
@@ -68,11 +70,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd37d0104e3184f41ba21650e81db2a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originMT: {fileID: 0}
   meshRenderer: {fileID: 4025590555692808389}
   changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
+  tableType: 4
+  ingCreate: {fileID: 6334541692881655866}
+--- !u!114 &6334541692881655866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066540168508209866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0080b48b42b27c46bca46226ee71330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientObject: {fileID: 669664315396003870, guid: 0f8c3f01638317a44bb084e4144128fa,
+    type: 3}
+  DebugGenpoint: {fileID: 0}
+--- !u!114 &6901824944380424736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1066540168508209866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4291765193461091201
 GameObject:
   m_ObjectHideFlags: 0

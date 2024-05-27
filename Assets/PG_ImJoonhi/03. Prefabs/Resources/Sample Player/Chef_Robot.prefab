@@ -1458,6 +1458,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   view: {fileID: 8202420195480395030}
   anim: {fileID: 2664189232599510015}
+  audioController: {fileID: 0}
   itemSocket: {fileID: 432522431396221969}
   debug: 1
   range: 1.5
@@ -1466,6 +1467,8 @@ MonoBehaviour:
   nearestItem: {fileID: 0}
   pickedItem: {fileID: 0}
   isPickUp: 0
+  successPutDown: 0
+  onInteract: 0
 --- !u!114 &1747429180094494401
 MonoBehaviour:
   m_ObjectHideFlags: 0

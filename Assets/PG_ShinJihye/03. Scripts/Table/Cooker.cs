@@ -4,4 +4,10 @@ using UnityEngine;
 
 public class Cooker : Table
 {
+
+
+    private void Start()
+    {
+        tableType = TableType.Cooker;
+    }
 }

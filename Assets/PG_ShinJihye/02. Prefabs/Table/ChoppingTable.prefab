@@ -78,13 +78,13 @@ MonoBehaviour:
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
+  tableType: 1
   knife: {fileID: 892827265836622170}
   choppingBar: {fileID: 5345133030295217725}
   currentTimeBar: {fileID: 3279507160466536359}
   choppingTime: 8
   choppingCount: 8
   choppingInterval: 0.5
-  slicedItemPrefab: {fileID: 0}
   currentTimeBarSizeX: 0
 --- !u!114 &7728888536854061061
 MonoBehaviour:
