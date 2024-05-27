@@ -11,18 +11,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/PG_ShimJaechun/01. Scenes/SJC_Campagin.unity
     guid: 8fe78bb661e49414fb0ebb35cb0a0b96
-  - enabled: 1
+  - enabled: 0
     path: Assets/PG_ShinJihye/01. Scenes/SJH_AirballoonScene.unity
     guid: 9b73991a521dea84a85606118be8457d
-  - enabled: 1
+  - enabled: 0
     path: Assets/PG_KimJaewon/00. Scenes/KJW EDIT _SJH_AirballoonScene.unity
     guid: 22afaf029de840b479dfa3ec20c41a40
-  - enabled: 1
+  - enabled: 0
     path: Assets/PG_ImJoonhi/00. Scenes/IJH_SampleScene02.unity
     guid: 446d40e200208924486496763b48a930
-  - enabled: 0
-    path: Assets/PG_KimJaewon/00. Scenes/KJW_AirballoonScene.unity
-    guid: 25199220256e5d94fac5ee915dd7e0fb
   - enabled: 0
     path: Assets/PG_ParkKyungmin/00. Scenes/PKM_TeleportMap.unity
     guid: 484bf4402e7bb6648b4e2b7cf1fe0d67
