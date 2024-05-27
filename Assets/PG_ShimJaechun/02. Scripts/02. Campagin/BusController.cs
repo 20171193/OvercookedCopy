@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.Rendering.UI;
 using Photon.Pun;
 using Photon.Pun.UtilityScripts;
+using Cinemachine;
 
 public class BusController : MonoBehaviourPun
 {
@@ -18,6 +19,8 @@ public class BusController : MonoBehaviourPun
     [SerializeField]
     private GameObject boatObject;
 
+    [SerializeField]
+    private AudioSource waterInSource;
 
     [Header("Specs")]
     [SerializeField]
@@ -38,6 +41,9 @@ public class BusController : MonoBehaviourPun
     [SerializeField]
     private bool isGround = false;
 
+    // 스테이지 진입번호
+    public int stageNumber = -1;
+
     private void FixedUpdate()
     {
         Move();
@@ -48,6 +54,14 @@ public class BusController : MonoBehaviourPun
     {
         transform.rotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0f);
     }
+    // 스테이지 진입
+    private void OnEnterStage(InputValue value)
+    {
+        if (stageNumber == -1) return;
+
+        Manager.Scene.LoadLevel(SceneManager.SceneType.InGame, stageNumber);
+    }
+
     private void OnMove(InputValue value)
     {
         Vector2 inputDir = value.Get<Vector2>();
@@ -101,6 +115,8 @@ public class BusController : MonoBehaviourPun
     {
         if (Manager.Layer.waterTileLM.Contain(other.gameObject.layer))
         {
+            waterInSource.Play();   // 사운드 출력
+
             Debug.Log("Enter Water");
             anim.SetBool("IsInWater", true);
             boatObject.SetActive(true);
@@ -115,20 +131,4 @@ public class BusController : MonoBehaviourPun
             boatObject.SetActive(false);
         }
     }
-
-    //public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    //{
-    //    if(stream.IsWriting)
-    //    {
-    //        stream.SendNext(transform.position);
-    //        stream.SendNext(transform.rotation);
-    //        stream.SendNext(transform.localScale);
-    //    }
-    //    else
-    //    {
-    //        transform.position = (Vector3)stream.ReceiveNext();
-    //        transform.rotation = (Quaternion)stream.ReceiveNext();
-    //        transform.localScale = (Vector3)stream.ReceiveNext();
-    //    }
-    //}
 }

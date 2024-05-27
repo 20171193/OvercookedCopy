@@ -1,6 +1,9 @@
+using Jc;
 using Photon.Pun;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -12,7 +15,7 @@ namespace KIMJAEWON
         [Header("에디터 세팅")]
         [SerializeField] PhotonView view;
         [SerializeField] Animator anim;
-
+        [SerializeField] PlayerAudioController audioController;
         // 플레이어 아이템 소켓
         [SerializeField]
         private Transform itemSocket;
@@ -61,6 +64,18 @@ namespace KIMJAEWON
         [SerializeField]
         private bool isPickUp = false;
 
+        // 내려놓기 성공했는지 실패했는지
+        [SerializeField]
+        private bool successPutDown;
+
+        // 테이블과 상호작용중인지?
+        [SerializeField]
+        private bool onInteract;
+
+        public void SetPickedItem(Item Pickeditem)
+        {
+            pickedItem = Pickeditem;
+        }
         private void SetTable(Table table)
         {
             // 이전 테이블 처리
@@ -182,15 +197,55 @@ namespace KIMJAEWON
                 else
                 {
                     // 테이블 상호작용
-                    nearestTable.Interactable();
+                    TableInteract();
                 }
             }
         }
-
         private void TableInteract()
         {
             // 가까운 테이블이 없는 경우
             if (nearestTable == null) return;
+
+            TableType type = nearestTable.TableType;
+
+            // 상호작용이 불가능한 경우
+            if (type == TableType.None) 
+                return;
+            if (!nearestTable.IsInteractable(pickedItem))
+                return;
+
+            // 각 테이블 별 상호작용
+            switch (type)
+            {
+                // 도마 테이블
+                case TableType.ChoppingTable:
+                    ChoppingTable choppingTable = nearestTable.GetComponent<ChoppingTable>();
+                    if (choppingTable == null) return;
+                    choppingTable.Interactable();
+
+                    // Chopping 애니메이션
+
+                    audioController.PlaySFX(PlayerAudioController.SFXType.Chop);
+                    break;
+                // 재료상자 테이블
+                case TableType.IngredientBox:
+                    IngredientBox igdBox = nearestTable.GetComponent<IngredientBox>();
+                    if (igdBox == null) return;
+                    igdBox.Interactable(itemSocket.gameObject);
+
+                    audioController.PlaySFX(PlayerAudioController.SFXType.PickUp);
+                    anim.SetBool("IsPicked", true);
+                    isPickUp = true;
+                    break;
+
+                // 싱크대 테이블
+                case TableType.Sink:
+                    // 일정시간 머무르기
+                    audioController.PlaySFX(PlayerAudioController.SFXType.Wash);
+
+                    break;
+                    
+            }
         }
 
         private void PickUp()
@@ -227,7 +282,9 @@ namespace KIMJAEWON
                 }
             }
 
-            anim.SetTrigger("Pickup");
+
+            audioController.PlaySFX(PlayerAudioController.SFXType.PickUp);
+            anim.SetBool("IsPicked", true);
             pickedItem.GoTo(itemSocket.gameObject);
             isPickUp = true;
             pickedItem.ExitPlayer();
@@ -240,15 +297,32 @@ namespace KIMJAEWON
 
             // 가까운 테이블이 없는 경우
             if (nearestTable == null)
+            {
+                // 아이템 드롭 
+                audioController.PlaySFX(PlayerAudioController.SFXType.PutDown);
+
                 pickedItem.Drop();
+                anim.SetBool("IsPicked", false);
+                isPickUp = false;
+                pickedItem = null;
+            }
+            // 테이블 위에 올려놓기
             else
             {
-                nearestTable.PutDownItem(pickedItem);
-            }
+                Item putDownItem = pickedItem;
+                successPutDown = nearestTable.PutDownItem(putDownItem);
 
-            anim.SetTrigger("Pickup");
-            isPickUp = false;
-            pickedItem = null;
+                // 아이템을 올려놓을 수 있다면
+                if (successPutDown)
+                {
+                    audioController.PlaySFX(PlayerAudioController.SFXType.PutDown);
+
+                    anim.SetBool("IsPicked", false);
+                    isPickUp = false;
+                    pickedItem = null;
+                }
+                return;
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -292,8 +366,16 @@ namespace KIMJAEWON
 
                 tableList.Remove(temp);
                 SetTable(FindTable());
+                // 벗어난 테이블이 가장 가까운 테이블일 경우
                 if (temp == nearestTable)
+                {
                     nearestTable = null;
+                    // 현재 테이블 내에서 상호작용 중일경우
+                    if(onInteract)
+                    {
+                        // 상호작용 종료 이벤트처리
+                    }
+                }
             }
 
             // 부딪힌 아이템 세팅
@@ -326,6 +408,17 @@ namespace KIMJAEWON
 
             Debug.DrawRay(transform.position, rightDir * range, Color.cyan);
             Debug.DrawRay(transform.position, leftDir * range, Color.cyan);
+        }
+
+        public void OnTeleportIn()
+        {
+            anim.SetTrigger("OnTeleportIn");
+            GetComponent<PlayerInput>().enabled = false;
+        }
+        public void OnTeleportOut()
+        {
+            anim.SetTrigger("OnTeleportOut");
+            StartCoroutine(Extension.ActionDelay(0.2f, () => GetComponent<PlayerInput>().enabled = true));
         }
     }
 }

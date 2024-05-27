@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &415394745014740659
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4970694072748589461}
+  - component: {fileID: 5058523288911807786}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4970694072748589461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415394745014740659}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 15.628101, y: -9.78995, z: 4.485811}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5058523288911807786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415394745014740659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27a36270da72ffd419451552f6d7ad2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnposs:
+  - {fileID: 198198671696581010, guid: 71249a1fd2f9b1d458f89f6c85dbfa6f, type: 3}
+  - {fileID: 8083040863786641765, guid: 7cdf865220e86e64da68c364a399c1d5, type: 3}
+  - {fileID: 7622986605153928410, guid: 9fb100415b4ecf04bb5901e4c48f02a9, type: 3}
+  - {fileID: 966702619379475653, guid: 63fb926ddb94c7148931e70c16423432, type: 3}
+  chefNames:
+  - Chef_AlienPink
+  - Chef_Maori
+  - Chef_RedFox
+  - Chef_Robot
+  curState: 3

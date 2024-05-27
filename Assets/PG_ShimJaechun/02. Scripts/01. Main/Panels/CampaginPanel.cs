@@ -31,6 +31,7 @@ namespace Jc
         // 룸 생성메뉴 오픈
         public void CreateRoomMenu()
         {
+            Manager.Sound.PlaySFX(SoundManager.SFXType.Click);
             createRoomPanel.SetActive(true);
         }
 
@@ -44,7 +45,9 @@ namespace Jc
             // 최대 인원 수는 4명
             RoomOptions options = new RoomOptions() { MaxPlayers = 4 };
 
+            Manager.Sound.PlaySFX(SoundManager.SFXType.Click);
             PhotonNetwork.CreateRoom(roomName: _roomName, roomOptions: options);
+            LobbyManager.Inst.ActiveLoading();
         }
 
         // 룸 생성 취소
@@ -52,6 +55,7 @@ namespace Jc
         {
             roomNameInput.text = "";
             createRoomPanel.SetActive(false);
+            Manager.Sound.PlaySFX(SoundManager.SFXType.Click);
         }
 
         // 랜덤매칭
@@ -61,11 +65,13 @@ namespace Jc
             RoomOptions options = new RoomOptions() { MaxPlayers = 4 };
 
             PhotonNetwork.JoinRandomOrCreateRoom(roomName: _roomName, roomOptions: options);
+            LobbyManager.Inst.ActiveLoading();
         }
 
         public void LeaveCampagin()
         {
             PhotonNetwork.LeaveLobby();
+            LobbyManager.Inst.ActiveLoading();
         }
     }
 }

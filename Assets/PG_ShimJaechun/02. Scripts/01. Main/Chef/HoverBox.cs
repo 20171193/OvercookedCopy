@@ -10,6 +10,7 @@ public class HoverBox : MonoBehaviour
 
     public void OnClickHoverBox()
     {
+        Manager.Sound.PlaySFX(SoundManager.SFXType.PopUp);
         changeButton.SetActive(!changeButton.activeSelf);
     }
 }

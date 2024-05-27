@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Pan : Item
+public class Pan : Item, IPunObservable
 {
     [Header("Cook State")]
     public bool OnCooker;
@@ -16,6 +16,7 @@ public class Pan : Item
     [Range(0.0f, 15.0f)]
     private float progress;
     private double startTime;
+    private IEnumerator progressUpdate;
 
     [Header("Potints")]
     [SerializeField] GameObject PanPoint;
@@ -28,21 +29,28 @@ public class Pan : Item
 
     public IngredientsObject CookingObject { get; private set; }
 
-    private void Start()
+
+    private void Awake()
     {
-        ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
         rigid = gameObject.GetComponent<Rigidbody>();
         collid = gameObject.GetComponent<BoxCollider>();
-        meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
         rigid.isKinematic = true;
         collid.enabled = false;
     }
 
+    private void Start()
+    {
+        ingredientPrefabs = Manager_TEMP.recipemanager.ingredientList;
+        meshRenderer = transform.GetChild(0).GetChild(0).GetComponent<MeshRenderer>();
+        SetOriginMT();
+    }
+
     public bool IngredientIN(IngredientsObject ingredient)
     {
-        if(!Cooking && ingredient.ingredientsData.Paned != null && CookingObject == null)
+        if (!Cooking && ingredient.ingredientsData.Paned != null && ingredient.IngState != IngredientState.Paned && CookingObject == null)
         {
-            OnPan(ingredient);
+            // OnPan(ingredient);
+            photonView.RPC("OnPan", RpcTarget.All, ingredient.photonView.ViewID);
             return true;
         }
         return false;
@@ -51,7 +59,8 @@ public class Pan : Item
     public void TakeOut()
     {
         progress = 0f;
-        Destroy(CookingObject);
+        // Destroy(CookingObject);
+        CookingObject.gameObject.GetPhotonView().RPC("DestroyItem", RpcTarget.MasterClient);
         CookingObject = null;
     }
 
@@ -69,30 +78,84 @@ public class Pan : Item
         return false;
     }
 
+    public void stateChanged()
+    {
+        if(OnCooker && CookingObject != null && CookingObject.IngState != IngredientState.Paned)
+        {
+            CookingObject.PanHeated();
+            Cooking = false;
+            progress = 10f;
+        }
+    }
 
-    private void OnPan(IngredientsObject ingredient)
+    [PunRPC]
+    private void OnPan(int ingredient)
     {
         Cooking = true;
-        ingredient.GoTo(PanPoint);
-        CookingObject = ingredient;
-        CookingObject.transform.position = PanPoint.transform.position;
-        CookingObject.transform.SetParent(PanPoint.transform, true);
+        CookingObject = PhotonView.Find(ingredient).gameObject.GetComponent<IngredientsObject>();
+        CookingObject.GoTo(PanPoint);
+        // CookingObject.transform.position = PanPoint.transform.position;
+        // CookingObject.transform.SetParent(PanPoint.transform, true);
+
         // 임시
-        CookingObject.PanHeated();
-        Cooking = false;
-        progress = 10f;
+        stateChanged();
     }
 
-    /*
-    public void GoTo(GameObject GoPotint)
+    public void ProgressChange()
     {
-        gameObject.transform.SetParent(GoPotint.transform, true);
+        if (CookingObject == null && progressUpdate == null)
+        {
+            return;
+        }
+        else if (CookingObject == null && progressUpdate != null)
+        {
+            StopCoroutine(progressUpdate);
+            progressUpdate = null;
+            return;
+        }
+        else if (progress < 15f && progressUpdate == null && OnCooker == true)
+        {
+            progressUpdate = WaitForSeconds();
+            StartCoroutine(progressUpdate);
+            return;
+        }
+        else if (progressUpdate != null && OnCooker == false)
+        {
+            StopCoroutine(progressUpdate);
+            progressUpdate = null;
+            return;
+        }
+        else if (progress >= 15f && OnCooker == true)
+        {
+            StopCoroutine(progressUpdate);
+            progressUpdate = null;
+            return;
+        }
     }
-    public void Drop()
+
+    IEnumerator WaitForSeconds()
     {
-        gameObject.transform.SetParent(null);
+        while (progress < 15f)
+        {
+            progress += 0.2f;
+            if (CookingObject.IngState != IngredientState.Paned && isWellDone())
+                CookingObject.PanHeated();
+            yield return new WaitForSeconds(0.2f);
+        }
     }
-    */
+
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(progress);
+        }
+        else
+        {
+            progress = (float)stream.ReceiveNext();
+        }
+    }
 
 
     #region Debug
@@ -109,11 +172,22 @@ public class Pan : Item
         CookingObject.PanHeated();
     }
 
-    [ContextMenu("[Debug]TIme")]
-    public void DebugTime()
+    [ContextMenu("[Debug]Cooking")]
+    public void CookingONOFF()
     {
-        startTime = PhotonNetwork.Time;
-        Debug.Log(startTime);
+        OnCooker = !OnCooker;
+    }
+
+    [ContextMenu("[Debug]CheckState")]
+    public void CheckState()
+    {
+        ProgressChange();
+    }
+
+    [ContextMenu("[Debug]TakeOut")]
+    public void DebugTakeOut()
+    {
+        TakeOut();
     }
 #endif
     #endregion

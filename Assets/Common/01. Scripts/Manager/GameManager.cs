@@ -6,19 +6,23 @@ using Photon.Pun.UtilityScripts;
 using Photon.Realtime;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
 using Jc;
+using UnityEngine.Events;
 
 namespace Jc
 {
     public class GameManager : MonoBehaviourPunCallbacks
     {
         public Transform[] spawnposs;
-
+        public string[] chefNames;
         [SerializeField]
         private ClientState curState = ClientState.JoiningLobby;
+
+        public UnityAction OnAllPlayerReady;
 
         // 인게임 게임매니저
         private void Start()
         {
+            Manager.Scene.FadeOut();
             // 일반 모드
             if (PhotonNetwork.InRoom)
             {
@@ -77,9 +81,43 @@ namespace Jc
         private void GameStart()
         {
             // 포톤네트워크가 자체적으로 지원하는 플레이어 넘버링이다. 사용법은 밑을 참조하면 될것같음
-            int spawnIndex = PhotonNetwork.LocalPlayer.GetPlayerNumber();
-            PhotonNetwork.Instantiate("Chef_Robot", spawnposs[spawnIndex].position, spawnposs[spawnIndex].rotation, 0);
+            OnAllPlayerReady?.Invoke();
+            int spawnIndex = PhotonNetwork.LocalPlayer.GetChef();
+            PhotonNetwork.Instantiate(chefNames[spawnIndex], spawnposs[spawnIndex].position, spawnposs[spawnIndex].rotation, 0);
         }
+
+        public override void OnPlayerPropertiesUpdate(Player targetPlayer, PhotonHashtable changedProps)
+        {
+            if (changedProps.ContainsKey(CustomProperty.LOAD))
+            {
+                if (PlayerLoadCount() == PhotonNetwork.PlayerList.Length)
+                {
+                    Debug.Log($"PlayerLoadCount = {PlayerLoadCount()}, Photon = {PhotonNetwork.PlayerList.Length}");
+                    if (PhotonNetwork.IsMasterClient)
+                        PhotonNetwork.CurrentRoom.SetGameStart(true);
+                }
+            }
+        }
+
+        public override void OnRoomPropertiesUpdate(PhotonHashtable changedProps)
+        {
+            if (changedProps.ContainsKey(CustomProperty.GAMESTART))
+            {
+                GameStart();
+            }
+        }
+
+        private int PlayerLoadCount()
+        {
+            int loadCount = 0;
+            foreach (Player player in PhotonNetwork.PlayerList)
+            {
+                if (player.GetLoad())
+                    loadCount++;
+            }
+            return loadCount;
+        }
+
 
         IEnumerator DebugRoutine()
         {

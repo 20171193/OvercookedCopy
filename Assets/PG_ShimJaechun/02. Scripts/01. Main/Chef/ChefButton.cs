@@ -27,7 +27,7 @@ namespace Jc
         }
 
         public void OnClickSelectButton()
-        {
+        {           
             entry.ChangeChef(chefIndex);
         }
 
@@ -38,12 +38,14 @@ namespace Jc
 
         public void OnPointerDown(PointerEventData eventData)
         {
+            Manager.Sound.PlaySFX(SoundManager.SFXType.ChefChange);
             entry.ChangeChef(chefIndex);
         }
 
         public void OnPointerEnter(PointerEventData eventData)
         {
             entry.ChefImage.sprite = info.sprite;
+            Manager.Sound.PlaySFX(SoundManager.SFXType.Click);
             hltObject.SetActive(true);
         }
 
