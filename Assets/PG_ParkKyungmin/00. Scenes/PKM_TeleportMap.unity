@@ -6972,12 +6972,12 @@ PrefabInstance:
     - target: {fileID: 1230494829655208795, guid: 9f5c639f884f2ee4a8626b4860305d91,
         type: 3}
       propertyPath: sceneViewId
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2067741150511304005, guid: 9f5c639f884f2ee4a8626b4860305d91,
         type: 3}
       propertyPath: sceneViewId
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4629499521823600729, guid: 9f5c639f884f2ee4a8626b4860305d91,
         type: 3}
@@ -7038,6 +7038,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5478254366170151076, guid: 9f5c639f884f2ee4a8626b4860305d91,
+        type: 3}
+      propertyPath: gameTime
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5478254366170151076, guid: 9f5c639f884f2ee4a8626b4860305d91,
         type: 3}
