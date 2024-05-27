@@ -14,6 +14,7 @@ namespace Kyungmin
 {
     public class InGameFlow : MonoBehaviourPunCallbacks, IPunObservable
     {
+
         [SerializeField] TimerBar timerBar;
         [SerializeField] ScoreUI scoreUI;
         [SerializeField] ResultUI resultUI;
@@ -23,6 +24,8 @@ namespace Kyungmin
         [SerializeField] Animator readyUIAnim;
         [SerializeField] TMP_Text scoreText;    // Score나타내는 Text
         [SerializeField] TMP_Text tipText;      // Tip나타내는 Text
+
+        [SerializeField] int stageNumber = 0;
 
         [SerializeField] float gameTime;
         [SerializeField] int curScore;          // 현재 점수
@@ -158,6 +161,10 @@ namespace Kyungmin
 
             // 결과창 UI 업데이트
             resultUI.UpdateUI(curScore, curTip, totalScore);
+
+            yield return new WaitForSeconds(5.0f);
+            Manager.PlableData.SaveUserStageScore(stageNumber);
+            Manager.Scene.LoadLevelWithDelay(SceneManager.SceneType.Campagin);
         }
 
         public void OnResultExit(InputValue value)

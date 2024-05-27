@@ -63,6 +63,8 @@ namespace Jc
         public void OnClickQuitButton()
         {
             PhotonNetwork.AutomaticallySyncScene = false;
+            PhotonNetwork.LeaveRoom();
+
             Manager.Scene.LoadLevel(SceneManager.SceneType.Main);
         }
 
