@@ -70,11 +70,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 509b3e16bdf45964f9d3268a36e6c242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originMT: {fileID: 0}
   meshRenderer: {fileID: 8000656498740520317}
   changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 2
+  tableType: 3
   finalScore: 0
   addScore: 5
   plateReturn: {fileID: 0}

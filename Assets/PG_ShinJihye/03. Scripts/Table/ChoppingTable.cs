@@ -24,11 +24,15 @@ public class ChoppingTable : Table
     [SerializeField] float choppingInterval;
 
     // 다진 후 바뀔 프리팹
-    [SerializeField] GameObject slicedItemPrefab;
+    //[SerializeField] GameObject slicedItemPrefab;
 
     // test
     [SerializeField] float currentTimeBarSizeX;
-    
+
+    private void Start()
+    {
+        tableType = TableType.ChoppingTable;
+    }
 
     private void OnEnable()
     {
@@ -77,6 +81,7 @@ public class ChoppingTable : Table
         base.PutDownItem(item);
         knife.SetActive(false);
 
+        ingObject = placedItem as IngredientsObject;
         return true;
     }
 
@@ -89,63 +94,52 @@ public class ChoppingTable : Table
     }
 
 
-    Coroutine chopping;
-
-    // 상호작용 - 다지기
-    public override TableType Interactable()
+    public override bool IsInteractable(Item item = null)
     {
-        ingObject = (IngredientsObject)placedItem;
+        if (item != null)
+            return false;
 
-        // 놓여진 아이템 있고, 아이템의 Type이 Ingredient이고, 아이템의 State가 Original인 경우
-        if (placedItem != null && placedItem.Type == ItemType.Ingredient && ingObject.IngState == 0)
-        {
-            Debug.Log("시작");
+        if (placedItem == null && placedItem.Type != ItemType.Ingredient && ingObject.IngState != 0)
+            return false;
 
-            choppingBar.gameObject.SetActive(true);
-            // 애니메이션 실행
-            chopping = StartCoroutine(ChoppingRoutine(placedItem));
-
-
-
-            Debug.Log("완료");
-        }
-
-        return TableType.ChoppingTable;
+        return true;
     }
+
+    // 다지기 상호작용 실행
+    public void Interactable()
+    {
+        choppingBar.gameObject.SetActive(true);  // UI 바 나타남
+
+        // Player 애니메이션 실행
+
+        chopping = StartCoroutine(ChoppingRoutine(placedItem));  // 코루틴 실행
+    }
+
+
+    Coroutine chopping;
 
     IEnumerator ChoppingRoutine(Item placedItem)
     {
-        currentTimeBarSizeX = currentTimeBar.sizeDelta.x;
-        float subtractTime = choppingTime / choppingCount;
-        float subtractSize = currentTimeBarSizeX / choppingCount;
-
-        Debug.Log("코루틴 실행");
+        currentTimeBarSizeX = currentTimeBar.sizeDelta.x;  // 시간 표시 바 가로 길이
+        float subtractTime = choppingTime / choppingCount;  // 1번 다질 때 줄어드는 시간
+        float subtractSize = currentTimeBarSizeX / choppingCount;  // 1번 다질 때 줄어드는 UI 바
 
         yield return new WaitForSeconds(choppingInterval);
 
+        // 다지는 동안 시간, UI 바 줄어듦
         while (choppingTime > 0.1f && currentTimeBarSizeX > 0)
         {
             choppingTime -= subtractTime;
             currentTimeBarSizeX -= subtractSize;
             currentTimeBar.sizeDelta = new Vector2(currentTimeBarSizeX, currentTimeBar.sizeDelta.y);
             yield return new WaitForSeconds(choppingInterval);
-            Debug.Log("while");
         }
 
-        // 애니메이션 중지
-        choppingBar.gameObject.SetActive(false);
+        // Player 애니메이션 중지
 
-        // Original 아이템 삭제
-        PhotonNetwork.Destroy(placedItem.gameObject);
-        Debug.Log("삭제함");
+        choppingBar.gameObject.SetActive(false);  // UI 바 사라짐
 
-        // Sliced 아이템 생성
-        slicedItemPrefab = PhotonNetwork.Instantiate("Lettuce_sliced", generatePoint.transform.position, generatePoint.transform.rotation);
-        slicedItemPrefab.transform.SetParent(generatePoint.transform, true);
-        Item newPlacedItem = slicedItemPrefab.GetComponent<Item>();
-        Debug.Log(newPlacedItem);
-        this.placedItem = newPlacedItem;
-        Debug.Log("생성함");
+        ingObject.Slice();  // 재료 다지면 Sliced 프리팹으로 바뀜
 
         InitChoppingValue();
 

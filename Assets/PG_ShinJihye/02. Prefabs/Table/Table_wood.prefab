@@ -48,11 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d5852153265f048afceb0a11f7434d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originMT: {fileID: 0}
   meshRenderer: {fileID: 6939096868719929653}
   changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
+  tableType: 0
 --- !u!65 &1286835953326471309
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -224,17 +224,18 @@ namespace KIMJAEWON
                     choppingTable.Interactable();
 
                     // Chopping 애니메이션
-                    
+
                     audioController.PlaySFX(PlayerAudioController.SFXType.Chop);
                     break;
                 // 재료상자 테이블
                 case TableType.IngredientBox:
                     IngredientBox igdBox = nearestTable.GetComponent<IngredientBox>();
                     if (igdBox == null) return;
-                    igdBox.Interactable(itemSocket);
+                    igdBox.Interactable(itemSocket.gameObject);
 
-                    // PickUp 애니메이션
                     audioController.PlaySFX(PlayerAudioController.SFXType.PickUp);
+                    anim.SetBool("IsPicked", true);
+                    isPickUp = true;
                     break;
 
                 // 싱크대 테이블
