@@ -74,7 +74,6 @@ namespace Kyungmin
         {
             // OrderTimer실행
             StartCoroutine(OrderTimer());
-
         }
 
 
@@ -147,9 +146,17 @@ namespace Kyungmin
 
         public void GameTimeOut()
         {
-            // n초 뒤에 결과창 UI 키기
+            StartCoroutine(TimeOut());
+        }
+
+        IEnumerator TimeOut()
+        {
+            yield return new WaitForSeconds(2.0f);
+
+            // 결과창 UI 활성화
             resultUI.gameObject.SetActive(true);
-            // 결과창UI에 점수 Update하기 
+
+            // 결과창 UI 업데이트
             resultUI.UpdateUI(curScore, curTip, totalScore);
         }
 
@@ -202,11 +209,10 @@ namespace Kyungmin
 
             curTime = 0;
             isGameRunning = false;
+            timerBar.UpdateUI(0);
             Debug.Log("시간 종료");
-            Time.timeScale = 0;     // 일시 정지
             timerBar.DisableAlarm();
             GameTimeOut();
-
         }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

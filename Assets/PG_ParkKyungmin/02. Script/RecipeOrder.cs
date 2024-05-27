@@ -2,7 +2,6 @@ using JH;
 using Kyungmin;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using Photon.Pun;
@@ -84,6 +83,7 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
             num++;
         }
         OrderUI.GetComponent<Recipe_IGD>().recipe = randomRecipe;
+        OrderUI.GetComponent<Recipe_IGD>().recipeOrder = this;
         OrderList.Add(OrderUI);
 
         // 완성음식 icon 추가

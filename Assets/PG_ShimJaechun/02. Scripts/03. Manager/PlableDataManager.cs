@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Jc;
+using JetBrains.Annotations;
 
 public class PlableDataManager : Singleton<PlableDataManager>
 {
@@ -17,8 +18,8 @@ public class PlableDataManager : Singleton<PlableDataManager>
     }
 
     // 파이어 베이스 연동 시 적용
-    public void SaveUserStageScore()
+    public void SaveUserStageScore(int stage)
     {
-
+        userStageScore[stage] = true;
     }
 }

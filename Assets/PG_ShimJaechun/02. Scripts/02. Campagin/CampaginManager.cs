@@ -19,12 +19,20 @@ namespace Jc
         [SerializeField]
         private GameObject masterBus;
 
+        [SerializeField]
+        private GameObject pauseGroup;
+
+        [SerializeField]
+        private int spawnIndex = 0;
+
+        [SerializeField]
+        private Transform[] spawnPoses;
+
         public UnityAction OnCampaiginSetted;
 
         private void Start()
         {
             Manager.Sound.PlayBGM(SoundManager.BGMType.Campagin);
-
             Manager.Scene.FadeOut();
 
             // 일반 모드 
@@ -32,6 +40,7 @@ namespace Jc
             {
                 Debug.Log("일반 모드입니다.");
                 PhotonNetwork.LocalPlayer.SetLoad(true);
+                LoadMasterData();
             }
             // 디버깅 모드
             else
@@ -41,15 +50,36 @@ namespace Jc
                 PhotonNetwork.ConnectUsingSettings();
             }
         }
-        private void Update()
+
+        private void OnPause(InputValue value)
         {
-            ClientState cState = PhotonNetwork.NetworkClientState;
-            if (curState != cState)
+            pauseGroup.SetActive(!pauseGroup.activeSelf);
+        }
+
+        public void OnClickContinueButton()
+        {
+            pauseGroup.SetActive(false);
+        }
+        public void OnClickQuitButton()
+        {
+            PhotonNetwork.AutomaticallySyncScene = false;
+            Manager.Scene.LoadLevel(SceneManager.SceneType.Main);
+        }
+
+        private void LoadMasterData()
+        {
+            bool[] getStageInfo = Manager.PlableData.LoadUserStageScore();
+            for(int i =0; i<getStageInfo.Length; i++)
             {
-                Debug.Log(cState);
-                curState = cState;
+                if(getStageInfo[i] == false)
+                {
+                    spawnIndex = i;
+                    masterBus.transform.position = spawnPoses[i].transform.position;
+                    return;
+                }
             }
         }
+
         // 디버그모드 : 바로 마스터서버로 입장
         public override void OnConnectedToMaster()
         {
@@ -79,6 +109,7 @@ namespace Jc
 
         public override void OnMasterClientSwitched(Player newMasterClient)
         {
+            masterBus.GetComponent<PlayerInput>().enabled = true;
         }
 
         public override void OnPlayerPropertiesUpdate(Player targetPlayer, PhotonHashtable changedProps)
@@ -104,9 +135,9 @@ namespace Jc
         private void GameStart()
         {
             if (PhotonNetwork.IsMasterClient)
-                masterBus.GetComponent<PlayerInput>().enabled = true;
+                StartCoroutine(Extension.ActionDelay(5.0f, () => masterBus.GetComponent<PlayerInput>().enabled = true));
             else
-                Destroy(masterBus.GetComponent<PlayerInput>());
+                masterBus.GetComponent<PlayerInput>().enabled = false;
 
             OnCampaiginSetted?.Invoke();
         }

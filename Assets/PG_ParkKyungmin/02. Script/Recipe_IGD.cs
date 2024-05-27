@@ -1,11 +1,12 @@
 using JH;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Recipe_IGD : MonoBehaviour
+public class Recipe_IGD : MonoBehaviourPun
 {
     [Header("Recipe")]
     public RecipeData recipe;
@@ -47,7 +48,15 @@ public class Recipe_IGD : MonoBehaviour
 
         Debug.Log("레시피 종료");
         yield return null;
+        
     }
+
+    [PunRPC]
+    public void DestroyIGD()
+    {
+        PhotonNetwork.Destroy(this.gameObject);
+    }
+
 }
 
 
