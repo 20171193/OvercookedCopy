@@ -412,12 +412,12 @@ namespace KIMJAEWON
 
         public void OnTeleportIn()
         {
-            anim.SetBool("IsTeleport", true); 
+            anim.SetTrigger("OnTeleportIn");
             GetComponent<PlayerInput>().enabled = false;
         }
         public void OnTeleportOut()
         {
-            anim.SetBool("IsTeleport", false);
+            anim.SetTrigger("OnTeleportOut");
             StartCoroutine(Extension.ActionDelay(0.2f, () => GetComponent<PlayerInput>().enabled = true));
         }
     }
