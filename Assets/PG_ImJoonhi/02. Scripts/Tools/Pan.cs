@@ -105,19 +105,19 @@ public class Pan : Item, IPunObservable
             progressUpdate = null;
             return;
         }
-        else if (progress < 15f && progressUpdate == null && Cooking == true)
+        else if (progress < 15f && progressUpdate == null && OnCooker == true)
         {
             progressUpdate = WaitForSeconds();
             StartCoroutine(progressUpdate);
             return;
         }
-        else if (progressUpdate != null && Cooking == false)
+        else if (progressUpdate != null && OnCooker == false)
         {
             StopCoroutine(progressUpdate);
             progressUpdate = null;
             return;
         }
-        else if (progress >= 15f && Cooking == true)
+        else if (progress >= 15f && OnCooker == true)
         {
             StopCoroutine(progressUpdate);
             progressUpdate = null;
@@ -127,9 +127,13 @@ public class Pan : Item, IPunObservable
 
     IEnumerator WaitForSeconds()
     {
-        yield return new WaitForSeconds(0.2f);
-        if (progress < 0.15f)
+        while (progress < 15f)
+        {
             progress += 0.2f;
+            if (CookingObject.IngState != IngredientState.Paned && isWellDone())
+                CookingObject.PanHeated();
+            yield return new WaitForSeconds(0.2f);
+        }
     }
 
 
@@ -160,23 +164,22 @@ public class Pan : Item, IPunObservable
         CookingObject.PanHeated();
     }
 
-    [ContextMenu("[Debug]Time")]
-    public void DebugTime()
-    {
-        startTime = PhotonNetwork.Time;
-        Debug.Log(startTime);
-    }
-
     [ContextMenu("[Debug]Cooking")]
     public void CookingONOFF()
     {
-        Cooking = !Cooking;
+        OnCooker = !OnCooker;
     }
 
     [ContextMenu("[Debug]CheckState")]
     public void CheckState()
     {
         ProgressChange();
+    }
+
+    [ContextMenu("[Debug]TakeOut")]
+    public void DebugTakeOut()
+    {
+        TakeOut();
     }
 #endif
     #endregion
