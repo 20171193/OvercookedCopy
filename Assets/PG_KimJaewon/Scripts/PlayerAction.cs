@@ -209,17 +209,19 @@ namespace KIMJAEWON
             TableType type = nearestTable.TableType;
 
             // 상호작용이 불가능한 경우
-            if (type == TableType.None) return;
-
-
+            if (type == TableType.None) 
+                return;
+            if (!nearestTable.IsInteractable(pickedItem))
+                return;
 
             // 각 테이블 별 상호작용
             switch (type)
             {
                 case TableType.ChoppingTable:
+                    ChoppingTable table = nearestTable.GetComponent<ChoppingTable>();
+                    table.Interactable();
                     // 일정시간 머무르기
                     audioController.PlaySFX(PlayerAudioController.SFXType.Chop);
-
                     break;
                 case TableType.IngredientBox:
                     // 아이템 반환받기
