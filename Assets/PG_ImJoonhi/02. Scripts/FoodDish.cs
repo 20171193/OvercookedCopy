@@ -97,6 +97,11 @@ namespace JH
             return false;
         }
 
+        public List<IngredientsObject> ingList()
+        {
+            return ingredientList.ToList();
+        }
+
         /// <summary>재료를 음식에 추가하는 함수</summary>
         /// <param name="ingredient">ingredient는 IngredientsObject속성을 가리키며, 추가할 재료에 대한 인수입니다.</param>
         public bool Add(IngredientsObject ingredient)
@@ -118,7 +123,7 @@ namespace JH
             {
                 Debug.Log(i);
                 Debug.Log(recipeList.Recipe[i].name);
-                if (recipeList.IsRecipe(buf, i) && recipeList.PlateState(Plate,i))
+                if (recipeList.IsRecipe(buf, i) && recipeList.PlateState(Plate, i))
                 {
                     // 레시피 발견시 현제 음식모델 삭제후 새 래시피 음식모델을 재생성
                     Debug.Log($"found recipe : {recipeList.Recipe[i].name}");

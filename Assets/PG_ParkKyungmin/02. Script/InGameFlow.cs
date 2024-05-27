@@ -14,6 +14,7 @@ namespace Kyungmin
 {
     public class InGameFlow : MonoBehaviourPunCallbacks, IPunObservable
     {
+
         [SerializeField] TimerBar timerBar;
         [SerializeField] ScoreUI scoreUI;
         [SerializeField] ResultUI resultUI;

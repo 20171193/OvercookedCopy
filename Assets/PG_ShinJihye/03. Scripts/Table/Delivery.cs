@@ -1,3 +1,5 @@
+using JH;
+using Kyungmin;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,10 +52,8 @@ public class Delivery : Table
     // 제출 코루틴 : 1초 뒤에 사라지면서 점수 더해줌
     IEnumerator MenuDeliveryRoutine(Item item)
     {
-        finalScore += addScore;
-
         yield return new WaitForSeconds(1.0f);
-
+        RecipeOrder.Inst.SubmitItem((FoodDish)item);
         Destroy(item.gameObject);
 
         // 제출한 접시 사라지면 새 접시 리스폰 코루틴 시작됨
