@@ -8,6 +8,7 @@ using UnityEngine.InputSystem;
 using Photon.Pun;
 using Jc;
 using Photon.Realtime;
+using UnityEngine.Rendering.Universal;
 
 namespace Kyungmin
 {
@@ -16,6 +17,8 @@ namespace Kyungmin
         [SerializeField] TimerBar timerBar;
         [SerializeField] ScoreUI scoreUI;
         [SerializeField] ResultUI resultUI;
+        [SerializeField] RecipeOrder recipeOrder;
+        [SerializeField] GameManager gameManager;
 
         [SerializeField] TMP_Text scoreText;    // Score나타내는 Text
         [SerializeField] TMP_Text tipText;      // Tip나타내는 Text
@@ -24,27 +27,30 @@ namespace Kyungmin
         [SerializeField] int curScore;          // 현재 점수
         [SerializeField] int curTip;            // 현재 팁
         [SerializeField] int multipleTip;       // 곱해지는 팁
-        public int MultipleTip       // Get Set Property
+
+
+        public int MultipleTip       // multipleTip 필드를 위한 Get Set Property
         {
-            get 
-            { 
-                return multipleTip; 
+            get
+            {
+                return multipleTip;  // 현재 multipleTip 값을 반환
             }
             set
             {
-                multipleTip = value;
-                if(multipleTip == 4)
+                multipleTip = value;  // multipleTip 값을 설정
+                if (multipleTip == 4)  // 새로운 multipleTip 값이 4인 경우
                 {
-                    // 불 애니메이션 재생
+                    // 불 애니메이션을 활성화
                     scoreUI.EnableFire();
                 }
-                else
+                else  // 새로운 multipleTip 값이 4가 아닌 경우
                 {
-                    // 불 애니메이션 끔
+                    // 불 애니메이션을 비활성화
                     scoreUI.DisableFire();
                 }
             }
         }
+
         [SerializeField] int totalScore;        // 총 점수
         const int MaxMultipleTip = 4;
         const int Tip = 5;
@@ -54,10 +60,21 @@ namespace Kyungmin
 
         private void Start()
         {
+            timerBar.UpdateUI((int)gameTime);
+
+            // 모든 Player의 Ready 상태가 확인 되었을때 시작
+            gameManager.OnAllPlayerReady += GameStart;
+            // 게이지바의 Maxvalue를 게임시간으로 설정
             timerBar.gauge.maxValue = gameTime;
             curTime = gameTime;
+        }
+
+        private void GameStart()
+        {
+            // OrderTimer실행
             StartCoroutine(OrderTimer());
         }
+
 
         private void Update()
         {
@@ -96,7 +113,7 @@ namespace Kyungmin
             photonView.RPC("RequestScoreUpdate", RpcTarget.MasterClient, totalScore, MultipleTip);
         }
 
-        [PunRPC]
+        [PunRPC]    //점수 업데이트 요청
         public void RequestScoreUpdate(int totalScore, int multipleTip, PhotonMessageInfo info)
         {
             if (PhotonNetwork.IsMasterClient)
@@ -109,7 +126,7 @@ namespace Kyungmin
             }
         }
 
-        [PunRPC]
+        [PunRPC]    // 모든 클라이언트의 점수 업데이트
         public void UpdateScore(int totalScore, int multipleTip)
         {
             this.totalScore = totalScore;
@@ -120,7 +137,7 @@ namespace Kyungmin
             scoreUI.UpdateUI(totalScore, multipleTip);
         }
 
-        [PunRPC]
+        [PunRPC]     // 타이머 업데이트
         public void UpdateTimer(float updatedTime)
         {
             curTime = updatedTime;
@@ -140,12 +157,18 @@ namespace Kyungmin
             resultUI.gameObject.SetActive(false);
         }
 
-        IEnumerator OrderTimer()
+        IEnumerator OrderTimer()            // 게임 타이머 코루틴
         {
             int prevTime = Mathf.FloorToInt(curTime);
+            timerBar.UpdateUI(prevTime);
             yield return null;
 
+            // 3초 뒤 실행
+            yield return new WaitForSeconds(3.0f);
+            // RecipeOrder의 RecipeSpawn 코루틴 실행
+            recipeOrder.RecipeSpawnRoutine();
 
+            // 현재 시간이 0보다 크거나 게임이 진행중인 경우
             while (curTime > 0 && isGameRunning)
             {
                 curTime -= Time.deltaTime;
