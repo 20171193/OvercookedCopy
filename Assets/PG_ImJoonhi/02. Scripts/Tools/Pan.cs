@@ -78,6 +78,16 @@ public class Pan : Item, IPunObservable
         return false;
     }
 
+    public void stateChanged()
+    {
+        if(OnCooker && CookingObject != null && CookingObject.IngState != IngredientState.Paned)
+        {
+            CookingObject.PanHeated();
+            Cooking = false;
+            progress = 10f;
+        }
+    }
+
     [PunRPC]
     private void OnPan(int ingredient)
     {
@@ -88,9 +98,7 @@ public class Pan : Item, IPunObservable
         // CookingObject.transform.SetParent(PanPoint.transform, true);
 
         // 임시
-        CookingObject.PanHeated();
-        Cooking = false;
-        progress = 10f;
+        stateChanged();
     }
 
     public void ProgressChange()
