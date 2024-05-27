@@ -20,6 +20,7 @@ namespace Kyungmin
         [SerializeField] RecipeOrder recipeOrder;
         [SerializeField] GameManager gameManager;
 
+        [SerializeField] Animator readyUIAnim;
         [SerializeField] TMP_Text scoreText;    // Score나타내는 Text
         [SerializeField] TMP_Text tipText;      // Tip나타내는 Text
 
@@ -73,6 +74,7 @@ namespace Kyungmin
         {
             // OrderTimer실행
             StartCoroutine(OrderTimer());
+
         }
 
 
@@ -161,6 +163,7 @@ namespace Kyungmin
         {
             int prevTime = Mathf.FloorToInt(curTime);
             timerBar.UpdateUI(prevTime);
+            readyUIAnim.Play("Ready");
             yield return null;
 
             // 3초 뒤 실행
