@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2409120515919126224}
+  - component: {fileID: 6954331630690768027}
   m_Layer: 6
   m_Name: GeneratePoint
   m_TagString: Untagged
@@ -31,6 +32,28 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2533486167714101649}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6954331630690768027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1658480061877200320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 88
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &3732329651427563569
 GameObject:
   m_ObjectHideFlags: 0
@@ -42,6 +65,7 @@ GameObject:
   - component: {fileID: 2533486167714101649}
   - component: {fileID: 4668041112059478012}
   - component: {fileID: 2869052335609530238}
+  - component: {fileID: 6894170111331756627}
   m_Layer: 6
   m_Name: Bin
   m_TagString: Untagged
@@ -99,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6380cbb03547c114aa0b167816b56910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originMT: {fileID: 0}
   meshRenderer: {fileID: 5296264661215599015}
   changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
   placedItem: {fileID: 0}
@@ -106,6 +131,28 @@ MonoBehaviour:
   childIndex: 1
   speed: 0
   destroyScale: 0
+--- !u!114 &6894170111331756627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3732329651427563569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 89
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &4666707872580501302
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2d5852153265f048afceb0a11f7434d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originMT: {fileID: 0}
   meshRenderer: {fileID: 6939096868719929653}
   changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
   placedItem: {fileID: 0}
@@ -93,7 +94,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 0
+  sceneViewId: 65
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &3473649749256808827
@@ -147,7 +148,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 0
+  sceneViewId: 22
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1001 &6055772285045541946
