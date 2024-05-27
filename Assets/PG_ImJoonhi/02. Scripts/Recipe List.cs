@@ -62,6 +62,34 @@ namespace JH
                     return false;
             return true;
         }
+
+        public bool IsFinishedRecipe(List<IngredientsObject> ingredient, int index)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                Debug.Log(i);
+                // 들고있는 재료갯수가 적을때
+                if (ingredient[i] == null)
+                    if (finishedRecipe[index].ingredients[i] != null)
+                        return false;
+                //들고있는 재료갯수가 많을때
+                if (ingredient[i] != null)
+                    if (finishedRecipe[index].ingredients[i] == null)
+                        return false;
+                // 들고있는 재료갯수가 같을때 서로 null값일경우 스킵
+                if (ingredient[i] == null && finishedRecipe[index].ingredients[i] == null)
+                    continue;
+                // 들고있는 재료와 상태가 같은지 확인
+                if (finishedRecipe[index].ingredients[i] != null)
+                {
+                    if (ingredient[i].ingredientsData.id != finishedRecipe[index].ingredients[i].id)
+                        return false;
+                    if (ingredient[i].IngState != finishedRecipe[index].ingredientsState[i])
+                        return false;
+                }
+            }
+            return true;
+        }
     }
 
 }
