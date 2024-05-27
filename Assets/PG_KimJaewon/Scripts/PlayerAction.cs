@@ -217,22 +217,33 @@ namespace KIMJAEWON
             // 각 테이블 별 상호작용
             switch (type)
             {
+                // 도마 테이블
                 case TableType.ChoppingTable:
-                    ChoppingTable table = nearestTable.GetComponent<ChoppingTable>();
-                    table.Interactable();
-                    // 일정시간 머무르기
+                    ChoppingTable choppingTable = nearestTable.GetComponent<ChoppingTable>();
+                    if (choppingTable == null) return;
+                    choppingTable.Interactable();
+
+                    // Chopping 애니메이션
+                    
                     audioController.PlaySFX(PlayerAudioController.SFXType.Chop);
                     break;
+                // 재료상자 테이블
                 case TableType.IngredientBox:
-                    // 아이템 반환받기
+                    IngredientBox igdBox = nearestTable.GetComponent<IngredientBox>();
+                    if (igdBox == null) return;
+                    igdBox.Interactable(itemSocket);
+           
+                    // PickUp 애니메이션
                     audioController.PlaySFX(PlayerAudioController.SFXType.PickUp);
-
                     break;
+
+                // 싱크대 테이블
                 case TableType.Sink:
                     // 일정시간 머무르기
                     audioController.PlaySFX(PlayerAudioController.SFXType.Wash);
 
                     break;
+                    
             }
         }
 
