@@ -29,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.65, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 8607896675158608195}
   m_Father: {fileID: 6337344911647536752}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9044789914275564574
@@ -51,7 +52,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 0
+  sceneViewId: 98
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &3308223707908237628
@@ -123,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fb7466936b2cab498e3190bc08a4a70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  originMT: {fileID: 0}
   meshRenderer: {fileID: 6615036110920731450}
   changeMT: {fileID: 2100000, guid: 66b01d3ecdea3964d863d58cddc6b829, type: 2}
   placedItem: {fileID: 0}
@@ -147,9 +149,93 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 0
+  sceneViewId: 95
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!1001 &2753666678146770305
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6815115347833506726}
+    m_Modifications:
+    - target: {fileID: 5855692348173642946, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855692348173642946, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855692348173642946, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855692348173642946, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855692348173642946, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855692348173642946, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855692348173642946, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855692348173642946, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855692348173642946, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5855692348173642946, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5992103815482220709, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: m_Name
+      value: FryingPan
+      objectReference: {fileID: 0}
+    - target: {fileID: 6011214321024470657, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 81
+      objectReference: {fileID: 0}
+    - target: {fileID: 6652764699640229439, guid: 11504af95cf86744eaeb3667971bcf7d,
+        type: 3}
+      propertyPath: sceneViewId
+      value: 80
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 11504af95cf86744eaeb3667971bcf7d, type: 3}
+--- !u!4 &8607896675158608195 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5855692348173642946, guid: 11504af95cf86744eaeb3667971bcf7d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2753666678146770305}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7107103614902060781
 PrefabInstance:
   m_ObjectHideFlags: 0

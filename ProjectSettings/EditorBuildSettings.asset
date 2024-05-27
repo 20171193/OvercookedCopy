@@ -11,8 +11,8 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/PG_ShimJaechun/01. Scenes/SJC_Campagin.unity
     guid: 8fe78bb661e49414fb0ebb35cb0a0b96
-  - enabled: 0
-    path: Assets/PG_ShinJihye/00. Scenes/SJH_AirballoonScene.unity
+  - enabled: 1
+    path: Assets/PG_ShinJihye/01. Scenes/SJH_AirballoonScene.unity
     guid: 9b73991a521dea84a85606118be8457d
   - enabled: 0
     path: Assets/PG_KimJaewon/00. Scenes/KJW EDIT _SJH_AirballoonScene.unity
