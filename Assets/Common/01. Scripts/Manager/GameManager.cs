@@ -27,7 +27,7 @@ namespace Jc
             if (PhotonNetwork.InRoom)
             {
                 Debug.Log("일반 모드입니다.");
-                PhotonNetwork.LocalPlayer.SetLoad(true);
+                PhotonNetwork.LocalPlayer.SetGameLoad(true);
             }
             // 디버깅 모드
             else
@@ -81,14 +81,16 @@ namespace Jc
         private void GameStart()
         {
             // 포톤네트워크가 자체적으로 지원하는 플레이어 넘버링이다. 사용법은 밑을 참조하면 될것같음
-            OnAllPlayerReady?.Invoke();
+
             int spawnIndex = PhotonNetwork.LocalPlayer.GetChef();
             PhotonNetwork.Instantiate(chefNames[spawnIndex], spawnposs[spawnIndex].position, spawnposs[spawnIndex].rotation, 0);
+
+            OnAllPlayerReady?.Invoke();
         }
 
         public override void OnPlayerPropertiesUpdate(Player targetPlayer, PhotonHashtable changedProps)
         {
-            if (changedProps.ContainsKey(CustomProperty.LOAD))
+            if (changedProps.ContainsKey(CustomProperty.GAMELOAD))
             {
                 if (PlayerLoadCount() == PhotonNetwork.PlayerList.Length)
                 {
@@ -112,7 +114,7 @@ namespace Jc
             int loadCount = 0;
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                if (player.GetLoad())
+                if (player.GetGameLoad())
                     loadCount++;
             }
             return loadCount;
