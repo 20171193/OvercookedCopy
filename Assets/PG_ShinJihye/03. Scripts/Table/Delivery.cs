@@ -14,6 +14,10 @@ public class Delivery : Table
     // 새 접시 리스폰되는 곳
     [SerializeField] PlateReturn plateReturn;
 
+    private void Start()
+    {
+        tableType = TableType.Delivery;
+    }
 
     private void OnEnable()
     {

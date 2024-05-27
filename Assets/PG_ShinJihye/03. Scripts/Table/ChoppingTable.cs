@@ -28,7 +28,11 @@ public class ChoppingTable : Table
 
     // test
     [SerializeField] float currentTimeBarSizeX;
-    
+
+    private void Start()
+    {
+        tableType = TableType.ChoppingTable;
+    }
 
     private void OnEnable()
     {
@@ -77,6 +81,7 @@ public class ChoppingTable : Table
         base.PutDownItem(item);
         knife.SetActive(false);
 
+        ingObject = placedItem as IngredientsObject;
         return true;
     }
 
@@ -100,18 +105,14 @@ public class ChoppingTable : Table
         return true;
     }
 
+    // 다지기 상호작용 실행
     public void Interactable()
     {
-        // 다지기 상호작용 실행
-        Debug.Log("시작");
-
         choppingBar.gameObject.SetActive(true);  // UI 바 나타남
 
         // Player 애니메이션 실행
 
         chopping = StartCoroutine(ChoppingRoutine(placedItem));  // 코루틴 실행
-
-        Debug.Log("완료");
     }
 
 
@@ -123,8 +124,6 @@ public class ChoppingTable : Table
         float subtractTime = choppingTime / choppingCount;  // 1번 다질 때 줄어드는 시간
         float subtractSize = currentTimeBarSizeX / choppingCount;  // 1번 다질 때 줄어드는 UI 바
 
-        Debug.Log("코루틴 실행");
-
         yield return new WaitForSeconds(choppingInterval);
 
         // 다지는 동안 시간, UI 바 줄어듦
@@ -134,29 +133,13 @@ public class ChoppingTable : Table
             currentTimeBarSizeX -= subtractSize;
             currentTimeBar.sizeDelta = new Vector2(currentTimeBarSizeX, currentTimeBar.sizeDelta.y);
             yield return new WaitForSeconds(choppingInterval);
-            Debug.Log("while");
         }
-
-        // -- 다지기 끝
 
         // Player 애니메이션 중지
 
         choppingBar.gameObject.SetActive(false);  // UI 바 사라짐
 
         ingObject.Slice();  // 재료 다지면 Sliced 프리팹으로 바뀜
-
-        // Original 아이템 삭제
-        /*PhotonNetwork.Destroy(placedItem.gameObject);
-        Debug.Log("삭제함");*/
-
-        // Sliced 아이템 생성
-
-        /*slicedItemPrefab = PhotonNetwork.Instantiate("Lettuce_sliced", generatePoint.transform.position, generatePoint.transform.rotation);
-        slicedItemPrefab.transform.SetParent(generatePoint.transform, true);
-        Item newPlacedItem = slicedItemPrefab.GetComponent<Item>();
-        Debug.Log(newPlacedItem);
-        this.placedItem = newPlacedItem;
-        Debug.Log("생성함");*/
 
         InitChoppingValue();
 

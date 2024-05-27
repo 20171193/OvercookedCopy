@@ -4,26 +4,25 @@ using UnityEngine;
 public class IngredientBox : Table
 {
     // IngredientCreate
-    private IngredientCreate ingCreate;
-
-    // 꺼낸 재료 프리팹
-    [SerializeField] GameObject ingObject;
+    public IngredientCreate ingCreate;
 
     private void Start()
     {
         tableType = TableType.IngredientBox;
     }
 
-    public override bool IsInteractable(Item item = null)
+    public override Item PickUpItem()
     {
-        return base.IsInteractable(item);
+        return null;
     }
 
-    public override TableType Interactable()
+    public override bool PutDownItem(Item item)
     {
-        //return base.Interactable();
-        ingCreate.TakeIngredient(generatePoint);
+        return false;
+    }
 
-        return TableType.IngredientBox;
+    public void Interactable(GameObject itemSocket)
+    {
+        ingCreate.TakeIngredient(itemSocket);   
     }
 }

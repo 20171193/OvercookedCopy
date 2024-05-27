@@ -78,13 +78,13 @@ MonoBehaviour:
   placedItem: {fileID: 0}
   generatePoint: {fileID: 0}
   childIndex: 1
+  tableType: 1
   knife: {fileID: 892827265836622170}
   choppingBar: {fileID: 5345133030295217725}
   currentTimeBar: {fileID: 3279507160466536359}
   choppingTime: 8
   choppingCount: 8
   choppingInterval: 0.5
-  slicedItemPrefab: {fileID: 0}
   currentTimeBarSizeX: 0
 --- !u!114 &7728888536854061061
 MonoBehaviour:
@@ -105,7 +105,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 86
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1 &8792068474184946987
@@ -159,7 +159,7 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents: []
-  sceneViewId: 1
+  sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
 --- !u!1001 &193813360206914574
