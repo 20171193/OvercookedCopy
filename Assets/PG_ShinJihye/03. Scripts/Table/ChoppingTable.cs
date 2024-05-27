@@ -4,6 +4,7 @@ using Photon.Pun;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ChoppingTable : Table
 {
@@ -11,6 +12,8 @@ public class ChoppingTable : Table
     private IngredientsObject ingObject;
     // 칼
     [SerializeField] GameObject knife;
+
+    public UnityAction OnSliced;
 
     // 다지기 진행 표시 바
     [SerializeField] BillBoard choppingBar;
@@ -143,6 +146,9 @@ public class ChoppingTable : Table
         choppingBar.gameObject.SetActive(false);  // UI 바 사라짐
 
         ingObject.Slice();  // 재료 다지면 Sliced 프리팹으로 바뀜
+        
+        // 썰기 종료 액션
+        OnSliced?.Invoke();
 
         InitChoppingValue();
 

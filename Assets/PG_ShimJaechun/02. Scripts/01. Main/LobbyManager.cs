@@ -69,6 +69,7 @@ namespace Jc
         public override void OnEnable()
         {
             base.OnEnable();
+               
             Manager.Scene.OnDisconnected += DisconnectSetting;
         }
         public override void OnDisable()

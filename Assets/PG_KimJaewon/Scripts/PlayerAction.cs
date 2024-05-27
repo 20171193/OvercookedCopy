@@ -181,7 +181,6 @@ namespace KIMJAEWON
                 PickUp();
             }
         }
-
         private void OnTableInteract(InputValue value)
         {
             // 아이템을 들고 있는 상태라면
@@ -222,9 +221,11 @@ namespace KIMJAEWON
                     ChoppingTable choppingTable = nearestTable.GetComponent<ChoppingTable>();
                     if (choppingTable == null) return;
                     choppingTable.Interactable();
-
+                    // 액션 추가
+                    choppingTable.OnSliced += OnEndChopping;
+                    onInteract = true;
                     // Chopping 애니메이션
-
+                    anim.SetBool("IsChopping", true);
                     audioController.PlaySFX(PlayerAudioController.SFXType.Chop);
                     break;
                 // 재료상자 테이블
@@ -246,6 +247,13 @@ namespace KIMJAEWON
                     break;
                     
             }
+        }
+
+        private void OnEndChopping()
+        {
+            onInteract = false;
+            anim.SetBool("IsChopping", false);
+            audioController.StopSFX(PlayerAudioController.SFXType.Chop);
         }
 
         private void PickUp()
@@ -373,6 +381,7 @@ namespace KIMJAEWON
                     // 현재 테이블 내에서 상호작용 중일경우
                     if(onInteract)
                     {
+                        OnEndChopping();
                         // 상호작용 종료 이벤트처리
                     }
                 }
