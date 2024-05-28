@@ -128,9 +128,9 @@ namespace JH
                     // 레시피 발견시 현제 음식모델 삭제후 새 래시피 음식모델을 재생성
                     Debug.Log($"found recipe : {recipeList.Recipe[i].name}");
                     ingredientList = buf.ToList();
-                    CurrentObject.SetActive(false);
+                    // CurrentObject.SetActive(false);
                     // Destroy(CurrentObject);
-                    photonView.RPC("DestroyFoodDishModel", RpcTarget.MasterClient);
+                    photonView.RPC("DestroyFoodDishModel", RpcTarget.All);
                     curRecipe = recipeList.Recipe[i];
                     Debug.Log("write");
                     photonView.RPC("ChangeFoodDishList", RpcTarget.Others, i, ingredientTypeNum, ingredientNum);
@@ -186,7 +186,7 @@ namespace JH
         [PunRPC]
         public void DestroyFoodDishModel()
         {
-            PhotonNetwork.Destroy(CurrentObject);
+            Destroy(CurrentObject);
         }
 
         /// <summary>음식에 있는 재들을 음식에 옮기는 함수</summary>

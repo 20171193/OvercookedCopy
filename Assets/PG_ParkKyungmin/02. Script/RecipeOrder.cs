@@ -1,12 +1,10 @@
+using Jc;
 using JH;
 using Kyungmin;
+using Photon.Pun;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
-using Jc;
-using System;
-using System.Linq;
 public class RecipeOrder : MonoBehaviourPunCallbacks
 {
     [Header("Init")]
@@ -64,7 +62,7 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
         }
 
         // 인덱스의 0번째에서 finishedRecip의 마지막 인덱스 [n]번째 사이에서 랜덤
-        int randomIndex = UnityEngine.Random.Range(0, recipeList.finishedRecipe.Count-1);
+        int randomIndex = UnityEngine.Random.Range(0, recipeList.finishedRecipe.Count - 1);
 
         // 레시피 생성 요청
         photonView.RPC("OrderIn", RpcTarget.All, randomIndex);
@@ -161,7 +159,7 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
         }
     }
 
-    private bool comparison(List<IngredientsObject>  ingredient, int index)
+    private bool comparison(List<IngredientsObject> ingredient, int index)
     {
         if (OrderList[index] == null)
             return false;
