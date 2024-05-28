@@ -402,7 +402,7 @@ Transform:
   m_GameObject: {fileID: 936412119210487241}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.51, y: 0, z: 13.4}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -546,6 +546,15 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: IsChopping
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsPicked
+  - Type: 9
+    SynchronizeType: 0
+    Name: OnTeleportIn
+  - Type: 9
+    SynchronizeType: 0
+    Name: OnTeleportOut
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -604,7 +613,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 0
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  m_SynchronizeScale: 1
   m_UseLocal: 1
 --- !u!114 &7376887859976334915
 MonoBehaviour:
@@ -669,6 +678,8 @@ MonoBehaviour:
   - {fileID: 1625390195711868374}
   - {fileID: 274276646047982458}
   - {fileID: 4187239392453545324}
+  - {fileID: 6447515406041191654}
+  - {fileID: 4112992479345771868}
 --- !u!1 &1115136802595120190
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,6 +2394,12 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 7561234035332172612}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &4112992479345771868 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5907225816438361624, guid: 1b194e9e8b110014ea1072defdbc389a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7561234035332172612}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &4148829495434500878 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 5871986080237490250, guid: 1b194e9e8b110014ea1072defdbc389a,
@@ -2398,6 +2415,12 @@ AudioSource:
 --- !u!4 &5223937795013184310 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2346870136632164466, guid: 1b194e9e8b110014ea1072defdbc389a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7561234035332172612}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6447515406041191654 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3572703960535981986, guid: 1b194e9e8b110014ea1072defdbc389a,
     type: 3}
   m_PrefabInstance: {fileID: 7561234035332172612}
   m_PrefabAsset: {fileID: 0}

@@ -2289,6 +2289,15 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: IsChopping
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsPicked
+  - Type: 9
+    SynchronizeType: 0
+    Name: OnTeleportIn
+  - Type: 9
+    SynchronizeType: 0
+    Name: OnTeleportOut
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -2351,7 +2360,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_SynchronizePosition: 0
   m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
+  m_SynchronizeScale: 1
   m_UseLocal: 1
 --- !u!114 &3149101957896723648
 MonoBehaviour:
@@ -2371,6 +2380,8 @@ MonoBehaviour:
   - {fileID: 1268555719014590072}
   - {fileID: 349651680923056340}
   - {fileID: 4397848027878790850}
+  - {fileID: 6804506276347301704}
+  - {fileID: 4467592475546705650}
 --- !u!1 &7880228887689495976
 GameObject:
   m_ObjectHideFlags: 0
@@ -2819,6 +2830,12 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 8068969741994692842}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &4467592475546705650 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5907225816438361624, guid: 1b194e9e8b110014ea1072defdbc389a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8068969741994692842}
+  m_PrefabAsset: {fileID: 0}
 --- !u!82 &4505782158763229344 stripped
 AudioSource:
   m_CorrespondingSourceObject: {fileID: 5871986080237490250, guid: 1b194e9e8b110014ea1072defdbc389a,
@@ -2828,6 +2845,12 @@ AudioSource:
 --- !u!4 &5722804979418714264 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2346870136632164466, guid: 1b194e9e8b110014ea1072defdbc389a,
+    type: 3}
+  m_PrefabInstance: {fileID: 8068969741994692842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &6804506276347301704 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3572703960535981986, guid: 1b194e9e8b110014ea1072defdbc389a,
     type: 3}
   m_PrefabInstance: {fileID: 8068969741994692842}
   m_PrefabAsset: {fileID: 0}

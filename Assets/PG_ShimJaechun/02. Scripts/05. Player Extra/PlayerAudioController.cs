@@ -6,7 +6,7 @@ namespace Jc
 {
     public class PlayerAudioController : MonoBehaviour
     {
-        public enum SFXType { PickUp, PutDown, Dash, Chop, Wash}
+        public enum SFXType { PickUp, PutDown, Dash, Chop, Wash, TeleportIn, TeleportOut}
 
         [Header("집기 / 놓기 / 대쉬 / 썰기 / 씻기")]
         [SerializeField]
