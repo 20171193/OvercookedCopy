@@ -26,7 +26,7 @@ namespace Kyungmin
             // Player를 텔레포트 출구로 바로 이동 하게 되면
             // Player가 무한으로 텔레포트를 타는 문제가 발생하게 되어
             // exitDistance를 두어서 출구가 아닌 출구에서 exitDistance만큼 앞으로 텔레포트 하게 함
-            player.transform.position = outObj.transform.position - outObj.transform.forward * exitDistance;
+            player.transform.position = outObj.transform.position - outObj.transform.forward * exitDistance + Vector3.up;
             player.transform.forward = -outObj.transform.forward;
 
             prAction.OnTeleportOut();

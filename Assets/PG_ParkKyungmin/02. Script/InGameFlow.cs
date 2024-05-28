@@ -104,9 +104,17 @@ namespace Kyungmin
         public void OnClickQuitButton()
         {
             PhotonNetwork.AutomaticallySyncScene = true;
-            Manager.PlableData.SaveUserStageScore(stageNumber);
-            Manager.Scene.LoadLevelWithDelay(SceneManager.SceneType.Campagin);
+
+            photonView.RPC("ExitGameScene", RpcTarget.All);
         }
+
+        [PunRPC]
+        public void ExitGameScene()
+        {
+            Manager.PlableData.SaveUserStageScore(stageNumber);
+            Manager.Scene.LoadScene(SceneManager.SceneType.Campagin);
+        }
+
         // 일시정지 콜백 -- 
 
         public void RecipeResult(int score)
