@@ -53,7 +53,8 @@ public class Delivery : Table
     IEnumerator MenuDeliveryRoutine(Item item)
     {
         yield return new WaitForSeconds(1.0f);
-        RecipeOrder.Inst.SubmitItem((FoodDish)item);
+        if(item.Type != ItemType.Plate)
+            RecipeOrder.Inst.SubmitItem((FoodDish)item);
         Destroy(item.gameObject);
 
         // 제출한 접시 사라지면 새 접시 리스폰 코루틴 시작됨

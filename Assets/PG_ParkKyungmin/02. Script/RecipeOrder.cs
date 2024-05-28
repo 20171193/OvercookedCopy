@@ -7,6 +7,8 @@ using UnityEngine.UI;
 using Photon.Pun;
 using Jc;
 using System;
+using System.Linq;
+using static UnityEditor.Progress;
 public class RecipeOrder : MonoBehaviourPunCallbacks
 {
     [Header("Init")]
@@ -149,38 +151,47 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
     // 아이템 제출
     public void SubmitItem(FoodDish item)
     {
-        //List<IngredientsObject> ingredient = item.ingList();
-        //for (int i = 0; i < OrderList.Count; i++)
-        //{
-        //    if (OrderList[i] == null)
-        //        continue;
+        List<IngredientsObject> ingredient = item.ingList();
 
-        //    for (int j = 0; j < 4; j++)
-        //    {
-        //        Debug.Log(i);
-        //        // 들고있는 재료갯수가 적을때
-        //        if (ingredient[i] == null)
-        //            if (OrderList[i].GetComponent<Recipe_IGD>().recipe.ingredients[j] != null)
-        //                return;
-        //        //들고있는 재료갯수가 많을때
-        //        if (ingredient[i] != null)
-        //            if (OrderList[i].GetComponent<Recipe_IGD>().recipe.ingredients[j] == null)
-        //                return;
-        //        // 들고있는 재료갯수가 같을때 서로 null값일경우 스킵
-        //        if (ingredient[j] == null && OrderList[i].GetComponent<Recipe_IGD>().recipe.ingredients[j] == null)
-        //            continue;
-        //        // 들고있는 재료와 상태가 같은지 확인
-        //        if (OrderList[i].GetComponent<Recipe_IGD>().recipe.ingredients[j] != null)
-        //        {
-        //            if (ingredient[j].ingredientsData.id != OrderList[i].GetComponent<Recipe_IGD>().recipe.ingredients[j].id)
-        //                return;
-        //            if (ingredient[j].IngState != OrderList[i].GetComponent<Recipe_IGD>().recipe.ingredientsState[j])
-        //                return;
-        //        }
-        //    }
-        //}
+        for (int i = 0; i < OrderList.Count; i++)
+        {
+            if (comparison(ingredient, i))
+            {
+                OnOrderOut(OrderList[i].GetComponent<Recipe_IGD>());
+                inGameFlow.RecipeResult(20);
+            }
+        }
+    }
 
-        inGameFlow.RecipeResult(20);
+    private bool comparison(List<IngredientsObject>  ingredient, int index)
+    {
+        if (OrderList[index] == null)
+            return false;
+
+        for (int j = 0; j < 4; j++)
+        {
+            Debug.Log(index);
+            // 들고있는 재료갯수가 적을때
+            if (ingredient[j] == null)
+                if (OrderList[index].GetComponent<Recipe_IGD>().recipe.ingredients[j] != null)
+                    return false;
+            //들고있는 재료갯수가 많을때
+            if (ingredient[j] != null)
+                if (OrderList[index].GetComponent<Recipe_IGD>().recipe.ingredients[j] == null)
+                    return false;
+            // 들고있는 재료갯수가 같을때 서로 null값일경우 스킵
+            if (ingredient[j] == null && OrderList[index].GetComponent<Recipe_IGD>().recipe.ingredients[j] == null)
+                continue;
+            // 들고있는 재료와 상태가 같은지 확인
+            if (OrderList[index].GetComponent<Recipe_IGD>().recipe.ingredients[j] != null)
+            {
+                if (ingredient[j].ingredientsData.id != OrderList[index].GetComponent<Recipe_IGD>().recipe.ingredients[j].id)
+                    return false;
+                if (ingredient[j].IngState != OrderList[index].GetComponent<Recipe_IGD>().recipe.ingredientsState[j])
+                    return false;
+            }
+        }
+        return true;
     }
 
     #region
