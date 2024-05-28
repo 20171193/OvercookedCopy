@@ -7,10 +7,13 @@ using Photon.Pun.UtilityScripts;
 
 namespace Jc
 {
-    public class TileMapController : MonoBehaviourPun, IPunObservable
+    public class TileMapController : MonoBehaviourPun
     { 
         [SerializeField]
         private CampaginManager campaginManager;
+
+        [SerializeField]
+        private GameObject slopeTile;
 
         // 카메라 컨트롤용
         [SerializeField]
@@ -59,13 +62,17 @@ namespace Jc
         private void Update()
         {
             // 디버그 전용
-            if(PhotonNetwork.IsMasterClient && Input.GetKey(KeyCode.O))
+            if(PhotonNetwork.IsMasterClient && Input.GetKey(KeyCode.I))
             {
                 RequestOpenStage(0);
             }
-            if (PhotonNetwork.IsMasterClient && Input.GetKey(KeyCode.P))
+            if (PhotonNetwork.IsMasterClient && Input.GetKey(KeyCode.O))
             {
                 RequestOpenStage(1);
+            }
+            if (PhotonNetwork.IsMasterClient && Input.GetKey(KeyCode.P))
+            {
+                RequestOpenStage(2);
             }
         }
 
@@ -107,7 +114,11 @@ namespace Jc
             for(int i =0; i<3; i++)
             {
                 if (clearStage[i] == true)   // 이미 클리어한 스테이지라면 
+                { 
                     RequestOpenedStage(i);  // 미리 오픈
+                    if(i == 2)
+                        slopeTile.SetActive(true);
+                }
                 else
                 { 
                     // 클리어하지 못한 스테이지라면 오픈 액션
@@ -118,6 +129,8 @@ namespace Jc
 
             // 스테이지 오픈
             RequestOpenStage(openStage);
+            if (openStage == 2)
+                slopeTile.SetActive(true);
         }
 
         [PunRPC]
@@ -238,11 +251,6 @@ namespace Jc
         {
             yield return new WaitForSeconds(cameraActionTime);
             CameraInitSetting();
-        }
-
-        public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-        {
-
         }
     }
 }

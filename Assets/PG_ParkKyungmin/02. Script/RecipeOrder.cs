@@ -2,13 +2,11 @@ using JH;
 using Kyungmin;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 using Photon.Pun;
 using Jc;
 using System;
 using System.Linq;
-using static UnityEditor.Progress;
 public class RecipeOrder : MonoBehaviourPunCallbacks
 {
     [Header("Init")]

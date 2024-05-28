@@ -85,6 +85,7 @@ MonoBehaviour:
   choppingTime: 8
   choppingCount: 8
   choppingInterval: 0.5
+  isChopping: 0
   currentTimeBarSizeX: 0
 --- !u!114 &7728888536854061061
 MonoBehaviour:
@@ -342,6 +343,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2837450956553737093}
     m_Modifications:
+    - target: {fileID: 4175546052985882306, guid: 65b34ceb623af364991f73ea28baeec9,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -9063340042563020761, guid: 46b208e763ae48e47b30823a48c0babe,
+        type: 3}
     - target: {fileID: 4592078179780042365, guid: 65b34ceb623af364991f73ea28baeec9,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -7,6 +7,7 @@ using Photon.Realtime;
 using PhotonHashtable = ExitGames.Client.Photon.Hashtable;
 using Jc;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 namespace Jc
 {
@@ -38,15 +39,6 @@ namespace Jc
             }
         }
 
-        private void Update()
-        {
-            ClientState cState = PhotonNetwork.NetworkClientState;
-            if (curState != cState)
-            {
-                Debug.Log(cState);
-                curState = cState;
-            }
-        }
         public override void OnConnectedToMaster()
         {
             RoomOptions options = new RoomOptions() { IsVisible = false };
@@ -83,7 +75,7 @@ namespace Jc
             // 포톤네트워크가 자체적으로 지원하는 플레이어 넘버링이다. 사용법은 밑을 참조하면 될것같음
 
             int spawnIndex = PhotonNetwork.LocalPlayer.GetChef();
-            PhotonNetwork.Instantiate(chefNames[spawnIndex], spawnposs[spawnIndex].position, spawnposs[spawnIndex].rotation, 0);
+            PhotonNetwork.Instantiate(chefNames[spawnIndex], spawnposs[PhotonNetwork.LocalPlayer.GetPlayerNumber()].position, spawnposs[PhotonNetwork.LocalPlayer.GetPlayerNumber()].rotation, 0);
 
             OnAllPlayerReady?.Invoke();
         }
