@@ -1675,6 +1675,15 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: IsChopping
+  - Type: 4
+    SynchronizeType: 0
+    Name: IsPicked
+  - Type: 9
+    SynchronizeType: 0
+    Name: OnTeleportIn
+  - Type: 9
+    SynchronizeType: 0
+    Name: OnTeleportOut
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
@@ -1773,6 +1782,8 @@ MonoBehaviour:
   - {fileID: 7411344143532058458}
   - {fileID: 8330116516410866166}
   - {fileID: 5352802987039250400}
+  - {fileID: 2967525704244727402}
+  - {fileID: 5278395924184997840}
 --- !u!1 &6668681297191317650
 GameObject:
   m_ObjectHideFlags: 0
@@ -2574,9 +2585,21 @@ AudioSource:
     type: 3}
   m_PrefabInstance: {fileID: 1781753874524787144}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &2967525704244727402 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3572703960535981986, guid: 1b194e9e8b110014ea1072defdbc389a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1781753874524787144}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4047555468889362874 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2346870136632164466, guid: 1b194e9e8b110014ea1072defdbc389a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1781753874524787144}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &5278395924184997840 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5907225816438361624, guid: 1b194e9e8b110014ea1072defdbc389a,
     type: 3}
   m_PrefabInstance: {fileID: 1781753874524787144}
   m_PrefabAsset: {fileID: 0}

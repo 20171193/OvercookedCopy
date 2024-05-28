@@ -2761,6 +2761,12 @@ PrefabInstance:
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 3685939612242772654}
+    - target: {fileID: 7653576496027257883, guid: 5c00cc3e09367dd4e808f3c4c4492e5c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 34fcfde357e263647b64a5337df7d7db,
+        type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -63600,6 +63606,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7653576496027257883, guid: 5c00cc3e09367dd4e808f3c4c4492e5c,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: eaad3a508c54fc14091305104f48bea3,
+        type: 3}
     - target: {fileID: 7871142621642574427, guid: 5c00cc3e09367dd4e808f3c4c4492e5c,
         type: 3}
       propertyPath: m_Layer

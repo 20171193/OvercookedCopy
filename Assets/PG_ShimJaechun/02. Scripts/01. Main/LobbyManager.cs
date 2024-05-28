@@ -205,6 +205,7 @@ namespace Jc
         // 랜덤참가 실패 
         public override void OnJoinRandomFailed(short returnCode, string message)
         {
+            DisActiveLoading(0.5f);
             Debug.Log($"Join random room failed with error : {message}({returnCode})");
         }
 

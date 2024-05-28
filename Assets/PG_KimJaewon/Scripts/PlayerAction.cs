@@ -427,10 +427,12 @@ namespace KIMJAEWON
         {
             anim.SetTrigger("OnTeleportIn");
             GetComponent<PlayerInput>().enabled = false;
+            audioController.PlaySFX(PlayerAudioController.SFXType.TeleportIn);
         }
         public void OnTeleportOut()
         {
             anim.SetTrigger("OnTeleportOut");
+            audioController.PlaySFX(PlayerAudioController.SFXType.TeleportOut);
             StartCoroutine(Extension.ActionDelay(0.2f, () => GetComponent<PlayerInput>().enabled = true));
         }
     }
