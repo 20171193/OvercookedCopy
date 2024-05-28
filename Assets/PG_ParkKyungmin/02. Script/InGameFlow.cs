@@ -14,6 +14,7 @@ namespace Kyungmin
 {
     public class InGameFlow : MonoBehaviourPunCallbacks, IPunObservable
     {
+
         [SerializeField] TimerBar timerBar;
         [SerializeField] ScoreUI scoreUI;
         [SerializeField] ResultUI resultUI;
@@ -23,6 +24,8 @@ namespace Kyungmin
         [SerializeField] Animator readyUIAnim;
         [SerializeField] TMP_Text scoreText;    // Score나타내는 Text
         [SerializeField] TMP_Text tipText;      // Tip나타내는 Text
+
+        [SerializeField] int stageNumber = 0;
 
         [SerializeField] float gameTime;
         [SerializeField] int curScore;          // 현재 점수
@@ -74,7 +77,6 @@ namespace Kyungmin
         {
             // OrderTimer실행
             StartCoroutine(OrderTimer());
-
         }
 
 
@@ -147,10 +149,22 @@ namespace Kyungmin
 
         public void GameTimeOut()
         {
-            // n초 뒤에 결과창 UI 키기
+            StartCoroutine(TimeOut());
+        }
+
+        IEnumerator TimeOut()
+        {
+            yield return new WaitForSeconds(2.0f);
+
+            // 결과창 UI 활성화
             resultUI.gameObject.SetActive(true);
-            // 결과창UI에 점수 Update하기 
+
+            // 결과창 UI 업데이트
             resultUI.UpdateUI(curScore, curTip, totalScore);
+
+            yield return new WaitForSeconds(5.0f);
+            Manager.PlableData.SaveUserStageScore(stageNumber);
+            Manager.Scene.LoadLevelWithDelay(SceneManager.SceneType.Campagin);
         }
 
         public void OnResultExit(InputValue value)
@@ -202,11 +216,10 @@ namespace Kyungmin
 
             curTime = 0;
             isGameRunning = false;
+            timerBar.UpdateUI(0);
             Debug.Log("시간 종료");
-            Time.timeScale = 0;     // 일시 정지
             timerBar.DisableAlarm();
             GameTimeOut();
-
         }
 
         public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)

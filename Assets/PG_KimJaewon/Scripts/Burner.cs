@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 namespace KJW
 {
@@ -60,7 +61,7 @@ namespace KJW
         {
 
             // Fireball을 시작 지점에서 생성
-            Fireball fireball = Instantiate(fireballPrefab, startPoint.position, startPoint.rotation);
+            Fireball fireball = PhotonNetwork.Instantiate("Fireball", startPoint.position, startPoint.rotation).GetComponent<Fireball>();
             // Fireball의 목표 위치 설정
             fireball.SetTargetPos(target.position);
             Destroy(fireball.gameObject, 8f);

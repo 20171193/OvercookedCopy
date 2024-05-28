@@ -1,11 +1,13 @@
 using JH;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class Recipe_IGD : MonoBehaviour
+public class Recipe_IGD : MonoBehaviourPun
 {
     [Header("Recipe")]
     public RecipeData recipe;
@@ -17,6 +19,8 @@ public class Recipe_IGD : MonoBehaviour
     public Image finishedImage;
     [SerializeField] Slider gauge;        // 게이지바
     [SerializeField] float time;          // 총 시간
+
+    public UnityAction<Recipe_IGD> OnDestroyIGD;
 
 
     private void OnEnable()
@@ -44,10 +48,19 @@ public class Recipe_IGD : MonoBehaviour
 
         // 게이지 최종 업데이트
         gauge.value = 0;
-
+        DestroyIGD();
         Debug.Log("레시피 종료");
         yield return null;
+        
     }
+
+    [PunRPC]
+    public void DestroyIGD()
+    {
+        PhotonNetwork.Destroy(this.gameObject);
+        OnDestroyIGD?.Invoke(this);
+    }
+
 }
 
 

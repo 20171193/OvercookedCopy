@@ -64,7 +64,7 @@ namespace Jc
             playerDictionary.Clear();
             
             // 씬 자동 변경해제 (마스터 팔로잉 해제)
-            PhotonNetwork.AutomaticallySyncScene = false;
+            //PhotonNetwork.AutomaticallySyncScene = false;
         }
         private void ButtonSetting()
         {

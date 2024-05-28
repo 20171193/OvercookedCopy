@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028334, g: 0.22571328, b: 0.3069217, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6972,12 +6972,12 @@ PrefabInstance:
     - target: {fileID: 1230494829655208795, guid: 9f5c639f884f2ee4a8626b4860305d91,
         type: 3}
       propertyPath: sceneViewId
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2067741150511304005, guid: 9f5c639f884f2ee4a8626b4860305d91,
         type: 3}
       propertyPath: sceneViewId
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4629499521823600729, guid: 9f5c639f884f2ee4a8626b4860305d91,
         type: 3}
@@ -7044,6 +7044,11 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 49029233}
+    - target: {fileID: 5478254366170151076, guid: 9f5c639f884f2ee4a8626b4860305d91,
+        type: 3}
+      propertyPath: stageNumber
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7411976188973030747, guid: 9f5c639f884f2ee4a8626b4860305d91,
         type: 3}
       propertyPath: gameManager
