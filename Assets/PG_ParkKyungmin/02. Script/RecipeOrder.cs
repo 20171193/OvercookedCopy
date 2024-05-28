@@ -50,7 +50,7 @@ public class RecipeOrder : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient)
         {
             RandomRecipe();
-            InvokeRepeating("RandomRecipe", 20.0f, 20.0f);
+            InvokeRepeating("RandomRecipe", 30.0f, 30.0f);
         }
     }
 
