@@ -358,7 +358,7 @@ MonoBehaviour:
   Image_BackGround: {fileID: 8627458530386077197}
   finishedImage: {fileID: 8818166242715384383}
   gauge: {fileID: 4708833393044812244}
-  time: 30
+  time: 60
 --- !u!1 &6634243965438938644
 GameObject:
   m_ObjectHideFlags: 0
