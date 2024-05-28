@@ -38,6 +38,15 @@ namespace Jc
                 PhotonNetwork.ConnectUsingSettings();
             }
         }
+        public override void OnDisable()
+        {
+            PhotonNetwork.LocalPlayer.SetGameLoad(false);
+
+            if (PhotonNetwork.IsMasterClient)
+                PhotonNetwork.CurrentRoom.SetGameStart(false);
+
+            base.OnDisable();
+        }
 
         public override void OnConnectedToMaster()
         {
