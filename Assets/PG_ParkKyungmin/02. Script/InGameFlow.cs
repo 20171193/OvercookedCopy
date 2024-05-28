@@ -14,7 +14,7 @@ namespace Kyungmin
 {
     public class InGameFlow : MonoBehaviourPunCallbacks, IPunObservable
     {
-
+        [SerializeField] GameObject pauseGroup;
         [SerializeField] TimerBar timerBar;
         [SerializeField] ScoreUI scoreUI;
         [SerializeField] ResultUI resultUI;
@@ -64,6 +64,8 @@ namespace Kyungmin
 
         private void Start()
         {
+            Manager.Sound.PlayBGM(SoundManager.BGMType.InGame);
+
             timerBar.UpdateUI((int)gameTime);
 
             // 모든 Player의 Ready 상태가 확인 되었을때 시작
@@ -89,6 +91,23 @@ namespace Kyungmin
             }
         }
 
+        // 일시정지 콜백
+        private void OnPause(InputValue value)
+        {
+            pauseGroup.SetActive(!pauseGroup.activeSelf);
+        }
+
+        public void OnClickContinueButton()
+        {
+            pauseGroup.SetActive(false);
+        }
+        public void OnClickQuitButton()
+        {
+            PhotonNetwork.AutomaticallySyncScene = true;
+            Manager.PlableData.SaveUserStageScore(stageNumber);
+            Manager.Scene.LoadLevelWithDelay(SceneManager.SceneType.Campagin);
+        }
+        // 일시정지 콜백 -- 
 
         public void RecipeResult(int score)
         {
